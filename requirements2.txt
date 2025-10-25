@@ -1,0 +1,18 @@
+# Core packages
+openai
+gitpython
+
+# Tree-sitter core library
+tree_sitter
+
+# Language bindings
+tree-sitter-python
+tree-sitter-javascript
+tree-sitter-typescript
+tree-sitter-cpp
+tree-sitter-c
+tree-sitter-java
+tree-sitter-go
+tree-sitter-rust
+tree-sitter-ruby
+tree-sitter-php
