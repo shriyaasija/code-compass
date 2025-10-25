@@ -48,23 +48,101 @@ class CodeRetriever:
 class ProductionChatbot:
     
     def __init__(self, repo_path: str):
-        self.retriever = CodeRetriever(repo_path)
-        print(f"✅ Chatbot initialized for repo: {repo_path}")
-    
-    def generate_response(self, user_query, filtered_functions):
-        if not filtered_functions:
-            return "I couldn't find any relevant code for your question."
+        # Convert to Path object and resolve to absolute path
+        from pathlib import Path
+        self.repo_path = Path(repo_path).resolve()
         
-        # Step 1: Get actual code for all filtered functions
+        # Validate path exists
+        if not self.repo_path.exists():
+            raise FileNotFoundError(f"Repository path does not exist: {self.repo_path}")
+        
+        if not self.repo_path.is_dir():
+            raise NotADirectoryError(f"Path is not a directory: {self.repo_path}")
+        
+        print(f"✅ Chatbot initialized for repo: {self.repo_path}")
+        
+        # Initialize retriever with validated path
+        self.retriever = CodeRetriever(str(self.repo_path))
+
+    def generate_response(self, user_query: str, filtered_functions: list):
+        if not filtered_functions:
+            return "No functions provided to analyze."
+        
+        # Get code for all functions
         functions_with_code = self.retriever.get_multiple_functions(filtered_functions)
         
-        if not functions_with_code:
-            return "Failed to retrieve code for the relevant functions."
+        # Build context for Ollama
+        context = self._build_context(functions_with_code)
         
-        # Step 2: Format the response
-        response = self._format_response(user_query, functions_with_code)
+        # Generate AI response using Ollama
+        response = self._call_ollama(user_query, context)
         
         return response
+
+    def _build_context(self, functions_with_code: list) -> str:
+        context_parts = []
+        
+        for i, func in enumerate(functions_with_code, 1):
+            context_parts.append(f"""
+    ### Function {i}: {func['name']}
+    File: {func['file_path']}
+    Lines: {func['start_line']}-{func['end_line']}
+    {func['code']}
+    """)
+    
+        return "\n".join(context_parts)
+
+    def _call_ollama(self, user_query: str, context: str) -> str:
+        import requests
+        
+        system_prompt = """You are an expert software engineer helping developers understand code.
+
+    Your task:
+    1. Answer the user's question clearly and concisely
+    2. Reference specific code snippets when relevant
+    3. Explain HOW things work, not just WHAT they are
+    4. Be direct and practical
+
+    Guidelines:
+    - Focus on the question asked
+    - Use code formatting when referencing code
+    - Keep explanations beginner-friendly but accurate"""
+
+        full_prompt = f"""User Question: {user_query}
+
+    Relevant Code:
+    {context}
+
+    Based on the code above, provide a clear answer to the user's question."""
+
+        try:
+            # Call Ollama API
+            response = requests.post(
+                "http://localhost:11434/api/generate",
+                json={
+                    "model": "qwen3:8b",
+                    "prompt": system_prompt + "\n\n" + full_prompt,
+                    "stream": False,
+                    "options": {
+                        "temperature": 0.3,
+                        "num_predict": 1500
+                    }
+                },
+                timeout=120
+            )
+            
+            if response.status_code == 200:
+                result = response.json()
+                return result.get("response", "").strip()
+            else:
+                return f"Ollama API error: {response.status_code}"
+                
+        except requests.exceptions.ConnectionError:
+            return "Cannot connect to Ollama. Make sure it's running: ollama serve"
+        except requests.exceptions.Timeout:
+            return "Ollama response timed out. Try a simpler query."
+        except Exception as e:
+            return f"Error calling Ollama: {str(e)}"
     
     def _format_response(self, query, functions_with_code):
         response_parts = [

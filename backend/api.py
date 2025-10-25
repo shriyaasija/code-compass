@@ -62,7 +62,7 @@ async def process_query(request: QueryRequest):
 
         chatbot = chatbots[request.repo_id]
 
-        filtered_functions = [func.dict() for func in request.filtered_functions]
+        filtered_functions = [func.model_dump() for func in request.filtered_functions]
 
         response = chatbot.generate_response(
             user_query=request.user_query,
