@@ -4,6 +4,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional, List
 from pydantic import BaseModel
 from backend.retrieval import ProductionChatbot
+from backend.semantic_search import SemanticCodeSearch
+import tempfile
+import subprocess
 
 load_dotenv()
 
@@ -19,6 +22,31 @@ app.add_middleware(
 
 chatbots = {}
 repo_paths = {}
+
+def clone_github_repo(github_url, target_dir = None):
+    if target_dir is None:
+        target_dir = tempfile.mkdtemp(prefix="repo_chatbot_")
+    
+    try:
+        print(f"Cloning {github_url}...")
+        subprocess.run(
+            ['git', 'clone', '--depth', '1', github_url, target_dir],
+            check=True,
+            capture_output=True,
+            timeout=60
+        )
+
+        print(f"Cloned to {target_dir}")
+        return target_dir
+    
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(f"Failed to clone repo: {e.stderr.decode()}")
+    except subprocess.TimeoutExpired:
+        raise RuntimeError("Clone timeout")
+
+def get_repo_id_from_url(github_url):
+    parts = github_url.rstrip('/').split('/')
+    return f"{parts[-2]}_{parts[-1]}"
 
 class FunctionDetail(BaseModel):
     name: str
@@ -42,6 +70,8 @@ class QueryResponse(BaseModel):
     functions_count: int
     error: Optional[str] = None
 
+semantic_search = SemanticCodeSearch()
+
 @app.post("/initialise")
 async def initialise_chatbot(repo_id, repo_path):
     try:
@@ -57,6 +87,17 @@ async def initialise_chatbot(repo_id, repo_path):
 @app.post("/query", response_model=QueryResponse)
 async def process_query(request: QueryRequest):
     try:
+        repo_id = get_repo_id_from_url(request.github_url)
+
+        if repo_id not in repo_paths:
+            print(f"Cloning new repo: {request.github_url}")
+            repo_path = clone_github_repo(request.github_url)
+            repo_paths[repo_id] = repo_path
+            print(f"Cloned repo to: {repo_path}")
+        else:
+            print(f"Using cached repo: {repo_id}")
+            repo_path = repo_paths[repo_id]
+        
         if request.repo_id not in chatbots:
             chatbots[request.repo_id] = ProductionChatbot(request.repo_path)
 
