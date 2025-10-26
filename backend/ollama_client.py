@@ -149,7 +149,101 @@ class OllamaLLM:
         except requests.exceptions.RequestException as e:
             print(f"❌ Ollama chat error: {str(e)}")
             return ""
+        
+    def generate_streaming(self, 
+                      prompt: str, 
+                      system_prompt: Optional[str] = None,
+                      temperature: float = 0.3,
+                      max_tokens: int = 2000) -> str:
+        """
+        Generate response with streaming to prevent timeouts on large contexts.
+        Returns the complete response after streaming is done.
+        """
+        full_prompt = prompt
+        if system_prompt:
+            full_prompt = f"{system_prompt}\n\n{prompt}"
+        
+        payload = {
+            "model": self.model,
+            "prompt": full_prompt,
+            "stream": True,  # Enable streaming
+            "options": {
+                "temperature": temperature,
+                "num_predict": max_tokens
+            }
+        }
+        
+        try:
+            response = requests.post(
+                self.api_url,
+                json=payload,
+                stream=True,
+                timeout=600  # 10 min total timeout
+            )
+            response.raise_for_status()
+            
+            full_response = ""
+            for line in response.iter_lines():
+                if line:
+                    try:
+                        chunk = json.loads(line)
+                        full_response += chunk.get("response", "")
+                    except json.JSONDecodeError:
+                        continue
+            
+            return full_response.strip()
+            
+        except requests.exceptions.Timeout:
+            return "Generation timed out even with streaming."
+        except requests.exceptions.RequestException as e:
+            print(f"❌ Ollama streaming error: {str(e)}")
+            return f"Ollama error: {str(e)}"
 
+    def chat_streaming(self,
+                    messages: List[Dict[str, str]], 
+                    temperature: float = 0.3,
+                    max_tokens: int = 2000) -> str:
+        """
+        Chat with streaming to prevent timeouts on large contexts.
+        """
+        payload = {
+            "model": self.model,
+            "messages": messages,
+            "stream": True,
+            "options": {
+                "temperature": temperature,
+                "num_predict": max_tokens
+            }
+        }
+        
+        try:
+            response = requests.post(
+                self.chat_url,
+                json=payload,
+                stream=True,
+                timeout=600
+            )
+            response.raise_for_status()
+            
+            full_response = ""
+            for line in response.iter_lines():
+                if line:
+                    try:
+                        chunk = json.loads(line)
+                        message = chunk.get("message", {})
+                        full_response += message.get("content", "")
+                    except json.JSONDecodeError:
+                        continue
+            
+            return full_response.strip()
+            
+        except requests.exceptions.Timeout:
+            print("❌ Chat streaming timed out")
+            return ""
+        except requests.exceptions.RequestException as e:
+            print(f"❌ Ollama chat streaming error: {str(e)}")
+            return ""
+        
 def test_ollama():
     """Quick test to verify Ollama is working"""
     print("\n" + "="*70)

@@ -45,14 +45,13 @@ class CodeRetriever:
         
         return results
 
+
 class ProductionChatbot:
     
     def __init__(self, repo_path: str):
-        # Convert to Path object and resolve to absolute path
         from pathlib import Path
         self.repo_path = Path(repo_path).resolve()
         
-        # Validate path exists
         if not self.repo_path.exists():
             raise FileNotFoundError(f"Repository path does not exist: {self.repo_path}")
         
@@ -61,139 +60,147 @@ class ProductionChatbot:
         
         print(f"✅ Chatbot initialized for repo: {self.repo_path}")
         
-        # Initialize retriever with validated path
         self.retriever = CodeRetriever(str(self.repo_path))
 
-    def generate_response(self, user_query: str, filtered_functions: list):
+    def generate_response(self, user_query: str, filtered_functions: list) -> str:
+        """
+        Generate response with full context - NO truncation.
+        Uses proper prompting for long-context understanding.
+        """
         if not filtered_functions:
-            return "No functions provided to analyze."
+            return "No relevant code found for your query."
         
-        # Get code for all functions
-        functions_with_code = self.retriever.get_multiple_functions(filtered_functions)
+        # Build FULL context - no limits
+        context_parts = []
         
-        # Build context for Ollama
-        context = self._build_context(functions_with_code)
+        for idx, func in enumerate(filtered_functions, 1):
+            try:
+                code = self.retriever.get_function_code(
+                    func['file_path'], 
+                    func['start_line'], 
+                    func['end_line']
+                )
+                
+                context_parts.append(
+                    f"\n{'='*60}\n"
+                    f"[CODE BLOCK {idx}/{len(filtered_functions)}]\n"
+                    f"File: {func['file_path']}\n"
+                    f"Function: {func.get('name', 'Unknown')}\n"
+                    f"Lines: {func['start_line']}-{func['end_line']}\n"
+                    f"Score: {func.get('score', 'N/A')}\n"
+                    f"{'='*60}\n"
+                    f"{code}\n"
+                )
+            except Exception as e:
+                print(f"⚠️ Failed to read {func['file_path']}: {e}")
+                continue
         
-        # Generate AI response using Ollama
-        response = self._call_ollama(user_query, context)
+        context = "\n".join(context_parts)
+        
+        # Always use streaming for stability with large contexts
+        print(f"📡 Streaming {len(filtered_functions)} functions (full context)...")
+        response = self._call_ollama_streaming(user_query, context, len(filtered_functions))
+        
+        if not response or response.startswith("Error") or response.startswith("Cannot"):
+            print(f"⚠️ LLM returned: {response}")
+            return response if response else "Failed to generate response."
         
         return response
 
-    def _build_context(self, functions_with_code: list) -> str:
-        context_parts = []
-        
-        for i, func in enumerate(functions_with_code, 1):
-            context_parts.append(f"""
-    ### Function {i}: {func['name']}
-    File: {func['file_path']}
-    Lines: {func['start_line']}-{func['end_line']}
-    {func['code']}
-    """)
-    
-        return "\n".join(context_parts)
-
-    def _call_ollama(self, user_query: str, context: str) -> str:
+    def _call_ollama_streaming(self, user_query: str, context: str, num_functions: int) -> str:
+        """
+        Streaming with NEEDLE-IN-HAYSTACK prompting for long contexts.
+        This is the modern approach for handling massive contexts.
+        """
         import requests
+        import json
         
-        system_prompt = """You are an expert software engineer helping developers understand code.
+        # Modern long-context prompting technique
+        system_prompt = """You are a precise code analysis expert with perfect recall of long contexts.
 
-    Your task:
-    1. Answer the user's question clearly and concisely
-    2. Reference specific code snippets when relevant
-    3. Explain HOW things work, not just WHAT they are
-    4. Be direct and practical
+Your capabilities:
+- You can process and remember large amounts of code
+- You find exact details across the entire context
+- You answer the SPECIFIC question asked, not general summaries
+- You cite exact file names and line numbers when referencing code
 
-    Guidelines:
-    - Focus on the question asked
-    - Use code formatting when referencing code
-    - Keep explanations beginner-friendly but accurate"""
+Response format:
+1. Direct answer to the question
+2. Relevant code references with file paths
+3. Technical explanation of how/why it works"""
 
-        full_prompt = f"""User Question: {user_query}
+        # Put question at BOTH start and end (needle-in-haystack technique)
+        full_prompt = f"""<QUESTION>
+{user_query}
+</QUESTION>
 
-    Relevant Code:
-    {context}
+Below are {num_functions} code blocks from the repository. Read ALL of them carefully.
 
-    Based on the code above, provide a clear answer to the user's question."""
+<CODE_CONTEXT>
+{context}
+</CODE_CONTEXT>
 
+Now answer this question based on the code above:
+<QUESTION>
+{user_query}
+</QUESTION>
+
+Provide a detailed, technical answer that directly addresses the question. Reference specific code blocks by their file paths."""
+        
         try:
-            # Call Ollama API
+            print("🔄 Sending full context to Ollama...")
+            print(f"   Context size: ~{len(context)//1000}K chars")
+            
             response = requests.post(
                 "http://localhost:11434/api/generate",
                 json={
                     "model": "qwen3:8b",
                     "prompt": system_prompt + "\n\n" + full_prompt,
-                    "stream": False,
+                    "stream": True,
                     "options": {
-                        "temperature": 0.3,
-                        "num_predict": 1500
+                        "temperature": 0.1,
+                        "num_predict": 4000,
+                        "num_ctx": 32768,
+                        "top_p": 0.95,
+                        "repeat_penalty": 1.1
                     }
                 },
-                timeout=120
+                stream=True,
+                timeout=900
             )
             
-            if response.status_code == 200:
-                result = response.json()
-                return result.get("response", "").strip()
-            else:
+            if response.status_code != 200:
+                print(f"❌ Ollama returned status {response.status_code}")
                 return f"Ollama API error: {response.status_code}"
-                
+            
+            full_response = ""
+            chunk_count = 0
+            
+            for line in response.iter_lines():
+                if line:
+                    try:
+                        chunk = json.loads(line)
+                        full_response += chunk.get("response", "")
+                        chunk_count += 1
+                        
+                        if chunk_count % 50 == 0:
+                            print(".", end="", flush=True)
+                            
+                    except json.JSONDecodeError:
+                        continue
+            
+            print(f"\n✅ Generated {len(full_response)} chars from {chunk_count} chunks")
+            
+            if not full_response.strip():
+                print("⚠️ Empty response - context might be too large for model")
+                return "The context was too large. Try increasing the threshold to get fewer functions."
+            
+            return full_response.strip()
+            
         except requests.exceptions.ConnectionError:
             return "Cannot connect to Ollama. Make sure it's running: ollama serve"
         except requests.exceptions.Timeout:
-            return "Ollama response timed out. Try a simpler query."
+            return "Generation timed out. The context may be extremely large."
         except Exception as e:
+            print(f"❌ Streaming error: {str(e)}")
             return f"Error calling Ollama: {str(e)}"
-    
-    def _format_response(self, query, functions_with_code):
-        response_parts = [
-            f"# Answer to: {query}\n",
-            f"Found {len(functions_with_code)} relevant functions:\n"
-        ]
-        
-        for i, func in enumerate(functions_with_code, 1):
-            response_parts.append(
-                f"\n## {i}. {func['name']}\n\n"
-                f"**File:** `{func['file_path']}`  \n"
-                f"**Lines:** {func['start_line']}-{func['end_line']}  \n"
-            )
-            
-            if func.get('docstring'):
-                response_parts.append(f"**Description:** {func['docstring']}  \n")
-            
-            response_parts.append(f"\n```python\n{func['code']}\n```\n")
-        
-        return '\n'.join(response_parts)
-    
-    def generate_llm_context(self, user_query, filtered_functions):
-        functions_with_code = self.retriever.get_multiple_functions(filtered_functions)
-        
-        if not functions_with_code:
-            return None
-        
-        # Build context for LLM
-        context_parts = []
-        
-        for func in functions_with_code:
-            context_parts.append(
-                f"Function: {func['name']}\n"
-                f"File: {func['file_path']}\n"
-                f"Signature: {func.get('signature', 'N/A')}\n"
-            )
-            
-            if func.get('docstring'):
-                context_parts.append(f"Description: {func['docstring']}\n")
-            
-            context_parts.append(f"Code:\n{func['code']}\n")
-        
-        context = "\n" + "="*60 + "\n".join(context_parts)
-        
-        # This is what you'd send to your LLM
-        llm_prompt = f"""User Question: {user_query}
-
-Relevant Code from Repository:
-{context}
-
-Based on the code above, answer the user's question in a clear and helpful way."""
-        
-        return llm_prompt
-

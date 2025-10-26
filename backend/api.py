@@ -10,7 +10,6 @@ from backend.retrieval import ProductionChatbot
 from backend.code_index import TreeBasedSearch
 from backend.ollama_client import OllamaLLM
 
-
 app = FastAPI(title="CodeCompass - Tree-Based Search Edition")
 
 app.add_middleware(
@@ -332,7 +331,6 @@ async def health_check():
         "active_chatbots": len(chatbots),
         "threshold": tree_search.threshold if tree_search else None
     }
-
 
 @app.get("/repos")
 async def list_repositories():
