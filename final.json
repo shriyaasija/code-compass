@@ -1,0 +1,702 @@
+{
+  "title": "demo-sum",
+  "node_id": "0000",
+  "type": "repository",
+  "path": "",
+  "summary": "The `bmp_img_processor.c` module manages BMP file operations, including header parsing, error handling, and image data extraction with memory allocation. `test.c` implements image processing techniques such as logarithmic scaling, gamma correction, dilation, and ASCII art generation. `test2.c` extends functionality with convolution, max pooling, image concatenation, and ASCII rendering using predefined kernels and pixel manipulation.",
+  "nodes": [
+    {
+      "title": "image_processing",
+      "node_id": "0001",
+      "type": "folder",
+      "path": "./image_processing",
+      "summary": "The `bmp_img_processor.c` module handles BMP file operations, including header parsing, error management, and image data extraction with memory allocation. `test.c` implements image processing tasks like logarithmic scaling, gamma correction, dilation, and ASCII art generation. `test2.c` provides convolution, max pooling, image concatenation, and ASCII rendering tools using predefined kernels and pixel manipulation.",
+      "nodes": [
+        {
+          "title": "README.md",
+          "node_id": "0002",
+          "type": "file_md",
+          "path": "../image_processing/README.md"
+        },
+        {
+          "title": "image_processing",
+          "node_id": "0003",
+          "type": "folder",
+          "path": "./image_processing/image_processing",
+          "summary": "The `bmp_img_processor.c` module implements BMP file handling, including error management, header parsing (BMP/DIB), and image data extraction with padding and memory allocation. `test.c` includes image processing functions for logarithmic scaling, gamma correction, and dilation, alongside ASCII art generation and output saving. `test2.c` provides convolution, max pooling, image concatenation, and ASCII rendering tools, utilizing predefined kernels and pixel manipulation for transformation tasks.",
+          "nodes": [
+            {
+              "title": "ascii.txt",
+              "node_id": "0004",
+              "type": "file_txt",
+              "path": "./image_processing/image_processing/ascii.txt"
+            },
+            {
+              "title": "ascii_2char_render.txt",
+              "node_id": "0005",
+              "type": "file_txt",
+              "path": "./image_processing/image_processing/ascii_2char_render.txt"
+            },
+            {
+              "title": "bmp_img_processor.c",
+              "node_id": "0006",
+              "type": "file_c",
+              "path": "./image_processing/image_processing/bmp_img_processor.c",
+              "summary": "The functions collectively handle BMP file processing, including error checking, format validation, header extraction, and image data retrieval. `errMsg` manages error codes, while `isBMP` and `isValidFormat` verify file signatures and format compliance. `getBMPHeader` and `getDIBHeader` parse BMP and DIB headers, respectively, ensuring correct metadata extraction. `getImage` reads pixel data, handling padding and memory allocation for the image structure.",
+              "nodes": [
+                {
+                  "title": "errMsg",
+                  "node_id": "func_1",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 4,
+                  "end_line": 39,
+                  "summary": "The function `errMsg` checks error codes for a BMP file and prints corresponding messages. It returns `1` on errors (e.g., invalid headers, file open failures) and `0` on success. The default case uses a provided message for unspecified errors."
+                },
+                {
+                  "title": "isBMP",
+                  "node_id": "func_2",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 40,
+                  "end_line": 48,
+                  "summary": "The function checks if a file starts with the BMP signature (\"BM\") by reading the first two bytes. If the bytes match \"BM\", it returns 1 (indicating the file is a BMP image), otherwise 0."
+                },
+                {
+                  "title": "getBMPHeader",
+                  "node_id": "func_3",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 49,
+                  "end_line": 62,
+                  "summary": "The function opens a binary file, verifies it is a BMP image, allocates memory for the header, reads the BMP header and associated data using `fread`, and returns the header structure. It handles errors during file opening or memory allocation."
+                },
+                {
+                  "title": "getDIBHeader",
+                  "node_id": "func_4",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 64,
+                  "end_line": 85,
+                  "summary": "The function opens a BMP file, reads the DIB header (including dimensions, color format, compression method, and other metadata), and returns the header structure. It validates the file format and allocates memory for the header, ensuring proper parsing of BMP-specific fields."
+                },
+                {
+                  "title": "isValidFormat",
+                  "node_id": "func_5",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 86,
+                  "end_line": 100,
+                  "summary": "The function checks if a given file is a valid BMP image by opening it, verifying the DIB header's compression method and bits per pixel, and ensuring compliance with BMP format requirements. It returns 1 if valid, 0 otherwise, with proper cleanup of resources."
+                },
+                {
+                  "title": "getImage",
+                  "node_id": "func_6",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 101,
+                  "end_line": 131,
+                  "summary": "The function reads a BMP file, extracts header information, allocates memory for an image structure, and fills it with pixel data by reading padded rows from the file. It handles memory allocation for image dimensions, pixel data, and padding, then frees headers and returns the image pointer."
+                },
+                {
+                  "title": "greyScale",
+                  "node_id": "func_7",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 132,
+                  "end_line": 151,
+                  "summary": "The function converts an image to grayscale by calculating a weighted average of the red, green, and blue components of each pixel. It allocates memory for the new image, calculates padding to ensure proper alignment, and processes each pixel by averaging its RGB values. The function returns the grayscale image after memory allocation."
+                },
+                {
+                  "title": "bwImg",
+                  "node_id": "func_8",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 152,
+                  "end_line": 172,
+                  "summary": "The function converts an RGB image to black-and-white by thresholding pixels based on a weighted sum of red, green, and blue components. It allocates memory for the output image, calculates padding to align data to 4-byte boundaries, and processes each pixel to set values to 255 (white) or 0 (black) based on the threshold."
+                },
+                {
+                  "title": "renderAsciiArt",
+                  "node_id": "func_9",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 174,
+                  "end_line": 188,
+                  "summary": "The function converts an image to ASCII art by mapping pixel colors to characters based on their RGB values using a weighted average. It writes the resulting ASCII art to a file named \"ascii.txt\"."
+                },
+                {
+                  "title": "renderAsciiArt_space",
+                  "node_id": "func_10",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 189,
+                  "end_line": 203,
+                  "summary": "The function generates ASCII art by converting each pixel's RGB values into a character from the `apx` string using a weighted average of red, green, and blue components. It writes the resulting characters to a file, spacing them with spaces and appending a newline after each row."
+                },
+                {
+                  "title": "renderAsciiArt_char_render_twice",
+                  "node_id": "func_11",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 204,
+                  "end_line": 218,
+                  "summary": "The function generates ASCII art by converting each pixel's RGB values into characters from a predefined array, doubling each character, and writing the output to a file. It calculates an index based on a weighted average of the RGB components to determine which character to use from the array."
+                },
+                {
+                  "title": "renderAsciiArt_color",
+                  "node_id": "func_12",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 219,
+                  "end_line": 238,
+                  "summary": "The function generates ASCII art by converting each pixel's RGB values into color codes, selecting characters from a predefined string based on a weighted average of the RGB components, and printing them with the corresponding colors. It loops through each pixel in the image, applying color and character selection based on the RGB values. The color codes are set using ANSI escape sequences, and the function resets the color at the end."
+                },
+                {
+                  "title": "render_terminal",
+                  "node_id": "func_13",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 240,
+                  "end_line": 256,
+                  "summary": "The function renders a terminal image by converting pixel colors into ANSI escape codes using a weighted average of RGB values. It iterates through each pixel, calculates a color code based on the RGB components, and prints characters with \"<>\" followed by a newline. The final call to `\\033[0m` resets the terminal color to default."
+                },
+                {
+                  "title": "freeIMG",
+                  "node_id": "func_14",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 258,
+                  "end_line": 263,
+                  "summary": "The function `freeIMG` deallocates memory for an image structure, freeing each row's RGB data, the entire RGB array, and the image pointer itself. It iterates through each row to release individual pixel data before releasing the array and the structure."
+                },
+                {
+                  "title": "createIMG",
+                  "node_id": "func_15",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 264,
+                  "end_line": 297,
+                  "summary": "The function creates a BMP image file by writing the BMP header, DIB header, and pixel data to a binary file. It calculates padding for each scanline based on bits per pixel and writes the pixel data in reverse order to ensure proper alignment. The function handles memory allocation, header writing, and file closure."
+                },
+                {
+                  "title": "edgeDetect_gradient",
+                  "node_id": "func_16",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 298,
+                  "end_line": 330,
+                  "summary": "The function creates a new image to detect edges by calculating pixel intensity gradients in horizontal, vertical, and diagonal directions. It applies a threshold to determine edge strength, converting pixels to white (255,255,255) if any gradient value exceeds the threshold, otherwise to black (0,0,0). The output image retains the original dimensions and pixel format of the input."
+                },
+                {
+                  "title": "edgeRenderer",
+                  "node_id": "func_17",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 332,
+                  "end_line": 361,
+                  "summary": "The function calculates pixel intensity using weighted RGB values and compares it with neighboring pixels (row, column, and diagonal) to detect edges. It uses a threshold to determine when an edge is significant, printing hyphens, pipes, slashes, or backspaces based on intensity differences. The algorithm highlights edges by evaluating the relative intensity of each pixel against its neighbors."
+                },
+                {
+                  "title": "createImgDirect",
+                  "node_id": "func_18",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 362,
+                  "end_line": 388,
+                  "summary": "The function creates a BMP image file with specified dimensions and 24-bit color depth, calculates padding and image size, and writes the header and data. It initializes BMP and DIB headers, sets resolution and color parameters, and calls a helper function to write the image."
+                },
+                {
+                  "title": "concatIMGX",
+                  "node_id": "func_19",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 389,
+                  "end_line": 458,
+                  "summary": "The function concatenates two images (`img1` and `img2`) horizontally, adding padding between them. It allocates memory for the new image, copies pixels from the first image, and fills the padding area with specified colors (`padr`, `padg`, `padb`). The height of the new image is the maximum of the two input heights, and the width is the sum of their widths plus padding. The function handles memory allocation errors and calculates padding to ensure proper alignment."
+                },
+                {
+                  "title": "concatIMGY",
+                  "node_id": "func_20",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 460,
+                  "end_line": 526,
+                  "summary": "The function concatenates two images vertically, preserving their widths and adding padding to the total height. It allocates memory for the new image, copies pixel data from the source images, and fills blank spaces with specified padding colors. The function handles memory allocation failures and ensures proper alignment for pixel data."
+                },
+                {
+                  "title": "convolution_size",
+                  "node_id": "func_21",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 528,
+                  "end_line": 532,
+                  "summary": "The function calculates the output size of a convolutional layer by adjusting the input image size based on the kernel size and stride. It uses the formula `((img_size - kernel_size) / stride) + 1` to determine the number of output features or the size after accounting for padding and stride."
+                },
+                {
+                  "title": "rgbRange",
+                  "node_id": "func_22",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 533,
+                  "end_line": 541,
+                  "summary": "The function clamps the input value to 0 or 255, returning the original value if it lies within the range [0, 255]. It ensures the output is restricted between 0 and 255 by checking if the input is \u2264 0, \u2265 255, or falls in the middle range."
+                },
+                {
+                  "title": "kernelWt",
+                  "node_id": "func_23",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 542,
+                  "end_line": 555,
+                  "summary": "The function calculates the sum of the absolute values of all elements in the kernel matrix. It iterates through each element, takes the absolute value of each value, and adds it to a running total. The returned value is the sum of these absolute values."
+                },
+                {
+                  "title": "kernelPosWt",
+                  "node_id": "func_24",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 556,
+                  "end_line": 568,
+                  "summary": "The function calculates the sum of all positive elements in a kernel matrix. It iterates through each element, adding only those greater than zero to the total. The result is the sum of positive values in the kernel, likely used for thresholding or normalization in image processing contexts."
+                },
+                {
+                  "title": "kernelNegWt",
+                  "node_id": "func_25",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 569,
+                  "end_line": 581,
+                  "summary": "The function calculates the sum of all negative values in a 2D kernel matrix by iterating through each element and accumulating negative values. It returns the total sum of negative elements, effectively identifying and quantifying the magnitude of negative values in the kernel."
+                },
+                {
+                  "title": "weighted_kernel_correction",
+                  "node_id": "func_26",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 582,
+                  "end_line": 597,
+                  "summary": "The function calculates weighted corrections for red (r), green (g), and blue (b) values using kernel-specific weights (positive and negative). It divides each component by the corresponding weight if the value is non-negative, otherwise uses the opposite weight. Finally, it applies `rgbRange` to normalize the values."
+                },
+                {
+                  "title": "convolution",
+                  "node_id": "func_27",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 598,
+                  "end_line": 636,
+                  "summary": "The function computes a convolution of an input image with a given kernel, expanding the image dimensions based on kernel size and stride, and applies a correction function to the resulting pixel values. It iterates over each possible kernel position, calculates the weighted sum of kernel elements over the input image regions, and stores the result in a new image with padded dimensions. The correction function processes the aggregated RGB values."
+                },
+                {
+                  "title": "printKernel",
+                  "node_id": "func_28",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 638,
+                  "end_line": 648,
+                  "summary": "The function prints the kernel's matrix elements in a grid, iterating through each row and column, formatting each value with two decimal places, and appending a newline after each row. It uses the kernel's height and width to determine the matrix dimensions."
+                },
+                {
+                  "title": "printImgMatrix",
+                  "node_id": "func_29",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 649,
+                  "end_line": 665,
+                  "summary": "The function iterates through an image's pixels, computes a color index from RGB values using weighted averages, and prints the pixel in ANSI escape codes to display a colored output. It calculates the average of the RGB components as an integer and formats the output with a space between the color code and the average value."
+                },
+                {
+                  "title": "sobelsEdgeDectorHorizontal",
+                  "node_id": "func_30",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 666,
+                  "end_line": 686,
+                  "summary": "The function applies a 3x3 Sobel filter for horizontal edge detection using a specific kernel matrix. It initializes the kernel, performs convolution with the image, and frees allocated memory before returning the result."
+                },
+                {
+                  "title": "sobelsEdgeDectorVertical",
+                  "node_id": "func_31",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 688,
+                  "end_line": 708,
+                  "summary": "The function implements a vertical Sobel edge detection filter using a 3x3 kernel with specific coefficients. It applies convolution to the input image to highlight edges, then frees the kernel's memory after processing. The result is a new image containing edge-detected pixels."
+                },
+                {
+                  "title": "blr1",
+                  "node_id": "func_32",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 709,
+                  "end_line": 729,
+                  "summary": "This function initializes a 3x3 kernel with all elements set to 1, performs a convolution operation on the input image using the kernel, and returns the resulting image. It allocates memory for the kernel matrix, sets up the convolution parameters, and frees the allocated memory afterward. The convolution uses a weighted kernel correction, ensuring proper scaling during the computation."
+                },
+                {
+                  "title": "blr2",
+                  "node_id": "func_33",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 730,
+                  "end_line": 750,
+                  "summary": "The function initializes a 3x3 convolution kernel with specific values, performs a weighted convolution on the input image, and returns the resulting image. It allocates memory for the kernel matrix, sets up the kernel values, and frees the allocated memory after the convolution."
+                },
+                {
+                  "title": "identity_kernel_1",
+                  "node_id": "func_34",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 751,
+                  "end_line": 771,
+                  "summary": "The function creates a 3x3 identity kernel (centered 1, others 0) and applies it to an input image via convolution, preserving the original image. It uses a 1x1 stride for kernel application and allocates memory for the kernel matrix, freeing it afterward. The kernel effectively acts as an identity filter, leaving the image unchanged."
+                },
+                {
+                  "title": "identity_kernel_2",
+                  "node_id": "func_35",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 772,
+                  "end_line": 792,
+                  "summary": "The function applies an identity 3x3 kernel (preserving input image) via convolution, with a diagonal of 1s and off-diagonal 0s. It allocates memory for the kernel matrix, initializes it, and returns the convolved result without modification. The kernel is freed to avoid memory leaks."
+                },
+                {
+                  "title": "identity_kernel_3",
+                  "node_id": "func_36",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 793,
+                  "end_line": 813,
+                  "summary": "The function creates a 3x3 identity kernel (with 1 in the middle) and applies it to the input image via convolution, returning the result. It allocates memory for the kernel, initializes it with specific values, and frees the memory after use."
+                },
+                {
+                  "title": "identity_kernel_4",
+                  "node_id": "func_37",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 814,
+                  "end_line": 834,
+                  "summary": "The function creates a 3x3 convolution kernel with specific values (e.g., a shifted identity kernel) and performs convolution with the input image. It allocates memory for the kernel matrix, sets its values, and returns the convolved result. The kernel shifts the image by one pixel in the x-direction, but the function's name suggests an identity kernel, which may be a typographical or implementation-specific detail."
+                },
+                {
+                  "title": "identity_kernel_5",
+                  "node_id": "func_38",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 835,
+                  "end_line": 855,
+                  "summary": "The function creates a 3x3 convolution kernel with specific values (centered at 0, first and third rows have 1 in the second column), performs convolution with the weighted kernel correction, and returns the resulting image. It allocates and frees memory for the kernel matrix to manage resource usage."
+                },
+                {
+                  "title": "identity_kernel_6",
+                  "node_id": "func_39",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 856,
+                  "end_line": 876,
+                  "summary": "The function applies a 3x3 identity kernel to an image via convolution, preserving the image with the center element set to 1. It initializes the kernel matrix, sets strides, and performs the convolution with weighted correction, then frees the kernel's memory."
+                },
+                {
+                  "title": "identity_kernel_7",
+                  "node_id": "func_40",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 877,
+                  "end_line": 897,
+                  "summary": "The function applies a 3x3 convolution kernel with a 1 in the (0,2) position to the input image, performing the convolution and returning the result. It allocates and frees memory for the kernel's matrix."
+                },
+                {
+                  "title": "identity_kernel_8",
+                  "node_id": "func_41",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 898,
+                  "end_line": 918,
+                  "summary": "The function creates a 3x3 identity kernel (center value 1, others 0s) and performs convolution with the input image. It allocates memory for the kernel matrix, initializes it, and returns the convolved result. The kernel is used to preserve the input image unchanged."
+                },
+                {
+                  "title": "identity_kernel_9",
+                  "node_id": "func_42",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 919,
+                  "end_line": 939,
+                  "summary": "The function applies a 3x3 convolution kernel with values [0,0,0; 0,0,0; 0,0,1] to an image, performing weighted convolution using the kernel. It allocates memory for the kernel matrix, initializes it, and returns the resulting image after convolution."
+                },
+                {
+                  "title": "cropRight",
+                  "node_id": "func_43",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 940,
+                  "end_line": 951,
+                  "summary": "The function crops an image by repeatedly applying the identity kernel, reducing its size, and returns the resulting image. It calculates `px` as `px/2 + 1` to determine the number of iterations, then uses a loop to progressively apply the identity kernel, effectively shrinking the image."
+                },
+                {
+                  "title": "cropLft",
+                  "node_id": "func_44",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 952,
+                  "end_line": 963,
+                  "summary": "The function crops an image by applying identity kernels in a loop, reducing the image size by half each iteration, and returns the cropped result. It adjusts the pixel count using `px/2 + 1` to determine the number of kernel applications, sequentially applying identity kernels to progressively shrink the image."
+                },
+                {
+                  "title": "sharpen",
+                  "node_id": "func_45",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 964,
+                  "end_line": 984,
+                  "summary": "The function applies a 3x3 sharpening kernel to an image using convolution, emphasizing edges and details by weighting the kernel matrix. It allocates memory for the kernel, initializes coefficients to highlight contrasts, and returns the processed image. Memory for the kernel is freed after use to prevent leaks."
+                },
+                {
+                  "title": "brighten",
+                  "node_id": "func_46",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 985,
+                  "end_line": 1010,
+                  "summary": "The function `brighten` creates a new image with the same dimensions as the input, adjusts each pixel's color channels (r, g, b) by multiplying them with a given brightness value, and clamps the values using `rgbRange`. It handles invalid input by returning `NULL` and allocates memory for the new image with padding calculations."
+                },
+                {
+                  "title": "convolutionEdgeDetection",
+                  "node_id": "func_47",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 1011,
+                  "end_line": 1031,
+                  "summary": "The function applies a 3x3 Sobel-style edge detection filter to an image by initializing a kernel with specific values (-1, 0, 1) and performing convolution. It allocates memory for the kernel, fills it with coefficients, and computes the output image using the kernel. The result is returned as a new image pointer, with the kernel memory freed afterward."
+                },
+                {
+                  "title": "MaxPooling",
+                  "node_id": "func_48",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 1033,
+                  "end_line": 1080,
+                  "summary": "The function performs max pooling on an input image by sliding a kernel over its regions, calculating the maximum grey value (weighted average of RGB) in each window, and storing it as the output. It adjusts dimensions and padding to ensure proper alignment, then iterates through the kernel size to compute the maximum value for each output pixel. The kernel's stride and the input image's dimensions determine the output's height and width."
+                },
+                {
+                  "title": "borderImg",
+                  "node_id": "func_49",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 1082,
+                  "end_line": 1111,
+                  "summary": "The function adds a border to an image by padding its dimensions and copying original pixels into the border area, using specified colors. It calculates the padding based on bit depth and checks each pixel's position to determine if it's in the border."
+                },
+                {
+                  "title": "uncropFilter",
+                  "node_id": "func_50",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 1114,
+                  "end_line": 1121,
+                  "summary": "The function creates a bordered image of the input using the specified threshold, applies a filter to it, and returns the modified image while freeing the original image data. It ensures the filter is applied to the extended image, preserving the original structure while altering the borders."
+                },
+                {
+                  "title": "renderAsciiArt_terminal",
+                  "node_id": "func_51",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 1122,
+                  "end_line": 1135,
+                  "summary": "The function generates ASCII art by mapping each pixel's RGB values to a character from a predefined array (`apx`) using a weighted average of the red, green, and blue components. It iterates through each pixel in the image, calculates an index based on the weighted RGB values, and prints a character (e.g., `@`, `#`, `N`, etc.) to create a visual representation. The output is printed row by row, with each row representing a row of the ASCII art."
+                },
+                {
+                  "title": "pixmap",
+                  "node_id": "func_52",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 1136,
+                  "end_line": 1157,
+                  "summary": "The function creates a new image with the same dimensions as the input, allocates memory with padding to ensure proper alignment, and applies a given function to each pixel's RGB components. It returns the new image pointer after processing."
+                },
+                {
+                  "title": "logmap",
+                  "node_id": "func_53",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 1158,
+                  "end_line": 1162,
+                  "summary": "The function applies a logarithmic transformation to input `p`, scaling it by 255 and dividing by the natural log of 256 to produce a value in the range [0, 255]. It uses the natural logarithm of `(double)p + 1` to compute the output."
+                },
+                {
+                  "title": "histeq",
+                  "node_id": "func_54",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 1163,
+                  "end_line": 1200,
+                  "summary": "This function computes the histogram of pixel intensities for each channel (red, green, blue) in an image, calculates cumulative sums, scales values to 0-255, and normalizes them based on maximum intensity values to achieve histogram equalization. It returns the transformed histogram array."
+                },
+                {
+                  "title": "histEq",
+                  "node_id": "func_55",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 1201,
+                  "end_line": 1228,
+                  "summary": "The function applies histogram equalization to an image by adjusting RGB values based on a precomputed histogram. It allocates memory for the output image, calculates padding for color space conversion, and replaces each pixel's RGB values with those from the histogram. The function manages memory allocation and deallocation for intermediate arrays, returning the processed image."
+                },
+                {
+                  "title": "erosion_match",
+                  "node_id": "func_56",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 1229,
+                  "end_line": 1266,
+                  "summary": "The function performs erosion on an image using a kernel, calculating dimensions and padding, and for each pixel, it checks the kernel's neighbors to determine the erosion result based on color matching. It creates a new image with the same dimensions as the input, allocating memory for RGB values and iterating through the kernel's grid to compute the erosion mask."
+                },
+                {
+                  "title": "erosion",
+                  "node_id": "func_57",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 1268,
+                  "end_line": 1303,
+                  "summary": "The function performs erosion by comparing each pixel in the input image with a kernel matrix, setting the output pixel to 0 if the kernel has a 0 value, otherwise retaining the image's pixel. It calculates the new image dimensions based on the kernel's size and strides, allocates memory, and processes each pixel in a loop using the kernel's matrix for convolution."
+                },
+                {
+                  "title": "dialation",
+                  "node_id": "func_58",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/bmp_img_processor.c",
+                  "start_line": 1304,
+                  "end_line": 1338,
+                  "summary": "The function performs image dilation by applying a kernel to each pixel, copying the image's pixel value if the kernel's corresponding pixel is 255. It calculates new image dimensions based on input image and kernel sizes, adds padding to ensure compatibility, and iterates through the image using the kernel's stride. The result is a dilated image where pixels are expanded by the kernel's values."
+                }
+              ]
+            },
+            {
+              "title": "bmp_img_processor.h",
+              "node_id": "0007",
+              "type": "file_h",
+              "path": "./image_processing/image_processing/bmp_img_processor.h"
+            },
+            {
+              "title": "images",
+              "node_id": "0008",
+              "type": "folder",
+              "path": "./image_processing/image_processing/images"
+            },
+            {
+              "title": "test.c",
+              "node_id": "0009",
+              "type": "file_c",
+              "path": "./image_processing/image_processing/test.c",
+              "summary": "The `logp` function maps integer `p` to a 0\u2013255 range via logarithmic scaling: `val = (int)(255 / log(256) * log(p + 1))`. The `gammafunc` applies gamma correction using the formula $(p^\\gamma \\cdot 255) / (255^\\gamma)$ to adjust brightness in image processing. The `contraE` function uses piecewise linear scaling (p, 4p, p) for distinct input ranges. The `main` function processes a BMP image with a 3x3 dilation kernel, iterates dilation three times, and generates ASCII art while saving processed and original outputs.",
+              "nodes": [
+                {
+                  "title": "logp",
+                  "node_id": "func_59",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/test.c",
+                  "start_line": 9,
+                  "end_line": 13,
+                  "summary": "The function `logp` computes a logarithmic-scale value based on the input integer `p`, using the formula:  \n`val = (int)(255 / log(256) * log(p + 1))`.  \nIt maps `p` to a range of 0\u2013255 by normalizing the input through logarithmic transformation and scalar division."
+                },
+                {
+                  "title": "gammafunc",
+                  "node_id": "func_60",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/test.c",
+                  "start_line": 14,
+                  "end_line": 17,
+                  "summary": "The function calculates a value using the formula $(p^\\gamma \\cdot 255) / (255^\\gamma)$, which scales $p$ by a factor of $255$ and divides by $255^\\gamma$. It is designed for gamma correction, adjusting brightness in image processing by transforming linear intensity values to non-linear ones.  \n\nThe function computes $p^\\gamma$ multiplied by $255$, then divides by $255^\\gamma$, effectively scaling the input value $p$ to a range compatible with gamma correction."
+                },
+                {
+                  "title": "contraE",
+                  "node_id": "func_61",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/test.c",
+                  "start_line": 18,
+                  "end_line": 32,
+                  "summary": "The function `contraE` calculates a value based on the input integer `p` using a piecewise linear transformation. It returns `p` when `p < 10`, `4*p` when `10 \u2264 p < 50`, and `p` again when `p \u2265 50`. The function uses different coefficients to linearly scale `p` in distinct intervals."
+                },
+                {
+                  "title": "main",
+                  "node_id": "func_62",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/test.c",
+                  "start_line": 34,
+                  "end_line": 68,
+                  "summary": "The function loads a BMP image, applies a 3x3 dilation kernel to a binary image, iterates the dilation process three times to enhance texture, and renders ASCII art on the original image while saving outputs for the processed and original images. The kernel is a specific 3x3 matrix for morphological dilation, and the code uses memory allocation to construct the kernel matrix and perform the dilation operations."
+                }
+              ]
+            },
+            {
+              "title": "test2.c",
+              "node_id": "0010",
+              "type": "file_c",
+              "path": "./image_processing/image_processing/test2.c",
+              "summary": "The section includes functions for image processing tasks: convolution with a 3x3 kernel (initialized with 0s and a center 1), max pooling using a 3x3 kernel, image concatenation with padding, and ASCII art generation. These functions handle kernel setup, memory allocation, pixel manipulation, and character conversion for output. Convolution and pooling operations use predefined kernels, while ASCII rendering converts pixel data to characters via weighted averages or predefined strings.",
+              "nodes": [
+                {
+                  "title": "exp_kernel",
+                  "node_id": "func_63",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/test2.c",
+                  "start_line": 6,
+                  "end_line": 26,
+                  "summary": "The function initializes a 3x3 convolution kernel with specific values (0s and a 1 in the center), sets its stride, and performs a convolution operation on the input image using the kernel. It allocates memory for the kernel matrix, fills it with predefined weights, and returns the resulting image after convolution. The kernel is used for weighted image processing, and memory is freed after use."
+                },
+                {
+                  "title": "exp_pool",
+                  "node_id": "func_64",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/test2.c",
+                  "start_line": 27,
+                  "end_line": 46,
+                  "summary": "The function initializes a 3x3 kernel with zeros, applies max pooling to an input image using the kernel, and returns the pooled result. It allocates memory for the kernel matrix, sets up strides, and frees allocated resources to prevent leaks."
+                },
+                {
+                  "title": "concatIMGA",
+                  "node_id": "func_65",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/test2.c",
+                  "start_line": 47,
+                  "end_line": 100,
+                  "summary": "The function concatenates two images by extending their widths with padding, ensuring proper alignment, and copies pixels from `img1` and `img2` in sequence, using specified padding colors (`padr`, `padg`, `padb`) where data is missing. It calculates padding based on bits per pixel to maintain memory alignment."
+                },
+                {
+                  "title": "renderAsciiArt_char_render_twice_my",
+                  "node_id": "func_66",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/test2.c",
+                  "start_line": 101,
+                  "end_line": 115,
+                  "summary": "The function generates ASCII art by converting each pixel's RGB values into a character index, using a pre-defined string to render two characters per pixel. It calculates the index via a weighted average of the RGB components and writes the resulting characters to a file. The output is structured with newlines after each row."
+                },
+                {
+                  "title": "renderAsciiArt_terminal_my",
+                  "node_id": "func_67",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/test2.c",
+                  "start_line": 116,
+                  "end_line": 129,
+                  "summary": "This function generates ASCII art by converting each pixel's RGB values into a character from a predefined string using a weighted average formula. It iterates over each pixel, calculates an index based on the RGB components, and maps it to a character from the string \" @#Nm:; \" to create the visual output."
+                },
+                {
+                  "title": "main",
+                  "node_id": "func_68",
+                  "type": "function",
+                  "path": "./image_processing/image_processing/test2.c",
+                  "start_line": 131,
+                  "end_line": 142,
+                  "summary": "The function opens a BMP file using a path with backslashes, retrieves an image pointer, processes it with `exp_pool`, frees the original image, and renders it twice in ASCII art, finally printing \"Success\". It uses a pointer aliasing technique to avoid modifying the original image."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "multi_lang_tree.json",
+      "node_id": "0011",
+      "type": "file_json",
+      "path": "/multi_lang_tree.json"
+    }
+  ]
+}

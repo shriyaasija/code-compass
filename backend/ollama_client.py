@@ -19,16 +19,24 @@ class OllamaLLM:
             response.raise_for_status()
             
             models = response.json().get("models", [])
-            model_names = [m.get("name", "").split(":") for m in models]
+            model_names = [m.get("name", "") for m in models]
             
-            if self.model not in model_names:
-                print(f"Model '{self.model}' not found. Available: {model_names}")
+            # Check if model exists (exact match or with tag)
+            model_found = False
+            for available_model in model_names:
+                if available_model == self.model or available_model.startswith(f"{self.model}:"):
+                    model_found = True
+                    break
+            
+            if not model_found:
+                print(f"⚠️ Model '{self.model}' not found locally")
+                print(f"   Available models: {model_names}")
                 print(f"   Download with: ollama pull {self.model}")
             else:
-                print(f"Connected to Ollama - Using model: {self.model}")
+                print(f"✅ Connected to Ollama - Using model: {self.model}")
                 
         except requests.exceptions.RequestException as e:
-            print(f"Ollama not running! Start with: ollama serve")
+            print(f"❌ Ollama not running! Start with: ollama serve")
             print(f"   Error: {e}")
             raise ConnectionError("Ollama server not accessible")
     
@@ -57,7 +65,7 @@ class OllamaLLM:
             response = requests.post(
                 self.api_url,
                 json=payload,
-                timeout=120  # 2 min timeout for large generations
+                timeout=300  # 2 min timeout for large generations
             )
             response.raise_for_status()
             
@@ -67,12 +75,24 @@ class OllamaLLM:
         except requests.exceptions.Timeout:
             return "Generation timed out. Try a simpler query or smaller model."
         except requests.exceptions.RequestException as e:
+            print(f"❌ Ollama generate error: {str(e)}")
             return f"Ollama error: {str(e)}"
     
     def chat(self, 
              messages: List[Dict[str, str]], 
              temperature: float = 0.3,
-             max_tokens: int = 2000) -> str:
+             max_tokens: int = 2000,
+             format: str = None,
+             retry_on_empty: bool = True) -> str:
+        """
+        Chat with Ollama model.
+        
+        Args:
+            messages: List of message dicts with role and content
+            temperature: Sampling temperature
+            max_tokens: Maximum tokens to generate
+            format: Optional format specification (e.g., 'json')
+        """
         
         payload = {
             "model": self.model,
@@ -84,6 +104,10 @@ class OllamaLLM:
             }
         }
         
+        # Force JSON format for structured output (helps with reasoning models)
+        if format == "json":
+            payload["format"] = "json"
+        
         try:
             response = requests.post(
                 self.chat_url,
@@ -93,12 +117,38 @@ class OllamaLLM:
             response.raise_for_status()
             
             result = response.json()
-            return result.get("message", {}).get("content", "").strip()
+            message = result.get("message", {})
+            
+            # Get content - this should be the actual response
+            message_content = message.get("content", "").strip()
+            
+            # For reasoning models, thinking is separate - we only want content
+            if not message_content:
+                print(f"⚠️ Ollama returned empty content")
+                print(f"   Model: {self.model}")
+                
+                # Retry once with adjusted temperature if enabled
+                if retry_on_empty and temperature < 0.7:
+                    print(f"   Retrying with higher temperature...")
+                    return self.chat(
+                        messages=messages,
+                        temperature=temperature + 0.3,
+                        max_tokens=max_tokens,
+                        format=format,
+                        retry_on_empty=False  # Prevent infinite retry
+                    )
+                
+                # Return default score if still empty
+                return '{"score": 0.5}' 
+            
+            return message_content
             
         except requests.exceptions.Timeout:
-            return "Chat timed out. Try a simpler query."
+            print("❌ Chat timed out")
+            return ""
         except requests.exceptions.RequestException as e:
-            return f"Chat error: {str(e)}"
+            print(f"❌ Ollama chat error: {str(e)}")
+            return ""
 
 def test_ollama():
     """Quick test to verify Ollama is working"""
@@ -107,7 +157,7 @@ def test_ollama():
     print("="*70 + "\n")
     
     try:
-        llm = OllamaLLM(model="mistral")
+        llm = OllamaLLM(model="qwen3:8b")
         
         # Test basic generation
         prompt = "Explain what a Python decorator is in one sentence."
@@ -116,21 +166,21 @@ def test_ollama():
         response = llm.generate(prompt, temperature=0.3)
         print(f"Response: {response}\n")
         
-        # Test chat
+        # Test chat with JSON response
         messages = [
-            {"role": "system", "content": "You are a helpful coding assistant."},
-            {"role": "user", "content": "What does 'API' stand for?"}
+            {"role": "system", "content": "You are a helpful assistant. Respond with valid JSON only."},
+            {"role": "user", "content": 'Rate these items 0.0-1.0: {"apple": ?, "banana": ?}. Return as JSON.'}
         ]
         
-        print("Testing chat mode...")
+        print("Testing chat mode with JSON...")
         chat_response = llm.chat(messages)
         print(f"Response: {chat_response}\n")
         
-        print("Ollama tests passed!\n")
+        print("✅ Ollama tests passed!\n")
         return True
         
     except Exception as e:
-        print(f"Test failed: {e}\n")
+        print(f"❌ Test failed: {e}\n")
         return False
 
 

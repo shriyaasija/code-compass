@@ -7,10 +7,11 @@ import subprocess
 from pathlib import Path
 
 from backend.retrieval import ProductionChatbot
-from backend.pageindex_semantic_search import PageIndexSemanticSearch
+from backend.code_index import TreeBasedSearch
+from backend.ollama_client import OllamaLLM
 
 
-app = FastAPI(title="CodeCompass - PageIndex Edition")
+app = FastAPI(title="CodeCompass - Tree-Based Search Edition")
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,7 +24,38 @@ app.add_middleware(
 # Global instances
 chatbots = {}  # repo_id -> ProductionChatbot
 repo_paths = {}  # repo_id -> local path
-semantic_search = PageIndexSemanticSearch(embedding_model="all-MiniLM-L6-v2")
+tree_search = None  # Will be initialized on startup
+llm_client = None  # Ollama client
+
+# Initialize LLM and tree search on startup
+@app.on_event("startup")
+async def startup_event():
+    global tree_search, llm_client
+    
+    try:
+        print("\n" + "="*70)
+        print("🚀 INITIALIZING CODE COMPASS API")
+        print("="*70)
+        
+        # Initialize Ollama client
+        print("\n📡 Connecting to Ollama...")
+        llm_client = OllamaLLM(model="qwen3:8b")  # Using your model
+        print("✅ Ollama client initialized")
+        
+        # Initialize tree search with LLM client
+        print("\n🌳 Initializing tree-based search...")
+        tree_search = TreeBasedSearch(llm_client=llm_client, threshold=0.5)
+        print("✅ Tree search initialized with threshold=0.5")
+        
+        print("\n" + "="*70)
+        print("✅ API READY TO ACCEPT REQUESTS")
+        print("="*70 + "\n")
+        
+    except Exception as e:
+        print(f"\n❌ STARTUP FAILED: {e}")
+        print("Make sure Ollama is running: ollama serve")
+        raise
+
 
 def clone_github_repo(github_url: str, target_dir: str = None) -> str:
     """Clone a GitHub repository locally."""
@@ -51,33 +83,36 @@ def get_repo_id_from_url(github_url: str) -> str:
     parts = github_url.rstrip('/').split('/')
     return f"{parts[-2]}_{parts[-1]}"
 
+
 class InitializeRequest(BaseModel):
     """Request to initialize a repository."""
     github_url: Optional[str] = None
     repo_path: Optional[str] = None
     json_tree_path: str  # Path to PageIndex JSON file
-    repo_id: Optional[str] = None  # If not provided, will be auto-generated
+    repo_id: Optional[str] = None
+    threshold: Optional[float] = 0.5  # Tree search threshold
 
 
 class QueryRequest(BaseModel):
     """Simplified query request - just repo_id and query!"""
     repo_id: str
     user_query: str
-    top_k: Optional[int] = 5  # Number of functions to retrieve
+    threshold: Optional[float] = None  # Optional per-query threshold override
 
 
 class QueryResponse(BaseModel):
     """Response with LLM-generated answer."""
     status: str
     response: str
-    matched_functions: List[dict]  # Functions that were matched
+    matched_functions: List[dict]  # All leaf nodes that were matched
     functions_count: int
     error: Optional[str] = None
+
 
 @app.post("/initialize")
 async def initialize_repository(request: InitializeRequest):
     """
-    Initialize a repository for querying.
+    Initialize a repository for querying with tree-based search.
 
     Steps:
     1. Clone repo (if github_url provided) OR use existing path
@@ -88,6 +123,13 @@ async def initialize_repository(request: InitializeRequest):
         repo_id to use in subsequent queries
     """
     try:
+        # Check if tree_search is initialized
+        if tree_search is None:
+            raise HTTPException(
+                500, 
+                "Tree search not initialized. API startup may have failed."
+            )
+        
         # Determine repo_id
         if request.repo_id:
             repo_id = request.repo_id
@@ -117,16 +159,20 @@ async def initialize_repository(request: InitializeRequest):
         if not Path(request.json_tree_path).exists():
             raise HTTPException(404, f"JSON tree not found: {request.json_tree_path}")
 
-        # Load PageIndex JSON tree into semantic search
+        # Update threshold if provided
+        if request.threshold is not None:
+            tree_search.threshold = request.threshold
+
+        # Load PageIndex JSON tree into tree search
         print(f"\n🔄 Loading PageIndex tree: {request.json_tree_path}")
-        semantic_search.load_repository_tree(repo_id, request.json_tree_path)
+        tree_search.load_repository_tree(repo_id, request.json_tree_path)
 
         # Initialize chatbot for code retrieval
         print(f"\n🔄 Initializing chatbot for: {repo_path}")
         chatbots[repo_id] = ProductionChatbot(repo_path)
 
         # Get repo info
-        repo_info = semantic_search.get_repo_info(repo_id)
+        repo_info = tree_search.get_repo_info(repo_id)
 
         return {
             "status": "success",
@@ -134,11 +180,18 @@ async def initialize_repository(request: InitializeRequest):
             "repo_id": repo_id,
             "repo_path": repo_path,
             "json_tree_path": request.json_tree_path,
+            "threshold": tree_search.threshold,
             "stats": repo_info
         }
 
+    except HTTPException:
+        raise
     except Exception as e:
+        import traceback
+        print(f"❌ Initialize error: {str(e)}")
+        print(traceback.format_exc())
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.post("/query", response_model=QueryResponse)
 async def process_query(request: QueryRequest):
@@ -147,17 +200,17 @@ async def process_query(request: QueryRequest):
 
     Complete flow:
     1. User sends query
-    2. Generate query embedding
-    3. Search JSON tree using semantic similarity
+    2. LLM traverses tree scoring relevance at each level
+    3. Returns ALL leaf nodes found above threshold
     4. Retrieve actual code using start_line/end_line
     5. Send to LLM (Ollama) with context
     6. Return LLM response
 
-    This is the MAIN endpoint - simplified to just repo_id + query!
+    This returns ALL relevant functions, not a fixed top_k!
     """
     try:
         # Validate repo is initialized
-        if request.repo_id not in semantic_search.list_loaded_repos():
+        if request.repo_id not in tree_search.list_loaded_repos():
             raise HTTPException(
                 400, 
                 f"Repository '{request.repo_id}' not initialized. Call /initialize first."
@@ -169,45 +222,60 @@ async def process_query(request: QueryRequest):
                 f"Chatbot for '{request.repo_id}' not initialized. Call /initialize first."
             )
 
-        # STEP 1: Semantic search on PageIndex JSON tree
-        print(f"\n🔍 Searching for: '{request.user_query}'")
-        filtered_functions = semantic_search.search_and_format_for_chatbot(
-            repo_id=request.repo_id,
-            query=request.user_query,
-            top_k=request.top_k
-        )
+        # Update threshold for this query if provided
+        original_threshold = tree_search.threshold
+        if request.threshold is not None:
+            tree_search.threshold = request.threshold
+            print(f"🔧 Using custom threshold: {request.threshold}")
 
-        print(f"✅ Found {len(filtered_functions)} relevant functions")
-
-        if not filtered_functions:
-            return QueryResponse(
-                status="success",
-                response="I couldn't find any relevant code for your query. Try rephrasing or asking about different functionality.",
-                matched_functions=[],
-                functions_count=0
+        try:
+            # STEP 1: Tree-based search - returns ALL leaf nodes found
+            print(f"\n🔍 Searching for: '{request.user_query}'")
+            filtered_functions = tree_search.search_and_format_for_chatbot(
+                repo_id=request.repo_id,
+                query=request.user_query
             )
 
-        # STEP 2: Retrieve code and generate LLM response
-        chatbot = chatbots[request.repo_id]
+            print(f"✅ Found {len(filtered_functions)} relevant leaf nodes")
 
-        print(f"🤖 Generating LLM response...")
-        llm_response = chatbot.generate_response(
-            user_query=request.user_query,
-            filtered_functions=filtered_functions
-        )
+            if not filtered_functions:
+                return QueryResponse(
+                    status="success",
+                    response="I couldn't find any relevant code for your query. Try lowering the threshold or rephrasing your question.",
+                    matched_functions=[],
+                    functions_count=0
+                )
 
-        print(f"✅ Response generated!")
+            # STEP 2: Retrieve code and generate LLM response
+            chatbot = chatbots[request.repo_id]
 
-        return QueryResponse(
-            status="success",
-            response=llm_response,
-            matched_functions=filtered_functions,
-            functions_count=len(filtered_functions)
-        )
+            print(f"🤖 Generating LLM response with {len(filtered_functions)} functions...")
+            llm_response = chatbot.generate_response(
+                user_query=request.user_query,
+                filtered_functions=filtered_functions
+            )
+
+            print(f"✅ Response generated!")
+            print(llm_response)
+
+            return QueryResponse(
+                status="success",
+                response=llm_response,
+                matched_functions=filtered_functions,
+                functions_count=len(filtered_functions)
+            )
+        
+        finally:
+            # Restore original threshold
+            if request.threshold is not None:
+                tree_search.threshold = original_threshold
 
     except HTTPException:
         raise
     except Exception as e:
+        import traceback
+        print(f"❌ Query error: {str(e)}")
+        print(traceback.format_exc())
         return QueryResponse(
             status="error",
             response="",
@@ -218,23 +286,33 @@ async def process_query(request: QueryRequest):
 
 
 @app.get("/search/{repo_id}")
-async def search_only(repo_id: str, query: str, top_k: int = 5):
+async def search_only(repo_id: str, query: str, threshold: float = None):
     """
-    Search endpoint - returns matching functions WITHOUT LLM processing.
+    Search endpoint - returns ALL matching leaf nodes WITHOUT LLM processing.
     Useful for debugging or building custom workflows.
     """
     try:
-        if repo_id not in semantic_search.list_loaded_repos():
+        if repo_id not in tree_search.list_loaded_repos():
             raise HTTPException(400, f"Repository '{repo_id}' not loaded")
 
-        results = semantic_search.search(repo_id, query, top_k)
+        # Use custom threshold if provided
+        original_threshold = tree_search.threshold
+        if threshold is not None:
+            tree_search.threshold = threshold
 
-        return {
-            "status": "success",
-            "query": query,
-            "results": results,
-            "count": len(results)
-        }
+        try:
+            results = tree_search.search(repo_id, query)
+
+            return {
+                "status": "success",
+                "query": query,
+                "threshold": tree_search.threshold,
+                "results": results,
+                "count": len(results)
+            }
+        finally:
+            if threshold is not None:
+                tree_search.threshold = original_threshold
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -243,19 +321,28 @@ async def search_only(repo_id: str, query: str, top_k: int = 5):
 @app.get("/health")
 async def health_check():
     """Health check endpoint."""
+    ollama_status = "connected" if llm_client else "not initialized"
+    
     return {
         "status": "healthy",
-        "loaded_repos": semantic_search.list_loaded_repos(),
-        "active_chatbots": len(chatbots)
+        "search_type": "tree_based",
+        "ollama_status": ollama_status,
+        "ollama_model": llm_client.model if llm_client else None,
+        "loaded_repos": tree_search.list_loaded_repos() if tree_search else [],
+        "active_chatbots": len(chatbots),
+        "threshold": tree_search.threshold if tree_search else None
     }
 
 
 @app.get("/repos")
 async def list_repositories():
     """List all initialized repositories with stats."""
+    if not tree_search:
+        return {"repositories": [], "count": 0}
+    
     repos = []
-    for repo_id in semantic_search.list_loaded_repos():
-        info = semantic_search.get_repo_info(repo_id)
+    for repo_id in tree_search.list_loaded_repos():
+        info = tree_search.get_repo_info(repo_id)
         info['has_chatbot'] = repo_id in chatbots
         repos.append(info)
 
@@ -274,9 +361,9 @@ async def cleanup_repository(repo_id: str):
         del chatbots[repo_id]
         removed.append("chatbot")
 
-    if repo_id in semantic_search.repositories:
-        del semantic_search.repositories[repo_id]
-        removed.append("semantic_search")
+    if tree_search and repo_id in tree_search.repositories:
+        del tree_search.repositories[repo_id]
+        removed.append("tree_search")
 
     if repo_id in repo_paths:
         del repo_paths[repo_id]
@@ -302,13 +389,18 @@ async def cleanup_all():
 
     chatbots.clear()
     repo_paths.clear()
-    semantic_search.repositories.clear()
+    if tree_search:
+        tree_search.repositories.clear()
 
     return {
         "status": "success",
         "message": f"Cleaned up {count} repositories"
     }
 
+
 if __name__ == "__main__":
     import uvicorn
+    print("\n🚀 Starting CodeCompass API Server...")
+    print("📡 Make sure Ollama is running: ollama serve")
+    print("="*70 + "\n")
     uvicorn.run(app, host="0.0.0.0", port=8000)
