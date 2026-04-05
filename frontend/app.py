@@ -29,12 +29,7 @@ st.markdown("""
         color: #666;
         margin-bottom: 2rem;
     }
-    .stChatMessage {
-        background-color: #f0f2f6;
-        border-radius: 10px;
-        padding: 1rem;
-        margin-bottom: 1rem;
-    }
+
     .success-box {
         background-color: #d4edda;
         border-left: 4px solid #28a745;
@@ -53,18 +48,22 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-def initialize_repository(repo_path, json_tree_path):
+def initialize_repository(repo_path=None, json_tree_path=None, github_url=None):
     """Initialize repository in backend API"""
     try:
-        with st.spinner("🔄 Initializing repository..."):
+        with st.spinner("🔄 Initializing repository (building tree... this takes a moment)..."):
+            payload = {"repo_id": "current_repo"}
+            if github_url:
+                payload["github_url"] = github_url
+            if repo_path:
+                payload["repo_path"] = repo_path
+            if json_tree_path:
+                payload["json_tree_path"] = json_tree_path
+
             response = requests.post(
                 f"{API1_URL}/initialize",
-                json={
-                    "repo_path": repo_path,
-                    "json_tree_path": json_tree_path,
-                    "repo_id": "mock_ml_classifier"
-                },
-                timeout=30
+                json=payload,
+                timeout=300
             )
             response.raise_for_status()
             return response.json()
@@ -81,10 +80,9 @@ def call_api_1(repo_id, user_query, top_k=5):
                 f"{API1_URL}/query",
                 json={
                     "repo_id": repo_id,
-                    "user_query": user_query,
-                    "top_k": top_k
+                    "user_query": user_query
                 },
-                timeout=120
+                timeout=600  # Increased timeout for slow local LLMs
             )
             response.raise_for_status()
             return response.json()
@@ -120,8 +118,8 @@ def main():
         # Model selection
         model = st.selectbox(
             "AI Model",
-            ["qwen3:8b"],
-            help="Select the Ollama model to use"
+            ["qwen3:8b (Ollama)", "llama-3.1-8b (LM Studio)"],
+            help="Select the AI model and provider to use"
         )
 
         st.markdown("---")
@@ -183,12 +181,31 @@ def main():
 
     if "current_repo" not in st.session_state:
         st.session_state.current_repo = None
+    
+    if "is_initialized" not in st.session_state:
+        st.session_state.is_initialized = False
 
     # Check if repo changed
     if st.session_state.current_repo != repo_url:
         st.session_state.messages = []
         st.session_state.current_repo = repo_url
+        st.session_state.is_initialized = False
         st.info(f"Switched to repository: {repo_url}")
+
+    # Initialization section
+    if not st.session_state.is_initialized:
+        if st.button("🚀 Initialize Repository", type="primary"):
+            if not check_api_health(API1_URL, "API 1"):
+                st.error("Your API is not running.")
+                return
+            result = initialize_repository(github_url=repo_url)
+            if result and result.get("status") == "success":
+                st.session_state.is_initialized = True
+                st.success("✅ Repository loaded and analyzed successfully!")
+                st.rerun()
+        return
+
+    st.success("✅ Repository ready for queries!")
 
     # Display chat history
     for message in st.session_state.messages:
@@ -211,28 +228,10 @@ def main():
                 st.error("Your API is not running.")
                 return
 
-            # Step 1: Call partners' API
-            partners_result = None
-
-            if not partners_result:
-                st.error("Failed to analyze repository")
-                return
-
-            filtered_functions = partners_result.get("filtered_functions", [])
-
-            if not filtered_functions:
-                st.warning("No relevant functions found for your query. Try rephrasing.")
-                return
-
-            st.caption(f"Found {len(filtered_functions)} relevant functions")
-
-            # Step 2: Call your API
+            # Call unified API 1
             your_result = call_api_1(
-                repo_id=partners_result.get("repo_id"),
-                repo_path=partners_result.get("repo_path"),
-                user_query=prompt,
-                filtered_functions=filtered_functions,
-                model=model
+                repo_id="current_repo",
+                user_query=prompt
             )
 
             if not your_result or your_result.get("status") != "success":
@@ -243,15 +242,18 @@ def main():
             # Display response
             response_text = your_result.get("response", "")
             st.markdown(response_text)
+            
+            # Show stats
+            matched_functions = your_result.get("matched_functions", [])
+            with st.expander(f"📊 Found {len(matched_functions)} relevant functions"):
+                for idx, fn in enumerate(matched_functions):
+                    st.code(f"{fn.get('name', 'Unknown')} in {fn.get('file_path', 'Unknown')}")
 
             # Add assistant response to history
             st.session_state.messages.append({
                 "role": "assistant",
                 "content": response_text
             })
-
-            # Show stats
-            st.caption(f"Analyzed {your_result.get('functions_count', 0)} functions")
 
 
 def demo_mode():
