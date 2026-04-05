@@ -149,13 +149,20 @@ class TreeBasedSearch:
             print(f"{indent}  ⛔ No children passed threshold - stopping here")
     
     def _is_leaf(self, node: Dict) -> bool:
-        """Check if node is a leaf (has code location)."""
+        """Check if node is a leaf (has code location or is an unparsed file)."""
         node_type = node.get('type', node.get('node_type', ''))
-        return (
-            node_type in ['function', 'method', 'class', 'struct', 'impl', 'module']
-            and 'start_line' in node 
-            and 'end_line' in node
-        )
+        
+        # AST elements are always leaves
+        if node_type in ['function', 'method', 'class', 'struct', 'impl', 'module'] and 'start_line' in node:
+            return True
+            
+        # Files without children (unparsed files like Dockerfile, README) can be leaves
+        if node_type.startswith('file'):
+            children = node.get('nodes', node.get('children', []))
+            if not children:
+                return True
+                
+        return False
     
     def _score_siblings(self, children: List[Dict], query: str, 
                        parent_node: Dict, trajectory: List[str]) -> Dict[str, float]:
@@ -314,8 +321,8 @@ Example: {{"auth.py": 0.9, "utils.py": 0.2}}
                     'name': result['name'],
                     'signature': meta.get('signature', ''),
                     'file_path': meta['file_path'],
-                    'start_line': int(meta['start_line']),
-                    'end_line': int(meta['end_line']),
+                    'start_line': int(meta['start_line']) if meta.get('start_line') is not None else None,
+                    'end_line': int(meta['end_line']) if meta.get('end_line') is not None else None,
                     'docstring': meta.get('docstring', result['summary']),
                     'relevance_score': result['similarity_score']
                 })

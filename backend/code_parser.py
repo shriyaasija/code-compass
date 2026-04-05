@@ -1,5 +1,6 @@
 from tree_sitter import Language, Parser
 from pathlib import Path
+from backend.tree_builder import CodeNode
 
 # Try importing all languages, handling different API versions
 AVAILABLE_PARSERS = {}
