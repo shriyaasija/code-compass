@@ -1,0 +1,873 @@
+{
+  "timestamp": "20260407_023004",
+  "dense_baseline": {
+    "method": "PageIndexSemanticSearch (Dense Baseline)",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "global_metrics": {
+      "recall_at_1": 0.8888888888888888,
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "mrr": 0.9340740740740741,
+      "ndcg_at_10": 0.9506587126210869
+    },
+    "per_repo": [
+      {
+        "repo_id": "openclimatedata__pymagicc",
+        "repo_name": "openclimatedata/pymagicc",
+        "num_queries": 15,
+        "num_functions": 46,
+        "avg_metrics": {
+          "recall_at_1": 0.7333333333333333,
+          "recall_at_5": 1.0,
+          "recall_at_10": 1.0,
+          "mrr": 0.8355555555555555,
+          "ndcg_at_10": 0.8765808209584971
+        },
+        "query_details": [
+          {
+            "query": "Updates a configuration file for MAGICC\n\n        Updates the contents of a fortran namelist in the r",
+            "ground_truth": "MAGICCBase.update_config",
+            "top_5_results": [
+              "MAGICCBase.update_config",
+              "MAGICCBase.set_config",
+              "pull_cfg_from_parameters_out",
+              "MAGICCBase.read_parameters",
+              ""
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Convert Pint units to Fortran safe units\n\n    Parameters\n    ----------\n    units : list_like, str\n ",
+            "ground_truth": "convert_pint_to_fortran_safe_units",
+            "top_5_results": [
+              "convert_pint_to_fortran_safe_units",
+              "get_pint_to_fortran_safe_units_mapping",
+              "convert_magicc6_to_magicc7_variables",
+              "convert_magicc7_to_openscm_variables",
+              "convert_magicc_to_openscm_regions"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Convert MAGICC regions to OpenSCM regions\n\n    Parameters\n    ----------\n    regions : list_like, st",
+            "ground_truth": "convert_magicc_to_openscm_regions",
+            "top_5_results": [
+              "convert_magicc_to_openscm_regions",
+              "convert_magicc7_to_openscm_variables",
+              "get_magicc7_to_openscm_variable_mapping",
+              "get_magicc_region_to_openscm_region_mapping",
+              "convert_magicc6_to_magicc7_variables"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Determine the OpenSCM variable from a filepath.\n\n    Uses MAGICC's internal, implicit, filenaming co",
+            "ground_truth": "_get_openscm_var_from_filepath",
+            "top_5_results": [
+              "_get_openscm_var_from_filepath",
+              "get_magicc7_to_openscm_variable_mapping",
+              "convert_magicc7_to_openscm_variables",
+              "get_magicc_region_to_openscm_region_mapping",
+              "convert_magicc_to_openscm_regions"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Join two sets of timeseries\n\n    Parameters\n    ----------\n    base : :obj:`MAGICCData`, :obj:`pd.Da",
+            "ground_truth": "join_timeseries",
+            "top_5_results": [
+              "join_timeseries",
+              "MAGICCData.append",
+              "_Writer.write",
+              "MAGICCBase.set_years",
+              "MAGICCBase.write"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Convert an RCP name into the generic Pymagicc RCP name\n\n    The conversion is case insensitive.\n\n   ",
+            "ground_truth": "get_generic_rcp_name",
+            "top_5_results": [
+              "get_generic_rcp_name",
+              "MAGICCBase.check_config",
+              "pymagicc",
+              "MAGICCBase.write",
+              "_Reader.process_header"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Get the THISFILE_DATTYPE and THISFILE_REGIONMODE flags for a given region set.\n\n    In all MAGICC in",
+            "ground_truth": "get_dattype_regionmode",
+            "top_5_results": [
+              "get_region_order",
+              "get_dattype_regionmode",
+              "get_special_scen_code",
+              "read_scen_file",
+              ""
+            ],
+            "metrics": {
+              "recall_at_1": 0.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 0.5,
+              "ndcg_at_10": 0.6309297535714575
+            }
+          },
+          {
+            "query": "Get the mappings from Pint to Fortran safe units.\n\n    Fortran can't handle special characters like ",
+            "ground_truth": "get_pint_to_fortran_safe_units_mapping",
+            "top_5_results": [
+              "get_pint_to_fortran_safe_units_mapping",
+              "convert_pint_to_fortran_safe_units",
+              "",
+              "MAGICCBase.set_config",
+              "MAGICCBase.update_config"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Run MAGICC and parse the output.\n\n        As a reminder, putting ``out_parameters=1`` will cause MAG",
+            "ground_truth": "MAGICCBase.run",
+            "top_5_results": [
+              "run",
+              "MAGICCBase.run",
+              "MAGICCBase.read_parameters",
+              "_Writer.write",
+              "pull_cfg_from_parameters_out"
+            ],
+            "metrics": {
+              "recall_at_1": 0.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 0.5,
+              "ndcg_at_10": 0.6309297535714575
+            }
+          },
+          {
+            "query": "Convert MAGICC6 variables to MAGICC7 variables\n\n    Parameters\n    ----------\n    variables : list_l",
+            "ground_truth": "convert_magicc6_to_magicc7_variables",
+            "top_5_results": [
+              "convert_magicc6_to_magicc7_variables",
+              "convert_magicc7_to_openscm_variables",
+              "get_magicc6_to_magicc7_variable_mapping",
+              "convert_magicc_to_openscm_regions",
+              "MAGICCBase.run"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Write a MAGICC input file from df and metadata\n\n        Parameters\n        ----------\n        magicc",
+            "ground_truth": "_Writer.write",
+            "top_5_results": [
+              "_Writer.write",
+              "MAGICCBase.write",
+              "MAGICCData.write",
+              "read_scen_file",
+              "MAGICCData.append"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Get the mappings from MAGICC7 to OpenSCM variables.\n\n    Parameters\n    ----------\n    inverse : boo",
+            "ground_truth": "get_magicc7_to_openscm_variable_mapping",
+            "top_5_results": [
+              "get_magicc7_to_openscm_variable_mapping",
+              "get_magicc_region_to_openscm_region_mapping",
+              "convert_magicc7_to_openscm_variables",
+              "convert_magicc_to_openscm_regions",
+              "_get_openscm_var_from_filepath"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Set the output configuration, minimising output as much as possible\n\n        There are a number of c",
+            "ground_truth": "MAGICCBase.set_output_variables",
+            "top_5_results": [
+              "run",
+              "MAGICCBase.run",
+              "pull_cfg_from_parameters_out",
+              "MAGICCBase.read_parameters",
+              "MAGICCBase.set_output_variables"
+            ],
+            "metrics": {
+              "recall_at_1": 0.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 0.2,
+              "ndcg_at_10": 0.38685280723454163
+            }
+          },
+          {
+            "query": "Write an input file to disk\n\n        Parameters\n        ----------\n        mdata : :obj:`pymagicc.io",
+            "ground_truth": "MAGICCBase.write",
+            "top_5_results": [
+              "MAGICCBase.write",
+              "_Writer.write",
+              "MAGICCData.write",
+              "MAGICCBase.set_config",
+              "read_scen_file"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Pull out a single config set from a MAGICC ``PARAMETERS.OUT`` file.\n\n    This function reads in the ",
+            "ground_truth": "pull_cfg_from_parameters_out_file",
+            "top_5_results": [
+              "pull_cfg_from_parameters_out",
+              "MAGICCBase.read_parameters",
+              "pull_cfg_from_parameters_out_file",
+              "run",
+              "MAGICCBase.run"
+            ],
+            "metrics": {
+              "recall_at_1": 0.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 0.3333333333333333,
+              "ndcg_at_10": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "repo_id": "jleinonen__pytmatrix",
+        "repo_name": "jleinonen/pytmatrix",
+        "num_queries": 15,
+        "num_functions": 32,
+        "avg_metrics": {
+          "recall_at_1": 0.9333333333333333,
+          "recall_at_5": 1.0,
+          "recall_at_10": 1.0,
+          "mrr": 0.9666666666666667,
+          "ndcg_at_10": 0.9753953169047639
+        },
+        "query_details": [
+          {
+            "query": "Compute the T-matrix using variable orientation scatterers.\n    \n    This method uses a fast Gaussia",
+            "ground_truth": "orient_averaged_fixed",
+            "top_5_results": [
+              "orient_averaged_fixed",
+              "orient_averaged_adaptive",
+              "PSDIntegrator.get_SZ",
+              "Scatterer.get_SZ_orient",
+              "Scatterer._set_scatter_signature"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Compute the scattering matrices for the given PSD and geometries.\n\n        Returns:\n            The ",
+            "ground_truth": "PSDIntegrator.get_SZ",
+            "top_5_results": [
+              "PSDIntegrator.get_SZ",
+              "Scatterer._set_scatter_signature",
+              "Scatterer.get_SZ",
+              "sca_intensity",
+              "Scatterer.get_SZ_single"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Radar cross section for the current setup.    \n\n    Args:\n        scatterer: a Scatterer instance.\n ",
+            "ground_truth": "radar_xsect",
+            "top_5_results": [
+              "radar_xsect",
+              "sca_xsect",
+              "asym",
+              "ext_xsect",
+              "sca_intensity"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "A convenience function to set the geometry variables.\n\n        Args:\n            geom: A tuple conta",
+            "ground_truth": "Scatterer.set_geometry",
+            "top_5_results": [
+              "Scatterer.set_geometry",
+              "Scatterer.get_geometry",
+              "asym",
+              "delta_hv",
+              "sca_intensity"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Drop shape relationship function from Thurai2007\n    (http://dx.doi.org/10.1175/JTECH2051.1) paper.\n",
+            "ground_truth": "dsr_thurai_2007",
+            "top_5_results": [
+              "dsr_thurai_2007",
+              "ldr",
+              "rho_hv",
+              "Kdp",
+              "Scatterer.get_geometry"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Specific differential phase (K_dp) for the current setup.\n\n    Args:\n        scatterer: a Scatterer ",
+            "ground_truth": "Kdp",
+            "top_5_results": [
+              "Kdp",
+              "sca_intensity",
+              "delta_hv",
+              "sca_xsect",
+              "refl"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Gaussian PDF for orientation averaging.\n\n    Args:\n        std: The standard deviation in degrees of",
+            "ground_truth": "gaussian_pdf",
+            "top_5_results": [
+              "gaussian_pdf",
+              "uniform_pdf",
+              "Scatterer.get_SZ_orient",
+              "Scatterer.get_SZ_single",
+              "orient_averaged_fixed"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Bruggeman EMA for the refractive index.\n\n    For instructions, see mg_refractive in this module, exc",
+            "ground_truth": "bruggeman_refractive",
+            "top_5_results": [
+              "bruggeman_refractive",
+              "mg_refractive",
+              "ice_refractive",
+              "refl",
+              "ext_xsect"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Load the scattering lookup tables.\n        \n        Load the scattering lookup tables saved with sav",
+            "ground_truth": "PSDIntegrator.load_scatter_table",
+            "top_5_results": [
+              "PSDIntegrator.load_scatter_table",
+              "PSDIntegrator.save_scatter_table",
+              "PSDIntegrator.init_scatter_table",
+              "Scatterer._set_scatter_signature",
+              "delta_hv"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Single-scattering albedo for the current setup, with polarization.    \n\n    Args:\n        scatterer:",
+            "ground_truth": "ssa",
+            "top_5_results": [
+              "ssa",
+              "refl",
+              "sca_xsect",
+              "sca_intensity",
+              "ext_xsect"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Scattering intensity (phase function) for the current setup.    \n\n    Args:\n        scatterer: a Sca",
+            "ground_truth": "sca_intensity",
+            "top_5_results": [
+              "sca_intensity",
+              "sca_xsect",
+              "refl",
+              "ext_xsect",
+              "asym"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Save the scattering lookup tables.\n        \n        Save the state of the scattering lookup tables t",
+            "ground_truth": "PSDIntegrator.save_scatter_table",
+            "top_5_results": [
+              "PSDIntegrator.save_scatter_table",
+              "PSDIntegrator.load_scatter_table",
+              "PSDIntegrator.init_scatter_table",
+              "delta_hv",
+              ""
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Linear depolarizarion ratio (LDR) for the current setup.\n\n    Args:\n        scatterer: a Scatterer i",
+            "ground_truth": "ldr",
+            "top_5_results": [
+              "ldr",
+              "rho_hv",
+              "delta_hv",
+              "refl",
+              "Kdp"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Get the S and Z matrices for a single orientation.",
+            "ground_truth": "Scatterer.get_SZ_single",
+            "top_5_results": [
+              "Scatterer.get_SZ_single",
+              "Scatterer.get_SZ_orient",
+              "Scatterer.get_SZ",
+              "orient_averaged_adaptive",
+              "orient_averaged_fixed"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Initialize the scattering lookup tables.\n        \n        Initialize the scattering lookup tables fo",
+            "ground_truth": "PSDIntegrator.init_scatter_table",
+            "top_5_results": [
+              "PSDIntegrator.load_scatter_table",
+              "PSDIntegrator.init_scatter_table",
+              "sca_xsect",
+              "PSDIntegrator.save_scatter_table",
+              "sca_intensity"
+            ],
+            "metrics": {
+              "recall_at_1": 0.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 0.5,
+              "ndcg_at_10": 0.6309297535714575
+            }
+          }
+        ]
+      },
+      {
+        "repo_id": "josiah-wolf-oberholtzer__uqbar",
+        "repo_name": "josiah-wolf-oberholtzer/uqbar",
+        "num_queries": 15,
+        "num_functions": 28,
+        "avg_metrics": {
+          "recall_at_1": 1.0,
+          "recall_at_5": 1.0,
+          "recall_at_10": 1.0,
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0
+        },
+        "query_details": [
+          {
+            "query": "r\"\"\"Developer script aliases.",
+            "ground_truth": "CLIAggregator.cli_aliases",
+            "top_5_results": [
+              "CLIAggregator.cli_aliases",
+              "CLIAggregator.cli_program_names",
+              "CLI.program_name",
+              "find_executable",
+              ""
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "r\"\"\"Finds executable `name`.\n\n    Similar to Unix ``which`` command.\n\n    Returns list of zero or mo",
+            "ground_truth": "find_executable",
+            "top_5_results": [
+              "find_executable",
+              "CLI.program_name",
+              "CLIAggregator.cli_program_names",
+              "CLIAggregator.cli_aliases",
+              ""
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Collect all bases and organize into parent/child mappings.",
+            "ground_truth": "InheritanceGraph._build_mappings",
+            "top_5_results": [
+              "InheritanceGraph._build_mappings",
+              "",
+              "uqbar",
+              "build_urls",
+              "InheritanceGraph._collect_classes"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Hooks into Sphinx's ``doctree-read`` event.",
+            "ground_truth": "on_doctree_read",
+            "top_5_results": [
+              "on_doctree_read",
+              "on_config_inited",
+              "on_builder_inited",
+              "on_build_finished",
+              "setup"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Delimit a string at word boundaries.\n\n    ::\n\n        >>> import uqbar.strings\n        >>> list(uqba",
+            "ground_truth": "delimit_words",
+            "top_5_results": [
+              "delimit_words",
+              "to_dash_case",
+              "UniqueTreeContainer.depth_first",
+              "find_common_prefix",
+              "latex_visit_inheritance_diagram"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Get graph-order tuple for node.\n\n        ::\n\n            >>> from uqbar.containers import UniqueTree",
+            "ground_truth": "UniqueTreeNode.graph_order",
+            "top_5_results": [
+              "UniqueTreeNode.graph_order",
+              "UniqueTreeContainer.depth_first",
+              "uqbar",
+              "",
+              "latex_visit_inheritance_diagram"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Hooks into Sphinx's ``config-inited`` event.",
+            "ground_truth": "on_config_inited",
+            "top_5_results": [
+              "on_config_inited",
+              "on_builder_inited",
+              "on_build_finished",
+              "on_doctree_read",
+              "setup"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Generates relative path from ``source_path`` to ``target_path``.\n\n    Handles the case of paths with",
+            "ground_truth": "relative_to",
+            "top_5_results": [
+              "relative_to",
+              "find_common_prefix",
+              "walk",
+              "uqbar",
+              "latex_visit_inheritance_diagram"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Styles ``automethod`` entries.\n\n    Adds ``abstract`` prefix to abstract methods.\n\n    Adds link to ",
+            "ground_truth": "handle_method",
+            "top_5_results": [
+              "handle_method",
+              "handle_class",
+              "",
+              "uqbar",
+              "new"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Builds a mapping of class paths to URLs.",
+            "ground_truth": "build_urls",
+            "top_5_results": [
+              "build_urls",
+              "InheritanceGraph._collect_classes",
+              "relative_to",
+              "find_common_prefix",
+              "walk"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Find the common prefix of two or more paths.\n\n    ::\n\n        >>> import pathlib\n        >>> one = p",
+            "ground_truth": "find_common_prefix",
+            "top_5_results": [
+              "find_common_prefix",
+              "relative_to",
+              "walk",
+              "uqbar",
+              "UniqueTreeContainer.depth_first"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Get ``args``, ``var args`` and ``kwargs`` for an object ``expr``.\n\n    ::\n\n        >>> class MyObjec",
+            "ground_truth": "get_vars",
+            "top_5_results": [
+              "get_vars",
+              "get_repr",
+              "new",
+              "UniqueTreeNode.graph_order",
+              "UniqueTreeContainer.depth_first"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Collect all classes defined in/under ``package_paths``.",
+            "ground_truth": "InheritanceGraph._collect_classes",
+            "top_5_results": [
+              "InheritanceGraph._collect_classes",
+              "walk",
+              "",
+              "find_common_prefix",
+              "build_urls"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Styles ``autoclass`` entries.\n\n    Adds ``abstract`` prefix to abstract classes.",
+            "ground_truth": "handle_class",
+            "top_5_results": [
+              "handle_class",
+              "handle_method",
+              "InheritanceGraph._collect_classes",
+              "build_urls",
+              ""
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          },
+          {
+            "query": "Hooks into Sphinx's ``builder-inited`` event.\n\n    Builds out the ReST API source.",
+            "ground_truth": "on_builder_inited",
+            "top_5_results": [
+              "on_builder_inited",
+              "on_config_inited",
+              "on_build_finished",
+              "on_doctree_read",
+              "setup"
+            ],
+            "metrics": {
+              "recall_at_1": 1.0,
+              "recall_at_5": 1.0,
+              "recall_at_10": 1.0,
+              "mrr": 1.0,
+              "ndcg_at_10": 1.0
+            }
+          }
+        ]
+      }
+    ],
+    "total_queries": 45,
+    "llm_calls_per_query": 0
+  }
+}
