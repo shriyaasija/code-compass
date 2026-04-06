@@ -282,11 +282,12 @@ class BenchmarkDataPreparer:
             # Build tree
             tree = self._build_repo_tree(repo_name, files, model)
 
-            # Save tree
-            tree_path = str(self.trees_dir / f"{safe_name}.json")
-            with open(tree_path, "w") as f:
+            # Save tree (use relative path for portability across machines)
+            tree_abs_path = self.trees_dir / f"{safe_name}.json"
+            tree_rel_path = os.path.relpath(str(tree_abs_path), str(Path(__file__).parent))
+            with open(tree_abs_path, "w") as f:
                 json.dump(tree, f)
-            print(f"      Saved tree to {tree_path}")
+            print(f"      Saved tree to {tree_abs_path}")
 
             # Build query list (docstring → function name pairs)
             queries = []
@@ -300,7 +301,7 @@ class BenchmarkDataPreparer:
             repo_metadata.append({
                 "repo_id": safe_name,
                 "repo_name": repo_name,
-                "tree_path": tree_path,
+                "tree_path": tree_rel_path,
                 "num_functions": len(unique_functions),
                 "num_files": len(files),
                 "queries": queries,
@@ -425,7 +426,8 @@ class BenchmarkRunner:
 
         for repo_idx, repo in enumerate(repo_metadata, 1):
             repo_id = repo["repo_id"]
-            tree_path = repo["tree_path"]
+            # Resolve relative path back to absolute from script directory
+            tree_path = str(Path(__file__).parent / repo["tree_path"])
             queries = repo["queries"]
 
             print(f"\n  [{repo_idx}/{len(repo_metadata)}] {repo['repo_name']}")
@@ -533,7 +535,8 @@ class BenchmarkRunner:
 
         for repo_idx, repo in enumerate(repo_metadata, 1):
             repo_id = repo["repo_id"]
-            tree_path = repo["tree_path"]
+            # Resolve relative path back to absolute from script directory
+            tree_path = str(Path(__file__).parent / repo["tree_path"])
             queries = repo["queries"]
 
             print(f"\n  [{repo_idx}/{len(repo_metadata)}] {repo['repo_name']}")
