@@ -427,7 +427,7 @@ class BenchmarkRunner:
         for repo_idx, repo in enumerate(repo_metadata, 1):
             repo_id = repo["repo_id"]
             # Resolve relative path back to absolute from script directory
-            tree_path = str(Path(__file__).parent / repo["tree_path"])
+            tree_path = str(Path(__file__).parent / repo["tree_path"].replace("\\", "/"))
             queries = repo["queries"]
 
             print(f"\n  [{repo_idx}/{len(repo_metadata)}] {repo['repo_name']}")
@@ -507,27 +507,150 @@ class BenchmarkRunner:
             "total_queries": len(all_results),
             "llm_calls_per_query": 0,  # No LLM calls for dense baseline
         }
-
-    def run_tree_search(self, repo_metadata: List[Dict],
+    
+    def run_raptor_baseline(self, repo_metadata: List[Dict],
                         provider: str = "ollama",
                         model: str = "qwen3:8b",
-                        threshold: float = 0.5) -> Dict[str, Any]:
-        """Evaluate TreeBasedSearch on all repos."""
+                        use_llm_summaries: bool = True) -> Dict[str, Any]:
+        """Evaluate RAPTOR baseline on all repos."""
         print("\n" + "=" * 70)
-        print("🌲 EVALUATING: Tree-Based Search (LLM-guided)")
-        print(f"   Provider: {provider}, Model: {model}, Threshold: {threshold}")
+        print("🌿 EVALUATING: RAPTOR Baseline (Cluster + Cosine)")
+        print(f"   LLM summaries at index time: {use_llm_summaries}")
+        print("=" * 70)
+
+        sys.path.insert(0, str(Path(__file__).parent))
+        from raptor_baseline import RAPTORBaseline
+
+        # Initialize LLM for index-time summarization (optional)
+        llm_client = None
+        if use_llm_summaries:
+            llm_client = self._init_llm(provider, model)
+            if llm_client is None:
+                print("   ⚠️  Could not connect to LLM. Running RAPTOR without LLM summaries.")
+
+        # Cache dir so we don't rebuild on every run
+        cache_dir = str(self.output_dir / "raptor_cache")
+    
+        raptor = RAPTORBaseline(
+            embed_model_name=self.embedding_model,
+            llm_client=llm_client,
+            cache_dir=cache_dir,
+            use_llm_for_summaries=(llm_client is not None),
+        )
+
+        all_results = []
+        per_repo_results = []
+        build_times = []
+
+        for repo_idx, repo in enumerate(repo_metadata, 1):
+            repo_id = repo["repo_id"]
+            tree_path = str(Path(__file__).parent / repo["tree_path"].replace("\\", "/"))
+            queries = repo["queries"]
+
+            print(f"\n  [{repo_idx}/{len(repo_metadata)}] {repo['repo_name']}")
+
+            # Build RAPTOR index (or load from cache)
+            t0 = time.time()
+            raptor.load_repository_tree(repo_id, tree_path)
+            build_time = time.time() - t0
+            build_times.append(build_time)
+            print(f"     Index built in {build_time:.1f}s")
+
+            # Sample queries
+            sampled_queries = self._sample_queries(queries)
+            print(f"     Running {len(sampled_queries)} queries...")
+
+            repo_metrics = defaultdict(list)
+            query_details = []
+
+            for q_idx, query_info in enumerate(sampled_queries):
+                query_text = query_info["query"]
+                ground_truth = query_info["ground_truth"]
+
+                try:
+                    results = raptor.search(repo_id, query_text, top_k=20)
+                    ranked_names = [r["name"] for r in results]
+                    m = self.metrics.compute_all(ranked_names, ground_truth)
+
+                    for key, val in m.items():
+                        repo_metrics[key].append(val)
+
+                    query_details.append({
+                        "query": query_text[:100],
+                        "ground_truth": ground_truth,
+                        "top_5_results": ranked_names[:5],
+                        "metrics": m,
+                    })
+
+                except Exception as e:
+                    print(f"     ⚠️  Query {q_idx} failed: {e}")
+
+            # Aggregate
+            avg_metrics = {key: sum(vals) / len(vals) if vals else 0.0
+                        for key, vals in repo_metrics.items()}
+
+            per_repo_results.append({
+                "repo_id": repo_id,
+                "repo_name": repo["repo_name"],
+                "num_queries": len(sampled_queries),
+                "num_functions": repo["num_functions"],
+                "avg_metrics": avg_metrics,
+                "index_build_time_s": build_time,
+                "query_details": query_details,
+            })
+
+            all_results.extend([d["metrics"] for d in query_details])
+
+            print(f"     R@1={avg_metrics.get('recall_at_1', 0):.3f}  "
+                f"R@5={avg_metrics.get('recall_at_5', 0):.3f}  "
+                f"R@10={avg_metrics.get('recall_at_10', 0):.3f}  "
+                f"MRR={avg_metrics.get('mrr', 0):.3f}  "
+                f"build={build_time:.0f}s")
+
+            # Unload to save memory
+            if repo_id in raptor.indices:
+                del raptor.indices[repo_id]
+
+        global_metrics = self._aggregate_metrics(all_results)
+
+        return {
+            "method": "RAPTOR Baseline",
+            "embedding_model": self.embedding_model,
+            "use_llm_summaries": use_llm_summaries,
+            "global_metrics": global_metrics,
+            "per_repo": per_repo_results,
+            "total_queries": len(all_results),
+            "llm_calls_per_query": 0,  # RAPTOR uses 0 LLM calls at query time
+            "avg_index_build_time_s": sum(build_times) / len(build_times) if build_times else 0,
+        }
+
+    def run_mcts_search(self, repo_metadata: List[Dict],
+                       provider: str = "ollama",
+                       model: str = "qwen3:8b",
+                       n_simulations: int = 30,
+                       ucb_c: float = 1.4) -> Dict[str, Any]:
+        """Evaluate MCTS-based search on all repos."""
+        print("\n" + "=" * 70)
+        print("🎲 EVALUATING: MCTS Search (LLM-guided exploration)")
+        print(f"   Provider: {provider}, Model: {model}")
+        print(f"   Simulations: {n_simulations}, UCB_C: {ucb_c}")
         print("=" * 70)
 
         sys.path.insert(0, str(Path(__file__).parent / "backend"))
-        from code_index import TreeBasedSearch
+        from mcts_search import MCTSSearch
 
         # Initialize LLM client
         llm_client = self._init_llm(provider, model)
         if llm_client is None:
-            print("❌ Could not connect to LLM. Skipping tree search.")
+            print("❌ Could not connect to LLM. Skipping MCTS search.")
             return None
 
-        search_engine = TreeBasedSearch(llm_client, threshold=threshold)
+        search_engine = MCTSSearch(
+            llm_client,
+            n_simulations=n_simulations,
+            ucb_c=ucb_c,
+            verbose=False,
+        )
 
         all_results = []
         all_llm_calls = []
@@ -535,8 +658,7 @@ class BenchmarkRunner:
 
         for repo_idx, repo in enumerate(repo_metadata, 1):
             repo_id = repo["repo_id"]
-            # Resolve relative path back to absolute from script directory
-            tree_path = str(Path(__file__).parent / repo["tree_path"])
+            tree_path = str(Path(__file__).parent / repo["tree_path"].replace("\\", "/"))
             queries = repo["queries"]
 
             print(f"\n  [{repo_idx}/{len(repo_metadata)}] {repo['repo_name']}")
@@ -557,42 +679,30 @@ class BenchmarkRunner:
                 ground_truth = query_info["ground_truth"]
 
                 try:
-                    # Count LLM calls by intercepting _recursive_search
-                    call_counter = [0]
-                    original_score = search_engine._score_siblings
-
-                    def counting_score(*args, **kwargs):
-                        call_counter[0] += 1
-                        return original_score(*args, **kwargs)
-
-                    search_engine._score_siblings = counting_score
-
-                    # Run search
-                    results = search_engine.search(repo_id, query_text)
-
-                    # Restore original method
-                    search_engine._score_siblings = original_score
+                    # Run MCTS search (LLM call count is tracked internally)
+                    results = search_engine.search(repo_id, query_text, top_k=20)
+                    llm_calls = search_engine.llm_call_count
 
                     # Extract ranked names
                     ranked_names = [r["name"] for r in results]
 
                     # Compute metrics
                     m = self.metrics.compute_all(ranked_names, ground_truth)
-                    m["llm_calls"] = call_counter[0]
+                    m["llm_calls"] = llm_calls
 
                     for key, val in m.items():
                         if key != "llm_calls":
                             repo_metrics[key].append(val)
 
-                    repo_llm_calls.append(call_counter[0])
-                    all_llm_calls.append(call_counter[0])
+                    repo_llm_calls.append(llm_calls)
+                    all_llm_calls.append(llm_calls)
 
                     query_details.append({
                         "query": query_text[:100],
                         "ground_truth": ground_truth,
                         "top_5_results": ranked_names[:5],
                         "metrics": m,
-                        "llm_calls": call_counter[0],
+                        "llm_calls": llm_calls,
                     })
 
                     if (q_idx + 1) % 5 == 0:
@@ -600,7 +710,6 @@ class BenchmarkRunner:
 
                 except Exception as e:
                     print(f"     ⚠️  Query {q_idx} failed: {e}")
-                    search_engine._score_siblings = original_score
 
             # Aggregate repo metrics
             avg_metrics = {key: sum(vals) / len(vals) if vals else 0.0
@@ -637,10 +746,11 @@ class BenchmarkRunner:
         avg_global_llm = sum(all_llm_calls) / len(all_llm_calls) if all_llm_calls else 0
 
         return {
-            "method": "TreeBasedSearch (LLM-guided)",
+            "method": "MCTSSearch (LLM-guided exploration)",
             "provider": provider,
             "model": model,
-            "threshold": threshold,
+            "n_simulations": n_simulations,
+            "ucb_c": ucb_c,
             "global_metrics": global_metrics,
             "per_repo": per_repo_results,
             "total_queries": len(all_results),
@@ -701,7 +811,7 @@ class ReportGenerator:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-    def generate(self, dense_results: Dict, tree_results: Optional[Dict] = None):
+    def generate(self, dense_results: Dict, tree_results: Optional[Dict] = None, raptor_results: Optional[Dict] = None):
         """Generate full comparison report."""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
@@ -712,6 +822,8 @@ class ReportGenerator:
         }
         if tree_results:
             results["tree_search"] = tree_results
+        if raptor_results:
+            results["raptor_baseline"] = raptor_results
 
         json_path = self.output_dir / f"results_{timestamp}.json"
         with open(json_path, "w") as f:
@@ -890,8 +1002,12 @@ Examples:
     )
 
     parser.add_argument("--mode", required=True,
-                        choices=["prepare", "dense-only", "full"],
+                        choices=["prepare", "dense-only", "raptor", "mcts", "full"],
                         help="Benchmark mode")
+    parser.add_argument("--n-simulations", type=int, default=30,
+                        help="MCTS simulations per query (default: 30)")
+    parser.add_argument("--ucb-c", type=float, default=1.4,
+                        help="MCTS UCB1 exploration constant (default: 1.4)")
     parser.add_argument("--num-repos", type=int, default=25,
                         help="Number of repos to benchmark (default: 25)")
     parser.add_argument("--queries-per-repo", type=int, default=15,
@@ -972,18 +1088,27 @@ Examples:
     dense_results = runner.run_dense_baseline(repo_metadata)
 
     # Run tree search (if mode=full)
-    tree_results = None
-    if args.mode == "full":
-        tree_results = runner.run_tree_search(
+    raptor_results = None
+    if args.mode in ("full", "raptor"):
+        raptor_results = runner.run_raptor_baseline(
             repo_metadata,
             provider=args.provider,
             model=args.model,
-            threshold=args.threshold,
+        )
+
+    tree_results = None
+    if args.mode in ("full", "mcts"):
+        tree_results = runner.run_mcts_search(
+            repo_metadata,
+            provider=args.provider,
+            model=args.model,
+            n_simulations=args.n_simulations,
+            ucb_c=args.ucb_c,
         )
 
     # ── REPORT ──
     reporter = ReportGenerator(output_dir)
-    reporter.generate(dense_results, tree_results)
+    reporter.generate(dense_results, tree_results, raptor_results)
 
     elapsed = time.time() - start_time
     print(f"\n⏱️  Total benchmark time: {elapsed:.1f}s ({elapsed/60:.1f} min)")

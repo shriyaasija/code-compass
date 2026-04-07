@@ -2,7 +2,7 @@
   {
     "repo_id": "openclimatedata__pymagicc",
     "repo_name": "openclimatedata/pymagicc",
-    "tree_path": "benchmark_results/trees/openclimatedata__pymagicc.json",
+    "tree_path": "benchmark_results\\trees\\openclimatedata__pymagicc.json",
     "num_functions": 46,
     "num_files": 1,
     "queries": [
@@ -241,7 +241,7 @@
   {
     "repo_id": "jleinonen__pytmatrix",
     "repo_name": "jleinonen/pytmatrix",
-    "tree_path": "benchmark_results/trees/jleinonen__pytmatrix.json",
+    "tree_path": "benchmark_results\\trees\\jleinonen__pytmatrix.json",
     "num_functions": 32,
     "num_files": 1,
     "queries": [
@@ -410,7 +410,7 @@
   {
     "repo_id": "josiah-wolf-oberholtzer__uqbar",
     "repo_name": "josiah-wolf-oberholtzer/uqbar",
-    "tree_path": "benchmark_results/trees/josiah-wolf-oberholtzer__uqbar.json",
+    "tree_path": "benchmark_results\\trees\\josiah-wolf-oberholtzer__uqbar.json",
     "num_functions": 28,
     "num_files": 1,
     "queries": [
@@ -552,6 +552,2274 @@
       {
         "query": "r\"\"\"The name of the script, callable from the command line.",
         "ground_truth": "CLI.program_name",
+        "file_path": ""
+      }
+    ]
+  },
+  {
+    "repo_id": "HiPERCAM__hcam_widgets",
+    "repo_name": "HiPERCAM/hcam_widgets",
+    "tree_path": "benchmark_results\\trees\\HiPERCAM__hcam_widgets.json",
+    "num_functions": 110,
+    "num_files": 1,
+    "queries": [
+      {
+        "query": "Adds a handler to save to a file. Includes debug stuff.",
+        "ground_truth": "Logger.update",
+        "file_path": ""
+      },
+      {
+        "query": "Determines whether two windows overlap",
+        "ground_truth": "overlap",
+        "file_path": ""
+      },
+      {
+        "query": "Saves the current setup to disk.\n\n    g : hcam_drivers.globals.Container\n    Container with globals\n\n    data : dict\n    The current setup in JSON compatible dictionary format.\n\n    backup : bool\n    If we are saving a backup on close, don't prompt for filename",
+        "ground_truth": "saveJSON",
+        "file_path": ""
+      },
+      {
+        "query": "Posts the current setup to the camera and data servers.\n\n    g : hcam_drivers.globals.Container\n    Container with globals\n\n    data : dict\n    The current setup in JSON compatible dictionary format.",
+        "ground_truth": "postJSON",
+        "file_path": ""
+      },
+      {
+        "query": "Create JSON compatible dictionary from current settings\n\n    Parameters\n    ----------\n    g :  hcam_drivers.globals.Container\n    Container with globals",
+        "ground_truth": "createJSON",
+        "file_path": ""
+      },
+      {
+        "query": "Uploads a table of TCS data to the servers, which is appended onto a run.\n\n    Arguments\n    ---------\n    g : hcam_drivers.globals.Container\n        the Container object of application globals",
+        "ground_truth": "insertFITSHDU",
+        "file_path": ""
+      },
+      {
+        "query": "Executes a command by sending it to the rack server\n\n    Arguments:\n      g : hcam_drivers.globals.Container\n        the Container object of application globals\n      command : (string)\n           the command (see below)\n\n    Possible commands are:\n\n      start   : starts a run\n      stop    : stops a run\n      abort   : aborts a run\n      online  : bring ESO control server online and power up hardware\n      off     : put ESO control server in idle state and power down\n      standby : server can communicate, but child processes disabled\n      reset   : resets the NGC controller front end\n\n    Returns True/False according to whether the command\n    succeeded or not.",
+        "ground_truth": "execCommand",
+        "file_path": ""
+      },
+      {
+        "query": "Polls the data server to see if a run is active",
+        "ground_truth": "isRunActive",
+        "file_path": ""
+      },
+      {
+        "query": "Polls the data server to find the current frame number.\n\n    Throws an exceotion if it cannot determine it.",
+        "ground_truth": "getFrameNumber",
+        "file_path": ""
+      },
+      {
+        "query": "Polls the data server to find the current run number. Throws\n    exceptions if it can't determine it.",
+        "ground_truth": "getRunNumber",
+        "file_path": ""
+      },
+      {
+        "query": "Sends off a request to Simbad to check whether a target is recognised.\n    Returns with a list of results, or raises an exception if it times out",
+        "ground_truth": "checkSimbad",
+        "file_path": ""
+      },
+      {
+        "query": "Version of run that traps Exceptions and stores\n        them in the fifo",
+        "ground_truth": "FifoThread.run",
+        "file_path": ""
+      },
+      {
+        "query": "Simple method to access root for a widget",
+        "ground_truth": "get_root",
+        "file_path": ""
+      },
+      {
+        "query": "Styles the GUI: global fonts and colours.\n\n    Parameters\n    ----------\n    w : tkinter.tk\n        widget element to style",
+        "ground_truth": "addStyle",
+        "file_path": ""
+      },
+      {
+        "query": "Setup Nodding for GTC",
+        "ground_truth": "InstPars.setupNodding",
+        "file_path": ""
+      },
+      {
+        "query": "Encodes current parameters to JSON compatible dictionary",
+        "ground_truth": "InstPars.dumpJSON",
+        "file_path": ""
+      },
+      {
+        "query": "Loads in an application saved in JSON format.",
+        "ground_truth": "InstPars.loadJSON",
+        "file_path": ""
+      },
+      {
+        "query": "Callback to check validity of instrument parameters.\n\n        Performs the following tasks:\n            - spots and flags overlapping windows or null window parameters\n            - flags windows with invalid dimensions given the binning parameter\n            - sets the correct number of enabled windows\n            - disables or enables clear and nod buttons depending on drift mode or not\n            - checks for window synchronisation, enabling sync button if required\n            - enables or disables start button if settings are OK\n\n        Returns\n        -------\n        status : bool\n            True or False according to whether the settings are OK.",
+        "ground_truth": "InstPars.check",
+        "file_path": ""
+      },
+      {
+        "query": "Freeze all settings so they cannot be altered",
+        "ground_truth": "InstPars.freeze",
+        "file_path": ""
+      },
+      {
+        "query": "Returns a string suitable to sending off to rtplot when\n        it asks for window parameters. Returns null string '' if\n        the windows are not OK. This operates on the basis of\n        trying to send something back, even if it might not be\n        OK as a window setup. Note that we have to take care\n        here not to update any GUI components because this is\n        called outside of the main thread.",
+        "ground_truth": "InstPars.getRtplotWins",
+        "file_path": ""
+      },
+      {
+        "query": "Estimates timing information for the current setup. You should\n        run a check on the instrument parameters before calling this.\n\n        Returns: (expTime, deadTime, cycleTime, dutyCycle)\n\n        expTime   : exposure time per frame (seconds)\n        deadTime  : dead time per frame (seconds)\n        cycleTime : sampling time (cadence), (seconds)\n        dutyCycle : percentage time exposing.\n        frameRate : number of frames per second",
+        "ground_truth": "InstPars.timing",
+        "file_path": ""
+      },
+      {
+        "query": "Sets the values of the run parameters given an JSON string",
+        "ground_truth": "RunPars.loadJSON",
+        "file_path": ""
+      },
+      {
+        "query": "Encodes current parameters to JSON compatible dictionary",
+        "ground_truth": "RunPars.dumpJSON",
+        "file_path": ""
+      },
+      {
+        "query": "Checks the validity of the run parameters. Returns\n        flag (True = OK), and a message which indicates the\n        nature of the problem if the flag is False.",
+        "ground_truth": "RunPars.check",
+        "file_path": ""
+      },
+      {
+        "query": "Freeze all settings so that they can't be altered",
+        "ground_truth": "RunPars.freeze",
+        "file_path": ""
+      },
+      {
+        "query": "Unfreeze all settings so that they can be altered",
+        "ground_truth": "RunPars.unfreeze",
+        "file_path": ""
+      },
+      {
+        "query": "Updates values after first checking instrument parameters are OK.\n        This is not integrated within update to prevent ifinite recursion\n        since update gets called from ipars.",
+        "ground_truth": "CountsFrame.checkUpdate",
+        "file_path": ""
+      },
+      {
+        "query": "Updates values. You should run a check on the instrument and\n        target parameters before calling this.",
+        "ground_truth": "CountsFrame.update",
+        "file_path": ""
+      },
+      {
+        "query": "Computes counts per pixel, total counts, sky counts\n        etc given current magnitude, seeing etc. You should\n        run a check on the instrument parameters before calling\n        this.\n\n        expTime   : exposure time per frame (seconds)\n        cycleTime : sampling, cadence (seconds)\n        ap_scale  : aperture radius as multiple of seeing\n\n        Returns: (total, peak, peakSat, peakWarn, ston, ston3)\n\n        total    -- total number of object counts in aperture\n        peak     -- peak counts in a pixel\n        peakSat  -- flag to indicate saturation\n        peakWarn -- flag to indication level approaching saturation\n        ston     -- signal-to-noise per exposure\n        ston3    -- signal-to-noise after 3 hours on target",
+        "ground_truth": "CountsFrame.counts",
+        "file_path": ""
+      },
+      {
+        "query": "Disable the button, if in non-expert mode.",
+        "ground_truth": "Start.disable",
+        "file_path": ""
+      },
+      {
+        "query": "Turns on 'expert' status whereby the button is always enabled,\n        regardless of its activity status.",
+        "ground_truth": "Start.setExpert",
+        "file_path": ""
+      },
+      {
+        "query": "Carries out action associated with start button",
+        "ground_truth": "Start.act",
+        "file_path": ""
+      },
+      {
+        "query": "Carries out the action associated with the Load button",
+        "ground_truth": "Load.act",
+        "file_path": ""
+      },
+      {
+        "query": "Carries out the action associated with the Save button",
+        "ground_truth": "Save.act",
+        "file_path": ""
+      },
+      {
+        "query": "Carries out the action associated with the Unfreeze button",
+        "ground_truth": "Unfreeze.act",
+        "file_path": ""
+      },
+      {
+        "query": "Get a reference to a remote object using CORBA",
+        "ground_truth": "CORBAConnection.get_object",
+        "file_path": ""
+      },
+      {
+        "query": "Get a reference to a remote object using CORBA",
+        "ground_truth": "ReadyCORBAState.get_object",
+        "file_path": ""
+      },
+      {
+        "query": "Sets the current value equal to num",
+        "ground_truth": "IntegerEntry.set",
+        "file_path": ""
+      },
+      {
+        "query": "Avoid repeated trigger of callback.\n\n        When holding a key down, multiple key press and release events\n        are fired in succession. Debouncing is implemented to squash these.",
+        "ground_truth": "IntegerEntry.on_key_release_repeat",
+        "file_path": ""
+      },
+      {
+        "query": "Polls @10Hz, with a slight delay at the\n        start.",
+        "ground_truth": "IntegerEntry._pollMouse",
+        "file_path": ""
+      },
+      {
+        "query": "This gets called on any attempt to change the value",
+        "ground_truth": "IntegerEntry._callback",
+        "file_path": ""
+      },
+      {
+        "query": "Sets key bindings -- we need this more than once",
+        "ground_truth": "PosInt.set_bind",
+        "file_path": ""
+      },
+      {
+        "query": "Applies the validation criteria.\n        Returns value, new value, or None if invalid.\n\n        Overload this in derived classes.",
+        "ground_truth": "PosInt.validate",
+        "file_path": ""
+      },
+      {
+        "query": "Adds num to the current value",
+        "ground_truth": "PosInt.add",
+        "file_path": ""
+      },
+      {
+        "query": "Subtracts num from the current value",
+        "ground_truth": "PosInt.sub",
+        "file_path": ""
+      },
+      {
+        "query": "Returns True if OK to use, else False",
+        "ground_truth": "PosInt.ok",
+        "file_path": ""
+      },
+      {
+        "query": "Sets key bindings -- we need this more than once",
+        "ground_truth": "RangedInt.set_bind",
+        "file_path": ""
+      },
+      {
+        "query": "Applies the validation criteria.\n        Returns value, new value, or None if invalid.\n\n        Overload this in derived classes.",
+        "ground_truth": "RangedInt.validate",
+        "file_path": ""
+      },
+      {
+        "query": "Adds num to the current value",
+        "ground_truth": "RangedInt.add",
+        "file_path": ""
+      },
+      {
+        "query": "Returns True if OK to use, else False",
+        "ground_truth": "RangedInt.ok",
+        "file_path": ""
+      },
+      {
+        "query": "Sets key bindings -- we need this more than once",
+        "ground_truth": "RangedMint.set_bind",
+        "file_path": ""
+      },
+      {
+        "query": "Adds num to the current value, jumping up the next\n        multiple of mfac if the result is not a multiple already",
+        "ground_truth": "RangedMint.add",
+        "file_path": ""
+      },
+      {
+        "query": "Returns True if OK to use, else False",
+        "ground_truth": "RangedMint.ok",
+        "file_path": ""
+      },
+      {
+        "query": "Sets key bindings -- we need this more than once",
+        "ground_truth": "ListInt.set_bind",
+        "file_path": ""
+      },
+      {
+        "query": "Unsets key bindings -- we need this more than once",
+        "ground_truth": "ListInt.set_unbind",
+        "file_path": ""
+      },
+      {
+        "query": "Applies the validation criteria.\n        Returns value, new value, or None if invalid.\n\n        Overload this in derived classes.",
+        "ground_truth": "ListInt.validate",
+        "file_path": ""
+      },
+      {
+        "query": "Sets current value to num",
+        "ground_truth": "ListInt.set",
+        "file_path": ""
+      },
+      {
+        "query": "Adds num to the current value",
+        "ground_truth": "ListInt.add",
+        "file_path": ""
+      },
+      {
+        "query": "Applies the validation criteria.\n        Returns value, new value, or None if invalid.\n\n        Overload this in derived classes.",
+        "ground_truth": "FloatEntry.validate",
+        "file_path": ""
+      },
+      {
+        "query": "Sets the current value equal to num",
+        "ground_truth": "FloatEntry.set",
+        "file_path": ""
+      },
+      {
+        "query": "Unsets key bindings.",
+        "ground_truth": "FloatEntry.set_unbind",
+        "file_path": ""
+      },
+      {
+        "query": "Sets key bindings -- we need this more than once",
+        "ground_truth": "RangedFloat.set_bind",
+        "file_path": ""
+      },
+      {
+        "query": "Applies the validation criteria.\n        Returns value, new value, or None if invalid.\n\n        Overload this in derived classes.",
+        "ground_truth": "RangedFloat.validate",
+        "file_path": ""
+      },
+      {
+        "query": "Adds num to the current value",
+        "ground_truth": "RangedFloat.add",
+        "file_path": ""
+      },
+      {
+        "query": "Returns True if OK to use, else False",
+        "ground_truth": "RangedFloat.ok",
+        "file_path": ""
+      },
+      {
+        "query": "This prevents setting any value more precise than 0.00001",
+        "ground_truth": "Expose.validate",
+        "file_path": ""
+      },
+      {
+        "query": "Updates minimum value",
+        "ground_truth": "Expose.set_min",
+        "file_path": ""
+      },
+      {
+        "query": "Disable the button, if in non-expert mode;\n        unset its activity flag come-what-may.",
+        "ground_truth": "ActButton.disable",
+        "file_path": ""
+      },
+      {
+        "query": "Turns off 'expert' status whereby to allow a button to be disabled",
+        "ground_truth": "ActButton.setNonExpert",
+        "file_path": ""
+      },
+      {
+        "query": "Applies the validation criteria.\n        Returns value, new value, or None if invalid.",
+        "ground_truth": "Sexagesimal.validate",
+        "file_path": ""
+      },
+      {
+        "query": "Sets the current value equal to num",
+        "ground_truth": "Sexagesimal.set",
+        "file_path": ""
+      },
+      {
+        "query": "Adds an angle to the value",
+        "ground_truth": "Sexagesimal.add",
+        "file_path": ""
+      },
+      {
+        "query": "Subtracts an angle from the value",
+        "ground_truth": "Sexagesimal.sub",
+        "file_path": ""
+      },
+      {
+        "query": "Returns True if OK to use, else False",
+        "ground_truth": "Sexagesimal.ok",
+        "file_path": ""
+      },
+      {
+        "query": "This gets called on any attempt to change the value",
+        "ground_truth": "Sexagesimal._callback",
+        "file_path": ""
+      },
+      {
+        "query": "Carries out the action associated with Stop button",
+        "ground_truth": "Stop.act",
+        "file_path": ""
+      },
+      {
+        "query": "Checks the status of the stop exposure command\n        This is run in background and can take a few seconds",
+        "ground_truth": "Stop.check",
+        "file_path": ""
+      },
+      {
+        "query": "Switches colour of verify button",
+        "ground_truth": "Target.modver",
+        "file_path": ""
+      },
+      {
+        "query": "Carries out the action associated with Verify button",
+        "ground_truth": "Target.act",
+        "file_path": ""
+      },
+      {
+        "query": "Modifies widget according to expertise level, which in this\n        case is just matter of hiding or revealing the button to\n        set CCD temps",
+        "ground_truth": "Switch.setExpertLevel",
+        "file_path": ""
+      },
+      {
+        "query": "Starts the timer from zero",
+        "ground_truth": "Timer.start",
+        "file_path": ""
+      },
+      {
+        "query": "Updates @ 10Hz to give smooth running clock, checks\n        run status @0.2Hz to reduce load on servers.",
+        "ground_truth": "Timer.update",
+        "file_path": ""
+      },
+      {
+        "query": "Return dictionary of data for FITS headers.",
+        "ground_truth": "InfoFrame.dumpJSON",
+        "file_path": ""
+      },
+      {
+        "query": "Periodically update a table of info from the TCS.\n\n        Only works at GTC",
+        "ground_truth": "InfoFrame.update_tcs_table",
+        "file_path": ""
+      },
+      {
+        "query": "Periodically update TCS info.\n\n        A long running process, so run in a thread and fill a queue",
+        "ground_truth": "InfoFrame.update_tcs",
+        "file_path": ""
+      },
+      {
+        "query": "Periodically update the slide position.\n\n        Also farmed out to a thread to avoid hanging GUI main thread",
+        "ground_truth": "InfoFrame.update_slidepos",
+        "file_path": ""
+      },
+      {
+        "query": "Updates run & tel status window. Runs\n        once every 2 seconds.",
+        "ground_truth": "InfoFrame.update",
+        "file_path": ""
+      },
+      {
+        "query": "Updates @ 10Hz to give smooth running clock.",
+        "ground_truth": "AstroFrame.update",
+        "file_path": ""
+      },
+      {
+        "query": "Checks the values of the window pairs. If any problems are found, it\n        flags them by changing the background colour.\n\n        Returns (status, synced)\n\n          status : flag for whether parameters are viable at all\n          synced : flag for whether the windows are synchronised.",
+        "ground_truth": "WinPairs.check",
+        "file_path": ""
+      },
+      {
+        "query": "Synchronise the settings. This means that the pixel start\n        values are shifted downwards so that they are synchronised\n        with a full-frame binned version. This does nothing if the\n        binning factors == 1.",
+        "ground_truth": "WinPairs.sync",
+        "file_path": ""
+      },
+      {
+        "query": "Freeze (disable) all settings so they can't be altered",
+        "ground_truth": "WinPairs.freeze",
+        "file_path": ""
+      },
+      {
+        "query": "Disable all but possibly not binning, which is needed for FF apps\n\n        Parameters\n        ---------\n        everything : bool\n            disable binning as well",
+        "ground_truth": "WinPairs.disable",
+        "file_path": ""
+      },
+      {
+        "query": "Enables WinPair settings",
+        "ground_truth": "WinPairs.enable",
+        "file_path": ""
+      },
+      {
+        "query": "Checks the values of the window quads. If any problems are found it\n        flags the offending window by changing the background colour.\n\n        Returns:\n            status : bool",
+        "ground_truth": "WinQuads.check",
+        "file_path": ""
+      },
+      {
+        "query": "Synchronise the settings.\n\n        This routine changes the window settings so that the pixel start\n        values are shifted downwards until they are synchronised with a\n        full-frame binned version. This does nothing if the binning factor\n        is 1.",
+        "ground_truth": "WinQuads.sync",
+        "file_path": ""
+      },
+      {
+        "query": "Freeze (disable) all settings",
+        "ground_truth": "WinQuads.freeze",
+        "file_path": ""
+      },
+      {
+        "query": "Enables WinQuad setting",
+        "ground_truth": "WinQuads.enable",
+        "file_path": ""
+      },
+      {
+        "query": "Checks the values of the windows. If any problems are found,\n        it flags them by changing the background colour. Only active\n        windows are checked.\n\n        Returns status, flag for whether parameters are viable.",
+        "ground_truth": "Windows.check",
+        "file_path": ""
+      },
+      {
+        "query": "Synchronise the settings. This means that the pixel start\n        values are shifted downwards so that they are synchronised\n        with a full-frame binned version. This does nothing if the\n        binning factor == 1",
+        "ground_truth": "Windows.sync",
+        "file_path": ""
+      },
+      {
+        "query": "Freeze all settings so they can't be altered",
+        "ground_truth": "Windows.freeze",
+        "file_path": ""
+      },
+      {
+        "query": "Enables all settings",
+        "ground_truth": "Windows.enable",
+        "file_path": ""
+      },
+      {
+        "query": "Find the difference between apparent and mean solar time\n\n    Parameters\n    ----------\n    t : `~astropy.time.Time`\n        times (array)\n\n    Returns\n    ----------\n    ret1 : `~astropy.units.Quantity`\n        the equation of time",
+        "ground_truth": "_equation_of_time",
+        "file_path": ""
+      },
+      {
+        "query": "Convert a Local Sidereal Time to an astropy Time object.\n\n    The local time is related to the LST through the RA of the Sun.\n    This routine uses this relationship to convert a LST to an astropy\n    time object.\n\n    Returns\n    -------\n    ret1 : `~astropy.time.Time`\n        time corresponding to LST",
+        "ground_truth": "_astropy_time_from_LST",
+        "file_path": ""
+      },
+      {
+        "query": "Crude time at next rise/set of ``target`` using spherical trig.\n\n    This method is ~15 times faster than `_calcriseset`,\n    and inherently does *not* take the atmosphere into account.\n\n    The time returned should not be used in calculations; the purpose\n    of this routine is to supply a guess to `_calcriseset`.\n\n    Parameters\n    ----------\n    t : `~astropy.time.Time` or other (see below)\n        Time of observation. This will be passed in as the first argument to\n        the `~astropy.time.Time` initializer, so it can be anything that\n        `~astropy.time.Time` will accept (including a `~astropy.time.Time`\n        object)\n\n    target : `~astropy.coordinates.SkyCoord`\n        Position of target or multiple positions of that target\n        at multiple times (if target moves, like the Sun)\n\n    location : `~astropy.coordinates.EarthLocation`\n        Observatory location\n\n    prev_next : str - either 'previous' or 'next'\n        Test next rise/set or previous rise/set\n\n    rise_set : str - either 'rising' or 'setting'\n        Compute prev/next rise or prev/next set\n\n    Returns\n    -------\n    ret1 : `~astropy.time.Time`\n        Time of rise/set",
+        "ground_truth": "_rise_set_trig",
+        "file_path": ""
+      },
+      {
+        "query": "Time at next rise/set of ``target``.\n\n    Parameters\n    ----------\n    t : `~astropy.time.Time` or other (see below)\n        Time of observation. This will be passed in as the first argument to\n        the `~astropy.time.Time` initializer, so it can be anything that\n        `~astropy.time.Time` will accept (including a `~astropy.time.Time`\n        object)\n\n    target_name : str\n        'moon' or 'sun'\n\n    location : `~astropy.coordinates.EarthLocation`\n        Observatory location\n\n    prev_next : str - either 'previous' or 'next'\n        Test next rise/set or previous rise/set\n\n    rise_set : str - either 'rising' or 'setting'\n        Compute prev/next rise or prev/next set\n\n    location : `~astropy.coordinates.EarthLocation`\n        Location of observer\n\n    horizon : `~astropy.units.Quantity`\n        Degrees above/below actual horizon to use\n        for calculating rise/set times (i.e.,\n        -6 deg horizon = civil twilight, etc.)\n\n    Returns\n    -------\n    ret1 : `~astropy.time.Time`\n        Time of rise/set",
+        "ground_truth": "calc_riseset",
+        "file_path": ""
+      },
+      {
+        "query": "Find time ``t`` when values in array ``a`` go from\n    negative to positive or positive to negative (exclude endpoints)\n\n    ``return_limits`` will return nearest times to zero-crossing.\n\n    Parameters\n    ----------\n    t : `~astropy.time.Time`\n        Grid of times\n    alt : `~astropy.units.Quantity`\n        Grid of altitudes\n    rise_set : {\"rising\",  \"setting\"}\n        Calculate either rising or setting across the horizon\n    horizon : float\n        Number of degrees above/below actual horizon to use\n        for calculating rise/set times (i.e.,\n        -6 deg horizon = civil twilight, etc.)\n\n    Returns\n    -------\n    Returns the lower and upper limits on the time and altitudes\n    of the horizon crossing.",
+        "ground_truth": "_horiz_cross",
+        "file_path": ""
+      },
+      {
+        "query": "Do linear interpolation between two ``altitudes`` at\n    two ``times`` to determine the time where the altitude\n    goes through zero.\n\n    Parameters\n    ----------\n    times : `~astropy.time.Time`\n        Two times for linear interpolation between\n\n    altitudes : array of `~astropy.units.Quantity`\n        Two altitudes for linear interpolation between\n\n    horizon : `~astropy.units.Quantity`\n        Solve for the time when the altitude is equal to\n        reference_alt.\n\n    Returns\n    -------\n    t : `~astropy.time.Time`\n        Time when target crosses the horizon",
+        "ground_truth": "_two_point_interp",
+        "file_path": ""
+      },
+      {
+        "query": "Parse a single item from the telescope server into name, value, comment.",
+        "ground_truth": "parse_hstring",
+        "file_path": ""
+      },
+      {
+        "query": "Create a list of fits header items from GTC telescope pars.\n\n    The GTC telescope server gives a list of string describing\n    FITS header items such as RA, DEC, etc.\n\n    Arguments\n    ---------\n    telpars : list\n        list returned by server call to getTelescopeParams",
+        "ground_truth": "create_header_from_telpars",
+        "file_path": ""
+      },
+      {
+        "query": "Add a row with current values to GTC table\n\n    Arguments\n    ---------\n    t : `~astropy.table.Table`\n        The table to append row to\n    telpars : list\n        list returned by server call to getTelescopeParams",
+        "ground_truth": "add_gtc_header_table_row",
+        "file_path": ""
+      }
+    ]
+  },
+  {
+    "repo_id": "python-fedex-devs__python-fedex",
+    "repo_name": "python-fedex-devs/python-fedex",
+    "tree_path": "benchmark_results\\trees\\python-fedex-devs__python-fedex.json",
+    "num_functions": 38,
+    "num_files": 1,
+    "queries": [
+      {
+        "query": "This is a utility function used in the certification modules to transfer\n    the data dicts above to SOAP objects. This avoids repetition and allows\n    us to store all of our variable configuration here rather than in\n    each certification script.",
+        "ground_truth": "transfer_config_dict",
+        "file_path": ""
+      },
+      {
+        "query": "Fires off the Fedex request.\n\n        @warning: NEVER CALL THIS METHOD DIRECTLY. CALL send_request(),\n            WHICH RESIDES ON FedexBaseService AND IS INHERITED.",
+        "ground_truth": "FedexCreatePickupRequest._assemble_and_send_request",
+        "file_path": ""
+      },
+      {
+        "query": "Fires off the Fedex request.\n\n        @warning: NEVER CALL THIS METHOD DIRECTLY. CALL send_request(),\n            WHICH RESIDES ON FedexBaseService AND IS INHERITED.",
+        "ground_truth": "FedexPickupAvailabilityRequest._assemble_and_send_request",
+        "file_path": ""
+      },
+      {
+        "query": "This is the data that will be used to create your shipment. Create\n        the data structure and get it ready for the WSDL request.",
+        "ground_truth": "FedexProcessShipmentRequest._prepare_wsdl_objects",
+        "file_path": ""
+      },
+      {
+        "query": "Fires off the Fedex shipment validation request.\n        \n        @warning: NEVER CALL THIS METHOD DIRECTLY. CALL \n            send_validation_request(), WHICH RESIDES ON FedexBaseService \n            AND IS INHERITED.",
+        "ground_truth": "FedexProcessShipmentRequest._assemble_and_send_validation_request",
+        "file_path": ""
+      },
+      {
+        "query": "Fires off the Fedex request.\n        \n        @warning: NEVER CALL THIS METHOD DIRECTLY. CALL send_request(), \n            WHICH RESIDES ON FedexBaseService AND IS INHERITED.",
+        "ground_truth": "FedexProcessShipmentRequest._assemble_and_send_request",
+        "file_path": ""
+      },
+      {
+        "query": "Adds a package to the ship request.\n        \n        @type package_item: WSDL object, type of RequestedPackageLineItem \n            WSDL object.\n        @keyword package_item: A RequestedPackageLineItem, created by\n            calling create_wsdl_object_of_type('RequestedPackageLineItem') on\n            this ShipmentRequest object. See examples/create_shipment.py for\n            more details.",
+        "ground_truth": "FedexProcessShipmentRequest.add_package",
+        "file_path": ""
+      },
+      {
+        "query": "Preps the WSDL data structures for the user.",
+        "ground_truth": "FedexDeleteShipmentRequest._prepare_wsdl_objects",
+        "file_path": ""
+      },
+      {
+        "query": "Fires off the Fedex request.\n        \n        @warning: NEVER CALL THIS METHOD DIRECTLY. CALL send_request(), WHICH RESIDES\n            ON FedexBaseService AND IS INHERITED.",
+        "ground_truth": "FedexDeleteShipmentRequest._assemble_and_send_request",
+        "file_path": ""
+      },
+      {
+        "query": "This is the data that will be used to create your shipment. Create\n            the data structure and get it ready for the WSDL request.",
+        "ground_truth": "FedexDocumentServiceRequest._prepare_wsdl_objects",
+        "file_path": ""
+      },
+      {
+        "query": "Fires off the Fedex request.\n\n            @warning: NEVER CALL THIS METHOD DIRECTLY. CALL send_request(),\n                WHICH RESIDES ON FedexBaseService AND IS INHERITED.",
+        "ground_truth": "FedexDocumentServiceRequest._assemble_and_send_request",
+        "file_path": ""
+      },
+      {
+        "query": "Sets up the WebAuthenticationDetail node. This is required for all\n        requests.",
+        "ground_truth": "FedexBaseService.__set_web_authentication_detail",
+        "file_path": ""
+      },
+      {
+        "query": "Sets up the ClientDetail node, which is required for all shipping\n        related requests.",
+        "ground_truth": "FedexBaseService.__set_client_detail",
+        "file_path": ""
+      },
+      {
+        "query": "Checks kwargs for 'customer_transaction_id' and sets it if present.",
+        "ground_truth": "FedexBaseService.__set_transaction_detail",
+        "file_path": ""
+      },
+      {
+        "query": "Pulles the versioning info for the request from the child request.",
+        "ground_truth": "FedexBaseService.__set_version_id",
+        "file_path": ""
+      },
+      {
+        "query": "This checks the response for general Fedex errors that aren't related\n        to any one WSDL.",
+        "ground_truth": "FedexBaseService.__check_response_for_fedex_error",
+        "file_path": ""
+      },
+      {
+        "query": "Override this in each service module to check for errors that are\n        specific to that module. For example, invalid tracking numbers in\n        a Tracking request.",
+        "ground_truth": "FedexBaseService._check_response_for_request_errors",
+        "file_path": ""
+      },
+      {
+        "query": "Override this in a service module to check for errors that are\n        specific to that module. For example, changing state/province based\n        on postal code in a Rate Service request.",
+        "ground_truth": "FedexBaseService._check_response_for_request_warnings",
+        "file_path": ""
+      },
+      {
+        "query": "Sends the assembled request on the child object.\n        @type send_function: function reference\n        @keyword send_function: A function reference (passed without the\n            parenthesis) to a function that will send the request. This\n            allows for overriding the default function in cases such as\n            validation requests.",
+        "ground_truth": "FedexBaseService.send_request",
+        "file_path": ""
+      },
+      {
+        "query": "Fires off the Fedex request.\n        \n        @warning: NEVER CALL THIS METHOD DIRECTLY. CALL send_request(), \n            WHICH RESIDES ON FedexBaseService AND IS INHERITED.",
+        "ground_truth": "FedexAddressValidationRequest._assemble_and_send_request",
+        "file_path": ""
+      },
+      {
+        "query": "This sets the package identifier information. This may be a tracking\n        number or a few different things as per the Fedex spec.",
+        "ground_truth": "FedexTrackRequest._prepare_wsdl_objects",
+        "file_path": ""
+      },
+      {
+        "query": "Checks the response to see if there were any errors specific to\n        this WSDL.",
+        "ground_truth": "FedexTrackRequest._check_response_for_request_errors",
+        "file_path": ""
+      },
+      {
+        "query": "Fires off the Fedex request.\n        \n        @warning: NEVER CALL THIS METHOD DIRECTLY. CALL send_request(), WHICH RESIDES\n            ON FedexBaseService AND IS INHERITED.",
+        "ground_truth": "FedexTrackRequest._assemble_and_send_request",
+        "file_path": ""
+      },
+      {
+        "query": "This is the data that will be used to create your shipment. Create\n        the data structure and get it ready for the WSDL request.",
+        "ground_truth": "FedexRateServiceRequest._prepare_wsdl_objects",
+        "file_path": ""
+      },
+      {
+        "query": "Fires off the Fedex request.\n        \n        @warning: NEVER CALL THIS METHOD DIRECTLY. CALL send_request(), \n            WHICH RESIDES ON FedexBaseService AND IS INHERITED.",
+        "ground_truth": "FedexRateServiceRequest._assemble_and_send_request",
+        "file_path": ""
+      },
+      {
+        "query": "Prints all of a shipment's labels, or optionally just one.\n        \n        @type package_num: L{int}\n        @param package_num: 0-based index of the package to print. This is\n                            only useful for shipments with more than one package.",
+        "ground_truth": "DirectDevicePrinter.print_label",
+        "file_path": ""
+      },
+      {
+        "query": "Pipe the binary directly to the label printer. Works under Linux\n        without requiring PySerial. This is not typically something you\n        should call directly, unless you have special needs.\n        \n        @type base64_data: L{str}\n        @param base64_data: The base64 encoded string for the label to print.",
+        "ground_truth": "DirectDevicePrinter._print_base64",
+        "file_path": ""
+      },
+      {
+        "query": "Create the data structure and get it ready for the WSDL request.",
+        "ground_truth": "FedexSearchLocationRequest._prepare_wsdl_objects",
+        "file_path": ""
+      },
+      {
+        "query": "Fires off the Fedex request.\n        \n        @warning: NEVER CALL THIS METHOD DIRECTLY. CALL send_request(), \n            WHICH RESIDES ON FedexBaseService AND IS INHERITED.",
+        "ground_truth": "FedexSearchLocationRequest._assemble_and_send_request",
+        "file_path": ""
+      },
+      {
+        "query": "Checks the response to see if there were any errors specific to\n        this WSDL.",
+        "ground_truth": "PostalCodeInquiryRequest._check_response_for_request_errors",
+        "file_path": ""
+      },
+      {
+        "query": "Fires off the Fedex request.\n        \n        @warning: NEVER CALL THIS METHOD DIRECTLY. CALL send_request(), WHICH RESIDES\n            ON FedexBaseService AND IS INHERITED.",
+        "ground_truth": "PostalCodeInquiryRequest._assemble_and_send_request",
+        "file_path": ""
+      },
+      {
+        "query": "Create the data structure and get it ready for the WSDL request.",
+        "ground_truth": "FedexAvailabilityCommitmentRequest._prepare_wsdl_objects",
+        "file_path": ""
+      },
+      {
+        "query": "Fires off the Fedex request.\n        \n        @warning: NEVER CALL THIS METHOD DIRECTLY. CALL send_request(), \n            WHICH RESIDES ON FedexBaseService AND IS INHERITED.",
+        "ground_truth": "FedexAvailabilityCommitmentRequest._assemble_and_send_request",
+        "file_path": ""
+      },
+      {
+        "query": "Converts suds object to dict very quickly.\n    Does not serialize date time or normalize key case.\n    :param obj: suds object\n    :return: dict object",
+        "ground_truth": "basic_sobject_to_dict",
+        "file_path": ""
+      },
+      {
+        "query": "Converts a suds object to a dict. Includes advanced features.\n    :param json_serialize: If set, changes date and time types to iso string.\n    :param key_to_lower: If set, changes index key name to lower case.\n    :param obj: suds object\n    :return: dict object",
+        "ground_truth": "sobject_to_dict",
+        "file_path": ""
+      },
+      {
+        "query": "Converts a suds object to a JSON string.\n    :param obj: suds object\n    :param key_to_lower: If set, changes index key name to lower case.\n    :return: json object",
+        "ground_truth": "sobject_to_json",
+        "file_path": ""
+      },
+      {
+        "query": "Create the data structure and get it ready for the WSDL request.",
+        "ground_truth": "FedexValidatePostalRequest._prepare_wsdl_objects",
+        "file_path": ""
+      },
+      {
+        "query": "Fires off the Fedex request.\n        \n        @warning: NEVER CALL THIS METHOD DIRECTLY. CALL send_request(), \n            WHICH RESIDES ON FedexBaseService AND IS INHERITED.",
+        "ground_truth": "FedexValidatePostalRequest._assemble_and_send_request",
+        "file_path": ""
+      }
+    ]
+  },
+  {
+    "repo_id": "tsnaomi__finnsyll",
+    "repo_name": "tsnaomi/finnsyll",
+    "tree_path": "benchmark_results\\trees\\tsnaomi__finnsyll.json",
+    "num_functions": 37,
+    "num_files": 1,
+    "queries": [
+      {
+        "query": "Syllabify the given word, whether simplex or complex.",
+        "ground_truth": "syllabify",
+        "file_path": ""
+      },
+      {
+        "query": "There is a syllable boundary within a VV sequence of two nonidentical\n    vowels that are not a genuine diphthong, e.g., [ta.e], [ko.et.taa].",
+        "ground_truth": "apply_T2",
+        "file_path": ""
+      },
+      {
+        "query": "If a (V)VVV sequence contains a VV sequence that could be an /i/-final\n    diphthong, there is a syllable boundary between it and the third vowel,\n    e.g., [raa.ois.sa], [huo.uim.me], [la.eis.sa], [sel.vi.\u00e4i.si], [tai.an],\n    [s\u00e4i.e], [oi.om.me].",
+        "ground_truth": "apply_T5",
+        "file_path": ""
+      },
+      {
+        "query": "If a VVV-sequence contains a long vowel, there is a syllable boundary\n    between it and the third vowel, e.g. [kor.ke.aa], [yh.ti.\u00f6\u00f6n], [ruu.an],\n    [m\u00e4\u00e4.yt.te].",
+        "ground_truth": "apply_T6",
+        "file_path": ""
+      },
+      {
+        "query": "If a VVV-sequence does not contain a potential /i/-final diphthong,\n    there is a syllable boundary between the second and third vowels, e.g.\n    [kau.an], [leu.an], [kiu.as].",
+        "ground_truth": "apply_T7",
+        "file_path": ""
+      },
+      {
+        "query": "Split /ie/, /uo/, or /y\u00f6/ sequences in syllables that do not take\n    primary stress.",
+        "ground_truth": "apply_T8",
+        "file_path": ""
+      },
+      {
+        "query": "Return the number of unstressed heavy syllables.",
+        "ground_truth": "wsp",
+        "file_path": ""
+      },
+      {
+        "query": "Return the number of stressed light syllables.",
+        "ground_truth": "pk_prom",
+        "file_path": ""
+      },
+      {
+        "query": "Split /iu/ sequences that do not appear in the first, second, or final\n    syllables.",
+        "ground_truth": "apply_T9",
+        "file_path": ""
+      },
+      {
+        "query": "If a VVV sequence contains a /u, y/-final diphthong and the third vowel\n    is /i/, there is a syllable boundary between the diphthong and /i/.",
+        "ground_truth": "apply_T11",
+        "file_path": ""
+      },
+      {
+        "query": "There is a syllable boundary within a VV sequence of two nonidentical\n    vowels that are not a genuine diphthong, e.g., [ta.e], [ko.et.taa].",
+        "ground_truth": "apply_T12",
+        "file_path": ""
+      },
+      {
+        "query": "Syllabify the given word.",
+        "ground_truth": "_syllabify_simplex",
+        "file_path": ""
+      },
+      {
+        "query": "Any /iou/ sequence contains a syllable boundary between the first and\n    second vowel.",
+        "ground_truth": "apply_T10",
+        "file_path": ""
+      },
+      {
+        "query": "Insert a syllable boundary in front of every CV sequence.",
+        "ground_truth": "T1",
+        "file_path": ""
+      },
+      {
+        "query": "Split any VV sequence that is not a genuine diphthong or long vowel.\n    E.g., [ta.e], [ko.et.taa]. This rule can apply within VVV+ sequences.",
+        "ground_truth": "T2",
+        "file_path": ""
+      },
+      {
+        "query": "Optionally split /u,y/-final diphthongs that do not take primary stress.\n    E.g., [lau.ka.us], [va.ka.ut.taa].",
+        "ground_truth": "T4",
+        "file_path": ""
+      },
+      {
+        "query": "If a VVV-sequence contains a long vowel, insert a syllable boundary\n    between it and the third vowel. E.g. [kor.ke.aa], [yh.ti.\u00f6\u00f6n], [ruu.an],\n    [m\u00e4\u00e4.yt.te].",
+        "ground_truth": "T6",
+        "file_path": ""
+      },
+      {
+        "query": "Join /ie/, /uo/, or /y\u00f6/ sequences in syllables that take primary\n    stress.",
+        "ground_truth": "T8",
+        "file_path": ""
+      },
+      {
+        "query": "If a VVV sequence contains a /u,y/-final diphthong, insert a syllable\n    boundary between the diphthong and the third vowel.",
+        "ground_truth": "T11",
+        "file_path": ""
+      },
+      {
+        "query": "Rank syllabifications.",
+        "ground_truth": "rank",
+        "file_path": ""
+      },
+      {
+        "query": "An agglutination diphthong that ends in /u, y/ optionally contains a\n    syllable boundary when -C# or -CCV follow, e.g., [lau.ka.us],\n    [va.ka.ut.taa].",
+        "ground_truth": "apply_T4",
+        "file_path": ""
+      },
+      {
+        "query": "Syllabify the given word.",
+        "ground_truth": "_syllabify",
+        "file_path": ""
+      },
+      {
+        "query": "There is a syllable boundary in front of every CV-sequence.",
+        "ground_truth": "apply_T1",
+        "file_path": ""
+      },
+      {
+        "query": "Return the firstmost vowel in 'syll'.",
+        "ground_truth": "get_vowel",
+        "file_path": ""
+      },
+      {
+        "query": "Return True if 'syll' is light.",
+        "ground_truth": "is_light",
+        "file_path": ""
+      },
+      {
+        "query": "Assign primary and secondary stress to 'syllabified_simplex_word'.",
+        "ground_truth": "stress",
+        "file_path": ""
+      },
+      {
+        "query": "Return True if 'word' does not violate sonority sequencing.",
+        "ground_truth": "sonseq",
+        "file_path": ""
+      },
+      {
+        "query": "Return True if the word's vowels agree in frontness/backness.",
+        "ground_truth": "harmonic",
+        "file_path": ""
+      },
+      {
+        "query": "Split 'string' along any punctuation or whitespace.",
+        "ground_truth": "nonalpha_split",
+        "file_path": ""
+      },
+      {
+        "query": "Split 'string' into (stressed) syllables and punctuation/whitespace.",
+        "ground_truth": "syllable_split",
+        "file_path": ""
+      },
+      {
+        "query": "Extract all alphabetic syllabified forms from 'string'.",
+        "ground_truth": "extract_words",
+        "file_path": ""
+      },
+      {
+        "query": "Annotate 'word' for syllabification, stress, weights, and vowels.",
+        "ground_truth": "FinnSyll.annotate",
+        "file_path": ""
+      },
+      {
+        "query": "Return True if ch1 and ch2 are both vowels or both consonants.",
+        "ground_truth": "same_syllabic_feature",
+        "file_path": ""
+      },
+      {
+        "query": "If put_back is True, put in umlauts; else, take them out!",
+        "ground_truth": "replace_umlauts",
+        "file_path": ""
+      },
+      {
+        "query": "Download the file at url to target using Powershell (which will validate\n    trust). Raise an exception if the command cannot complete.",
+        "ground_truth": "download_file_powershell",
+        "file_path": ""
+      },
+      {
+        "query": "Use Python to download the file, even though it cannot authenticate the\n    connection.",
+        "ground_truth": "download_file_insecure",
+        "file_path": ""
+      },
+      {
+        "query": "Build the arguments to 'python setup.py install' on the setuptools package",
+        "ground_truth": "_build_install_args",
+        "file_path": ""
+      }
+    ]
+  },
+  {
+    "repo_id": "sckott__pygbif",
+    "repo_name": "sckott/pygbif",
+    "tree_path": "benchmark_results\\trees\\sckott__pygbif.json",
+    "num_functions": 30,
+    "num_files": 1,
+    "queries": [
+      {
+        "query": "A quick and simple autocomplete service that returns up to 20 name usages by\n  doing prefix matching against the scientific name. Results are ordered by relevance.\n\n  :param q: [str] Simple search parameter. The value for this parameter can be a\n     simple word or a phrase. Wildcards can be added to the simple word parameters only,\n     e.g. ``q=*puma*`` (Required)\n  :param datasetKey: [str] Filters by the checklist dataset key (a uuid, see examples)\n  :param rank: [str] A taxonomic rank. One of ``class``, ``cultivar``, ``cultivar_group``, ``domain``, ``family``,\n     ``form``, ``genus``, ``informal``, ``infrageneric_name``, ``infraorder``, ``infraspecific_name``,\n     ``infrasubspecific_name``, ``kingdom``, ``order``, ``phylum``, ``section``, ``series``, ``species``, ``strain``, ``subclass``,\n     ``subfamily``, ``subform``, ``subgenus``, ``subkingdom``, ``suborder``, ``subphylum``, ``subsection``, ``subseries``,\n     ``subspecies``, ``subtribe``, ``subvariety``, ``superclass``, ``superfamily``, ``superorder``, ``superphylum``,\n     ``suprageneric_name``, ``tribe``, ``unranked``, or ``variety``.\n  :param limit: [fixnum] Number of records to return. Maximum: ``1000``. (optional)\n  :param offset: [fixnum] Record number to start at. (optional)\n\n  :return: A dictionary\n\n  References: http://www.gbif.org/developer/species#searching\n\n  Usage::\n\n      from pygbif import species\n\n      species.name_suggest(q='Puma concolor')\n      x = species.name_suggest(q='Puma')\n      species.name_suggest(q='Puma', rank=\"genus\")\n      species.name_suggest(q='Puma', rank=\"subspecies\")\n      species.name_suggest(q='Puma', rank=\"species\")\n      species.name_suggest(q='Puma', rank=\"infraspecific_name\")\n      species.name_suggest(q='Puma', limit=2)",
+        "ground_truth": "name_suggest",
+        "file_path": ""
+      },
+      {
+        "query": "Get details on a GBIF dataset.\n\n\t:param uuid: [str] One or more dataset UUIDs. See examples.\n\n\tReferences: http://www.gbif.org/developer/registry#datasetMetrics\n\n\tUsage::\n\n\t\t\tfrom pygbif import registry\n\t\t\tregistry.dataset_metrics(uuid='3f8a1297-3259-4700-91fc-acc4170b27ce')\n\t\t\tregistry.dataset_metrics(uuid='66dd0960-2d7d-46ee-a491-87b9adcfe7b1')\n\t\t\tregistry.dataset_metrics(uuid=['3f8a1297-3259-4700-91fc-acc4170b27ce', '66dd0960-2d7d-46ee-a491-87b9adcfe7b1'])",
+        "ground_truth": "dataset_metrics",
+        "file_path": ""
+      },
+      {
+        "query": "Search for datasets and dataset metadata.\n\n\t:param data: [str] The type of data to get. Default: ``all``\n\t:param type: [str] Type of dataset, options include ``OCCURRENCE``, etc.\n\t:param uuid: [str] UUID of the data node provider. This must be specified if data\n\t\t is anything other than ``all``.\n\t:param query: [str] Query term(s). Only used when ``data = 'all'``\n\t:param id: [int] A metadata document id.\n\n\tReferences http://www.gbif.org/developer/registry#datasets\n\n\tUsage::\n\n\t\t\tfrom pygbif import registry\n\t\t\tregistry.datasets(limit=5)\n\t\t\tregistry.datasets(type=\"OCCURRENCE\")\n\t\t\tregistry.datasets(uuid=\"a6998220-7e3a-485d-9cd6-73076bd85657\")\n\t\t\tregistry.datasets(data='contact', uuid=\"a6998220-7e3a-485d-9cd6-73076bd85657\")\n\t\t\tregistry.datasets(data='metadata', uuid=\"a6998220-7e3a-485d-9cd6-73076bd85657\")\n\t\t\tregistry.datasets(data='metadata', uuid=\"a6998220-7e3a-485d-9cd6-73076bd85657\", id=598)\n\t\t\tregistry.datasets(data=['deleted','duplicate'])\n\t\t\tregistry.datasets(data=['deleted','duplicate'], limit=1)",
+        "ground_truth": "datasets",
+        "file_path": ""
+      },
+      {
+        "query": "Search that returns up to 20 matching datasets. Results are ordered by relevance.\n\n\n\t:param q: [str] Query term(s) for full text search.  The value for this parameter can be a simple word or a phrase. Wildcards can be added to the simple word parameters only, e.g. ``q=*puma*``\n\t:param type: [str] Type of dataset, options include OCCURRENCE, etc.\n\t:param keyword: [str] Keyword to search by. Datasets can be tagged by keywords, which you can search on. The search is done on the merged collection of tags, the dataset keywordCollections and temporalCoverages. SEEMS TO NOT BE WORKING ANYMORE AS OF 2016-09-02.\n\t:param owningOrg: [str] Owning organization. A uuid string. See :func:`~pygbif.registry.organizations`\n\t:param publishingOrg: [str] Publishing organization. A uuid string. See :func:`~pygbif.registry.organizations`\n\t:param hostingOrg: [str] Hosting organization. A uuid string. See :func:`~pygbif.registry.organizations`\n\t:param publishingCountry: [str] Publishing country.\n\t:param decade: [str] Decade, e.g., 1980. Filters datasets by their temporal coverage broken down to decades. Decades are given as a full year, e.g. 1880, 1960, 2000, etc, and will return datasets wholly contained in the decade as well as those that cover the entire decade or more. Facet by decade to get the break down, e.g. ``/search?facet=DECADE&facet_only=true`` (see example below)\n\t:param limit: [int] Number of results to return. Default: ``300``\n\t:param offset: [int] Record to start at. Default: ``0``\n\n\t:return: A dictionary\n\n\tReferences: http://www.gbif.org/developer/registry#datasetSearch\n\n\tUsage::\n\n\t\t\tfrom pygbif import registry\n\t\t\tregistry.dataset_suggest(q=\"Amazon\", type=\"OCCURRENCE\")\n\n\t\t\t# Suggest datasets tagged with keyword \"france\".\n\t\t\tregistry.dataset_suggest(keyword=\"france\")\n\n\t\t\t# Suggest datasets owned by the organization with key\n\t\t\t# \"07f617d0-c688-11d8-bf62-b8a03c50a862\" (UK NBN).\n\t\t\tregistry.dataset_suggest(owningOrg=\"07f617d0-c688-11d8-bf62-b8a03c50a862\")\n\n\t\t\t# Fulltext search for all datasets having the word \"amsterdam\" somewhere in\n\t\t\t# its metadata (title, description, etc).\n\t\t\tregistry.dataset_suggest(q=\"amsterdam\")\n\n\t\t\t# Limited search\n\t\t\tregistry.dataset_suggest(type=\"OCCURRENCE\", limit=2)\n\t\t\tregistry.dataset_suggest(type=\"OCCURRENCE\", limit=2, offset=10)\n\n\t\t\t# Return just descriptions\n\t\t\tregistry.dataset_suggest(type=\"OCCURRENCE\", limit = 5, description=True)\n\n\t\t\t# Search by decade\n\t\t\tregistry.dataset_suggest(decade=1980, limit = 30)",
+        "ground_truth": "dataset_suggest",
+        "file_path": ""
+      },
+      {
+        "query": "Full text search across all datasets. Results are ordered by relevance.\n\n\t:param q: [str] Query term(s) for full text search.  The value for this parameter\n\t\t can be a simple word or a phrase. Wildcards can be added to the simple word\n\t\t parameters only, e.g. ``q=*puma*``\n\t:param type: [str] Type of dataset, options include OCCURRENCE, etc.\n\t:param keyword: [str] Keyword to search by. Datasets can be tagged by keywords, which\n\t\t you can search on. The search is done on the merged collection of tags, the\n\t\t dataset keywordCollections and temporalCoverages. SEEMS TO NOT BE WORKING\n\t\t ANYMORE AS OF 2016-09-02.\n\t:param owningOrg: [str] Owning organization. A uuid string. See :func:`~pygbif.registry.organizations`\n\t:param publishingOrg: [str] Publishing organization. A uuid string. See :func:`~pygbif.registry.organizations`\n\t:param hostingOrg: [str] Hosting organization. A uuid string. See :func:`~pygbif.registry.organizations`\n\t:param publishingCountry: [str] Publishing country.\n\t:param decade: [str] Decade, e.g., 1980. Filters datasets by their temporal coverage\n\t\t broken down to decades. Decades are given as a full year, e.g. 1880, 1960, 2000,\n\t\t etc, and will return datasets wholly contained in the decade as well as those\n\t\t that cover the entire decade or more. Facet by decade to get the break down,\n\t\t e.g. ``/search?facet=DECADE&facet_only=true`` (see example below)\n\t:param facet: [str] A list of facet names used to retrieve the 100 most frequent values\n\t\t\tfor a field. Allowed facets are: type, keyword, publishingOrg, hostingOrg, decade,\n\t\t\tand publishingCountry. Additionally subtype and country are legal values but not\n\t\t\tyet implemented, so data will not yet be returned for them.\n\t:param facetMincount: [str] Used in combination with the facet parameter. Set\n\t\t\tfacetMincount={#} to exclude facets with a count less than {#}, e.g.\n\t\t\thttp://api.gbif.org/v1/dataset/search?facet=type&limit=0&facetMincount=10000\n\t\t\tonly shows the type value 'OCCURRENCE' because 'CHECKLIST' and 'METADATA' have\n\t\t\tcounts less than 10000.\n\t:param facetMultiselect: [bool] Used in combination with the facet parameter. Set\n\t\t\tfacetMultiselect=True to still return counts for values that are not currently\n\t\t\tfiltered, e.g.\n\t\t\thttp://api.gbif.org/v1/dataset/search?facet=type&limit=0&type=CHECKLIST&facetMultiselect=true\n\t\t\tstill shows type values 'OCCURRENCE' and 'METADATA' even though type is being\n\t\t\tfiltered by type=CHECKLIST\n\t:param hl: [bool] Set ``hl=True`` to highlight terms matching the query when in fulltext\n\t\t\tsearch fields. The highlight will be an emphasis tag of class 'gbifH1' e.g.\n\t\t\thttp://api.gbif.org/v1/dataset/search?q=plant&hl=true\n\t\t\tFulltext search fields include: title, keyword, country, publishing country,\n\t\t\tpublishing organization title, hosting organization title, and description. One\n\t\t\tadditional full text field is searched which includes information from metadata\n\t\t\tdocuments, but the text of this field is not returned in the response.\n\t:param limit: [int] Number of results to return. Default: ``300``\n\t:param offset: [int] Record to start at. Default: ``0``\n\n\t:note: Note that you can pass in additional faceting parameters on a per field basis.\n\t\t\tFor example, if you want to limit the numbef of facets returned from a field ``foo`` to\n\t\t\t3 results, pass in ``foo_facetLimit = 3``. GBIF does not allow all per field parameters,\n\t\t\tbut does allow some. See also examples.\n\n\t:return: A dictionary\n\n\tReferences: http://www.gbif.org/developer/registry#datasetSearch\n\n\tUsage::\n\n\t\t\tfrom pygbif import registry\n\t\t\t# Gets all datasets of type \"OCCURRENCE\".\n\t\t\tregistry.dataset_search(type=\"OCCURRENCE\", limit = 10)\n\n\t\t\t# Fulltext search for all datasets having the word \"amsterdam\" somewhere in\n\t\t\t# its metadata (title, description, etc).\n\t\t\tregistry.dataset_search(q=\"amsterdam\", limit = 10)\n\n\t\t\t# Limited search\n\t\t\tregistry.dataset_search(type=\"OCCURRENCE\", limit=2)\n\t\t\tregistry.dataset_search(type=\"OCCURRENCE\", limit=2, offset=10)\n\n\t\t\t# Search by decade\n\t\t\tregistry.dataset_search(decade=1980, limit = 10)\n\n\t\t\t# Faceting\n\t\t\t## just facets\n\t\t\tregistry.dataset_search(facet=\"decade\", facetMincount=10, limit=0)\n\n\t\t\t## data and facets\n\t\t\tregistry.dataset_search(facet=\"decade\", facetMincount=10, limit=2)\n\n\t\t\t## many facet variables\n\t\t\tregistry.dataset_search(facet=[\"decade\", \"type\"], facetMincount=10, limit=0)\n\n\t\t\t## facet vars\n\t\t\t### per variable paging\n\t\t\tx = registry.dataset_search(\n\t\t\t\tfacet = [\"decade\", \"type\"],\n\t\t\t\tdecade_facetLimit = 3,\n\t\t\t\ttype_facetLimit = 3,\n\t\t\t\tlimit = 0\n\t\t\t)\n\n\t\t\t## highlight\n\t\t\tx = registry.dataset_search(q=\"plant\", hl=True, limit = 10)\n\t\t\t[ z['description'] for z in x['results'] ]",
+        "ground_truth": "dataset_search",
+        "file_path": ""
+      },
+      {
+        "query": "reverse WKT winding order\n\n    :param x: [str] WKT string\n    :param digits: [int] number of digits after decimal to use for the return string. \n        by default, we use the mean number of digits in your string.\n\n    :return: a string\n\n    Usage::\n        \n        from pygbif import wkt_rewind\n        x = 'POLYGON((144.6 13.2, 144.6 13.6, 144.9 13.6, 144.9 13.2, 144.6 13.2))'\n        wkt_rewind(x)\n        wkt_rewind(x, digits = 0)\n        wkt_rewind(x, digits = 3)\n        wkt_rewind(x, digits = 7)",
+        "ground_truth": "wkt_rewind",
+        "file_path": ""
+      },
+      {
+        "query": "Lookup occurrence issue definitions and short codes\n\n    :param issue: Full name of issue, e.g, CONTINENT_COUNTRY_MISMATCH\n    :param code: an issue short code, e.g. ccm\n\n    Usage\n    pygbif.occ_issues_lookup(issue = 'CONTINENT_COUNTRY_MISMATCH')\n    pygbif.occ_issues_lookup(issue = 'MULTIMEDIA_DATE_INVALID')\n    pygbif.occ_issues_lookup(issue = 'ZERO_COORDINATE')\n    pygbif.occ_issues_lookup(code = 'cdiv')",
+        "ground_truth": "occ_issues_lookup",
+        "file_path": ""
+      },
+      {
+        "query": "Search GBIF occurrences\n\n    :param taxonKey: [int] A GBIF occurrence identifier\n    :param q: [str] Simple search parameter. The value for this parameter can be a simple word or a phrase.\n    :param spellCheck: [bool] If ``True`` ask GBIF to check your spelling of the value passed to the ``search`` parameter.\n        IMPORTANT: This only checks the input to the ``search`` parameter, and no others. Default: ``False``\n    :param repatriated: [str] Searches for records whose publishing country is different to the country where the record was recorded in\n    :param kingdomKey: [int] Kingdom classification key\n    :param phylumKey: [int] Phylum classification key\n    :param classKey: [int] Class classification key\n    :param orderKey: [int] Order classification key\n    :param familyKey: [int] Family classification key\n    :param genusKey: [int] Genus classification key\n    :param subgenusKey: [int] Subgenus classification key\n    :param scientificName: [str] A scientific name from the GBIF backbone. All included and synonym taxa are included in the search.\n    :param datasetKey: [str] The occurrence dataset key (a uuid)\n    :param catalogNumber: [str] An identifier of any form assigned by the source within a physical collection or digital dataset for the record which may not unique, but should be fairly unique in combination with the institution and collection code.\n    :param recordedBy: [str] The person who recorded the occurrence.\n    :param collectionCode: [str] An identifier of any form assigned by the source to identify the physical collection or digital dataset uniquely within the text of an institution.\n    :param institutionCode: [str] An identifier of any form assigned by the source to identify the institution the record belongs to. Not guaranteed to be que.\n    :param country: [str] The 2-letter country code (as per ISO-3166-1) of the country in which the occurrence was recorded. See here http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\n    :param basisOfRecord: [str] Basis of record, as defined in our BasisOfRecord enum here http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html Acceptable values are:\n\n     - ``FOSSIL_SPECIMEN`` An occurrence record describing a fossilized specimen.\n     - ``HUMAN_OBSERVATION`` An occurrence record describing an observation made by one or more people.\n     - ``LITERATURE`` An occurrence record based on literature alone.\n     - ``LIVING_SPECIMEN`` An occurrence record describing a living specimen, e.g.\n     - ``MACHINE_OBSERVATION`` An occurrence record describing an observation made by a machine.\n     - ``OBSERVATION`` An occurrence record describing an observation.\n     - ``PRESERVED_SPECIMEN`` An occurrence record describing a preserved specimen.\n     - ``UNKNOWN`` Unknown basis for the record.\n\n    :param eventDate: [date] Occurrence date in ISO 8601 format: yyyy, yyyy-MM, yyyy-MM-dd, or\n       MM-dd. Supports range queries, smaller,larger (e.g., ``1990,1991``, whereas ``1991,1990``\n       wouldn't work)\n    :param year: [int] The 4 digit year. A year of 98 will be interpreted as AD 98. Supports range queries,\n       smaller,larger (e.g., ``1990,1991``, whereas ``1991,1990`` wouldn't work)\n    :param month: [int] The month of the year, starting with 1 for January. Supports range queries,\n       smaller,larger (e.g., ``1,2``, whereas ``2,1`` wouldn't work)\n    :param q: [str] Query terms. The value for this parameter can be a simple word or a phrase.\n    :param decimalLatitude: [float] Latitude in decimals between -90 and 90 based on WGS 84.\n       Supports range queries, smaller,larger (e.g., ``25,30``, whereas ``30,25`` wouldn't work)\n    :param decimalLongitude: [float] Longitude in decimals between -180 and 180 based on WGS 84.\n       Supports range queries (e.g., ``-0.4,-0.2``, whereas ``-0.2,-0.4`` wouldn't work).\n    :param publishingCountry: [str] The 2-letter country code (as per ISO-3166-1) of the\n       country in which the occurrence was recorded.\n    :param elevation: [int/str] Elevation in meters above sea level. Supports range queries, smaller,larger\n       (e.g., ``5,30``, whereas ``30,5`` wouldn't work)\n    :param depth: [int/str] Depth in meters relative to elevation. For example 10 meters below a\n       lake surface with given elevation. Supports range queries, smaller,larger (e.g., ``5,30``,\n       whereas ``30,5`` wouldn't work)\n    :param geometry: [str] Searches for occurrences inside a polygon described in Well Known\n       Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING\n       POLYGON, or MULTIPOLYGON. Example of a polygon: ``((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))`` would be queried as http://bit.ly/1BzNwDq.\n       Polygons must have counter-clockwise ordering of points.\n    :param hasGeospatialIssue: [bool] Includes/excludes occurrence records which contain spatial\n       issues (as determined in our record interpretation), i.e. ``hasGeospatialIssue=TRUE``\n       returns only those records with spatial issues while ``hasGeospatialIssue=FALSE`` includes\n       only records without spatial issues. The absence of this parameter returns any\n       record with or without spatial issues.\n    :param issue: [str] One or more of many possible issues with each occurrence record. See\n       Details. Issues passed to this parameter filter results by the issue.\n    :param hasCoordinate: [bool] Return only occurence records with lat/long data (``true``) or\n       all records (``false``, default).\n    :param typeStatus: [str] Type status of the specimen. One of many options. See ?typestatus\n    :param recordNumber: [int] Number recorded by collector of the data, different from GBIF record\n       number. See http://rs.tdwg.org/dwc/terms/#recordNumber} for more info\n    :param lastInterpreted: [date] Date the record was last modified in GBIF, in ISO 8601 format:\n       yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.  Supports range queries, smaller,larger (e.g.,\n       ``1990,1991``, whereas ``1991,1990`` wouldn't work)\n    :param continent: [str] Continent. One of ``africa``, ``antarctica``, ``asia``, ``europe``, ``north_america``\n       (North America includes the Caribbean and reachies down and includes Panama), ``oceania``,\n       or ``south_america``\n    :param fields: [str] Default (``all``) returns all fields. ``minimal`` returns just taxon name,\n       key, latitude, and longitude. Or specify each field you want returned by name, e.g.\n       ``fields = c('name','latitude','elevation')``.\n    :param mediatype: [str] Media type. Default is ``NULL``, so no filtering on mediatype. Options:\n       ``NULL``, ``MovingImage``, ``Sound``, and ``StillImage``\n    :param limit: [int] Number of results to return. Default: ``300``\n    :param offset: [int] Record to start at. Default: ``0``\n    :param facet: [str] a character vector of length 1 or greater\n    :param establishmentMeans: [str] EstablishmentMeans, possible values include: INTRODUCED,\n        INVASIVE, MANAGED, NATIVE, NATURALISED, UNCERTAIN\n    :param facetMincount: [int] minimum number of records to be included in the faceting results\n    :param facetMultiselect: [bool] Set to ``true`` to still return counts for values that are not currently\n        filtered. See examples. Default: ``false``\n\n    :return: A dictionary\n\n    Usage::\n\n        from pygbif import occurrences\n        occurrences.search(taxonKey = 3329049)\n\n        # Return 2 results, this is the default by the way\n        occurrences.search(taxonKey=3329049, limit=2)\n\n        # Instead of getting a taxon key first, you can search for a name directly\n        # However, note that using this approach (with `scientificName=\"...\"`)\n        # you are getting synonyms too. The results for using `scientifcName` and\n        # `taxonKey` parameters are the same in this case, but I wouldn't be surprised if for some\n        # names they return different results\n        occurrences.search(scientificName = 'Ursus americanus')\n        from pygbif import species\n        key = species.name_backbone(name = 'Ursus americanus', rank='species')['usageKey']\n        occurrences.search(taxonKey = key)\n\n        # Search by dataset key\n        occurrences.search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', limit=20)\n\n        # Search by catalog number\n        occurrences.search(catalogNumber=\"49366\", limit=20)\n        # occurrences.search(catalogNumber=[\"49366\",\"Bird.27847588\"], limit=20)\n\n        # Use paging parameters (limit and offset) to page. Note the different results\n        # for the two queries below.\n        occurrences.search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', offset=10, limit=5)\n        occurrences.search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', offset=20, limit=5)\n\n        # Many dataset keys\n        # occurrences.search(datasetKey=[\"50c9509d-22c7-4a22-a47d-8c48425ef4a7\", \"7b5d6a48-f762-11e1-a439-00145eb45e9a\"], limit=20)\n\n        # Search by collector name\n        res = occurrences.search(recordedBy=\"smith\", limit=20)\n        [ x['recordedBy'] for x in res['results'] ]\n\n        # Many collector names\n        # occurrences.search(recordedBy=[\"smith\",\"BJ Stacey\"], limit=20)\n\n        # Search for many species\n        splist = ['Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa']\n        keys = [ species.name_suggest(x)[0]['key'] for x in splist ]\n        out = [ occurrences.search(taxonKey = x, limit=1) for x in keys ]\n        [ x['results'][0]['speciesKey'] for x in out ]\n\n        # Search - q parameter\n        occurrences.search(q = \"kingfisher\", limit=20)\n        ## spell check - only works with the `search` parameter\n        ### spelled correctly - same result as above call\n        occurrences.search(q = \"kingfisher\", limit=20, spellCheck = True)\n        ### spelled incorrectly - stops with suggested spelling\n        occurrences.search(q = \"kajsdkla\", limit=20, spellCheck = True)\n        ### spelled incorrectly - stops with many suggested spellings\n        ###   and number of results for each\n        occurrences.search(q = \"helir\", limit=20, spellCheck = True)\n\n        # Search on latitidue and longitude\n        occurrences.search(decimalLatitude=50, decimalLongitude=10, limit=2)\n\n        # Search on a bounding box\n        ## in well known text format\n        occurrences.search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit=20)\n        from pygbif import species\n        key = species.name_suggest(q='Aesculus hippocastanum')[0]['key']\n        occurrences.search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit=20)\n        ## multipolygon\n        wkt = 'MULTIPOLYGON(((-123 38, -123 43, -116 43, -116 38, -123 38)),((-97 41, -97 45, -93 45, -93 41, -97 41)))'\n        occurrences.search(geometry = wkt, limit = 20)\n\n        # Search on country\n        occurrences.search(country='US', limit=20)\n        occurrences.search(country='FR', limit=20)\n        occurrences.search(country='DE', limit=20)\n\n        # Get only occurrences with lat/long data\n        occurrences.search(taxonKey=key, hasCoordinate=True, limit=20)\n\n        # Get only occurrences that were recorded as living specimens\n        occurrences.search(taxonKey=key, basisOfRecord=\"LIVING_SPECIMEN\", hasCoordinate=True, limit=20)\n\n        # Get occurrences for a particular eventDate\n        occurrences.search(taxonKey=key, eventDate=\"2013\", limit=20)\n        occurrences.search(taxonKey=key, year=\"2013\", limit=20)\n        occurrences.search(taxonKey=key, month=\"6\", limit=20)\n\n        # Get occurrences based on depth\n        key = species.name_backbone(name='Salmo salar', kingdom='animals')['usageKey']\n        occurrences.search(taxonKey=key, depth=\"5\", limit=20)\n\n        # Get occurrences based on elevation\n        key = species.name_backbone(name='Puma concolor', kingdom='animals')['usageKey']\n        occurrences.search(taxonKey=key, elevation=50, hasCoordinate=True, limit=20)\n\n        # Get occurrences based on institutionCode\n        occurrences.search(institutionCode=\"TLMF\", limit=20)\n\n        # Get occurrences based on collectionCode\n        occurrences.search(collectionCode=\"Floristic Databases MV - Higher Plants\", limit=20)\n\n        # Get only those occurrences with spatial issues\n        occurrences.search(taxonKey=key, hasGeospatialIssue=True, limit=20)\n\n        # Search using a query string\n        occurrences.search(q=\"kingfisher\", limit=20)\n\n        # Range queries\n        ## See Detail for parameters that support range queries\n        ### this is a range depth, with lower/upper limits in character string\n        occurrences.search(depth='50,100')\n\n        ## Range search with year\n        occurrences.search(year='1999,2000', limit=20)\n\n        ## Range search with latitude\n        occurrences.search(decimalLatitude='29.59,29.6')\n\n        # Search by specimen type status\n        ## Look for possible values of the typeStatus parameter looking at the typestatus dataset\n        occurrences.search(typeStatus = 'allotype')\n\n        # Search by specimen record number\n        ## This is the record number of the person/group that submitted the data, not GBIF's numbers\n        ## You can see that many different groups have record number 1, so not super helpful\n        occurrences.search(recordNumber = 1)\n\n        # Search by last time interpreted: Date the record was last modified in GBIF\n        ## The lastInterpreted parameter accepts ISO 8601 format dates, including\n        ## yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Range queries are accepted for lastInterpreted\n        occurrences.search(lastInterpreted = '2014-04-01')\n\n        # Search by continent\n        ## One of africa, antarctica, asia, europe, north_america, oceania, or south_america\n        occurrences.search(continent = 'south_america')\n        occurrences.search(continent = 'africa')\n        occurrences.search(continent = 'oceania')\n        occurrences.search(continent = 'antarctica')\n\n        # Search for occurrences with images\n        occurrences.search(mediatype = 'StillImage')\n        occurrences.search(mediatype = 'MovingImage')\n        x = occurrences.search(mediatype = 'Sound')\n        [z['media'] for z in x['results']]\n\n        # Query based on issues\n        occurrences.search(taxonKey=1, issue='DEPTH_UNLIKELY')\n        occurrences.search(taxonKey=1, issue=['DEPTH_UNLIKELY','COORDINATE_ROUNDED'])\n        # Show all records in the Arizona State Lichen Collection that cant be matched to the GBIF\n        # backbone properly:\n        occurrences.search(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a', issue=['TAXON_MATCH_NONE','TAXON_MATCH_HIGHERRANK'])\n\n        # If you pass in an invalid polygon you get hopefully informative errors\n        ### the WKT string is fine, but GBIF says bad polygon\n        wkt = 'POLYGON((-178.59375 64.83258989321493,-165.9375 59.24622380205539,\n        -147.3046875 59.065977905449806,-130.78125 51.04484764446178,-125.859375 36.70806354647625,\n        -112.1484375 23.367471303759686,-105.1171875 16.093320185359257,-86.8359375 9.23767076398516,\n        -82.96875 2.9485268155066175,-82.6171875 -14.812060061226388,-74.8828125 -18.849111862023985,\n        -77.34375 -47.661687803329166,-84.375 -49.975955187343295,174.7265625 -50.649460483096114,\n        179.296875 -42.19189902447192,-176.8359375 -35.634976650677295,176.8359375 -31.835565983656227,\n        163.4765625 -6.528187613695323,152.578125 1.894796132058301,135.703125 4.702353722559447,\n        127.96875 15.077427674847987,127.96875 23.689804541429606,139.921875 32.06861069132688,\n        149.4140625 42.65416193033991,159.2578125 48.3160811030533,168.3984375 57.019804336633165,\n        178.2421875 59.95776046458139,-179.6484375 61.16708631440347,-178.59375 64.83258989321493))'\n        occurrences.search(geometry = wkt)\n\n        # Faceting\n        ## return no occurrence records with limit=0\n        x = occurrences.search(facet = \"country\", limit = 0)\n        x['facets']\n\n        ## also return occurrence records\n        x = occurrences.search(facet = \"establishmentMeans\", limit = 10)\n        x['facets']\n        x['results']\n\n        ## multiple facet variables\n        x = occurrences.search(facet = [\"country\", \"basisOfRecord\"], limit = 10)\n        x['results']\n        x['facets']\n        x['facets']['country']\n        x['facets']['basisOfRecord']\n        x['facets']['basisOfRecord']['count']\n\n        ## set a minimum facet count\n        x = occurrences.search(facet = \"country\", facetMincount = 30000000L, limit = 0)\n        x['facets']\n\n        ## paging per each faceted variable\n        ### do so by passing in variables like \"country\" + \"_facetLimit\" = \"country_facetLimit\"\n        ### or \"country\" + \"_facetOffset\" = \"country_facetOffset\"\n        x = occurrences.search(\n          facet = [\"country\", \"basisOfRecord\", \"hasCoordinate\"],\n          country_facetLimit = 3,\n          basisOfRecord_facetLimit = 6,\n          limit = 0\n        )\n        x['facets']\n\n        # requests package options\n        ## There's an acceptable set of requests options (['timeout', 'cookies', 'auth',\n        ## 'allow_redirects', 'proxies', 'verify', 'stream', 'cert']) you can pass\n        ## in via **kwargs, e.g., set a timeout\n        x = occurrences.search(timeout = 1)",
+        "ground_truth": "search",
+        "file_path": ""
+      },
+      {
+        "query": "Networks metadata.\n\n  Note: there's only 1 network now, so there's not a lot you can do with this method.\n\n  :param data: [str] The type of data to get. Default: ``all``\n  :param uuid: [str] UUID of the data network provider. This must be specified if data\n     is anything other than ``all``.\n  :param q: [str] Query networks. Only used when ``data = 'all'``. Ignored otherwise.\n  :param identifier: [fixnum] The value for this parameter can be a simple string or integer,\n      e.g. identifier=120\n  :param identifierType: [str] Used in combination with the identifier parameter to filter\n      identifiers by identifier type: ``DOI``, ``FTP``, ``GBIF_NODE``, ``GBIF_PARTICIPANT``,\n      ``GBIF_PORTAL``, ``HANDLER``, ``LSID``, ``UNKNOWN``, ``URI``, ``URL``, ``UUID``\n  :param limit: [int] Number of results to return. Default: ``100``\n  :param offset: [int] Record to start at. Default: ``0``\n\n  :return: A dictionary\n\n  References: http://www.gbif.org/developer/registry#networks\n\n  Usage::\n\n      from pygbif import registry\n      registry.networks(limit=1)\n      registry.networks(uuid='2b7c7b4f-4d4f-40d3-94de-c28b6fa054a6')",
+        "ground_truth": "networks",
+        "file_path": ""
+      },
+      {
+        "query": "GBIF maps API\n\n    :param source: [str] Either ``density`` for fast, precalculated tiles,\n        or ``adhoc`` for any search\n    :param z: [str] zoom level\n    :param x: [str] longitude\n    :param y: [str] latitude\n    :param format: [str] format of returned data. One of:\n\n      - ``.mvt`` - vector tile\n      - ``@Hx.png`` - 256px raster tile (for legacy clients)\n      - ``@1x.png`` - 512px raster tile, @2x.png for a 1024px raster tile\n      - ``@2x.png`` - 1024px raster tile\n      - ``@3x.png`` - 2048px raster tile\n      - ``@4x.png`` - 4096px raster tile\n\n    :param srs: [str] Spatial reference system. One of:\n\n      - ``EPSG:3857`` (Web Mercator)\n      - ``EPSG:4326`` (WGS84 plate caree)\n      - ``EPSG:3575`` (Arctic LAEA)\n      - ``EPSG:3031`` (Antarctic stereographic)\n\n    :param bin: [str] square or hex to aggregate occurrence counts into\n        squares or hexagons. Points by default.\n    :param hexPerTile: [str] sets the size of the hexagons (the number \n        horizontally across a tile)\n    :param squareSize: [str] sets the size of the squares. Choose a factor \n        of 4096 so they tessalate correctly: probably from 8, 16, 32, 64, \n        128, 256, 512.\n    :param style: [str] for raster tiles, choose from the available styles.\n        Defaults to classic.point.\n    :param taxonKey: [int] A GBIF occurrence identifier\n    :param datasetKey: [str] The occurrence dataset key (a uuid)\n    :param country: [str] The 2-letter country code (as per ISO-3166-1) of \n        the country in which the occurrence was recorded. See here\n        http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\n    :param basisOfRecord: [str] Basis of record, as defined in the BasisOfRecord enum \n        http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html\n        Acceptable values are\n\n       - ``FOSSIL_SPECIMEN`` An occurrence record describing a fossilized specimen.\n       - ``HUMAN_OBSERVATION`` An occurrence record describing an observation made by one or more people.\n       - ``LITERATURE`` An occurrence record based on literature alone.\n       - ``LIVING_SPECIMEN`` An occurrence record describing a living specimen, e.g.\n       - ``MACHINE_OBSERVATION`` An occurrence record describing an observation made by a machine.\n       - ``OBSERVATION`` An occurrence record describing an observation.\n       - ``PRESERVED_SPECIMEN`` An occurrence record describing a preserved specimen.\n       - ``UNKNOWN`` Unknown basis for the record.\n\n    :param year: [int] The 4 digit year. A year of 98 will be interpreted as \n        AD 98. Supports range queries, smaller,larger (e.g., ``1990,1991``, \n        whereas ``1991,1990`` wouldn't work)\n    :param publishingCountry: [str] The 2-letter country code (as per \n        ISO-3166-1) of the country in which the occurrence was recorded.\n\n    :return: An object of class GbifMap\n\n    For mvt format, see https://github.com/tilezen/mapbox-vector-tile to \n    decode, and example below\n\n    Usage::\n\n        from pygbif import maps\n        out = maps.map(taxonKey = 2435098)\n        out.response\n        out.path\n        out.img\n        out.plot()\n\n        out = maps.map(taxonKey = 2480498, year = range(2008, 2011+1))\n        out.response\n        out.path\n        out.img\n        out.plot()\n        \n        # srs\n        maps.map(taxonKey = 2480498, year = 2010, srs = \"EPSG:3857\")\n        # bin\n        maps.map(taxonKey = 212, year = 1998, bin = \"hex\",\n           hexPerTile = 30, style = \"classic-noborder.poly\")\n        # style\n        maps.map(taxonKey = 2480498, style = \"purpleYellow.point\").plot()\n        # basisOfRecord\n        maps.map(taxonKey = 2480498, year = 2010,\n          basisOfRecord = \"HUMAN_OBSERVATION\", bin = \"hex\", \n          hexPerTile = 500).plot()\n        maps.map(taxonKey = 2480498, year = 2010, \n          basisOfRecord = [\"HUMAN_OBSERVATION\", \"LIVING_SPECIMEN\"],\n          hexPerTile = 500, bin = \"hex\").plot()\n\n        # map vector tiles, gives back raw bytes\n        from pygbif import maps\n        x = maps.map(taxonKey = 2480498, year = 2010,\n          format = \".mvt\")\n        x.response\n        x.path\n        x.img # None\n        import mapbox_vector_tile\n        mapbox_vector_tile.decode(x.response.content)",
+        "ground_truth": "map",
+        "file_path": ""
+      },
+      {
+        "query": "Lookup details for specific names in all taxonomies in GBIF.\n\n\t:param key: [fixnum] A GBIF key for a taxon\n\t:param name: [str] Filters by a case insensitive, canonical namestring,\n\t\t e.g. 'Puma concolor'\n\t:param data: [str] The type of data to get. Default: ``all``. Options: ``all``,\n\t\t``verbatim``, ``name``, ``parents``, ``children``,\n\t\t``related``, ``synonyms``, ``descriptions``, ``distributions``, ``media``,\n\t\t``references``, ``speciesProfiles``, ``vernacularNames``, ``typeSpecimens``,\n\t\t``root``\n\t:param language: [str] Language, default is english\n\t:param datasetKey: [str] Filters by the dataset's key (a uuid)\n\t:param uuid: [str] A uuid for a dataset. Should give exact same results as datasetKey.\n\t:param sourceId: [fixnum] Filters by the source identifier.\n\t:param rank: [str] Taxonomic rank. Filters by taxonomic rank as one of:\n\t\t\t``CLASS``, ``CULTIVAR``, ``CULTIVAR_GROUP``, ``DOMAIN``, ``FAMILY``, ``FORM``, ``GENUS``, ``INFORMAL``,\n\t\t\t``INFRAGENERIC_NAME``, ``INFRAORDER``, ``INFRASPECIFIC_NAME``, ``INFRASUBSPECIFIC_NAME``,\n\t\t\t``KINGDOM``, ``ORDER``, ``PHYLUM``, ``SECTION``, ``SERIES``, ``SPECIES``, ``STRAIN``, ``SUBCLASS``, ``SUBFAMILY``,\n\t\t\t``SUBFORM``, ``SUBGENUS``, ``SUBKINGDOM``, ``SUBORDER``, ``SUBPHYLUM``, ``SUBSECTION``, ``SUBSERIES``,\n\t\t\t``SUBSPECIES``, ``SUBTRIBE``, ``SUBVARIETY``, ``SUPERCLASS``, ``SUPERFAMILY``, ``SUPERORDER``,\n\t\t\t``SUPERPHYLUM``, ``SUPRAGENERIC_NAME``, ``TRIBE``, ``UNRANKED``, ``VARIETY``\n\t:param shortname: [str] A short name..need more info on this?\n\t:param limit: [fixnum] Number of records to return. Default: ``100``. Maximum: ``1000``. (optional)\n\t:param offset: [fixnum] Record number to start at. (optional)\n\n\tReferences: http://www.gbif.org/developer/species#nameUsages\n\n\tUsage::\n\n\t\t\tfrom pygbif import species\n\n\t\t\tspecies.name_usage(key=1)\n\n\t\t\t# Name usage for a taxonomic name\n\t\t\tspecies.name_usage(name='Puma', rank=\"GENUS\")\n\n\t\t\t# All name usages\n\t\t\tspecies.name_usage()\n\n\t\t\t# References for a name usage\n\t\t\tspecies.name_usage(key=2435099, data='references')\n\n\t\t\t# Species profiles, descriptions\n\t\t\tspecies.name_usage(key=3119195, data='speciesProfiles')\n\t\t\tspecies.name_usage(key=3119195, data='descriptions')\n\t\t\tspecies.name_usage(key=2435099, data='children')\n\n\t\t\t# Vernacular names for a name usage\n\t\t\tspecies.name_usage(key=3119195, data='vernacularNames')\n\n\t\t\t# Limit number of results returned\n\t\t\tspecies.name_usage(key=3119195, data='vernacularNames', limit=3)\n\n\t\t\t# Search for names by dataset with datasetKey parameter\n\t\t\tspecies.name_usage(datasetKey=\"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c\")\n\n\t\t\t# Search for a particular language\n\t\t\tspecies.name_usage(key=3119195, language=\"FRENCH\", data='vernacularNames')",
+        "ground_truth": "name_usage",
+        "file_path": ""
+      },
+      {
+        "query": "check if a variable is present in the environmental variables",
+        "ground_truth": "_check_environ",
+        "file_path": ""
+      },
+      {
+        "query": "Spin up a download request for GBIF occurrence data.\n\n    :param queries: One or more of query arguments to kick of a download job.\n        See Details.\n    :type queries: str or list\n    :param pred_type: (character) One of ``equals`` (``=``), ``and`` (``&``),\n        `or`` (``|``), ``lessThan`` (``<``), ``lessThanOrEquals`` (``<=``),\n        ``greaterThan`` (``>``), ``greaterThanOrEquals`` (``>=``),\n        ``in``, ``within``, ``not`` (``!``), ``like``\n    :param user: (character) User name within GBIF's website.\n        Required. Set in your env vars with the option ``GBIF_USER``\n    :param pwd: (character) User password within GBIF's website. Required.\n        Set in your env vars with the option ``GBIF_PWD``\n    :param email: (character) Email address to recieve download notice done\n        email. Required. Set in your env vars with the option ``GBIF_EMAIL``\n\n    Argument passed have to be passed as character (e.g., ``country = US``),\n    with a space between key (``country``), operator (``=``), and value (``US``).\n    See the ``type`` parameter for possible options for the operator.\n    This character string is parsed internally.\n\n    Acceptable arguments to ``...`` (args) are:\n\n     - taxonKey = ``TAXON_KEY``\n     - scientificName = ``SCIENTIFIC_NAME``\n     - country = ``COUNTRY``\n     - publishingCountry = ``PUBLISHING_COUNTRY``\n     - hasCoordinate = ``HAS_COORDINATE``\n     - hasGeospatialIssue = ``HAS_GEOSPATIAL_ISSUE``\n     - typeStatus = ``TYPE_STATUS``\n     - recordNumber = ``RECORD_NUMBER``\n     - lastInterpreted = ``LAST_INTERPRETED``\n     - continent = ``CONTINENT``\n     - geometry = ``GEOMETRY``\n     - basisOfRecord = ``BASIS_OF_RECORD``\n     - datasetKey = ``DATASET_KEY``\n     - eventDate = ``EVENT_DATE``\n     - catalogNumber = ``CATALOG_NUMBER``\n     - year = ``YEAR``\n     - month = ``MONTH``\n     - decimalLatitude = ``DECIMAL_LATITUDE``\n     - decimalLongitude = ``DECIMAL_LONGITUDE``\n     - elevation = ``ELEVATION``\n     - depth = ``DEPTH``\n     - institutionCode = ``INSTITUTION_CODE``\n     - collectionCode = ``COLLECTION_CODE``\n     - issue = ``ISSUE``\n     - mediatype = ``MEDIA_TYPE``\n     - recordedBy = ``RECORDED_BY``\n     - repatriated = ``REPATRIATED``\n\n    See the API docs http://www.gbif.org/developer/occurrence#download\n    for more info, and the predicates docs\n    http://www.gbif.org/developer/occurrence#predicates\n\n    GBIF has a limit of 12,000 characters for download queries - so\n    if you're download request is really, really long and complex,\n    consider breaking it up into multiple requests by one factor or\n    another.\n\n    :return: A dictionary, of results\n\n    Usage::\n\n        from pygbif import occurrences as occ\n\n        occ.download('basisOfRecord = LITERATURE')\n        occ.download('taxonKey = 3119195')\n        occ.download('decimalLatitude > 50')\n        occ.download('elevation >= 9000')\n        occ.download('decimalLatitude >= 65')\n        occ.download('country = US')\n        occ.download('institutionCode = TLMF')\n        occ.download('catalogNumber = Bird.27847588')\n\n        res = occ.download(['taxonKey = 7264332', 'hasCoordinate = TRUE'])\n\n        # pass output to download_meta for more information\n        occ.download_meta(occ.download('decimalLatitude > 75'))\n\n        # Multiple queries\n        gg = occ.download(['decimalLatitude >= 65',\n                          'decimalLatitude <= -65'], type='or')\n        gg = occ.download(['depth = 80', 'taxonKey = 2343454'],\n                          type='or')\n\n        # Repratriated data for Costa Rica\n        occ.download(['country = CR', 'repatriated = true'])",
+        "ground_truth": "download",
+        "file_path": ""
+      },
+      {
+        "query": "Lists the downloads created by a user.\n\n    :param user: [str] A user name, look at env var ``GBIF_USER`` first\n    :param pwd: [str] Your password, look at env var ``GBIF_PWD`` first\n    :param limit: [int] Number of records to return. Default: ``20``\n    :param offset: [int] Record number to start at. Default: ``0``\n\n    Usage::\n\n      from pygbif import occurrences as occ\n      occ.download_list(user = \"sckott\")\n      occ.download_list(user = \"sckott\", limit = 5)\n      occ.download_list(user = \"sckott\", offset = 21)",
+        "ground_truth": "download_list",
+        "file_path": ""
+      },
+      {
+        "query": "Get a download from GBIF.\n\n    :param key: [str] A key generated from a request, like that from ``download``\n    :param path: [str] Path to write zip file to. Default: ``\".\"``, with a ``.zip`` appended to the end.\n    :param **kwargs**: Further named arguments passed on to ``requests.get``\n\n    Downloads the zip file to a directory you specify on your machine.\n    The speed of this function is of course proportional to the size of the\n    file to download, and affected by your internet connection speed.\n\n    This function only downloads the file. To open and read it, see\n    https://github.com/BelgianBiodiversityPlatform/python-dwca-reader\n\n    Usage::\n\n      from pygbif import occurrences as occ\n      occ.download_get(\"0000066-140928181241064\")\n      occ.download_get(\"0003983-140910143529206\")",
+        "ground_truth": "download_get",
+        "file_path": ""
+      },
+      {
+        "query": "set main predicate combination type\n\n        :param value: (character) One of ``equals`` (``=``), ``and`` (``&``), ``or`` (``|``),\n        ``lessThan`` (``<``), ``lessThanOrEquals`` (``<=``), ``greaterThan`` (``>``),\n        ``greaterThanOrEquals`` (``>=``), ``in``, ``within``, ``not`` (``!``), ``like``",
+        "ground_truth": "GbifDownload.main_pred_type",
+        "file_path": ""
+      },
+      {
+        "query": "add key, value, type combination of a predicate\n\n        :param key: query KEY parameter\n        :param value: the value used in the predicate\n        :param predicate_type: the type of predicate (e.g. ``equals``)",
+        "ground_truth": "GbifDownload.add_predicate",
+        "file_path": ""
+      },
+      {
+        "query": "extract values from either file or list\n\n        :param values_list: list or file name (str) with list of values",
+        "ground_truth": "GbifDownload._extract_values",
+        "file_path": ""
+      },
+      {
+        "query": "add an iterative predicate with a key and set of values\n        which it can be equal to in and or function.\n        The individual predicates are specified with the type ``equals`` and\n        combined with a type ``or``.\n\n        The main reason for this addition is the inability of using ``in`` as\n        predicate type wfor multiple taxon_key values\n        (cfr. http://dev.gbif.org/issues/browse/POR-2753)\n\n        :param key: API key to use for the query.\n        :param values_list: Filename or list containing the taxon keys to be s\n            searched.",
+        "ground_truth": "GbifDownload.add_iterative_predicate",
+        "file_path": ""
+      },
+      {
+        "query": "Gets details for a single, interpreted occurrence\n\n    :param key: [int] A GBIF occurrence key\n\n    :return: A dictionary, of results\n\n    Usage::\n\n        from pygbif import occurrences\n        occurrences.get(key = 1258202889)\n        occurrences.get(key = 1227768771)\n        occurrences.get(key = 1227769518)",
+        "ground_truth": "get",
+        "file_path": ""
+      },
+      {
+        "query": "Gets a verbatim occurrence record without any interpretation\n\n    :param key: [int] A GBIF occurrence key\n\n    :return: A dictionary, of results\n\n    Usage::\n\n        from pygbif import occurrences\n        occurrences.get_verbatim(key = 1258202889)\n        occurrences.get_verbatim(key = 1227768771)\n        occurrences.get_verbatim(key = 1227769518)",
+        "ground_truth": "get_verbatim",
+        "file_path": ""
+      },
+      {
+        "query": "Get a single occurrence fragment in its raw form (xml or json)\n\n    :param key: [int] A GBIF occurrence key\n\n    :return: A dictionary, of results\n\n    Usage::\n\n        from pygbif import occurrences\n        occurrences.get_fragment(key = 1052909293)\n        occurrences.get_fragment(key = 1227768771)\n        occurrences.get_fragment(key = 1227769518)",
+        "ground_truth": "get_fragment",
+        "file_path": ""
+      },
+      {
+        "query": "Lookup names in the GBIF backbone taxonomy.\n\n  :param name: [str] Full scientific name potentially with authorship (required)\n  :param rank: [str] The rank given as our rank enum. (optional)\n  :param kingdom: [str] If provided default matching will also try to match against this\n     if no direct match is found for the name alone. (optional)\n  :param phylum: [str] If provided default matching will also try to match against this\n     if no direct match is found for the name alone. (optional)\n  :param class: [str] If provided default matching will also try to match against this\n     if no direct match is found for the name alone. (optional)\n  :param order: [str] If provided default matching will also try to match against this\n     if no direct match is found for the name alone. (optional)\n  :param family: [str] If provided default matching will also try to match against this\n     if no direct match is found for the name alone. (optional)\n  :param genus: [str] If provided default matching will also try to match against this\n     if no direct match is found for the name alone. (optional)\n  :param strict: [bool] If True it (fuzzy) matches only the given name, but never a\n     taxon in the upper classification (optional)\n  :param verbose: [bool] If True show alternative matches considered which had been rejected.\n  :param offset: [int] Record to start at. Default: ``0``\n  :param limit: [int] Number of results to return. Default: ``100``\n\n  A list for a single taxon with many slots (with ``verbose=False`` - default), or a\n  list of length two, first element for the suggested taxon match, and a data.frame\n  with alternative name suggestions resulting from fuzzy matching (with ``verbose=True``).\n\n  If you don't get a match GBIF gives back a list of length 3 with slots synonym,\n  confidence, and ``matchType='NONE'``.\n\n  reference: http://www.gbif.org/developer/species#searching\n\n  Usage::\n\n      from pygbif import species\n      species.name_backbone(name='Helianthus annuus', kingdom='plants')\n      species.name_backbone(name='Helianthus', rank='genus', kingdom='plants')\n      species.name_backbone(name='Poa', rank='genus', family='Poaceae')\n\n      # Verbose - gives back alternatives\n      species.name_backbone(name='Helianthus annuus', kingdom='plants', verbose=True)\n\n      # Strictness\n      species.name_backbone(name='Poa', kingdom='plants', verbose=True, strict=False)\n      species.name_backbone(name='Helianthus annuus', kingdom='plants', verbose=True, strict=True)\n\n      # Non-existent name\n      species.name_backbone(name='Aso')\n\n      # Multiple equal matches\n      species.name_backbone(name='Oenante')",
+        "ground_truth": "name_backbone",
+        "file_path": ""
+      },
+      {
+        "query": "Parse taxon names using the GBIF name parser\n\n  :param name: [str] A character vector of scientific names. (required)\n\n  reference: http://www.gbif.org/developer/species#parser\n\n  Usage::\n\n      from pygbif import species\n      species.name_parser('x Agropogon littoralis')\n      species.name_parser(['Arrhenatherum elatius var. elatius',\n        'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',\n        'Vanessa atalanta (Linnaeus, 1758)'])",
+        "ground_truth": "name_parser",
+        "file_path": ""
+      },
+      {
+        "query": "Lookup names in all taxonomies in GBIF.\n\n\tThis service uses fuzzy lookup so that you can put in partial names and\n\tyou should get back those things that match. See examples below.\n\n\t:param q: [str] Query term(s) for full text search (optional)\n\t:param rank: [str] ``CLASS``, ``CULTIVAR``, ``CULTIVAR_GROUP``, ``DOMAIN``, ``FAMILY``,\n\t\t ``FORM``, ``GENUS``, ``INFORMAL``, ``INFRAGENERIC_NAME``, ``INFRAORDER``, ``INFRASPECIFIC_NAME``,\n\t\t ``INFRASUBSPECIFIC_NAME``, ``KINGDOM``, ``ORDER``, ``PHYLUM``, ``SECTION``, ``SERIES``, ``SPECIES``, ``STRAIN``, ``SUBCLASS``,\n\t\t ``SUBFAMILY``, ``SUBFORM``, ``SUBGENUS``, ``SUBKINGDOM``, ``SUBORDER``, ``SUBPHYLUM``, ``SUBSECTION``, ``SUBSERIES``,\n\t\t ``SUBSPECIES``, ``SUBTRIBE``, ``SUBVARIETY``, ``SUPERCLASS``, ``SUPERFAMILY``, ``SUPERORDER``, ``SUPERPHYLUM``,\n\t\t ``SUPRAGENERIC_NAME``, ``TRIBE``, ``UNRANKED``, ``VARIETY`` (optional)\n\t:param verbose: [bool] If True show alternative matches considered which had been rejected.\n\t:param higherTaxonKey: [str] Filters by any of the higher Linnean rank keys. Note this\n\t\t\tis within the respective checklist and not searching nub keys across all checklists (optional)\n\t:param status: [str] (optional) Filters by the taxonomic status as one of:\n\n\t\t* ``ACCEPTED``\n\t\t* ``DETERMINATION_SYNONYM`` Used for unknown child taxa referred to via spec, ssp, ...\n\t\t* ``DOUBTFUL`` Treated as accepted, but doubtful whether this is correct.\n\t\t* ``HETEROTYPIC_SYNONYM`` More specific subclass of ``SYNONYM``.\n\t\t* ``HOMOTYPIC_SYNONYM`` More specific subclass of ``SYNONYM``.\n\t\t* ``INTERMEDIATE_RANK_SYNONYM`` Used in nub only.\n\t\t* ``MISAPPLIED`` More specific subclass of ``SYNONYM``.\n\t\t* ``PROPARTE_SYNONYM`` More specific subclass of ``SYNONYM``.\n\t\t* ``SYNONYM`` A general synonym, the exact type is unknown.\n\n\t:param isExtinct: [bool] Filters by extinction status (e.g. ``isExtinct=True``)\n\t:param habitat: [str] Filters by habitat. One of: ``marine``, ``freshwater``, or\n\t\t\t``terrestrial`` (optional)\n\t:param nameType: [str] (optional) Filters by the name type as one of:\n\n\t\t* ``BLACKLISTED`` surely not a scientific name.\n\t\t* ``CANDIDATUS`` Candidatus is a component of the taxonomic name for a bacterium that cannot be maintained in a Bacteriology Culture Collection.\n\t\t* ``CULTIVAR`` a cultivated plant name.\n\t\t* ``DOUBTFUL`` doubtful whether this is a scientific name at all.\n\t\t* ``HYBRID`` a hybrid formula (not a hybrid name).\n\t\t* ``INFORMAL`` a scientific name with some informal addition like \"cf.\" or indetermined like Abies spec.\n\t\t* ``SCINAME`` a scientific name which is not well formed.\n\t\t* ``VIRUS`` a virus name.\n\t\t* ``WELLFORMED`` a well formed scientific name according to present nomenclatural rules.\n\n\t:param datasetKey: [str] Filters by the dataset's key (a uuid) (optional)\n\t:param nomenclaturalStatus: [str] Not yet implemented, but will eventually allow for\n\t\t\tfiltering by a nomenclatural status enum\n\t:param limit: [fixnum] Number of records to return. Maximum: ``1000``. (optional)\n\t:param offset: [fixnum] Record number to start at. (optional)\n\t:param facet: [str] A list of facet names used to retrieve the 100 most frequent values\n\t\t\tfor a field. Allowed facets are: ``datasetKey``, ``higherTaxonKey``, ``rank``, ``status``,\n\t\t\t``isExtinct``, ``habitat``, and ``nameType``. Additionally ``threat`` and ``nomenclaturalStatus``\n\t\t\tare legal values but not yet implemented, so data will not yet be returned for them. (optional)\n\t:param facetMincount: [str] Used in combination with the facet parameter. Set\n\t\t\t``facetMincount={#}`` to exclude facets with a count less than {#}, e.g.\n\t\t\thttp://bit.ly/1bMdByP only shows the type value ``ACCEPTED`` because the other\n\t\t\tstatuses have counts less than 7,000,000 (optional)\n\t:param facetMultiselect: [bool] Used in combination with the facet parameter. Set\n\t\t\t``facetMultiselect=True`` to still return counts for values that are not currently\n\t\t\tfiltered, e.g. http://bit.ly/19YLXPO still shows all status values even though\n\t\t\tstatus is being filtered by ``status=ACCEPTED`` (optional)\n\t:param type: [str] Type of name. One of ``occurrence``, ``checklist``, or ``metadata``. (optional)\n\t:param hl: [bool] Set ``hl=True`` to highlight terms matching the query when in fulltext\n\t\t\tsearch fields. The highlight will be an emphasis tag of class ``gbifH1`` e.g.\n\t\t\t``q='plant', hl=True``. Fulltext search fields include: ``title``, ``keyword``, ``country``,\n\t\t\t``publishing country``, ``publishing organization title``, ``hosting organization title``, and\n\t\t\t``description``. One additional full text field is searched which includes information from\n\t\t\tmetadata documents, but the text of this field is not returned in the response. (optional)\n\n\t:return: A dictionary\n\n\t:references: http://www.gbif.org/developer/species#searching\n\n\tUsage::\n\n\t\t\tfrom pygbif import species\n\n\t\t\t# Look up names like mammalia\n\t\t\tspecies.name_lookup(q='mammalia')\n\n\t\t\t# Paging\n\t\t\tspecies.name_lookup(q='mammalia', limit=1)\n\t\t\tspecies.name_lookup(q='mammalia', limit=1, offset=2)\n\n\t\t\t# large requests, use offset parameter\n\t\t\tfirst = species.name_lookup(q='mammalia', limit=1000)\n\t\t\tsecond = species.name_lookup(q='mammalia', limit=1000, offset=1000)\n\n\t\t\t# Get all data and parse it, removing descriptions which can be quite long\n\t\t\tspecies.name_lookup('Helianthus annuus', rank=\"species\", verbose=True)\n\n\t\t\t# Get all data and parse it, removing descriptions field which can be quite long\n\t\t\tout = species.name_lookup('Helianthus annuus', rank=\"species\")\n\t\t\tres = out['results']\n\t\t\t[ z.pop('descriptions', None) for z in res ]\n\t\t\tres\n\n\t\t\t# Fuzzy searching\n\t\t\tspecies.name_lookup(q='Heli', rank=\"genus\")\n\n\t\t\t# Limit records to certain number\n\t\t\tspecies.name_lookup('Helianthus annuus', rank=\"species\", limit=2)\n\n\t\t\t# Query by habitat\n\t\t\tspecies.name_lookup(habitat = \"terrestrial\", limit=2)\n\t\t\tspecies.name_lookup(habitat = \"marine\", limit=2)\n\t\t\tspecies.name_lookup(habitat = \"freshwater\", limit=2)\n\n\t\t\t# Using faceting\n\t\t\tspecies.name_lookup(facet='status', limit=0, facetMincount='70000')\n\t\t\tspecies.name_lookup(facet=['status', 'higherTaxonKey'], limit=0, facetMincount='700000')\n\n\t\t\tspecies.name_lookup(facet='nameType', limit=0)\n\t\t\tspecies.name_lookup(facet='habitat', limit=0)\n\t\t\tspecies.name_lookup(facet='datasetKey', limit=0)\n\t\t\tspecies.name_lookup(facet='rank', limit=0)\n\t\t\tspecies.name_lookup(facet='isExtinct', limit=0)\n\n\t\t\t# text highlighting\n\t\t\tspecies.name_lookup(q='plant', hl=True, limit=30)\n\n\t\t\t# Lookup by datasetKey\n\t\t\tspecies.name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce')",
+        "ground_truth": "name_lookup",
+        "file_path": ""
+      },
+      {
+        "query": "Returns occurrence counts for a predefined set of dimensions\n\n    :param taxonKey: [int] A GBIF occurrence identifier\n    :param basisOfRecord: [str] A GBIF occurrence identifier\n    :param country: [str] A GBIF occurrence identifier\n    :param isGeoreferenced: [bool] A GBIF occurrence identifier\n    :param datasetKey: [str] A GBIF occurrence identifier\n    :param publishingCountry: [str] A GBIF occurrence identifier\n    :param typeStatus: [str] A GBIF occurrence identifier\n    :param issue: [str] A GBIF occurrence identifier\n    :param year: [int] A GBIF occurrence identifier\n\n    :return: dict\n\n    Usage::\n\n        from pygbif import occurrences\n        occurrences.count(taxonKey = 3329049)\n        occurrences.count(country = 'CA')\n        occurrences.count(isGeoreferenced = True)\n        occurrences.count(basisOfRecord = 'OBSERVATION')",
+        "ground_truth": "count",
+        "file_path": ""
+      },
+      {
+        "query": "Lists occurrence counts by year\n\n    :param year: [int] year range, e.g., ``1990,2000``. Does not support ranges like ``asterisk,2010``\n\n    :return: dict\n\n    Usage::\n\n            from pygbif import occurrences\n            occurrences.count_year(year = '1990,2000')",
+        "ground_truth": "count_year",
+        "file_path": ""
+      },
+      {
+        "query": "Lists occurrence counts for datasets that cover a given taxon or country\n\n    :param taxonKey: [int] Taxon key\n    :param country: [str] A country, two letter code\n\n    :return: dict\n\n    Usage::\n\n            from pygbif import occurrences\n            occurrences.count_datasets(country = \"DE\")",
+        "ground_truth": "count_datasets",
+        "file_path": ""
+      },
+      {
+        "query": "Lists occurrence counts for all countries covered by the data published by the given country\n\n    :param publishingCountry: [str] A two letter country code\n\n    :return: dict\n\n    Usage::\n\n            from pygbif import occurrences\n            occurrences.count_countries(publishingCountry = \"DE\")",
+        "ground_truth": "count_countries",
+        "file_path": ""
+      },
+      {
+        "query": "Lists occurrence counts for all countries that publish data about the given country\n\n    :param country: [str] A country, two letter code\n\n    :return: dict\n\n    Usage::\n\n            from pygbif import occurrences\n            occurrences.count_publishingcountries(country = \"DE\")",
+        "ground_truth": "count_publishingcountries",
+        "file_path": ""
+      }
+    ]
+  },
+  {
+    "repo_id": "SavinaRoja__OpenAccess_EPUB",
+    "repo_name": "SavinaRoja/OpenAccess_EPUB",
+    "tree_path": "benchmark_results\\trees\\SavinaRoja__OpenAccess_EPUB.json",
+    "num_functions": 91,
+    "num_files": 1,
+    "queries": [
+      {
+        "query": "Standard workflow for creating an EPUB document.\n\n    make_EPUB is used to produce an EPUB file from a parsed article. In addition\n    to the article it also requires a path to the appropriate image directory\n    which it will insert into the EPUB file, as well the output directory\n    location for the EPUB file.\n\n    Parameters\n    ----------\n    article : openaccess_epub.article.Article instance\n        `article` is an Article instance for the XML document to be converted to\n        EPUB.\n    output_directory : str\n        `output_directory` is a string path to the directory in which the EPUB\n        will be produced. The name of the directory will be used as the EPUB's\n        filename.\n    input_path : str\n        `input_path` is a string absolute path to the input XML file, used to\n        locate input-relative images.\n    image_directory : str\n        `image_directory` is a string path indicating an explicit image\n        directory. If supplied, other image input methods will not be used.\n    config_module : config module, optional\n        `config_module` is a pre-loaded config module for OpenAccess_EPUB; if\n        not used then this function will load the global config file. Might be\n        useful in certain cases to dynamically alter configuration.\n    epub_version : {None, 2, 3}\n        `epub_version` dictates which version of EPUB to be created. An error\n        will be raised if the specified version is not supported for the\n        publisher. If left to the default, the created version will defer to the\n        publisher default version.\n    batch : bool, optional\n        `batch` indicates that batch creation is being used (such as with the\n        `oaepub batch` command). In this case, directory conflicts will be\n        automatically resolved (in favor of keeping previous data, skipping\n        creation of EPUB).\n\n    Returns False in the case of a fatal error, True if successful.",
+        "ground_truth": "make_EPUB",
+        "file_path": ""
+      },
+      {
+        "query": "Creates the base structure for an EPUB file in a specified location.\n\n    This function creates constant components for the structure of the EPUB in\n    a specified directory location.\n\n    Parameters\n    ----------\n    location : str\n        A path string to a local directory in which the EPUB is to be built",
+        "ground_truth": "make_epub_base",
+        "file_path": ""
+      },
+      {
+        "query": "Zips up the input file directory into an EPUB file.",
+        "ground_truth": "epub_zip",
+        "file_path": ""
+      },
+      {
+        "query": "This method may be used to create a new document for writing as xml\n        to the OPS subdirectory of the ePub structure.",
+        "ground_truth": "Publisher.make_document",
+        "file_path": ""
+      },
+      {
+        "query": "This function will write a document to an XML file.",
+        "ground_truth": "Publisher.write_document",
+        "file_path": ""
+      },
+      {
+        "query": "Receives a date_tuple object, and outputs a string\n        for placement in the article content.",
+        "ground_truth": "Publisher.format_date_string",
+        "file_path": ""
+      },
+      {
+        "query": "Returns True if the article has out-of-flow tables, indicates separate\n        tables document.\n\n        This method is used to indicate whether rendering this article's content\n        will result in the creation of out-of-flow HTML tables. This method has\n        a base class implementation representing a common logic; if an article\n        has a graphic(image) representation of a table then the HTML\n        representation will be placed out-of-flow if it exists, if there is no\n        graphic(image) represenation then the HTML representation will be placed\n        in-flow.\n\n        Returns\n        -------\n        bool\n            True if there are out-of-flow HTML tables, False otherwise",
+        "ground_truth": "Publisher.has_out_of_flow_tables",
+        "file_path": ""
+      },
+      {
+        "query": "Ingests an Article to create navigation structures and parse global\n        metadata.",
+        "ground_truth": "Navigation.process",
+        "file_path": ""
+      },
+      {
+        "query": "This is a wrapper for depth-first recursive analysis of the article",
+        "ground_truth": "Navigation.map_navigation",
+        "file_path": ""
+      },
+      {
+        "query": "This function recursively traverses the content of an input article to\n        add the correct elements to the NCX file's navMap and Lists.",
+        "ground_truth": "Navigation.recursive_article_navmap",
+        "file_path": ""
+      },
+      {
+        "query": "Creates the NCX specified file for EPUB2",
+        "ground_truth": "Navigation.render_EPUB2",
+        "file_path": ""
+      },
+      {
+        "query": "Handles the movement of images to the cache. Must be helpful if it finds\n    that the folder for this article already exists.",
+        "ground_truth": "move_images_to_cache",
+        "file_path": ""
+      },
+      {
+        "query": "The method used to handle an explicitly defined image directory by the\n    user as a parsed argument.",
+        "ground_truth": "explicit_images",
+        "file_path": ""
+      },
+      {
+        "query": "The method used to handle Input-Relative image inclusion.",
+        "ground_truth": "input_relative_images",
+        "file_path": ""
+      },
+      {
+        "query": "The method to be used by get_images() for copying images out of the cache.",
+        "ground_truth": "image_cache",
+        "file_path": ""
+      },
+      {
+        "query": "Main logic controller for the placement of images into the output directory\n\n    Controlling logic for placement of the appropriate imager files into the\n    EPUB directory. This function interacts with interface arguments as well as\n    the local installation config.py file. These may change behavior of this\n    function in terms of how it looks for images relative to the input, where it\n    finds explicit images, whether it will attempt to download images, and\n    whether successfully downloaded images will be stored in the cache.\n\n    Parameters\n    ----------\n    output_directory : str\n        The directory path where the EPUB is being constructed/output\n    explicit : str\n        A directory path to a user specified directory of images. Allows *\n        wildcard expansion.\n    input_path : str\n        The absolute path to the input XML file.\n    config : config module\n        The imported configuration module\n    parsed_article : openaccess_epub.article.Article object\n        The Article instance for the article being converted to EPUB",
+        "ground_truth": "get_images",
+        "file_path": ""
+      },
+      {
+        "query": "Initiates the image cache if it does not exist",
+        "ground_truth": "make_image_cache",
+        "file_path": ""
+      },
+      {
+        "query": "Fetch the images from Frontiers' website. This method may fail to properly\n    locate all the images and should be avoided if the files can be accessed\n    locally. Downloading the images to an appropriate directory in the cache,\n    or to a directory specified by passed argument are the preferred means to\n    access images.",
+        "ground_truth": "fetch_frontiers_images",
+        "file_path": ""
+      },
+      {
+        "query": "Fetch the images for a PLoS article from the internet.\n\n    PLoS images are known through the inspection of <graphic> and\n    <inline-graphic> elements. The information in these tags are then parsed\n    into appropriate URLs for downloading.",
+        "ground_truth": "fetch_plos_images",
+        "file_path": ""
+      },
+      {
+        "query": "Frontiers method.\n\n        Given an Article class instance, this is responsible for returning the\n        names for creators of the article. For our purposes, it is sufficient to\n        list only the authors, returning their name, role=aut, and file-as name.\n\n        This returns a list of Creator(name, role, file_as)",
+        "ground_truth": "Frontiers.nav_creators",
+        "file_path": ""
+      },
+      {
+        "query": "Frontiers method.\n\n        Given an Article class instance, this will return a string representing\n        the title of the article. This is done for PloS by serializing the text\n        in the Article's",
+        "ground_truth": "Frontiers.nav_title",
+        "file_path": ""
+      },
+      {
+        "query": "This method may be built to support elements from different Tag Suite\n    versions with the following tag names:\n        citation, element-citation, mixed-citation, and nlm-citation\n\n    The citation-type attribute is optional, and may also be empty; if it has a\n    value then it should appear in the following prescribed list, or it will be\n    treated as 'other'.\n\n    book          Book or book series\n    commun        Informal or personal communication, such as a phone call or\n                  an email message\n    confproc      Conference proceedings\n    discussion    Discussion among a group in some forum \u2014 public, private, or\n                  electronic \u2014 which may or may not be moderated, for example,\n                  a single discussion thread in a listserv\n    gov           Government publication or government standard\n    journal       Journal article\n    list          Listserv or discussion group (as an entity, as opposed to a\n                  single discussion thread which uses the value \u201cdiscussion\u201d)\n    other         None of the listed types.\n    patent        Patent or patent application\n    thesis        Work written as part of the completion of an advanced degree\n    web           Website\n\n    This method will accept a passed citation_type argument which will override\n    checking of the element's citation-type attribute and force the formatting\n    according to the passed string value. Note that this may not be appropriate\n    in many cases.",
+        "ground_truth": "format_citation",
+        "file_path": ""
+      },
+      {
+        "query": "Attempts to resolve a PLoS DOI into a URL path to the XML file.",
+        "ground_truth": "plos_doi_to_xmlurl",
+        "file_path": ""
+      },
+      {
+        "query": "This method accepts a DOI string and attempts to download the appropriate\n    xml file. If successful, it returns a path to that file. As with all URL\n    input types, the success of this method depends on supporting per-publisher\n    conventions and will fail on unsupported publishers",
+        "ground_truth": "doi_input",
+        "file_path": ""
+      },
+      {
+        "query": "This method expects a direct URL link to an xml file. It will apply no\n    modifications to the received URL string, so ensure good input.",
+        "ground_truth": "url_input",
+        "file_path": ""
+      },
+      {
+        "query": "This method provides support for Frontiers production using base zipfiles\n    as the input for ePub creation. It expects a valid pathname for one of the\n    two zipfiles, and that both zipfiles are present in the same directory.",
+        "ground_truth": "frontiersZipInput",
+        "file_path": ""
+      },
+      {
+        "query": "Cross-platform placement of cached files",
+        "ground_truth": "cache_location",
+        "file_path": ""
+      },
+      {
+        "query": "If the config.py file exists, import it as a module. If it does not exist,\n    call sys.exit() with a request to run oaepub configure.",
+        "ground_truth": "load_config_module",
+        "file_path": ""
+      },
+      {
+        "query": "This function receives two strings representing system paths. The first is\n    the working directory and it should be an absolute path. The second is the\n    relative path and it should not be absolute. This function will render an\n    OS-appropriate absolute path, which is the normalized path from working\n    to relative.",
+        "ground_truth": "evaluate_relative_path",
+        "file_path": ""
+      },
+      {
+        "query": "This function will return an appropriate absolute path for the path it is\n    given. If the input is absolute, it will return unmodified; if the input is\n    relative, it will be rendered as relative to the current working directory.",
+        "ground_truth": "get_absolute_path",
+        "file_path": ""
+      },
+      {
+        "query": "Determination of the directory for output placement involves possibilities\n    for explicit user instruction (absolute path or relative to execution) and\n    implicit default configuration (absolute path or relative to input) from\n    the system global configuration file. This function is responsible for\n    reliably returning the appropriate output directory which will contain any\n    log(s), ePub(s), and unzipped output of OpenAccess_EPUB.\n\n    It utilizes the parsed args, passed as an object, and is self-sufficient in\n    accessing the config file.\n\n    All paths returned by this function are absolute.",
+        "ground_truth": "get_output_directory",
+        "file_path": ""
+      },
+      {
+        "query": "Returns the root name of a file from a full file path.\n\n    It will not raise an error if the result is empty, but an warning will be\n    issued.",
+        "ground_truth": "file_root_name",
+        "file_path": ""
+      },
+      {
+        "query": "Generator function that will iterate over all files in the specified\n    directory and return a path to the files which possess a matching extension.\n\n    You should include the period in your extension, and matching is not case\n    sensitive: '.xml' will also match '.XML' and vice versa.\n\n    An empty string passed to extension will match extensionless files.",
+        "ground_truth": "files_with_ext",
+        "file_path": ""
+      },
+      {
+        "query": "This method takes the name of an epub file as an argument. This name is\n    the input for the java execution of a locally installed epubcheck-.jar. The\n    location of this .jar file is configured in config.py.",
+        "ground_truth": "epubcheck",
+        "file_path": ""
+      },
+      {
+        "query": "If a directory already exists that will be overwritten by some action, this\n    will ask the user whether or not to continue with the deletion.\n\n    If the user responds affirmatively, then the directory will be removed. If\n    the user responds negatively, then the process will abort.",
+        "ground_truth": "dir_exists",
+        "file_path": ""
+      },
+      {
+        "query": "Returns an appropriate logging level integer from a string name",
+        "ground_truth": "get_level",
+        "file_path": ""
+      },
+      {
+        "query": "Configures and generates a Logger object, 'openaccess_epub' based on common\n    parameters used for console interface script execution in OpenAccess_EPUB.\n\n    These parameters are:\n      no_log_file\n          Boolean. Disables logging to file. If set to True, log_to and\n          log_level become irrelevant.\n      log_to\n          A string name indicating a file path for logging.\n      log_level\n          Logging level, one of: 'debug', 'info', 'warning', 'error', 'critical'\n      silent\n          Boolean\n      verbosity\n          Console logging level, one of: 'debug', 'info', 'warning', 'error',\n          'critical\n\n    This method currently only configures a console StreamHandler with a\n    message-only Formatter.",
+        "ground_truth": "config_logging",
+        "file_path": ""
+      },
+      {
+        "query": "This utility function will remove a previous Logger FileHandler, if one\n    exists, and add a new filehandler.\n\n    Parameters:\n      logname\n          The name of the log to reconfigure, 'openaccess_epub' for example\n      new_file\n          The file location for the new FileHandler\n      level\n          Optional. Level of FileHandler logging, if not used then the new\n          FileHandler will have the same level as the old. Pass in name strings,\n          'INFO' for example\n      frmt\n          Optional string format of Formatter for the FileHandler, if not used\n          then the new FileHandler will inherit the Formatter of the old, pass\n          in format strings, '%(message)s' for example\n\n    It is best practice to use the optional level and frmt arguments to account\n    for the case where a previous FileHandler does not exist. In the case that\n    they are not used and a previous FileHandler is not found, then the level\n    will be set logging.DEBUG and the frmt will be set to\n    openaccess_epub.utils.logs.STANDARD_FORMAT as a matter of safety.",
+        "ground_truth": "replace_filehandler",
+        "file_path": ""
+      },
+      {
+        "query": "This method defines how the Article tries to determine the publisher of\n        the article.\n\n        This method relies on the success of the get_DOI method to fetch the\n        appropriate full DOI for the article. It then takes the DOI prefix\n        which corresponds to the publisher and then uses that to attempt to load\n        the correct publisher-specific code. This may fail; if the DOI is not\n        mapped to a code file, if the DOI is mapped but the code file could not\n        be located, or if the mapped code file is malformed then this method\n        will issue/log an informative error message and return None. This method\n        will not try to infer the publisher based on any metadata other than the\n        DOI of the article.\n\n        Returns\n        -------\n        publisher : Publisher instance or None",
+        "ground_truth": "Article.get_publisher",
+        "file_path": ""
+      },
+      {
+        "query": "This method defines how the Article tries to detect the DOI.\n\n        It attempts to determine the article DOI string by DTD-appropriate\n        inspection of the article metadata. This method should be made as\n        flexible as necessary to properly collect the DOI for any XML\n        publishing specification.\n\n        Returns\n        -------\n        doi : str or None\n            The full (publisher/article) DOI string for the article, or None on\n            failure.",
+        "ground_truth": "Article.get_DOI",
+        "file_path": ""
+      },
+      {
+        "query": "This method provides the functionality of adding text appropriately\n    underneath the destination node. This will be either to the destination's\n    text attribute or to the tail attribute of the last child.",
+        "ground_truth": "append_new_text",
+        "file_path": ""
+      },
+      {
+        "query": "Compared to xml.dom.minidom, lxml's treatment of text as .text and .tail\n    attributes of elements is an oddity. It can even be a little frustrating\n    when one is attempting to copy everything underneath some element to\n    another element; one has to write in extra code to handle the text. This\n    method provides the functionality of adding everything underneath the\n    source element, in preserved order, to the destination element.",
+        "ground_truth": "append_all_below",
+        "file_path": ""
+      },
+      {
+        "query": "A method for extending lxml's functionality, this will find and concatenate\n    all text data that exists one level immediately underneath the given\n    element. Unlike etree.tostring(element, method='text'), this will not\n    recursively walk the entire underlying tree. It merely combines the element\n    text attribute with the tail attribute of each child.",
+        "ground_truth": "all_text",
+        "file_path": ""
+      },
+      {
+        "query": "This method will remove all attributes of any provided element.\n\n    A list of strings may be passed to the keyward-argument \"exclude\", which\n    will serve as a list of attributes which will not be removed.",
+        "ground_truth": "remove_all_attributes",
+        "file_path": ""
+      },
+      {
+        "query": "Provides a convenient method for adapting a tag or attribute name to\n    use lxml's format. Use this for tags like ops:switch or attributes like\n    xlink:href.",
+        "ground_truth": "ns_format",
+        "file_path": ""
+      },
+      {
+        "query": "Renames the attributes of the element. Accepts the element and a dictionary\n    of string values. The keys are the original names, and their values will be\n    the altered names. This method treats all attributes as optional and will\n    not fail on missing attributes.",
+        "ground_truth": "rename_attributes",
+        "file_path": ""
+      },
+      {
+        "query": "This method serves a specialized function. It comes up most often when\n        working with block level elements that may not be contained within\n        paragraph elements, which are presented in the source document as\n        inline elements (inside a paragraph element).\n\n        It would be inappropriate to merely insert the block element at the\n        level of the parent, since this disorders the document by placing\n        the child out of place with its siblings. So this method will elevate\n        the node to the parent level and also create a new parent to adopt all\n        of the siblings after the elevated child.\n\n        The adopting parent node will have identical attributes and tag name\n        as the original parent unless specified otherwise.",
+        "ground_truth": "elevate_element",
+        "file_path": ""
+      },
+      {
+        "query": "A simple way to replace one element node with another.",
+        "ground_truth": "replace",
+        "file_path": ""
+      },
+      {
+        "query": "A simple way to insert a new element node before the old element node among\n    its siblings.",
+        "ground_truth": "insert_before",
+        "file_path": ""
+      },
+      {
+        "query": "Converts the node received to a comment, in place, and will also return the\n    comment element.",
+        "ground_truth": "comment",
+        "file_path": ""
+      },
+      {
+        "query": "Converts the comment node received to a non-commented element, in place,\n    and will return the new node.\n\n    This may fail, primarily due to special characters within the comment that\n    the xml parser is unable to handle. If it fails, this method will log an\n    error and return None",
+        "ground_truth": "uncomment",
+        "file_path": ""
+      },
+      {
+        "query": "A handy way to serialize an element to text.",
+        "ground_truth": "serialize",
+        "file_path": ""
+      },
+      {
+        "query": "Ingests an article and processes it for metadata and elements to provide\n        proper references in the EPUB spine.\n\n        This method may only be called once unless the Package was instantiated\n        in collection mode using ``Package(collection=True)``. It places entries\n        in an internal spine list for the Main Content Document, the\n        Bibliographic Content Document (if there are ref elements in Back), and\n        the Tables Content Document (if there are table elements). It then\n        employs the publisher specific methods for extracting article metadata\n        using the article's publisher attribute (an instance of a Publisher\n        class).\n\n        Parameters\n        ----------\n        article : openaccess_epub.article.Article instance\n            An article to be included in the EPUB, to be processed for metadata\n            and appropriate content document references.",
+        "ground_truth": "Package.process",
+        "file_path": ""
+      },
+      {
+        "query": "Handles the acquisition of metadata for both collection mode and single\n        mode, uses the metadata methods belonging to the article's publisher\n        attribute.",
+        "ground_truth": "Package.acquire_metadata",
+        "file_path": ""
+      },
+      {
+        "query": "An iterator through the files in a location which yields item elements\n        suitable for insertion into the package manifest.",
+        "ground_truth": "Package.file_manifest",
+        "file_path": ""
+      },
+      {
+        "query": "Returns an appropriate Name and File-As-Name for a contrib element.\n\n        This code was refactored out of nav_contributors and\n        package_contributors to provide a single definition point for a common\n        job. This is a useful utility that may be well-employed for other\n        publishers as well.",
+        "ground_truth": "PLoS.get_contrib_names",
+        "file_path": ""
+      },
+      {
+        "query": "Given an Article class instance, this is responsible for returning an\n        article description. For this method I have taken the approach of\n        serializing the article's first abstract, if it has one. This results\n        in 0 or 1 descriptions per article.",
+        "ground_truth": "PLoS.package_description",
+        "file_path": ""
+      },
+      {
+        "query": "Makes the Article Title for the Heading.\n\n        Metadata element, content derived from FrontMatter",
+        "ground_truth": "PLoS.heading_title",
+        "file_path": ""
+      },
+      {
+        "query": "Constructs the Authors content for the Heading. This should display\n        directly after the Article Title.\n\n        Metadata element, content derived from FrontMatter",
+        "ground_truth": "PLoS.make_heading_authors",
+        "file_path": ""
+      },
+      {
+        "query": "Makes the content for the Author Affiliations, displays after the\n        Authors segment in the Heading.\n\n        Metadata element, content derived from FrontMatter",
+        "ground_truth": "PLoS.make_heading_affiliations",
+        "file_path": ""
+      },
+      {
+        "query": "An article may contain data for various kinds of abstracts. This method\n        works on those that are included in the Heading. This is displayed\n        after the Authors and Affiliations.\n\n        Metadata element, content derived from FrontMatter",
+        "ground_truth": "PLoS.make_heading_abstracts",
+        "file_path": ""
+      },
+      {
+        "query": "The Article Info contains the (self) Citation, Editors, Dates,\n        Copyright, Funding Statement, Competing Interests Statement,\n        Correspondence, and Footnotes. Maybe more...\n\n        This content follows the Heading and precedes the Main segment in the\n        output.\n\n        This function accepts the receiving_node argument, which will receive\n        all generated output as new childNodes.",
+        "ground_truth": "PLoS.make_article_info",
+        "file_path": ""
+      },
+      {
+        "query": "Creates a self citation node for the ArticleInfo of the article.\n\n        This method uses code from this page as a reference implementation:\n        https://github.com/PLOS/ambra/blob/master/base/src/main/resources/articleTransform-v3.xsl",
+        "ground_truth": "PLoS.make_article_info_citation",
+        "file_path": ""
+      },
+      {
+        "query": "Makes the section containing important dates for the article: typically\n        Received, Accepted, and Published.",
+        "ground_truth": "PLoS.make_article_info_dates",
+        "file_path": ""
+      },
+      {
+        "query": "Makes the copyright section for the ArticleInfo. For PLoS, this means\n        handling the information contained in the metadata <permissions>\n        element.",
+        "ground_truth": "PLoS.make_article_info_copyright",
+        "file_path": ""
+      },
+      {
+        "query": "Creates the element for declaring Funding in the article info.",
+        "ground_truth": "PLoS.make_article_info_funding",
+        "file_path": ""
+      },
+      {
+        "query": "Creates the element for declaring competing interests in the article\n        info.",
+        "ground_truth": "PLoS.make_article_info_competing_interests",
+        "file_path": ""
+      },
+      {
+        "query": "Articles generally provide a first contact, typically an email address\n        for one of the authors. This will supply that content.",
+        "ground_truth": "PLoS.make_article_info_correspondences",
+        "file_path": ""
+      },
+      {
+        "query": "This will catch all of the footnotes of type 'other' in the <fn-group>\n        of the <back> element.",
+        "ground_truth": "PLoS.make_article_info_footnotes_other",
+        "file_path": ""
+      },
+      {
+        "query": "The <back> element may have 0 or 1 <label> elements and 0 or 1 <title>\n        elements. Then it may have any combination of the following: <ack>,\n        <app-group>, <bio>, <fn-group>, <glossary>, <ref-list>, <notes>, and\n        <sec>. <sec> is employed here as a catch-all for material that does not\n        fall under the other categories.\n\n        The Back should generally be thought of as a non-linear element, though\n        some of its content will be parsed to the linear flow of the document.\n        This can be thought of as critically important meta-information that\n        should accompany the main text (e.g. Acknowledgments and Contributions)\n\n        Because the content of <back> contains a set of tags that intersects\n        with that of the Body, this method should always be called before the\n        general post-processing steps; keep in mind that this is also the\n        opportunity to permit special handling of content in the Back",
+        "ground_truth": "PLoS.make_back_matter",
+        "file_path": ""
+      },
+      {
+        "query": "The only intended use for this function is to patch a problem seen in\n        at least one PLoS article (journal.pgen.0020002). This will move any\n        <boxed-text> elements over to the receiving element, which is probably\n        the main body.",
+        "ground_truth": "PLoS.move_back_boxed_texts",
+        "file_path": ""
+      },
+      {
+        "query": "The <ack> is an important piece of back matter information, and will be\n        including immediately after the main text.\n\n        This element should only occur once, optionally, for PLoS, if a need\n        becomes known, then multiple instances may be supported.",
+        "ground_truth": "PLoS.make_back_acknowledgments",
+        "file_path": ""
+      },
+      {
+        "query": "Though this goes in the back of the document with the rest of the back\n        matter, it is not an element found under <back>.\n\n        I don't expect to see more than one of these. Compare this method to\n        make_article_info_competing_interests()",
+        "ground_truth": "PLoS.make_back_author_contributions",
+        "file_path": ""
+      },
+      {
+        "query": "Glossaries are a fairly common item in papers for PLoS, but it also\n        seems that they are rarely incorporated into the PLoS web-site or PDF\n        formats. They are included in the ePub output however because they are\n        helpful and because we can.",
+        "ground_truth": "PLoS.make_back_glossary",
+        "file_path": ""
+      },
+      {
+        "query": "The notes element in PLoS articles can be employed for posting notices\n        of corrections or adjustments in proof. The <notes> element has a very\n        diverse content model, but PLoS practice appears to be fairly\n        consistent: a single <sec> containing a <title> and a <p>",
+        "ground_truth": "PLoS.make_back_notes",
+        "file_path": ""
+      },
+      {
+        "query": "<disp-formula> elements must be converted to conforming elements",
+        "ground_truth": "PLoS.convert_disp_formula_elements",
+        "file_path": ""
+      },
+      {
+        "query": "<inline-formula> elements must be converted to be conforming\n\n        These elements may contain <inline-graphic> elements, textual content,\n        or both.",
+        "ground_truth": "PLoS.convert_inline_formula_elements",
+        "file_path": ""
+      },
+      {
+        "query": "Extract or extended quoted passage from another work, usually made\n        typographically distinct from surrounding text\n\n        <disp-quote> elements have a relatively complex content model, but PLoS\n        appears to employ either <p>s or <list>s.",
+        "ground_truth": "PLoS.convert_disp_quote_elements",
+        "file_path": ""
+      },
+      {
+        "query": "Textual material that is part of the body of text but outside the\n        flow of the narrative text, for example, a sidebar, marginalia, text\n        insert (whether enclosed in a box or not), caution, tip, note box, etc.\n\n        <boxed-text> elements for PLoS appear to all contain a single <sec>\n        element which frequently contains a <title> and various other content.\n        This method will elevate the <sec> element, adding class information as\n        well as processing the title.",
+        "ground_truth": "PLoS.convert_boxed_text_elements",
+        "file_path": ""
+      },
+      {
+        "query": "Supplementary material are not, nor are they generally expected to be,\n        packaged into the epub file. Though this is a technical possibility,\n        and certain epub reading systems (such as those run on a PC) might be\n        reasonably capable of the external handling of diverse file formats\n        I presume that supplementary material will remain separate from the\n        document. So special cases aside, external links to supplementary\n        material will be employed; this will require internet connection for\n        access.\n\n        As for content in <supplementary-material>, they appear to strictly\n        contain 1 <label> element, followed by a <caption><title><p></caption>\n        substructure.",
+        "ground_truth": "PLoS.convert_supplementary_material_elements",
+        "file_path": ""
+      },
+      {
+        "query": "This function will render a formatted URL for accessing the PLoS' server\n        SingleRepresentation of an object.",
+        "ground_truth": "PLoS.fetch_single_representation",
+        "file_path": ""
+      },
+      {
+        "query": "Responsible for the correct conversion of JPTS 3.0 <fig> elements to\n        EPUB xhtml. Aside from translating <fig> to <img>, the content model\n        must be edited.",
+        "ground_truth": "PLoS.convert_fig_elements",
+        "file_path": ""
+      },
+      {
+        "query": "A song, poem, or verse\n\n        Implementor\u2019s Note: No attempt has been made to retain the look or\n        visual form of the original poetry.\n\n        This unusual element, <verse-group> is used to convey poetry and is\n        recursive in nature (it may contain further <verse-group> elements).\n        Examples of these tags are sparse, so it remains difficult to ensure\n        full implementation. This method will attempt to handle the label,\n        title, and subtitle elements correctly, while converting <verse-lines>\n        to italicized lines.",
+        "ground_truth": "PLoS.convert_verse_group_elements",
+        "file_path": ""
+      },
+      {
+        "query": "<fn> elements may be used in the main text body outside of tables and\n        figures for purposes such as erratum notes. It appears that PLoS\n        practice is to not show erratum notes in the web or pdf formats after\n        the appropriate corrections have been made to the text. The erratum\n        notes are thus the only record that an error was made.\n\n        This method will attempt to display footnotes unless the note can be\n        identified as an Erratum, in which case it will be removed in\n        accordance with PLoS' apparent guidelines.",
+        "ground_truth": "PLoS.convert_fn_elements",
+        "file_path": ""
+      },
+      {
+        "query": "A sequence of two or more items, which may or may not be ordered.\n\n        The <list> element has an optional <label> element and optional <title>\n        element, followed by one or more <list-item> elements. This is element\n        is recursive as the <list-item> elements may contain further <list> or\n        <def-list> elements. Much of the potential complexity in dealing with\n        lists comes from this recursion.",
+        "ground_truth": "PLoS.convert_list_elements",
+        "file_path": ""
+      },
+      {
+        "query": "A list in which each item consists of two parts: a word, phrase, term,\n        graphic, chemical structure, or equation paired with one of more\n        descriptions, discussions, explanations, or definitions of it.\n\n        <def-list> elements are lists of <def-item> elements which are in turn\n        composed of a pair of term (<term>) and definition (<def>). This method\n        will convert the <def-list> to a classed <div> with a styled format\n        for the terms and definitions.",
+        "ground_truth": "PLoS.convert_def_list_elements",
+        "file_path": ""
+      },
+      {
+        "query": "List of references (citations) for an article, which is often called\n        \u201cReferences\u201d, \u201cBibliography\u201d, or \u201cAdditional Reading\u201d.\n\n        No distinction is made between lists of cited references and lists of\n        suggested references.\n\n        This method should not be confused with the method(s) employed for the\n        formatting of a proper bibliography, though they are related.\n        Similarly, this is an area of major openness in development, I lack\n        access to PLOS' algorithm for proper citation formatting.",
+        "ground_truth": "PLoS.convert_ref_list_elements",
+        "file_path": ""
+      },
+      {
+        "query": "Responsible for the correct conversion of JPTS 3.0 <table-wrap>\n        elements to EPUB content.\n\n        The 'id' attribute is treated as mandatory by this method.",
+        "ground_truth": "PLoS.convert_table_wrap_elements",
+        "file_path": ""
+      },
+      {
+        "query": "This is a method for the odd special cases where <graphic> elements are\n        standalone, or rather, not a part of a standard graphical element such\n        as a figure or a table. This method should always be employed after the\n        standard cases have already been handled.",
+        "ground_truth": "PLoS.convert_graphic_elements",
+        "file_path": ""
+      },
+      {
+        "query": "Some paths must be made absolute, this will attempt to convert them.",
+        "ground_truth": "absolute_path",
+        "file_path": ""
+      },
+      {
+        "query": "The inner control loops for user interaction during quickstart\n    configuration.",
+        "ground_truth": "configure",
+        "file_path": ""
+      }
+    ]
+  },
+  {
+    "repo_id": "thefactory__marathon-python",
+    "repo_name": "thefactory/marathon-python",
+    "tree_path": "benchmark_results\\trees\\thefactory__marathon-python.json",
+    "num_functions": 39,
+    "num_files": 1,
+    "queries": [
+      {
+        "query": "Parse a Marathon response into an object or list of objects.",
+        "ground_truth": "MarathonClient._parse_response",
+        "file_path": ""
+      },
+      {
+        "query": "Query Marathon server.",
+        "ground_truth": "MarathonClient._do_request",
+        "file_path": ""
+      },
+      {
+        "query": "Query Marathon server for events.",
+        "ground_truth": "MarathonClient._do_sse_request",
+        "file_path": ""
+      },
+      {
+        "query": "Create and start an app.\n\n        :param str app_id: application ID\n        :param :class:`marathon.models.app.MarathonApp` app: the application to create\n        :param bool minimal: ignore nulls and empty collections\n\n        :returns: the created app (on success)\n        :rtype: :class:`marathon.models.app.MarathonApp` or False",
+        "ground_truth": "MarathonClient.create_app",
+        "file_path": ""
+      },
+      {
+        "query": "List all apps.\n\n        :param str cmd: if passed, only show apps with a matching `cmd`\n        :param bool embed_tasks: embed tasks in result\n        :param bool embed_counts: embed all task counts\n        :param bool embed_deployments: embed all deployment identifier\n        :param bool embed_readiness: embed all readiness check results\n        :param bool embed_last_task_failure: embeds the last task failure\n        :param bool embed_failures: shorthand for embed_last_task_failure\n        :param bool embed_task_stats: embed task stats in result\n        :param str app_id: if passed, only show apps with an 'id' that matches or contains this value\n        :param str label: if passed, only show apps with the selected labels\n        :param kwargs: arbitrary search filters\n\n        :returns: list of applications\n        :rtype: list[:class:`marathon.models.app.MarathonApp`]",
+        "ground_truth": "MarathonClient.list_apps",
+        "file_path": ""
+      },
+      {
+        "query": "Get a single app.\n\n        :param str app_id: application ID\n        :param bool embed_tasks: embed tasks in result\n        :param bool embed_counts: embed all task counts\n        :param bool embed_deployments: embed all deployment identifier\n        :param bool embed_readiness: embed all readiness check results\n        :param bool embed_last_task_failure: embeds the last task failure\n        :param bool embed_failures: shorthand for embed_last_task_failure\n        :param bool embed_task_stats: embed task stats in result\n\n        :returns: application\n        :rtype: :class:`marathon.models.app.MarathonApp`",
+        "ground_truth": "MarathonClient.get_app",
+        "file_path": ""
+      },
+      {
+        "query": "Update an app.\n\n        Applies writable settings in `app` to `app_id`\n        Note: this method can not be used to rename apps.\n\n        :param str app_id: target application ID\n        :param app: application settings\n        :type app: :class:`marathon.models.app.MarathonApp`\n        :param bool force: apply even if a deployment is in progress\n        :param bool minimal: ignore nulls and empty collections\n\n        :returns: a dict containing the deployment id and version\n        :rtype: dict",
+        "ground_truth": "MarathonClient.update_app",
+        "file_path": ""
+      },
+      {
+        "query": "Update multiple apps.\n\n        Applies writable settings in elements of apps either by upgrading existing ones or creating new ones\n\n        :param apps: sequence of application settings\n        :param bool force: apply even if a deployment is in progress\n        :param bool minimal: ignore nulls and empty collections\n\n        :returns: a dict containing the deployment id and version\n        :rtype: dict",
+        "ground_truth": "MarathonClient.update_apps",
+        "file_path": ""
+      },
+      {
+        "query": "Roll an app back to a previous version.\n\n        :param str app_id: application ID\n        :param str version: application version\n        :param bool force: apply even if a deployment is in progress\n\n        :returns: a dict containing the deployment id and version\n        :rtype: dict",
+        "ground_truth": "MarathonClient.rollback_app",
+        "file_path": ""
+      },
+      {
+        "query": "Stop and destroy an app.\n\n        :param str app_id: application ID\n        :param bool force: apply even if a deployment is in progress\n\n        :returns: a dict containing the deployment id and version\n        :rtype: dict",
+        "ground_truth": "MarathonClient.delete_app",
+        "file_path": ""
+      },
+      {
+        "query": "Scale an app.\n\n        Scale an app to a target number of instances (with `instances`), or scale the number of\n        instances up or down by some delta (`delta`). If the resulting number of instances would be negative,\n        desired instances will be set to zero.\n\n        If both `instances` and `delta` are passed, use `instances`.\n\n        :param str app_id: application ID\n        :param int instances: [optional] the number of instances to scale to\n        :param int delta: [optional] the number of instances to scale up or down by\n        :param bool force: apply even if a deployment is in progress\n\n        :returns: a dict containing the deployment id and version\n        :rtype: dict",
+        "ground_truth": "MarathonClient.scale_app",
+        "file_path": ""
+      },
+      {
+        "query": "Create and start a group.\n\n        :param :class:`marathon.models.group.MarathonGroup` group: the group to create\n\n        :returns: success\n        :rtype: dict containing the version ID",
+        "ground_truth": "MarathonClient.create_group",
+        "file_path": ""
+      },
+      {
+        "query": "List all groups.\n\n        :param kwargs: arbitrary search filters\n\n        :returns: list of groups\n        :rtype: list[:class:`marathon.models.group.MarathonGroup`]",
+        "ground_truth": "MarathonClient.list_groups",
+        "file_path": ""
+      },
+      {
+        "query": "Get a single group.\n\n        :param str group_id: group ID\n\n        :returns: group\n        :rtype: :class:`marathon.models.group.MarathonGroup`",
+        "ground_truth": "MarathonClient.get_group",
+        "file_path": ""
+      },
+      {
+        "query": "Update a group.\n\n        Applies writable settings in `group` to `group_id`\n        Note: this method can not be used to rename groups.\n\n        :param str group_id: target group ID\n        :param group: group settings\n        :type group: :class:`marathon.models.group.MarathonGroup`\n        :param bool force: apply even if a deployment is in progress\n        :param bool minimal: ignore nulls and empty collections\n\n        :returns: a dict containing the deployment id and version\n        :rtype: dict",
+        "ground_truth": "MarathonClient.update_group",
+        "file_path": ""
+      },
+      {
+        "query": "Roll a group back to a previous version.\n\n        :param str group_id: group ID\n        :param str version: group version\n        :param bool force: apply even if a deployment is in progress\n\n        :returns: a dict containing the deployment id and version\n        :rtype: dict",
+        "ground_truth": "MarathonClient.rollback_group",
+        "file_path": ""
+      },
+      {
+        "query": "Stop and destroy a group.\n\n        :param str group_id: group ID\n        :param bool force: apply even if a deployment is in progress\n\n        :returns: a dict containing the deleted version\n        :rtype: dict",
+        "ground_truth": "MarathonClient.delete_group",
+        "file_path": ""
+      },
+      {
+        "query": "Scale a group by a factor.\n\n        :param str group_id: group ID\n        :param int scale_by: factor to scale by\n\n        :returns: a dict containing the deployment id and version\n        :rtype: dict",
+        "ground_truth": "MarathonClient.scale_group",
+        "file_path": ""
+      },
+      {
+        "query": "List running tasks, optionally filtered by app_id.\n\n        :param str app_id: if passed, only show tasks for this application\n        :param kwargs: arbitrary search filters\n\n        :returns: list of tasks\n        :rtype: list[:class:`marathon.models.task.MarathonTask`]",
+        "ground_truth": "MarathonClient.list_tasks",
+        "file_path": ""
+      },
+      {
+        "query": "Kill a list of given tasks.\n\n        :param list[str] task_ids: tasks to kill\n        :param bool scale: if true, scale down the app by the number of tasks killed\n        :param bool force: if true, ignore any current running deployments\n\n        :return: True on success\n        :rtype: bool",
+        "ground_truth": "MarathonClient.kill_given_tasks",
+        "file_path": ""
+      },
+      {
+        "query": "Kill all tasks belonging to app.\n\n        :param str app_id: application ID\n        :param bool scale: if true, scale down the app by the number of tasks killed\n        :param str host: if provided, only terminate tasks on this Mesos slave\n        :param int batch_size: if non-zero, terminate tasks in groups of this size\n        :param int batch_delay: time (in seconds) to wait in between batched kills. If zero, automatically determine\n\n        :returns: list of killed tasks\n        :rtype: list[:class:`marathon.models.task.MarathonTask`]",
+        "ground_truth": "MarathonClient.kill_tasks",
+        "file_path": ""
+      },
+      {
+        "query": "Kill a task.\n\n        :param str app_id: application ID\n        :param str task_id: the task to kill\n        :param bool scale: if true, scale down the app by one if the task exists\n\n        :returns: the killed task\n        :rtype: :class:`marathon.models.task.MarathonTask`",
+        "ground_truth": "MarathonClient.kill_task",
+        "file_path": ""
+      },
+      {
+        "query": "List the versions of an app.\n\n        :param str app_id: application ID\n\n        :returns: list of versions\n        :rtype: list[str]",
+        "ground_truth": "MarathonClient.list_versions",
+        "file_path": ""
+      },
+      {
+        "query": "Get the configuration of an app at a specific version.\n\n        :param str app_id: application ID\n        :param str version: application version\n\n        :return: application configuration\n        :rtype: :class:`marathon.models.app.MarathonApp`",
+        "ground_truth": "MarathonClient.get_version",
+        "file_path": ""
+      },
+      {
+        "query": "Register a callback URL as an event subscriber.\n\n        :param str url: callback URL\n\n        :returns: the created event subscription\n        :rtype: dict",
+        "ground_truth": "MarathonClient.create_event_subscription",
+        "file_path": ""
+      },
+      {
+        "query": "Deregister a callback URL as an event subscriber.\n\n        :param str url: callback URL\n\n        :returns: the deleted event subscription\n        :rtype: dict",
+        "ground_truth": "MarathonClient.delete_event_subscription",
+        "file_path": ""
+      },
+      {
+        "query": "List all running deployments.\n\n        :returns: list of deployments\n        :rtype: list[:class:`marathon.models.deployment.MarathonDeployment`]",
+        "ground_truth": "MarathonClient.list_deployments",
+        "file_path": ""
+      },
+      {
+        "query": "List all the tasks queued up or waiting to be scheduled.\n\n        :returns: list of queue items\n        :rtype: list[:class:`marathon.models.queue.MarathonQueueItem`]",
+        "ground_truth": "MarathonClient.list_queue",
+        "file_path": ""
+      },
+      {
+        "query": "Cancel a deployment.\n\n        :param str deployment_id: deployment id\n        :param bool force: if true, don't create a rollback deployment to restore the previous configuration\n\n        :returns: a dict containing the deployment id and version (empty dict if force=True)\n        :rtype: dict",
+        "ground_truth": "MarathonClient.delete_deployment",
+        "file_path": ""
+      },
+      {
+        "query": "Polls event bus using /v2/events\n\n        :param bool raw: if true, yield raw event text, else yield MarathonEvent object\n        :param event_types: a list of event types to consume\n        :type event_types: list[type] or list[str]\n        :returns: iterator with events\n        :rtype: iterator",
+        "ground_truth": "MarathonClient.event_stream",
+        "file_path": ""
+      },
+      {
+        "query": "Checks if a path is a correct format that Marathon expects. Raises ValueError if not valid.\n\n    :param str path: The app id.\n\n    :rtype: str",
+        "ground_truth": "assert_valid_path",
+        "file_path": ""
+      },
+      {
+        "query": "Checks if an id is the correct format that Marathon expects. Raises ValueError if not valid.\n\n    :param str id: App or group id.\n\n    :rtype: str",
+        "ground_truth": "assert_valid_id",
+        "file_path": ""
+      },
+      {
+        "query": "Construct a JSON-friendly representation of the object.\n\n        :param bool minimal: Construct a minimal representation of the object (ignore nulls and empty collections)\n\n        :rtype: dict",
+        "ground_truth": "MarathonObject.json_repr",
+        "file_path": ""
+      },
+      {
+        "query": "Construct an object from a parsed response.\n\n        :param dict attributes: object attributes from parsed response",
+        "ground_truth": "MarathonObject.from_json",
+        "file_path": ""
+      },
+      {
+        "query": "Encode an object as a JSON string.\n\n        :param bool minimal: Construct a minimal representation of the object (ignore nulls and empty collections)\n\n        :rtype: str",
+        "ground_truth": "MarathonObject.to_json",
+        "file_path": ""
+      },
+      {
+        "query": "Construct a JSON-friendly representation of the object.\n\n        :param bool minimal: [ignored]\n\n        :rtype: list",
+        "ground_truth": "MarathonConstraint.json_repr",
+        "file_path": ""
+      },
+      {
+        "query": "Construct a MarathonConstraint from a parsed response.\n\n        :param dict attributes: object attributes from parsed response\n\n        :rtype: :class:`MarathonConstraint`",
+        "ground_truth": "MarathonConstraint.from_json",
+        "file_path": ""
+      },
+      {
+        "query": ":param str constraint: The string representation of a constraint\n\n        :rtype: :class:`MarathonConstraint`",
+        "ground_truth": "MarathonConstraint.from_string",
+        "file_path": ""
+      },
+      {
+        "query": "Construct a list of MarathonEndpoints from a list of tasks.\n\n        :param list[:class:`marathon.models.MarathonTask`] tasks: list of tasks to parse\n\n        :rtype: list[:class:`MarathonEndpoint`]",
+        "ground_truth": "MarathonEndpoint.from_tasks",
+        "file_path": ""
+      }
+    ]
+  },
+  {
+    "repo_id": "django-fluent__django-fluent-contents",
+    "repo_name": "django-fluent/django-fluent-contents",
+    "tree_path": "benchmark_results\\trees\\django-fluent__django-fluent-contents.json",
+    "num_functions": 96,
+    "num_files": 1,
+    "queries": [
+      {
+        "query": "Shortcut to retrieving the ContentType id of the model.",
+        "ground_truth": "ContentPlugin.type_id",
+        "file_path": ""
+      },
+      {
+        "query": ".. versionadded:: 0.9\n           Return the default cache key which is used to store a rendered item.\n           By default, this function generates the cache key using :func:`get_output_cache_base_key`.",
+        "ground_truth": "ContentPlugin.get_output_cache_key",
+        "file_path": ""
+      },
+      {
+        "query": ".. versionadded:: 0.9\n           Return the possible cache keys for a rendered item.\n\n           This method should be overwritten when implementing a function :func:`set_cached_output` method\n           or when implementing a :func:`get_output_cache_key` function.\n           By default, this function generates the cache key using :func:`get_output_cache_base_key`.",
+        "ground_truth": "ContentPlugin.get_output_cache_keys",
+        "file_path": ""
+      },
+      {
+        "query": ".. versionadded:: 0.9\n           Return the cached output for a rendered item, or ``None`` if no output is cached.\n\n           This method can be overwritten to implement custom caching mechanisms.\n           By default, this function generates the cache key using :func:`get_output_cache_key`\n           and retrieves the results from the configured Django cache backend (e.g. memcached).",
+        "ground_truth": "ContentPlugin.get_cached_output",
+        "file_path": ""
+      },
+      {
+        "query": ".. versionadded:: 0.9\n           Store the cached output for a rendered item.\n\n           This method can be overwritten to implement custom caching mechanisms.\n           By default, this function generates the cache key using :func:`~fluent_contents.cache.get_rendering_cache_key`\n           and stores the results in the configured Django cache backend (e.g. memcached).\n\n           When custom cache keys are used, also include those in :func:`get_output_cache_keys`\n           so the cache will be cleared when needed.\n\n        .. versionchanged:: 1.0\n           The received data is no longer a HTML string, but :class:`~fluent_contents.models.ContentItemOutput` object.",
+        "ground_truth": "ContentPlugin.set_cached_output",
+        "file_path": ""
+      },
+      {
+        "query": "The rendering/view function that displays a plugin model instance.\n\n        :param instance: An instance of the ``model`` the plugin uses.\n        :param request: The Django :class:`~django.http.HttpRequest` class containing the request parameters.\n        :param kwargs: An optional slot for any new parameters.\n\n        To render a plugin, either override this function, or specify the :attr:`render_template` variable,\n        and optionally override :func:`get_context`.\n        It is recommended to wrap the output in a ``<div>`` tag,\n        to prevent the item from being displayed right next to the previous plugin.\n\n        .. versionadded:: 1.0\n           The function may either return a string of HTML code,\n           or return a :class:`~fluent_contents.models.ContentItemOutput` object\n           which holds both the CSS/JS includes and HTML string.\n           For the sake of convenience and simplicity, most examples\n           only return a HTML string directly.\n\n           When the user needs to be redirected, simply return a :class:`~django.http.HttpResponseRedirect`\n           or call the :func:`redirect` method.\n\n        To render raw HTML code, use :func:`~django.utils.safestring.mark_safe` on the returned HTML.",
+        "ground_truth": "ContentPlugin.render",
+        "file_path": ""
+      },
+      {
+        "query": "Render a custom template with the :class:`~PluginContext` as context instance.",
+        "ground_truth": "ContentPlugin.render_to_string",
+        "file_path": ""
+      },
+      {
+        "query": "Add a :class:`~django.forms.Media` class to the current request.\n    This will be rendered by the ``render_plugin_media`` template tag.",
+        "ground_truth": "register_frontend_media",
+        "file_path": ""
+      },
+      {
+        "query": "Return a cache key for the content item output.\n\n    .. seealso::\n\n        The :func:`ContentItem.clear_cache() <fluent_contents.models.ContentItem.clear_cache>` function\n        can be used to remove the cache keys of a retrieved object.",
+        "ground_truth": "get_rendering_cache_key",
+        "file_path": ""
+      },
+      {
+        "query": "Return a cache key for an existing placeholder object.\n\n    This key is used to cache the entire output of a placeholder.",
+        "ground_truth": "get_placeholder_cache_key",
+        "file_path": ""
+      },
+      {
+        "query": "Return a cache key for a placeholder.\n\n    This key is used to cache the entire output of a placeholder.",
+        "ground_truth": "get_placeholder_cache_key_for_parent",
+        "file_path": ""
+      },
+      {
+        "query": "See if there are items that point to a removed model.",
+        "ground_truth": "Command.remove_stale_items",
+        "file_path": ""
+      },
+      {
+        "query": "See if there are items that no longer point to an existing parent.",
+        "ground_truth": "Command.remove_unreferenced_items",
+        "file_path": ""
+      },
+      {
+        "query": "Gives all elements from self._initial having a slot value that is not already\n        in self.get_queryset()",
+        "ground_truth": "BaseInitialGenericInlineFormSet.__initial_minus_queryset",
+        "file_path": ""
+      },
+      {
+        "query": "Validate and return the Placeholder object that the template variable points to.",
+        "ground_truth": "_get_placeholder_arg",
+        "file_path": ""
+      },
+      {
+        "query": "Extract the local or external URLs from a Media object.",
+        "ground_truth": "_split_js",
+        "file_path": ""
+      },
+      {
+        "query": "Extract the local or external URLs from a Media object.",
+        "ground_truth": "_split_css",
+        "file_path": ""
+      },
+      {
+        "query": "Parse the node syntax:\n\n        .. code-block:: html+django\n\n            {% page_placeholder parentobj slotname title=\"test\" role=\"m\" %}",
+        "ground_truth": "PagePlaceholderNode.parse",
+        "file_path": ""
+      },
+      {
+        "query": "Return the string literal that is used in the template.\n        The title is used in the admin screens.",
+        "ground_truth": "PagePlaceholderNode.get_title",
+        "file_path": ""
+      },
+      {
+        "query": "See if a template FilterExpression holds a literal value.\n\n    :type templatevar: django.template.FilterExpression\n    :rtype: bool|None",
+        "ground_truth": "extract_literal",
+        "file_path": ""
+      },
+      {
+        "query": "See if a template FilterExpression holds a literal boolean value.\n\n    :type templatevar: django.template.FilterExpression\n    :rtype: bool|None",
+        "ground_truth": "extract_literal_bool",
+        "file_path": ""
+      },
+      {
+        "query": "Create a new MarkupPlugin class that represents the plugin type.",
+        "ground_truth": "_create_markup_plugin",
+        "file_path": ""
+      },
+      {
+        "query": "Return lookup arguments for the generic ``parent_type`` / ``parent_id`` fields.\n\n    :param parent_object: The parent object.\n    :type parent_object: :class:`~django.db.models.Model`",
+        "ground_truth": "get_parent_lookup_kwargs",
+        "file_path": ""
+      },
+      {
+        "query": ".. versionadded:: 1.0\n\n    Get the currently active languages of an parent object.\n\n    Note: if there is no content at the page, the language won't be returned.",
+        "ground_truth": "get_parent_active_language_choices",
+        "file_path": ""
+      },
+      {
+        "query": "Return a placeholder by key.",
+        "ground_truth": "PlaceholderManager.get_by_slot",
+        "file_path": ""
+      },
+      {
+        "query": "Create a placeholder with the given parameters",
+        "ground_truth": "PlaceholderManager.create_for_object",
+        "file_path": ""
+      },
+      {
+        "query": ".. versionadded:: 1.0\n\n        Only return translated objects which of the given languages.\n\n        When no language codes are given, only the currently active language is returned.",
+        "ground_truth": "ContentItemQuerySet.translated",
+        "file_path": ""
+      },
+      {
+        "query": "Return all content items which are associated with a given parent object.",
+        "ground_truth": "ContentItemQuerySet.parent",
+        "file_path": ""
+      },
+      {
+        "query": ".. versionadded: 1.0.2 Move the entire queryset to a new object.\n\n        Returns a queryset with the newly created objects.",
+        "ground_truth": "ContentItemQuerySet.move_to_placeholder",
+        "file_path": ""
+      },
+      {
+        "query": ".. versionadded: 1.0 Copy the entire queryset to a new object.\n\n        Returns a queryset with the newly created objects.",
+        "ground_truth": "ContentItemQuerySet.copy_to_placeholder",
+        "file_path": ""
+      },
+      {
+        "query": "Return all content items which are associated with a given parent object.",
+        "ground_truth": "ContentItemManager.parent",
+        "file_path": ""
+      },
+      {
+        "query": "Create a Content Item with the given parameters\n\n        If the language_code is not provided, the language code of the parent will be used.\n        This may perform an additional database query, unless\n        the :class:`~fluent_contents.models.managers.PlaceholderManager` methods were used to construct the object,\n        such as :func:`~fluent_contents.models.managers.PlaceholderManager.create_for_object`\n        or :func:`~fluent_contents.models.managers.PlaceholderManager.get_by_slot`",
+        "ground_truth": "ContentItemManager.create_for_placeholder",
+        "file_path": ""
+      },
+      {
+        "query": "Return the data of the placeholder fields.",
+        "ground_truth": "PlaceholderFieldAdmin.get_placeholder_data",
+        "file_path": ""
+      },
+      {
+        "query": "Return which plugins are allowed by the placeholder fields.",
+        "ground_truth": "PlaceholderFieldAdmin.get_all_allowed_plugins",
+        "file_path": ""
+      },
+      {
+        "query": "Create a new MarkupItem model that saves itself in a single language.",
+        "ground_truth": "_create_markup_model",
+        "file_path": ""
+      },
+      {
+        "query": "Returns a :class:`PlaceholderFormField` instance for this database Field.",
+        "ground_truth": "PlaceholderField.formfield",
+        "file_path": ""
+      },
+      {
+        "query": "Internal Django method to associate the field with the Model; it assigns the descriptor.",
+        "ground_truth": "PlaceholderField.contribute_to_class",
+        "file_path": ""
+      },
+      {
+        "query": "Get the set of plugins that this field may display.",
+        "ground_truth": "PlaceholderField.plugins",
+        "file_path": ""
+      },
+      {
+        "query": "Internal Django method, used to return the placeholder ID when exporting the model instance.",
+        "ground_truth": "PlaceholderField.value_from_object",
+        "file_path": ""
+      },
+      {
+        "query": "Read the cached output - only when search needs it.",
+        "ground_truth": "SearchRenderingPipe.can_use_cached_output",
+        "file_path": ""
+      },
+      {
+        "query": "Render the item - but render as search text instead.",
+        "ground_truth": "SearchRenderingPipe.render_item",
+        "file_path": ""
+      },
+      {
+        "query": "Dynamically generate genuine django inlines for all registered content item types.\n    When the `plugins` parameter is ``None``, all plugin inlines are returned.",
+        "ground_truth": "get_content_item_inlines",
+        "file_path": ""
+      },
+      {
+        "query": "Get the list of OEmbed providers.",
+        "ground_truth": "get_oembed_providers",
+        "file_path": ""
+      },
+      {
+        "query": "Construct the provider registry, using the app settings.",
+        "ground_truth": "_build_provider_list",
+        "file_path": ""
+      },
+      {
+        "query": "Fetch the OEmbed object, return the response as dictionary.",
+        "ground_truth": "get_oembed_data",
+        "file_path": ""
+      },
+      {
+        "query": "Return all plugins, grouped by category.\n    The structure is a {\"Categorynane\": [list of plugin classes]}",
+        "ground_truth": "group_plugins_into_categories",
+        "file_path": ""
+      },
+      {
+        "query": "Return a tuple of plugin model choices, suitable for a select field.\n    Each tuple is a (\"TypeName\", \"Title\") value.",
+        "ground_truth": "plugin_categories_to_choices",
+        "file_path": ""
+      },
+      {
+        "query": "Optimized version of django.forms.Media.__add__() that doesn't create new objects.",
+        "ground_truth": "add_media",
+        "file_path": ""
+      },
+      {
+        "query": "Returns a Request instance populated with cms specific attributes.",
+        "ground_truth": "get_dummy_request",
+        "file_path": ""
+      },
+      {
+        "query": "Tell which language should be used to render the content item.",
+        "ground_truth": "get_render_language",
+        "file_path": ""
+      },
+      {
+        "query": "At runtime, when logging is not active,\n    replace the .debug() call with a no-op.",
+        "ground_truth": "optimize_logger_level",
+        "file_path": ""
+      },
+      {
+        "query": "Extract the search fields from the model.",
+        "ground_truth": "get_search_field_values",
+        "file_path": ""
+      },
+      {
+        "query": "Return the metadata about a layout",
+        "ground_truth": "PageAdmin.get_layout_view",
+        "file_path": ""
+      },
+      {
+        "query": "Apply soft hyphenation to the text, which inserts ``&shy;`` markers.",
+        "ground_truth": "softhyphen_filter",
+        "file_path": ""
+      },
+      {
+        "query": "Return cached output for a placeholder, if available.\n    This avoids fetching the Placeholder object.",
+        "ground_truth": "get_cached_placeholder_output",
+        "file_path": ""
+      },
+      {
+        "query": "Render a :class:`~fluent_contents.models.Placeholder` object.\n    Returns a :class:`~fluent_contents.models.ContentItemOutput` object\n    which contains the HTML output and :class:`~django.forms.Media` object.\n\n    This function also caches the complete output of the placeholder\n    when all individual items are cacheable.\n\n    :param request: The current request object.\n    :type request: :class:`~django.http.HttpRequest`\n    :param placeholder: The placeholder object.\n    :type placeholder: :class:`~fluent_contents.models.Placeholder`\n    :param parent_object: Optional, the parent object of the placeholder (already implied by the placeholder)\n    :param template_name: Optional template name used to concatenate the placeholder output.\n    :type template_name: str | None\n    :param cachable: Whether the output is cachable, otherwise the full output will not be cached.\n                     Default: False when using a template, True otherwise.\n    :type cachable: bool | None\n    :param limit_parent_language: Whether the items should be limited to the parent language.\n    :type limit_parent_language: bool\n    :param fallback_language: The fallback language to use if there are no items in the current language. Passing ``True`` uses the default :ref:`FLUENT_CONTENTS_DEFAULT_LANGUAGE_CODE`.\n    :type fallback_language: bool/str\n    :rtype: :class:`~fluent_contents.models.ContentItemOutput`",
+        "ground_truth": "render_placeholder",
+        "file_path": ""
+      },
+      {
+        "query": "Render a list of :class:`~fluent_contents.models.ContentItem` objects as HTML string.\n    This is a variation of the :func:`render_placeholder` function.\n\n    Note that the items are not filtered in any way by parent or language.\n    The items are rendered as-is.\n\n    :param request: The current request object.\n    :type request: :class:`~django.http.HttpRequest`\n    :param items: The list or queryset of objects to render. Passing a queryset is preferred.\n    :type items: list or queryset of :class:`~fluent_contents.models.ContentItem`.\n    :param template_name: Optional template name used to concatenate the placeholder output.\n    :type template_name: Optional[str]\n    :param cachable: Whether the output is cachable, otherwise the full output will not be cached.\n                     Default: False when using a template, True otherwise.\n    :type cachable: Optional[bool]\n\n    :rtype: :class:`~fluent_contents.models.ContentItemOutput`",
+        "ground_truth": "render_content_items",
+        "file_path": ""
+      },
+      {
+        "query": "Render a :class:`~fluent_contents.models.Placeholder` object to search text.\n    This text can be used by an indexer (e.g. haystack) to produce content search for a parent object.\n\n    :param placeholder: The placeholder object.\n    :type placeholder: :class:`~fluent_contents.models.Placeholder`\n    :param fallback_language: The fallback language to use if there are no items in the current language.\n                              Passing ``True`` uses the default :ref:`FLUENT_CONTENTS_DEFAULT_LANGUAGE_CODE`.\n    :type fallback_language: bool|str\n    :rtype: str",
+        "ground_truth": "render_placeholder_search_text",
+        "file_path": ""
+      },
+      {
+        "query": "Render the placeholder field.",
+        "ground_truth": "PlaceholderFieldWidget.render",
+        "file_path": ""
+      },
+      {
+        "query": "Get the set of plugins that this widget should display.",
+        "ground_truth": "PlaceholderFieldWidget.plugins",
+        "file_path": ""
+      },
+      {
+        "query": "Decorator for the TemplateResponse.render() function",
+        "ground_truth": "_new_render",
+        "file_path": ""
+      },
+      {
+        "query": "Return a redirect response for the :class:`~fluent_contents.extensions.HttpRedirectRequest`",
+        "ground_truth": "HttpRedirectRequestMiddleware.process_exception",
+        "file_path": ""
+      },
+      {
+        "query": "Render the text, reuses the template filters provided by Django.",
+        "ground_truth": "render_text",
+        "file_path": ""
+      },
+      {
+        "query": "Read the derived table data for all objects tracked as remaining (=not found in the cache).",
+        "ground_truth": "ResultTracker.fetch_remaining_instances",
+        "file_path": ""
+      },
+      {
+        "query": "Return the output in the correct ordering.\n        :rtype: list[Tuple[contentitem, O]]",
+        "ground_truth": "ResultTracker.get_output",
+        "file_path": ""
+      },
+      {
+        "query": "The main rendering sequence.",
+        "ground_truth": "RenderingPipe.render_items",
+        "file_path": ""
+      },
+      {
+        "query": "First try to fetch all items from the cache.\n        The items are 'non-polymorphic', so only point to their base class.\n        If these are found, there is no need to query the derived data from the database.",
+        "ground_truth": "RenderingPipe._fetch_cached_output",
+        "file_path": ""
+      },
+      {
+        "query": "Tell whether the code should try reading cached output",
+        "ground_truth": "RenderingPipe.can_use_cached_output",
+        "file_path": ""
+      },
+      {
+        "query": "Render a list of items, that didn't exist in the cache yet.",
+        "ground_truth": "RenderingPipe._render_uncached_items",
+        "file_path": ""
+      },
+      {
+        "query": "Render the individual item.\n        May raise :class:`SkipItem` to ignore an item.",
+        "ground_truth": "RenderingPipe.render_item",
+        "file_path": ""
+      },
+      {
+        "query": "Combine all rendered items. Allow rendering the items with a template,\n        to inserting separators or nice start/end code.",
+        "ground_truth": "RenderingPipe.merge_output",
+        "file_path": ""
+      },
+      {
+        "query": "Collect all HTML from the rendered items, in the correct ordering.\n        The media is also collected in the same ordering, in case it's handled by django-compressor for example.",
+        "ground_truth": "RenderingPipe.get_html_output",
+        "file_path": ""
+      },
+      {
+        "query": "The main rendering sequence for placeholders.\n        This will do all the magic for caching, and call :func:`render_items` in the end.",
+        "ground_truth": "PlaceholderRenderingPipe.render_placeholder",
+        "file_path": ""
+      },
+      {
+        "query": "Make a plugin known to the CMS.\n\n        :param plugin: The plugin class, deriving from :class:`ContentPlugin`.\n        :type plugin: :class:`ContentPlugin`\n\n        The plugin will be instantiated once, just like Django does this with :class:`~django.contrib.admin.ModelAdmin` classes.\n        If a plugin is already registered, this will raise a :class:`PluginAlreadyRegistered` exception.",
+        "ground_truth": "PluginPool.register",
+        "file_path": ""
+      },
+      {
+        "query": "Return the plugins which are supported in the given placeholder name.",
+        "ground_truth": "PluginPool.get_allowed_plugins",
+        "file_path": ""
+      },
+      {
+        "query": "Return a list of plugins by plugin class, or name.",
+        "ground_truth": "PluginPool.get_plugins_by_name",
+        "file_path": ""
+      },
+      {
+        "query": "Return all :class:`~fluent_contents.models.ContentItem` model classes which are exposed by plugins.",
+        "ground_truth": "PluginPool.get_model_classes",
+        "file_path": ""
+      },
+      {
+        "query": "Return the corresponding plugin for a given model.\n\n        You can also use the :attr:`ContentItem.plugin <fluent_contents.models.ContentItem.plugin>` property directly.\n        This is the low-level function that supports that feature.",
+        "ground_truth": "PluginPool.get_plugin_by_model",
+        "file_path": ""
+      },
+      {
+        "query": "Internal function, ensure all plugin packages are imported.",
+        "ground_truth": "PluginPool._import_plugins",
+        "file_path": ""
+      },
+      {
+        "query": "Run all filters for a given HTML snippet.\n    Returns the results of the pre-filter and post-filter as tuple.\n\n    This function can be called from the :meth:`~django.db.models.Model.full_clean` method in the model.\n    That function is called when the form values are assigned.\n    For example:\n\n    .. code-block:: python\n\n        def full_clean(self, *args, **kwargs):\n            super(TextItem, self).full_clean(*args, **kwargs)\n            self.html, self.html_final = apply_filters(self, self.html, field_name='html')\n\n    :type instance: fluent_contents.models.ContentItem\n    :raise ValidationError: when one of the filters detects a problem.",
+        "ground_truth": "apply_filters",
+        "file_path": ""
+      },
+      {
+        "query": "Perform optimizations in the HTML source code.\n\n    :type instance: fluent_contents.models.ContentItem\n    :raise ValidationError: when one of the filters detects a problem.",
+        "ground_truth": "apply_pre_filters",
+        "file_path": ""
+      },
+      {
+        "query": "Allow post processing functions to change the text.\n    This change is not saved in the original text.\n\n    :type instance: fluent_contents.models.ContentItem\n    :raise ValidationError: when one of the filters detects a problem.",
+        "ground_truth": "apply_post_filters",
+        "file_path": ""
+      },
+      {
+        "query": "Clean the plugin output cache of a rendered plugin.",
+        "ground_truth": "clear_commentarea_cache",
+        "file_path": ""
+      },
+      {
+        "query": "Filter to the given site, only give content relevant for that site.",
+        "ground_truth": "SharedContentQuerySet.parent_site",
+        "file_path": ""
+      },
+      {
+        "query": "Make sure the queryset is filtered on a parent site, if that didn't happen already.",
+        "ground_truth": "SharedContentQuerySet._single_site",
+        "file_path": ""
+      },
+      {
+        "query": "Return the placeholders found in a template,\n    wrapped in a :class:`~fluent_contents.models.containers.PlaceholderData` object.\n\n    This function looks for the :class:`~fluent_contents.templatetags.fluent_contents_tags.PagePlaceholderNode` nodes\n    in the template, using the :func:`~template_analyzer.djangoanalyzer.get_node_instances` function\n    of `django-template-analyzer <https://github.com/edoburu/django-template-analyzer>`_.\n\n    :param template:  The Template object, or nodelist to scan.\n    :rtype: list of :class:`~fluent_contents.models.PlaceholderData`",
+        "ground_truth": "get_template_placeholder_data",
+        "file_path": ""
+      },
+      {
+        "query": "Inspect a single model",
+        "ground_truth": "Command.inspect_model",
+        "file_path": ""
+      },
+      {
+        "query": "Take all ``<img src=\"..\">`` from the HTML",
+        "ground_truth": "Command.extract_html_urls",
+        "file_path": ""
+      },
+      {
+        "query": "Handle ``srcset=\"image.png 1x, image@2x.jpg 2x\"``",
+        "ground_truth": "Command.extract_srcset",
+        "file_path": ""
+      },
+      {
+        "query": "Make sure ContentItems are deleted when a translation in deleted.",
+        "ground_truth": "on_delete_model_translation",
+        "file_path": ""
+      },
+      {
+        "query": "Takes an HTML fragment and processes it using html5lib to ensure that the HTML is well-formed.\n\n    :param sanitize: Remove unwanted HTML tags and attributes.\n\n    >>> clean_html(\"<p>Foo<b>bar</b></p>\")\n    u'<p>Foo<b>bar</b></p>'\n    >>> clean_html(\"<p>Foo<b>bar</b><i>Ooops!</p>\")\n    u'<p>Foo<b>bar</b><i>Ooops!</i></p>'\n    >>> clean_html('<p>Foo<b>bar</b>& oops<a href=\"#foo&bar\">This is a <>link</a></p>')\n    u'<p>Foo<b>bar</b>&amp; oops<a href=#foo&amp;bar>This is a &lt;&gt;link</a></p>'",
+        "ground_truth": "clean_html",
+        "file_path": ""
+      },
+      {
+        "query": "Return the contents as dictionary, for client-side export.\n        The dictionary contains the fields:\n\n        * ``slot``\n        * ``title``\n        * ``role``\n        * ``fallback_language``\n        * ``allowed_plugins``",
+        "ground_truth": "PlaceholderData.as_dict",
+        "file_path": ""
+      },
+      {
+        "query": "Make sure that the MarkupItem model actually points\n    to the correct proxy model, that implements the given language.",
+        "ground_truth": "_forwards",
+        "file_path": ""
+      },
+      {
+        "query": "Pre-populate formset with the initial placeholders to display.",
+        "ground_truth": "PlaceholderEditorInline.get_formset",
+        "file_path": ""
+      },
+      {
+        "query": "Create the inlines for the admin, including the placeholder and contentitem inlines.",
+        "ground_truth": "PlaceholderEditorAdmin.get_inline_instances",
+        "file_path": ""
+      },
+      {
+        "query": "Return the placeholder data as dictionary.\n        This is used in the client for the \"copy\" functionality.",
+        "ground_truth": "PlaceholderEditorAdmin.get_placeholder_data_view",
         "file_path": ""
       }
     ]
