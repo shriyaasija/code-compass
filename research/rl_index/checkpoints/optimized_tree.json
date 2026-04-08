@@ -1,0 +1,227 @@
+{
+  "title": "mock_ml_classifier",
+  "type": "repository",
+  "path": "./mock_repository",
+  "summary": "A machine learning image classifier repository with training and evaluation utilities",
+  "nodes": [
+    {
+      "title": "src",
+      "type": "folder",
+      "path": "./mock_repository/src",
+      "summary": "Source code directory containing model, training, data loading and utilities",
+      "nodes": [
+        {
+          "title": "data_loader.py",
+          "type": "file_py",
+          "path": "./mock_repository/src/data_loader.py",
+          "summary": "Data loading and preprocessing utilities for image datasets",
+          "nodes": [
+            {
+              "title": "ImageDataset",
+              "type": "class",
+              "path": "./mock_repository/src/data_loader.py",
+              "start_line": 12,
+              "end_line": 14,
+              "signature": "class ImageDataset(Dataset)",
+              "summary": "Custom Dataset for loading images"
+            },
+            {
+              "title": "load_image_dataset",
+              "type": "function",
+              "path": "./mock_repository/src/data_loader.py",
+              "start_line": 17,
+              "end_line": 31,
+              "signature": "def load_image_dataset(data_dir, batch_size=32, shuffle=True)",
+              "summary": "Load images from directory and create DataLoader. Returns DataLoader object for batch processing."
+            },
+            {
+              "title": "preprocess_images",
+              "type": "function",
+              "path": "./mock_repository/src/data_loader.py",
+              "start_line": 34,
+              "end_line": 52,
+              "signature": "def preprocess_images(images, mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])",
+              "summary": "Preprocess images with normalization and resizing. Applies resize to 224x224 and normalization."
+            },
+            {
+              "title": "augment_images",
+              "type": "function",
+              "path": "./mock_repository/src/data_loader.py",
+              "start_line": 55,
+              "end_line": 72,
+              "signature": "def augment_images(images, augmentation_config)",
+              "summary": "Apply data augmentation to images including horizontal flip, rotation, and color jitter."
+            }
+          ]
+        },
+        {
+          "title": "model.py",
+          "type": "file_py",
+          "path": "./mock_repository/src/model.py",
+          "summary": "Neural network architecture definitions using PyTorch CNN model",
+          "nodes": [
+            {
+              "title": "ImageClassifier",
+              "type": "class",
+              "path": "./mock_repository/src/model.py",
+              "start_line": 10,
+              "end_line": 75,
+              "signature": "class ImageClassifier(nn.Module)",
+              "summary": "Convolutional neural network for image classification with 3 conv layers, batch norm, and dropout"
+            },
+            {
+              "title": "__init__",
+              "type": "method",
+              "path": "./mock_repository/src/model.py",
+              "start_line": 16,
+              "end_line": 37,
+              "signature": "def __init__(self, num_classes, input_channels=3, dropout_rate=0.5)",
+              "summary": "Initialize the image classifier model with convolutional layers, batch normalization, pooling, and fully connected layers"
+            },
+            {
+              "title": "forward",
+              "type": "method",
+              "path": "./mock_repository/src/model.py",
+              "start_line": 39,
+              "end_line": 55,
+              "signature": "def forward(self, x)",
+              "summary": "Forward pass through the network applying conv layers, pooling, and fully connected layers"
+            },
+            {
+              "title": "get_feature_maps",
+              "type": "method",
+              "path": "./mock_repository/src/model.py",
+              "start_line": 57,
+              "end_line": 68,
+              "signature": "def get_feature_maps(self, x, layer_name)",
+              "summary": "Extract feature maps from a specific layer for visualization or analysis"
+            },
+            {
+              "title": "initialize_weights",
+              "type": "function",
+              "path": "./mock_repository/src/model.py",
+              "start_line": 71,
+              "end_line": 85,
+              "signature": "def initialize_weights(model, init_type='xavier')",
+              "summary": "Initialize model weights with specified method (xavier or kaiming initialization)"
+            }
+          ]
+        },
+        {
+          "title": "train.py",
+          "type": "file_py",
+          "path": "./mock_repository/src/train.py",
+          "summary": "Training script with optimization loop, validation, and checkpoint management",
+          "nodes": [
+            {
+              "title": "train_one_epoch",
+              "type": "function",
+              "path": "./mock_repository/src/train.py",
+              "start_line": 10,
+              "end_line": 38,
+              "signature": "def train_one_epoch(model, train_loader, optimizer, criterion, device, epoch_num)",
+              "summary": "Train model for one epoch iterating through batches, computing loss, backpropagation and optimization"
+            },
+            {
+              "title": "validate_model",
+              "type": "function",
+              "path": "./mock_repository/src/train.py",
+              "start_line": 41,
+              "end_line": 64,
+              "signature": "def validate_model(model, val_loader, criterion, device)",
+              "summary": "Validate model on validation set computing loss and accuracy without gradient updates"
+            },
+            {
+              "title": "save_checkpoint",
+              "type": "function",
+              "path": "./mock_repository/src/train.py",
+              "start_line": 67,
+              "end_line": 83,
+              "signature": "def save_checkpoint(model, optimizer, epoch, loss, accuracy, save_path)",
+              "summary": "Save model checkpoint to disk including model state, optimizer state, epoch, loss and accuracy"
+            },
+            {
+              "title": "load_checkpoint",
+              "type": "function",
+              "path": "./mock_repository/src/train.py",
+              "start_line": 86,
+              "end_line": 102,
+              "signature": "def load_checkpoint(checkpoint_path, model, optimizer=None)",
+              "summary": "Load model checkpoint from disk and restore model weights and optimizer state"
+            }
+          ]
+        },
+        {
+          "title": "evaluate.py",
+          "type": "file_py",
+          "path": "./mock_repository/src/evaluate.py",
+          "summary": "Evaluation utilities for computing metrics and visualizing results",
+          "nodes": [
+            {
+              "title": "calculate_accuracy",
+              "type": "function",
+              "path": "./mock_repository/src/evaluate.py",
+              "start_line": 9,
+              "end_line": 21,
+              "signature": "def calculate_accuracy(predictions, targets)",
+              "summary": "Calculate classification accuracy by comparing predictions with ground truth labels"
+            },
+            {
+              "title": "compute_confusion_matrix",
+              "type": "function",
+              "path": "./mock_repository/src/evaluate.py",
+              "start_line": 24,
+              "end_line": 40,
+              "signature": "def compute_confusion_matrix(predictions, targets, num_classes)",
+              "summary": "Compute confusion matrix for predictions showing true vs predicted class distributions"
+            },
+            {
+              "title": "plot_training_curves",
+              "type": "function",
+              "path": "./mock_repository/src/evaluate.py",
+              "start_line": 43,
+              "end_line": 67,
+              "signature": "def plot_training_curves(train_losses, val_losses, train_accs, val_accs, save_path)",
+              "summary": "Plot training and validation curves for loss and accuracy over epochs"
+            }
+          ]
+        },
+        {
+          "title": "utils.py",
+          "type": "file_py",
+          "path": "./mock_repository/src/utils.py",
+          "summary": "Utility functions for logging, reproducibility and device management",
+          "nodes": [
+            {
+              "title": "setup_logger",
+              "type": "function",
+              "path": "./mock_repository/src/utils.py",
+              "start_line": 11,
+              "end_line": 25,
+              "signature": "def setup_logger(log_file, log_level='INFO')",
+              "summary": "Setup logger for training with file handler and specified log level"
+            },
+            {
+              "title": "set_random_seed",
+              "type": "function",
+              "path": "./mock_repository/src/utils.py",
+              "start_line": 28,
+              "end_line": 39,
+              "signature": "def set_random_seed(seed=42)",
+              "summary": "Set random seed for reproducibility across random, numpy, torch and CUDA"
+            }
+          ]
+        },
+        {
+          "title": "get_device",
+          "type": "function",
+          "path": "./mock_repository/src/utils.py",
+          "start_line": 42,
+          "end_line": 54,
+          "signature": "def get_device(use_cuda=True)",
+          "summary": "Get PyTorch device checking for CUDA availability and returning appropriate device"
+        }
+      ]
+    }
+  ]
+}

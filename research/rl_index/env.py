@@ -143,6 +143,7 @@ class TreeIndexEnv(gym.Env):
         Returns:
             (observation, reward, terminated, truncated, info)
         """
+        action = int(action)  # model.predict() returns numpy array
         self._step_count += 1
         mutation_valid = False
         action_name = ACTION_NAMES.get(action, "Unknown")
