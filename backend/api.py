@@ -224,6 +224,10 @@ async def initialize_repository(request: InitializeRequest):
         # Load PageIndex JSON tree into tree search
         print(f"\n🔄 Loading PageIndex tree: {json_tree_path}")
         tree_search.load_repository_tree(repo_id, json_tree_path)
+        
+        if not request.json_tree_path:
+            print("🚀 Tree was auto-generated without summaries. Running fast summarization pass...")
+            tree_search.generate_tree_summaries(repo_id, repo_path)
 
         # ---- BEGIN SANITY TEST DUMP 2 ----
         out_dir = Path("test_output")

@@ -59,6 +59,88 @@ class TreeBasedSearch:
             for child in node['children']:
                 count = self._count_nodes(child, count)
         return count
+
+    def generate_tree_summaries(self, repo_id: str, repo_path: str):
+        """Recursively generate short summaries for tree nodes that lack them."""
+        if repo_id not in self.repositories:
+            return
+            
+        tree = self.repositories[repo_id]['tree']
+        print(f"🚀 Starting fast bottom-up LLM summarization for {repo_id}...")
+        
+        self._summarize_node_bottom_up(tree, repo_path)
+        
+        # Save back to disk
+        json_path = self.repositories[repo_id]['json_path']
+        with open(json_path, 'w') as f:
+            json.dump(tree, f, indent=2)
+        print(f"✅ Summarization complete. Updated JSON dumped to {json_path}")
+
+    def _summarize_node_bottom_up(self, node: Dict, repo_path: str) -> str:
+        # Process children
+        children = node.get('nodes', node.get('children', []))
+        child_summaries = []
+        for child in children:
+            c_sum = self._summarize_node_bottom_up(child, repo_path)
+            if c_sum:
+                title = child.get('title', child.get('name', 'unknown'))
+                child_summaries.append(f"{title}: {c_sum}")
+
+        # Skip if already has summary
+        if node.get('summary', '').strip():
+            return node['summary']
+
+        node_type = node.get('type', node.get('node_type', ''))
+        title = node.get('title', node.get('name', ''))
+        
+        prompt = ""
+        # 1. Leaf node code fetching
+        if node_type in ['function', 'method', 'class', 'struct', 'impl']:
+            file_path = node.get('path', node.get('file_path', ''))
+            start = node.get('start_line')
+            end = node.get('end_line')
+            code_snippet = ""
+            if file_path and start is not None and end is not None:
+                try:
+                    import os
+                    from pathlib import Path
+                    full_path = str(Path(repo_path) / file_path) if not file_path.startswith('/') else file_path
+                    with open(full_path, 'r', encoding='utf-8', errors='ignore') as f:
+                        lines = f.readlines()
+                        # Usually line numbers are 0-indexed in our parser
+                        snippet_lines = lines[max(0, start):end+1]
+                        code_snippet = "".join(snippet_lines)[:800] # Cap length
+                except Exception:
+                    pass
+            prompt = f"Summarize this {node_type} code in MAX 8 WORDS:\n{code_snippet}"
+        
+        # 2. Branch node fetching
+        elif node_type.startswith('file') or node_type == 'folder':
+            if not child_summaries:
+                return "Empty"
+            children_text = "\n".join(child_summaries)[:1000]
+            prompt = f"Summarize this {node_type} named '{title}' which contains:\n{children_text}\nMAX 8 WORDS."
+        else:
+            return ""
+
+        # Query LLM
+        try:
+            messages = [
+                {"role": "system", "content": "You are a fast code summarizer. Output ONLY the short summary, nothing else. Be extremely brief (max 8 words). Do NOT use markdown."},
+                {"role": "user", "content": prompt}
+            ]
+            response = self.llm.chat(messages, temperature=0.1, max_tokens=20)
+            summary = response.strip().replace('\n', ' ')
+            # Remove any quotes or weird chars
+            if summary.startswith('"') and summary.endswith('"'):
+                summary = summary[1:-1]
+                
+            node['summary'] = summary
+            print(f"   [Summarized {title}] -> {summary}")
+            return summary
+        except Exception as e:
+            print(f"   [Failed to summarize {title}]: {e}")
+            return ""
     
     def search(self, 
                repo_id: str, 
@@ -109,6 +191,11 @@ class TreeBasedSearch:
         
         tree = self.repositories[repo_id]['tree']
         search_threshold = threshold if threshold is not None else self.threshold
+        
+        # PRE-COMPUTE: Bottom-up keyword score propagation
+        query_words = set(w for w in query.lower().replace('?','').replace(',','').replace('.','').split() if len(w) > 2)
+        self._propagate_keyword_scores(tree, query_words)
+        
         root = MCTSNode(tree)
         
         print(f"\n{'='*70}")
@@ -161,7 +248,11 @@ class TreeBasedSearch:
             child = MCTSNode(child_data, parent=node)
             title = child_data.get('title', child_data.get('name', 'unknown'))
             # Give it an initial score from LLM guidance
-            child.score = scores.get(title, 0.0)
+            llm_score = scores.get(title, 0.0)
+            keyword_score = child_data.get('_keyword_score', 0.0)
+            
+            # Blend: if a child deep down has strong keyword match, don't prune it!
+            child.score = max(llm_score, keyword_score)
             
             child_data['_score'] = child.score
             node.children.append(child)
@@ -169,15 +260,28 @@ class TreeBasedSearch:
         node.expanded = True
 
     def _simulate(self, node, query):
-        # Fast keyword heuristic - NO LLM call
-        query_words = set(query.lower().split())
-        summary = node.data.get('summary', '').lower()
-        title = node.data.get('title', node.data.get('name', '')).lower()
-        text = summary + ' ' + title
-        if not query_words:
-            return 0.0
-        overlap = sum(1 for w in query_words if w in text)
-        return overlap / max(len(query_words), 1)
+        # The propagated keyword score is the maximum keyword match in the entire subtree!
+        # This provides an O(1) rollout score of the best possible leaf in this branch.
+        return node.data.get('_keyword_score', 0.0)
+        
+    def _propagate_keyword_scores(self, node: Dict, query_words: set) -> float:
+        """Compute keyword score and propagate max child score bottom-up."""
+        title = node.get('title', node.get('name', '')).lower()
+        summary = node.get('summary', '').lower()
+        text = f"{title} {summary}"
+        
+        score = 0.0
+        if query_words:
+            overlap = sum(1 for w in query_words if w in text)
+            score = overlap / len(query_words)
+            
+        children = node.get('nodes', node.get('children', []))
+        for child in children:
+            child_score = self._propagate_keyword_scores(child, query_words)
+            score = max(score, child_score)
+            
+        node['_keyword_score'] = score
+        return score
 
     def _backpropagate(self, node, reward):
         while node:
@@ -271,6 +375,11 @@ Items:
             if summary:
                 short_summary = summary[:100] + "..." if len(summary) > 100 else summary
                 prompt += f"\n   {short_summary}"
+                
+            # Add algorithmic hint for LLM if branch contains match
+            kw_score = child.get('_keyword_score', 0.0)
+            if kw_score > 0.4:
+                prompt += f" [HINT: Contains exact query match inside folder! Score it high!]"
         
         prompt += f"""
 
