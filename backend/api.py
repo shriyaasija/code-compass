@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 
 from backend.retrieval import ProductionChatbot
-from backend.code_index import TreeBasedSearch
+from backend.code_index2 import MCTSTreeSearch as TreeBasedSearch
 from backend.ollama_client import OllamaLLM
 from backend.lmstudio_client import LMStudioLLM
 from backend.tree_builder import build_directory_tree

@@ -221,7 +221,7 @@ Example: {{"auth.py": 0.9, "utils.py": 0.2}}
                 {"role": "user", "content": prompt}
             ]
             
-            response = self.llm.chat(messages, temperature=0.1, max_tokens=500)
+            response = self.llm.chat(messages, temperature=0.1, max_tokens=2000)
             
             # Debug: print what LLM returned
             if not response or not response.strip():

@@ -45,7 +45,7 @@ class LMStudioLLM:
                  prompt: str, 
                  system_prompt: Optional[str] = None,
                  temperature: float = 0.3,
-                 max_tokens: int = 2000) -> str:
+                 max_tokens: int = 4000) -> str:
         """Generate uses chat completions under the hood (more reliable with LM Studio)."""
         messages = []
         if system_prompt:
@@ -57,7 +57,7 @@ class LMStudioLLM:
     def chat(self, 
              messages: List[Dict[str, str]], 
              temperature: float = 0.3,
-             max_tokens: int = 2000,
+             max_tokens: int = 4000,
              format: str = None,
              retry_on_empty: bool = True) -> str:
         """Chat with LM Studio model using OpenAI-compatible API."""
@@ -77,7 +77,7 @@ class LMStudioLLM:
             response = requests.post(
                 self.chat_url,
                 json=payload,
-                timeout=120
+                timeout=600
             )
             response.raise_for_status()
             
