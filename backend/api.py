@@ -56,10 +56,10 @@ async def startup_event():
             llm_client = OllamaLLM(model="qwen3:8b")
             print("✅ Ollama client initialized")
         
-        # Initialize tree search with LLM client
-        print("\n🌳 Initializing tree-based search...")
+        # Initialize MCTS engine with LLM client
+        print("\n🌳 Initializing MCTS-based search...")
         tree_search = TreeBasedSearch(llm_client=llm_client, threshold=0.5)
-        print("✅ Tree search initialized with threshold=0.5")
+        print("✅ MCTS engine initialized with threshold=0.5")
         
         print("\n" + "="*70)
         print(f"✅ API READY ({llm_provider.upper()})")
