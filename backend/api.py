@@ -279,14 +279,15 @@ async def process_query(request: QueryRequest):
             print(f"🔧 Using custom threshold: {request.threshold}")
 
         try:
-            # STEP 1: Tree-based search - returns ALL leaf nodes found
+            # STEP 1: Tree-based search - returns top K leaf nodes
             print(f"\n🔍 Searching for: '{request.user_query}'")
             filtered_functions = tree_search.search_and_format_for_chatbot(
                 repo_id=request.repo_id,
-                query=request.user_query
+                query=request.user_query,
+                top_k=5  # Cap to top 5 to prevent LLM context explosion
             )
 
-            print(f"✅ Found {len(filtered_functions)} relevant leaf nodes")
+            print(f"✅ Extracted top {len(filtered_functions)} most relevant leaf nodes")
 
             if not filtered_functions:
                 return QueryResponse(
