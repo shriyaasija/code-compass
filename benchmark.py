@@ -654,6 +654,137 @@ class BenchmarkRunner:
             },
         }
 
+    def run_mcts_search(self, repo_metadata: List[Dict],
+                        provider: str = "ollama",
+                        model: str = "qwen3:8b",
+                        max_iterations: int = 50,
+                        c_explore: float = 1.414) -> Dict[str, Any]:
+        """Evaluate MCTSTreeSearch on all repos."""
+        print("\n" + "=" * 70)
+        print("🌳 EVALUATING: MCTS Search")
+        print(f"   Provider: {provider}, Model: {model}")
+        print(f"   Iterations: {max_iterations}, c_explore: {c_explore}")
+        print("=" * 70)
+
+        sys.path.insert(0, str(Path(__file__).parent / "backend"))
+        from code_index2 import MCTSTreeSearch
+
+        # Initialize LLM client
+        llm_client = self._init_llm(provider, model)
+        if llm_client is None:
+            print("❌ Could not connect to LLM. Skipping MCTS search.")
+            return None
+
+        search_engine = MCTSTreeSearch(llm_client, max_iterations=max_iterations, c_explore=c_explore)
+
+        all_results = []
+        all_llm_calls = []
+        per_repo_results = []
+
+        for repo_idx, repo in enumerate(repo_metadata, 1):
+            repo_id = repo["repo_id"]
+            tree_path = str(Path(__file__).parent / repo["tree_path"])
+            queries = repo["queries"]
+
+            print(f"\n  [{repo_idx}/{len(repo_metadata)}] {repo['repo_name']}")
+            search_engine.load_repository_tree(repo_id, tree_path)
+            sampled_queries = self._sample_queries(queries)
+            print(f"     Running {len(sampled_queries)} queries...")
+
+            repo_metrics = defaultdict(list)
+            repo_llm_calls = []
+            query_details = []
+
+            for q_idx, query_info in enumerate(sampled_queries):
+                query_text = query_info["query"]
+                ground_truth = query_info["ground_truth"]
+
+                try:
+                    search_engine.mcts.verbose = False
+                    results = search_engine.search(repo_id, query_text, top_k=50)
+                    ranked_names = [r["name"] for r in results]
+
+                    m = self.metrics.compute_all(ranked_names, ground_truth)
+                    call_count = search_engine.mcts.llm_call_count
+                    m["llm_calls"] = call_count
+                    
+                    # Capture MCTS stats
+                    iters_used = getattr(search_engine.mcts, "actual_iterations", max_iterations)
+                    early_term = 1 if getattr(search_engine.mcts, "early_terminated", False) else 0
+                    m["iterations_used"] = iters_used
+                    m["early_terminations"] = early_term
+
+                    for key, val in m.items():
+                        if key != "llm_calls":
+                            repo_metrics[key].append(val)
+
+                    repo_llm_calls.append(call_count)
+                    all_llm_calls.append(call_count)
+
+                    query_details.append({
+                        "query": query_text[:100],
+                        "ground_truth": ground_truth,
+                        "top_5_results": ranked_names[:5],
+                        "metrics": m,
+                        "llm_calls": call_count,
+                        "iterations": iters_used,
+                        "early_terminated": early_term,
+                    })
+
+                    if (q_idx + 1) % 5 == 0:
+                        print(f"       Completed {q_idx + 1}/{len(sampled_queries)} queries")
+
+                except Exception as e:
+                    print(f"     ⚠️  Query {q_idx} failed: {e}")
+
+            avg_metrics = {key: sum(vals) / len(vals) if vals else 0.0
+                           for key, vals in repo_metrics.items()}
+            avg_llm_calls = sum(repo_llm_calls) / len(repo_llm_calls) if repo_llm_calls else 0
+
+            per_repo_results.append({
+                "repo_id": repo_id,
+                "repo_name": repo["repo_name"],
+                "num_queries": len(sampled_queries),
+                "num_functions": repo["num_functions"],
+                "avg_metrics": avg_metrics,
+                "avg_llm_calls": avg_llm_calls,
+                "query_details": query_details,
+            })
+
+            all_results.extend([detail["metrics"] for detail in query_details])
+
+            print(f"     R@1={avg_metrics.get('recall_at_1', 0):.3f}  "
+                  f"R@5={avg_metrics.get('recall_at_5', 0):.3f}  "
+                  f"R@10={avg_metrics.get('recall_at_10', 0):.3f}  "
+                  f"MRR={avg_metrics.get('mrr', 0):.3f}  "
+                  f"LLM calls/q={avg_llm_calls:.1f}  "
+                  f"Iters/q={avg_metrics.get('iterations_used', 0):.1f}  "
+                  f"Early Term rate={avg_metrics.get('early_terminations', 0):.2f}")
+
+            if repo_id in search_engine.repositories:
+                del search_engine.repositories[repo_id]
+
+        global_metrics = self._aggregate_metrics(all_results)
+        avg_global_llm = sum(all_llm_calls) / len(all_llm_calls) if all_llm_calls else 0
+
+        return {
+            "method": "MCTSTreeSearch",
+            "provider": provider,
+            "model": model,
+            "max_iterations": max_iterations,
+            "global_metrics": global_metrics,
+            "per_repo": per_repo_results,
+            "total_queries": len(all_results),
+            "llm_calls_per_query": avg_global_llm,
+            "llm_calls_distribution": {
+                "min": min(all_llm_calls) if all_llm_calls else 0,
+                "max": max(all_llm_calls) if all_llm_calls else 0,
+                "mean": avg_global_llm,
+                "median": float(np.median(all_llm_calls)) if all_llm_calls else 0,
+                "std": float(np.std(all_llm_calls)) if all_llm_calls else 0,
+            },
+        }
+
     def _init_llm(self, provider: str, model: str):
         """Initialize LLM client."""
         try:

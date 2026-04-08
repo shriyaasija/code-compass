@@ -92,6 +92,7 @@ class MCTSSearch:
 
         # Run MCTS iterations
         actual_iterations = 0
+        early_terminated = False
         for iteration in range(1, self.max_iterations + 1):
             actual_iterations = iteration
             self._run_one_iteration(root, query, iteration)
@@ -101,7 +102,12 @@ class MCTSSearch:
                 if self._check_convergence(root):
                     if self.verbose:
                         print(f"  ✅ Early termination at iteration {iteration} (converged)")
+                    early_terminated = True
                     break
+        
+        # Store for benchmarking tools
+        self.actual_iterations = actual_iterations
+        self.early_terminated = early_terminated
 
         # Collect results from all visited terminals
         results = self._collect_results(root)
