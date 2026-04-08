@@ -890,7 +890,7 @@ Examples:
     )
 
     parser.add_argument("--mode", required=True,
-                        choices=["prepare", "dense-only", "full"],
+                        choices=["prepare", "dense-only", "full", "mcts"],
                         help="Benchmark mode")
     parser.add_argument("--num-repos", type=int, default=25,
                         help="Number of repos to benchmark (default: 25)")
@@ -980,10 +980,18 @@ Examples:
             model=args.model,
             threshold=args.threshold,
         )
+        
+    mcts_results = None
+    if args.mode == "mcts":
+        mcts_results = runner.run_mcts_search(
+            repo_metadata,
+            provider=args.provider,
+            model=args.model,
+        )
 
     # ── REPORT ──
     reporter = ReportGenerator(output_dir)
-    reporter.generate(dense_results, tree_results)
+    reporter.generate(dense_results, tree_results or mcts_results)
 
     elapsed = time.time() - start_time
     print(f"\n⏱️  Total benchmark time: {elapsed:.1f}s ({elapsed/60:.1f} min)")
