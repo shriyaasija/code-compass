@@ -39,6 +39,7 @@ import numpy as np
 
 DEFAULT_CONFIG = {
     "benchmark_dir": "benchmark_results",
+    "metadata_path": "benchmark_results/proper_benchmark_metadata.json",
     "rl_output_dir": "research/rl_index/checkpoints",
     "optimized_trees_dir": "benchmark_results/optimized_trees",
     "results_dir": "pipeline_results",
