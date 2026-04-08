@@ -8,7 +8,7 @@ Instead of picking ONE branch (which fails 93% of the time), MCTS:
   2. Uses the LLM to score node relevance (cached)
   3. Simulates rollouts with keyword heuristic (no extra LLM calls)
   4. Returns top-k nodes by LLM relevance score
-
+=
 API is identical to TreeBasedSearch and PageIndexSemanticSearch:
   - load_repository_tree(repo_id, json_path)
   - search(repo_id, query, top_k=5)

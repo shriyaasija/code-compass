@@ -1,6 +1,23 @@
 import json
+import math
 from pathlib import Path
 from typing import List, Dict, Any
+
+class MCTSNode:
+    def __init__(self, node_data, parent=None):
+        self.data = node_data
+        self.parent = parent
+        self.children = []
+        self.visits = 0
+        self.score = 0.0
+        self.expanded = False
+
+    def ucb1(self, exploration=1.41):
+        if self.visits == 0:
+            return float('inf')
+        return (self.score / self.visits) + exploration * math.sqrt(
+            math.log(self.parent.visits) / self.visits
+        )
 
 class TreeBasedSearch:
     """
@@ -86,67 +103,115 @@ class TreeBasedSearch:
         results.sort(key=lambda x: x['similarity_score'], reverse=True)
         return results
     
-    def _recursive_search(self, node: Dict, query: str, trajectory: List[str], 
-                         results: List[Dict], llm_call_count: List[int], threshold: float):
-        """Recursive tree traversal with LLM scoring - PageIndex style."""
+    def mcts_search(self, repo_id: str, query: str, n_simulations=15, threshold=None):
+        if repo_id not in self.repositories:
+            raise ValueError(f"Repository '{repo_id}' not loaded. Call load_repository_tree() first.")
         
-        node_title = node.get('title', node.get('name', 'unknown'))
-        node_type = node.get('type', 'unknown')
-        depth = len(trajectory)
-        indent = "  " * depth
+        tree = self.repositories[repo_id]['tree']
+        search_threshold = threshold if threshold is not None else self.threshold
+        root = MCTSNode(tree)
         
-        print(f"{indent}📂 [{node_type}] {node_title}")
+        print(f"\n{'='*70}")
+        print(f"🔍 MCTS SEARCH: '{query}'")
+        print(f"   Simulations: {n_simulations}, Threshold: {search_threshold}")
+        print(f"{'='*70}")
         
-        # Check if this is a leaf node (has code location)
-        if self._is_leaf(node):
-            score = node.get('_score', 0.8)
-            print(f"{indent}  ✅ LEAF NODE (score: {score:.2f}) - COLLECTED")
-            results.append({
-                'node_id': node.get('node_id', node.get('title', 'unknown')),
-                'name': node.get('title', node.get('name', 'unnamed')),
-                'node_type': node_type,
-                'summary': node.get('summary', ''),
-                'path': node.get('path', ''),
-                'similarity_score': score,
-                'metadata': {
-                    'file_path': node.get('path', ''),
-                    'start_line': node.get('start_line'),
-                    'end_line': node.get('end_line'),
-                    'signature': node.get('signature', ''),
-                    'docstring': node.get('summary', '')
-                }
-            })
-            return
-        
-        # Get children
-        children = node.get('nodes', node.get('children', []))
-        if not children:
-            print(f"{indent}  ⚠️  No children to explore")
-            return
-        
-        print(f"{indent}  🎯 Scoring {len(children)} children...")
-        
-        # Score all siblings in one LLM call
-        scores = self._score_siblings(children, query, node, trajectory)
-        llm_call_count[0] += 1
-        
-        # Show scores and decide which to explore
-        explored_count = 0
-        for child in children:
-            child_title = child.get('title', child.get('name', 'unknown'))
-            child_score = scores.get(child_title, 0.0)
+        for _ in range(n_simulations):
+            # Step 1: Selection - UCB1 traversal
+            node = self._select(root)
             
-            if child_score >= threshold:
-                print(f"{indent}    ✓ {child_title}: {child_score:.2f} → EXPLORE")
-                explored_count += 1
-                child['_score'] = child_score
-                new_trajectory = trajectory + [node_title]
-                self._recursive_search(child, query, new_trajectory, results, llm_call_count, threshold)
-            else:
-                print(f"{indent}    ✗ {child_title}: {child_score:.2f} → SKIP")
+            # Step 2: Expansion - load & score children via LLM
+            if not node.expanded:
+                self._expand(node, query)
+            
+            # Step 3: Simulation - keyword heuristic rollout, NO LLM
+            reward = self._simulate(node, query)
+            
+            # Step 4: Backpropagation
+            self._backpropagate(node, reward)
         
-        if explored_count == 0:
-            print(f"{indent}  ⛔ No children passed threshold - stopping here")
+        results = self._collect_results(root, search_threshold)
+        print(f"\n{'='*70}")
+        print(f"✅ MCTS SEARCH COMPLETE")
+        print(f"   Found {len(results)} leaf nodes")
+        print(f"{'='*70}\n")
+        return results
+
+    def _select(self, node):
+        while node.children:
+            node = max(node.children, key=lambda n: n.ucb1())
+        return node
+
+    def _expand(self, node, query):
+        children_data = node.data.get('nodes', node.data.get('children', []))
+        if not children_data:
+            node.expanded = True
+            return
+            
+        trajectory = []
+        curr = node
+        while curr and curr.data:
+            title = curr.data.get('title', curr.data.get('name', 'root'))
+            trajectory.insert(0, title)
+            curr = curr.parent
+
+        scores = self._score_siblings(children_data, query, node.data, trajectory)
+        
+        for child_data in children_data:
+            child = MCTSNode(child_data, parent=node)
+            title = child_data.get('title', child_data.get('name', 'unknown'))
+            # Give it an initial score from LLM guidance
+            child.score = scores.get(title, 0.0)
+            
+            child_data['_score'] = child.score
+            node.children.append(child)
+            
+        node.expanded = True
+
+    def _simulate(self, node, query):
+        # Fast keyword heuristic - NO LLM call
+        query_words = set(query.lower().split())
+        summary = node.data.get('summary', '').lower()
+        title = node.data.get('title', node.data.get('name', '')).lower()
+        text = summary + ' ' + title
+        if not query_words:
+            return 0.0
+        overlap = sum(1 for w in query_words if w in text)
+        return overlap / max(len(query_words), 1)
+
+    def _backpropagate(self, node, reward):
+        while node:
+            node.visits += 1
+            node.score += reward
+            node = node.parent
+
+    def _collect_results(self, root, threshold):
+        results = []
+        def walk(node):
+            if self._is_leaf(node.data) and getattr(node, 'score', 0) > threshold:
+                # Add score to data so it's accessible downstream
+                node.data['_score'] = node.score
+                results.append(node.data)
+            for child in node.children:
+                walk(child)
+        walk(root)
+        
+        # Optionally format slightly to keep retrieval happy if some attributes are missing
+        formatted_results = []
+        for res in results:
+            formatted_results.append({
+                'name': res.get('title', res.get('name', 'unnamed')),
+                'node_type': res.get('type', 'unknown'),
+                'file_path': res.get('path', ''),
+                'path': res.get('path', ''),
+                'start_line': res.get('start_line'),
+                'end_line': res.get('end_line'),
+                'docstring': res.get('summary', ''),
+                '_score': res.get('_score', 0),
+                'relevance_score': res.get('_score', 0)
+            })
+            
+        return sorted(formatted_results, key=lambda x: x.get('_score', 0), reverse=True)
     
     def _is_leaf(self, node: Dict) -> bool:
         """Check if node is a leaf (has code location or is an unparsed file)."""

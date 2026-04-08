@@ -8,13 +8,15 @@
       "title": "Dockerfile",
       "node_id": "0001",
       "type": "file",
-      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/Dockerfile"
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/Dockerfile",
+      "_score": 1.5
     },
     {
       "title": "README.md",
       "node_id": "0002",
       "type": "file_md",
-      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/README.md"
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/README.md",
+      "_score": 0.4
     },
     {
       "title": "agents",
@@ -26,7 +28,8 @@
           "title": "__init__.py",
           "node_id": "0004",
           "type": "file_py",
-          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/agents/__init__.py"
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/agents/__init__.py",
+          "_score": 0.55
         },
         {
           "title": "base_agent.py",
@@ -76,7 +79,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "_score": 0.4
         },
         {
           "title": "budget_agent.py",
@@ -126,7 +130,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "_score": 0.4
         },
         {
           "title": "coordinator_agent.py",
@@ -176,7 +181,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "_score": 0.4
         },
         {
           "title": "destination_agent.py",
@@ -226,21 +232,25 @@
                 }
               ]
             }
-          ]
+          ],
+          "_score": 0.4
         }
-      ]
+      ],
+      "_score": 0.3
     },
     {
       "title": "app.py",
       "node_id": "0009",
       "type": "file_py",
-      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/app.py"
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/app.py",
+      "_score": 0.5
     },
     {
       "title": "requirements.txt",
       "node_id": "0010",
       "type": "file_txt",
-      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/requirements.txt"
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/requirements.txt",
+      "_score": 0.7
     },
     {
       "title": "static",
@@ -252,9 +262,11 @@
           "title": "style.css",
           "node_id": "0012",
           "type": "file_css",
-          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/static/style.css"
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/static/style.css",
+          "_score": 0.0
         }
-      ]
+      ],
+      "_score": 0.2
     },
     {
       "title": "templates",
@@ -266,9 +278,11 @@
           "title": "index.html",
           "node_id": "0014",
           "type": "file_html",
-          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/templates/index.html"
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_pu5cknci/templates/index.html",
+          "_score": 0.0
         }
-      ]
+      ],
+      "_score": 0.2
     }
   ]
 }

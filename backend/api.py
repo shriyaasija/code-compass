@@ -205,6 +205,14 @@ async def initialize_repository(request: InitializeRequest):
                     json.dump(tree_dict, f, indent=2)
                 
                 print(f"✅ Generated JSON tree saved to {json_tree_path}")
+
+                # ---- BEGIN SANITY TEST DUMP 1 ----
+                out_dir = Path("test_output")
+                out_dir.mkdir(exist_ok=True)
+                with open(out_dir / "1_initial_parsed_tree.json", 'w') as f:
+                    json.dump(tree_dict, f, indent=2)
+                print(f"✅ Sanity Test 1: Saved initial parsed tree to test_output/1_initial_parsed_tree.json")
+                # ---- END SANITY TEST DUMP 1 ----
             else:
                 print(f"❌ JSON tree not found: {request.json_tree_path}")
                 raise HTTPException(404, f"JSON tree not found: {request.json_tree_path}")
@@ -216,6 +224,14 @@ async def initialize_repository(request: InitializeRequest):
         # Load PageIndex JSON tree into tree search
         print(f"\n🔄 Loading PageIndex tree: {json_tree_path}")
         tree_search.load_repository_tree(repo_id, json_tree_path)
+
+        # ---- BEGIN SANITY TEST DUMP 2 ----
+        out_dir = Path("test_output")
+        out_dir.mkdir(exist_ok=True)
+        with open(out_dir / "2_with_summaries.json", 'w') as f:
+            json.dump(tree_search.repositories[repo_id]['tree'], f, indent=2)
+        print(f"✅ Sanity Test 2: Saved loaded tree (with summaries) to test_output/2_with_summaries.json")
+        # ---- END SANITY TEST DUMP 2 ----
 
         # Initialize chatbot for code retrieval
         print(f"\n🔄 Initializing chatbot for: {repo_path}")
@@ -279,14 +295,24 @@ async def process_query(request: QueryRequest):
             print(f"🔧 Using custom threshold: {request.threshold}")
 
         try:
-            # STEP 1: Tree-based search - returns ALL leaf nodes found
-            print(f"\n🔍 Searching for: '{request.user_query}'")
-            filtered_functions = tree_search.search_and_format_for_chatbot(
+            # STEP 1: MCTS Tree-based search - returns ALL leaf nodes found using UCB1 approach
+            print(f"\n🔍 Searching for: '{request.user_query}' using MCTS")
+            filtered_functions = tree_search.mcts_search(
                 repo_id=request.repo_id,
-                query=request.user_query
+                query=request.user_query,
+                n_simulations=15,
+                threshold=request.threshold if request.threshold is not None else 0.5
             )
 
             print(f"✅ Found {len(filtered_functions)} relevant leaf nodes")
+
+            # ---- BEGIN SANITY TEST DUMP 3 ----
+            out_dir = Path("test_output")
+            out_dir.mkdir(exist_ok=True)
+            with open(out_dir / "3_with_relevance_scores.json", 'w') as f:
+                json.dump(tree_search.repositories[request.repo_id]['tree'], f, indent=2)
+            print(f"✅ Sanity Test 3: Saved post-MCTS tree with relevance scores to test_output/3_with_relevance_scores.json")
+            # ---- END SANITY TEST DUMP 3 ----
 
             if not filtered_functions:
                 return QueryResponse(
