@@ -9,7 +9,8 @@ class LMStudioLLM:
     Same interface as OllamaLLM so the rest of the codebase works unchanged.
     """
     def __init__(self, model="local-model", base_url="http://localhost:1234"):
-        self.model = model
+        # Handle case where model might be passed as None from CLI
+        self.model = model or "local-model"
         self.base_url = base_url
         self.chat_url = f"{base_url}/v1/chat/completions"
         
@@ -27,9 +28,14 @@ class LMStudioLLM:
             if model_names:
                 # Keep 'local-model' to force LM Studio to use the active loaded model
                 # Doing this prevents the 29GB memory check crash
-                if self.model == "local-model" and model_names:
-                    self.model = "local-model"
-                print(f"✅ Connected to LM Studio - Using model: {self.model}")
+                # If using placeholder "local-model", auto-detect the real ID
+                # This ensures compatibility with LM Studio 0.3.x which requires real model IDs
+                if self.model == "local-model":
+                    # Filter out embedding models to find chat models
+                    chat_models = [m for m in model_names if "embed" not in m.lower()]
+                    self.model = chat_models[0] if chat_models else model_names[0]
+                
+                print(f"✅ Connected to LM Studio - Auto-detected model: {self.model}")
                 print(f"   Available models: {model_names}")
             else:
                 print(f"⚠️ No models loaded in LM Studio")
@@ -119,6 +125,11 @@ class LMStudioLLM:
             return ""
         except requests.exceptions.RequestException as e:
             print(f"❌ LM Studio chat error: {str(e)}")
+            if hasattr(e, 'response') and e.response is not None:
+                try:
+                    print(f"   Server response: {e.response.json()}")
+                except:
+                    print(f"   Server response: {e.response.text}")
             return ""
         
     def generate_streaming(self, 
@@ -178,6 +189,11 @@ class LMStudioLLM:
             return ""
         except requests.exceptions.RequestException as e:
             print(f"❌ LM Studio chat streaming error: {str(e)}")
+            if hasattr(e, 'response') and e.response is not None:
+                try:
+                    print(f"   Server response: {e.response.json()}")
+                except:
+                    print(f"   Server response: {e.response.text}")
             return ""
 
 

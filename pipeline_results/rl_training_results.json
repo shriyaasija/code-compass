@@ -1,0 +1,35 @@
+[
+  {
+    "repo_id": "openclimatedata__pymagicc",
+    "repo_name": "openclimatedata/pymagicc",
+    "trained": true,
+    "train_time": 68.28360795974731,
+    "depth_before": 2,
+    "depth_after": 2,
+    "leaves_before": 46,
+    "leaves_after": 46,
+    "optimized_tree_path": "benchmark_results/optimized_trees/openclimatedata__pymagicc.json"
+  },
+  {
+    "repo_id": "jleinonen__pytmatrix",
+    "repo_name": "jleinonen/pytmatrix",
+    "trained": true,
+    "train_time": 32.503414154052734,
+    "depth_before": 2,
+    "depth_after": 2,
+    "leaves_before": 32,
+    "leaves_after": 32,
+    "optimized_tree_path": "benchmark_results/optimized_trees/jleinonen__pytmatrix.json"
+  },
+  {
+    "repo_id": "josiah-wolf-oberholtzer__uqbar",
+    "repo_name": "josiah-wolf-oberholtzer/uqbar",
+    "trained": true,
+    "train_time": 22.97685694694519,
+    "depth_before": 2,
+    "depth_after": 2,
+    "leaves_before": 28,
+    "leaves_after": 28,
+    "optimized_tree_path": "benchmark_results/optimized_trees/josiah-wolf-oberholtzer__uqbar.json"
+  }
+]

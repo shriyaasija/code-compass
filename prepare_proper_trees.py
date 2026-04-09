@@ -123,7 +123,7 @@ def prepare_proper_trees(
     if not skip_summarize:
         if provider == "lmstudio":
             from backend.lmstudio_client import LMStudioLLM
-            llm = LMStudioLLM(model=model_name)
+            llm = LMStudioLLM(model=model_name or "local-model")
         else:
             from backend.ollama_client import OllamaLLM
             llm = OllamaLLM(model=model_name or "qwen3:8b")
