@@ -61,7 +61,7 @@ DEFAULT_CONFIG = {
 
 def step_prepare(config: Dict):
     """Prepare CodeSearchNet data — download, build trees, generate queries."""
-    meta_path = Path(config["benchmark_dir"]) / "benchmark_metadata.json"
+    meta_path = Path(config.get("metadata_path", Path(config["benchmark_dir"]) / "benchmark_metadata.json"))
     if meta_path.exists():
         with open(meta_path) as f:
             metadata = json.load(f)
@@ -475,7 +475,7 @@ Examples:
     start = time.time()
 
     # Load metadata (most steps need it)
-    meta_path = Path(config["benchmark_dir"]) / "benchmark_metadata.json"
+    meta_path = Path(config.get("metadata_path", Path(config["benchmark_dir"]) / "benchmark_metadata.json"))
     metadata = None
     if meta_path.exists():
         with open(meta_path) as f:
