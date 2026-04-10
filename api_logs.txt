@@ -1,0 +1,184 @@
+/Users/sumeet/Desktop/code compass/code-compass/backend/api.py:39: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+INFO:     Started server process [91005]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+
+🚀 Starting CodeCompass API Server...
+📡 Provider: lmstudio
+   Make sure LM Studio server is running on port 1234
+   Switch with: LLM_PROVIDER=lmstudio python -m backend.api
+======================================================================
+
+
+======================================================================
+🚀 INITIALIZING CODE COMPASS API
+======================================================================
+
+🔧 LLM Provider: lmstudio
+
+📡 Connecting to LM Studio...
+✅ Connected to LM Studio - Using model: local-model
+   Available models: ['meta-llama-llama-3.1-8b-instruct', 'text-embedding-nomic-embed-text-v1.5']
+✅ LM Studio client initialized
+
+🌳 Initializing MCTS-based search...
+✅ MCTS engine initialized with threshold=0.5
+
+📝 Initializing Tree Summarizer...
+✅ Summarizer initialized
+
+======================================================================
+✅ API READY (LMSTUDIO)
+======================================================================
+
+
+======================================================================
+📥 INITIALIZE REQUEST
+   repo_id: test_backend
+   github_url: None
+   repo_path: /Users/sumeet/Desktop/code compass/code-compass/backend
+   json_tree_path: None
+   threshold: 0.5
+======================================================================
+📂 Using local path: /Users/sumeet/Desktop/code compass/code-compass/backend
+⚙️ No valid JSON tree path provided. Auto-generating one for test_backend...
+🔧 Initializing parsers for 15 extensions...
+   ✅ .py    → python
+   ✅ .js    → javascript
+   ✅ .jsx   → javascript
+   ✅ .ts    → typescript
+   ✅ .tsx   → typescript
+   ✅ .cpp   → cpp
+   ✅ .cc    → cpp
+   ✅ .cxx   → cpp
+   ✅ .hpp   → cpp
+   ✅ .c     → c
+   ✅ .h     → c
+   ✅ .java  → java
+   ✅ .go    → go
+   ✅ .rs    → rust
+   ✅ .rb    → ruby
+
+✅ CodeParser ready with 15 language(s)
+🌳 Building repository directory tree...
+🧩 Enriching tree with code structure...
+🔍 Parsing api.py (python)...
+   Found 5 constructs
+🔍 Parsing code_index.py (python)...
+   Found 1 constructs
+🔍 Parsing code_index2.py (python)...
+   Found 2 constructs
+🔍 Parsing code_parser.py (python)...
+   Found 2 constructs
+🔍 Parsing code_parser_test.py (python)...
+   Found 2 constructs
+🔍 Parsing lmstudio_client.py (python)...
+   Found 2 constructs
+🔍 Parsing ollama_client.py (python)...
+   Found 2 constructs
+🔍 Parsing pageindex_semantic_search.py (python)...
+   Found 1 constructs
+🔍 Parsing retrieval.py (python)...
+   Found 2 constructs
+🔍 Parsing semantic_search.py (python)...
+   Found 1 constructs
+🔍 Parsing summarizer.py (python)...
+   Found 1 constructs
+📝 Summarizing tree contents (this may take a while)...
+
+======================================================================
+📝 BOTTOM-UP TREE SUMMARIZATION
+======================================================================
+   Summarized 20 nodes...
+   Summarized 40 nodes...
+❌ LM Studio chat error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+   Summarized 60 nodes...
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+   Summarized 80 nodes...
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+   Summarized 100 nodes...
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+❌ LM Studio chat error: HTTPConnectionPool(host='localhost', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPConnection(host='localhost', port=1234): Failed to establish a new connection: [Errno 61] Connection refused"))
+
+✅ Summarized 116 nodes in 197.4s (113 LLM calls)
+✅ Generated JSON tree saved to cache/test_backend_pageindex.json
+
+🔄 Loading PageIndex tree: cache/test_backend_pageindex.json
+
+📂 Loading repository tree: test_backend
+
+🔄 Initializing chatbot for: /Users/sumeet/Desktop/code compass/code-compass/backend
+✅ Chatbot initialized for repo: /Users/sumeet/Desktop/code compass/code-compass/backend (provider: lmstudio)
+INFO:     127.0.0.1:62706 - "POST /initialize HTTP/1.1" 200 OK

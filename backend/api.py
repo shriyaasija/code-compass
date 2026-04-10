@@ -14,6 +14,7 @@ from backend.ollama_client import OllamaLLM
 from backend.lmstudio_client import LMStudioLLM
 from backend.tree_builder import build_directory_tree
 from backend.code_parser import CodeParser, enrich_tree_with_code_structure
+from backend.summarizer import TreeSummarizer
 
 app = FastAPI(title="CodeCompass - Tree-Based Search Edition")
 
@@ -32,11 +33,12 @@ tree_search = None  # Will be initialized on startup
 llm_client = None  # LLM client (Ollama or LM Studio)
 llm_provider = os.environ.get("LLM_PROVIDER", "ollama")
 code_parser = None  # Code parser for building PageIndex trees
+summarizer = None  # LLM summarizer for trees
 
 # Initialize LLM and tree search on startup
 @app.on_event("startup")
 async def startup_event():
-    global tree_search, llm_client, llm_provider
+    global tree_search, llm_client, llm_provider, summarizer
     
     try:
         print("\n" + "="*70)
@@ -60,6 +62,11 @@ async def startup_event():
         print("\n🌳 Initializing MCTS-based search...")
         tree_search = TreeBasedSearch(llm_client=llm_client, threshold=0.5)
         print("✅ MCTS engine initialized with threshold=0.5")
+        
+        # Initialize Summarizer
+        print("\n📝 Initializing Tree Summarizer...")
+        summarizer = TreeSummarizer(llm_client=llm_client)
+        print("✅ Summarizer initialized")
         
         print("\n" + "="*70)
         print(f"✅ API READY ({llm_provider.upper()})")
@@ -189,15 +196,34 @@ async def initialize_repository(request: InitializeRequest):
                 if code_parser is None:
                     code_parser = CodeParser()
                 
-                # Build tree
+                # STAGE 1: Build directory tree
                 print("🌳 Building repository directory tree...")
                 tree = build_directory_tree(repo_path)
                 
+                # Save Stage 1 to output_view
+                output_view_dir = Path("output_view")
+                output_view_dir.mkdir(exist_ok=True)
+                with open(output_view_dir / "01_initial.json", 'w') as f:
+                    json.dump(tree.to_dict(), f, indent=2)
+                
+                # STAGE 2: Enrich with Tree-Sitter
                 print("🧩 Enriching tree with code structure...")
                 tree = enrich_tree_with_code_structure(tree, code_parser)
                 
-                # Save to cache directory
+                # Save Stage 2 to output_view
+                with open(output_view_dir / "02_parsed.json", 'w') as f:
+                    json.dump(tree.to_dict(), f, indent=2)
+                
+                # STAGE 3: Bottom-up Summarization
+                print("📝 Summarizing tree contents (this may take a while)...")
                 tree_dict = tree.to_dict()
+                tree_dict = summarizer.summarize_tree(tree_dict, repo_path)
+                
+                # Save Stage 3 to output_view
+                with open(output_view_dir / "03_final.json", 'w') as f:
+                    json.dump(tree_dict, f, indent=2)
+                
+                # Save to final cache directory
                 cache_dir = Path("cache")
                 cache_dir.mkdir(exist_ok=True)
                 json_tree_path = str(cache_dir / f"{repo_id}_pageindex.json")
