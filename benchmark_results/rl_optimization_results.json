@@ -1,0 +1,77 @@
+[
+  {
+    "repo_id": "SavinaRoja__OpenAccess_EPUB",
+    "before_quality": 0.565,
+    "after_quality": 0.565,
+    "delta_quality": 0.0,
+    "before_depth": 7,
+    "after_depth": 7,
+    "before_leaves": 646,
+    "after_leaves": 646,
+    "mutations": {
+      "Merge": 0,
+      "Split": 0,
+      "NoOp": 30
+    }
+  },
+  {
+    "repo_id": "ramses-tech__ramses",
+    "before_quality": 0.4664,
+    "after_quality": 0.4717,
+    "delta_quality": 0.0053,
+    "before_depth": 6,
+    "after_depth": 6,
+    "before_leaves": 287,
+    "after_leaves": 287,
+    "mutations": {
+      "Merge": 29,
+      "Split": 0,
+      "NoOp": 1
+    }
+  },
+  {
+    "repo_id": "josiah-wolf-oberholtzer__uqbar",
+    "before_quality": 0.4306,
+    "after_quality": 0.4306,
+    "delta_quality": 0.0,
+    "before_depth": 6,
+    "after_depth": 6,
+    "before_leaves": 617,
+    "after_leaves": 617,
+    "mutations": {
+      "Merge": 0,
+      "Split": 0,
+      "NoOp": 30
+    }
+  },
+  {
+    "repo_id": "moralrecordings__mrcrowbar",
+    "before_quality": 0.4472,
+    "after_quality": 0.4472,
+    "delta_quality": 0.0,
+    "before_depth": 6,
+    "after_depth": 6,
+    "before_leaves": 1034,
+    "after_leaves": 1034,
+    "mutations": {
+      "Merge": 0,
+      "Split": 0,
+      "NoOp": 30
+    }
+  },
+  {
+    "repo_id": "tsnaomi__finnsyll",
+    "before_quality": 0.5007,
+    "after_quality": 0.5007,
+    "delta_quality": 0.0,
+    "before_depth": 5,
+    "after_depth": 5,
+    "before_leaves": 350,
+    "after_leaves": 350,
+    "mutations": {
+      "Merge": 0,
+      "Split": 0,
+      "NoOp": 30
+    }
+  }
+]

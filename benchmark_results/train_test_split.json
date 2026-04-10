@@ -1,0 +1,30 @@
+{
+  "train": [
+    "sckott__pygbif",
+    "django-fluent__django-fluent-contents",
+    "nwilming__ocupy",
+    "BD2KGenomics__toil-scripts",
+    "thefactory__marathon-python",
+    "honeynet__beeswarm",
+    "HiPERCAM__hcam_widgets",
+    "saltant-org__saltant-py",
+    "teepark__junction",
+    "sdispater__eloquent",
+    "RobotStudio__bors",
+    "log2timeline__dfdatetime",
+    "python-fedex-devs__python-fedex",
+    "openclimatedata__pymagicc",
+    "plandes__actioncli",
+    "iwanbk__nyamuk",
+    "svinota__mdns",
+    "ask__carrot",
+    "jleinonen__pytmatrix"
+  ],
+  "test": [
+    "SavinaRoja__OpenAccess_EPUB",
+    "ramses-tech__ramses",
+    "josiah-wolf-oberholtzer__uqbar",
+    "moralrecordings__mrcrowbar",
+    "tsnaomi__finnsyll"
+  ]
+}
