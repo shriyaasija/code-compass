@@ -23,6 +23,7 @@ Where:
 
 import math
 from typing import List, Dict, Optional, Any
+import numpy as np
 
 
 class MCTSNode:
@@ -47,6 +48,7 @@ class MCTSNode:
         self.total_value: float = 0.0
         self.is_expanded: bool = False
         self.is_terminal: bool = self._check_terminal()
+        self.prior: Optional[float] = None  # P(s) from RelevancePrior MLP
 
     @property
     def average_value(self) -> float:
@@ -78,6 +80,48 @@ class MCTSNode:
         exploration = c_explore * math.sqrt(
             math.log(self.parent.visit_count) / self.visit_count
         )
+        return exploitation + exploration
+    
+    def puct_score(self, c_puct: float = 1.5) -> float:
+        """
+        PUCT (Polynomial Upper Confidence Trees) score.
+    
+        This is the AlphaZero selection formula:
+        PUCT(s,a) = Q(s,a) + c_puct * P(s,a) * sqrt(N(parent)) / (1 + N(s,a))
+    
+        Where P(s,a) is the prior from our RelevancePrior MLP.
+        P is set during node expansion via set_prior().
+    
+        Key difference from UCB1:
+        - UCB1 treats all children equally at first (exploration term only)  
+        - PUCT uses the prior to immediately bias toward promising nodes
+        - This means we need fewer MCTS iterations to find the right branch
+    
+        Args:
+            c_puct: Exploration constant. Higher = more exploration.
+                    1.0-2.0 works well for retrieval (vs 5.0 for games).
+    
+        Returns:
+            float PUCT score. Returns prior alone for unvisited nodes.
+        """
+        if self.prior is None:
+            # No prior set: fall back to UCB1 behavior
+            return self.ucb1_score(c_puct)
+    
+        if self.parent is None:
+            return self.average_value
+    
+        exploitation = self.average_value
+    
+        # PUCT exploration term: scales with sqrt(parent visits),
+        # decays as this node is visited more
+        exploration = (
+            c_puct
+            * self.prior
+            * (self.parent.visit_count ** 0.5)
+            / (1 + self.visit_count)
+        )
+    
         return exploitation + exploration
 
     def expand(self) -> List['MCTSNode']:
@@ -196,3 +240,7 @@ class MCTSNode:
             f"MCTSNode({name}, visits={self.visit_count}, "
             f"val={self.average_value:.3f}, terminal={self.is_terminal})"
         )
+    
+    def set_prior(self, prior: float):
+        """Set the prior probability P(s) for this node from the RelevancePrior MLP."""
+        self.prior = float(np.clip(prior, 1e-6, 1.0))  
