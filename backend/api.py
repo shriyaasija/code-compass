@@ -45,18 +45,29 @@ async def startup_event():
         print("🚀 INITIALIZING CODE COMPASS API")
         print("="*70)
         
-        # Choose LLM provider
-        llm_provider = os.environ.get("LLM_PROVIDER", "ollama")
+        # Choose LLM provider and model
+        llm_provider = os.environ.get("LLM_PROVIDER", "ollama").strip(' "\'').lower()
+        
+        llm_model_raw = os.environ.get("LLM_MODEL", None)
+        llm_model = llm_model_raw.strip(' "\'') if llm_model_raw else None
         print(f"\n🔧 LLM Provider: {llm_provider}")
+        if llm_model:
+            print(f"🔧 LLM Model:    {llm_model}")
+        else:
+            print(f"🔧 LLM Model:    (auto-detect)")
         
         if llm_provider == "lmstudio":
             print("\n📡 Connecting to LM Studio...")
-            llm_client = LMStudioLLM()  # Auto-detects model
-            print("✅ LM Studio client initialized")
+            lms_kwargs = {}
+            if llm_model:
+                lms_kwargs["model"] = llm_model
+            llm_client = LMStudioLLM(**lms_kwargs)
+            print(f"✅ LM Studio initialized — model: {llm_client.model}")
         else:
             print("\n📡 Connecting to Ollama...")
-            llm_client = OllamaLLM(model="qwen3:8b")
-            print("✅ Ollama client initialized")
+            ollama_model = llm_model or "qwen3:8b"
+            llm_client = OllamaLLM(model=ollama_model)
+            print(f"✅ Ollama initialized — model: {llm_client.model}")
         
         # Initialize MCTS engine with LLM client
         print("\n🌳 Initializing MCTS-based search...")
@@ -69,7 +80,7 @@ async def startup_event():
         print("✅ Summarizer initialized")
         
         print("\n" + "="*70)
-        print(f"✅ API READY ({llm_provider.upper()})")
+        print(f"✅ API READY — {llm_provider.upper()} / {llm_client.model}")
         print("="*70 + "\n")
         
     except Exception as e:
@@ -117,6 +128,12 @@ class InitializeRequest(BaseModel):
     threshold: Optional[float] = 0.5
 
 
+class ConfigRequest(BaseModel):
+    """Request to change LLM configuration."""
+    provider: str  # "ollama" or "lmstudio"
+    model: Optional[str] = None
+
+
 class QueryRequest(BaseModel):
     """Simplified query request - just repo_id and query!"""
     repo_id: str
@@ -130,7 +147,49 @@ class QueryResponse(BaseModel):
     response: str
     matched_functions: List[dict]  # All leaf nodes that were matched
     functions_count: int
+    tokens_used: Optional[dict] = None  # Token usage for this query
     error: Optional[str] = None
+
+
+@app.post("/config")
+async def update_configuration(request: ConfigRequest):
+    """
+    Update LLM provider and model dynamically.
+    """
+    global llm_client, llm_provider, tree_search, summarizer
+    
+    try:
+        print(f"\n🔄 UPDATING CONFIGURATION")
+        print(f"   Provider: {request.provider}")
+        print(f"   Model:    {request.model or '(auto-detect)'}")
+        
+        llm_provider = request.provider
+        
+        if llm_provider == "lmstudio":
+            lms_kwargs = {}
+            if request.model:
+                lms_kwargs["model"] = request.model
+            llm_client = LMStudioLLM(**lms_kwargs)
+        else:
+            ollama_model = request.model or "qwen3:8b"
+            llm_client = OllamaLLM(model=ollama_model)
+            
+        # Update dependent components
+        if tree_search:
+            tree_search.llm = llm_client
+        if summarizer:
+            summarizer.llm = llm_client
+            
+        print(f"✅ Configuration updated — model: {llm_client.model}")
+        
+        return {
+            "status": "success",
+            "provider": llm_provider,
+            "model": llm_client.model
+        }
+    except Exception as e:
+        print(f"❌ Configuration update failed: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/initialize")
@@ -257,7 +316,12 @@ async def initialize_repository(request: InitializeRequest):
             "repo_path": repo_path,
             "json_tree_path": json_tree_path,
             "threshold": tree_search.threshold,
-            "stats": repo_info
+            "stats": repo_info,
+            "summarization_tokens": {
+                "total_tokens": summarizer.total_tokens if summarizer else 0,
+                "llm_calls": summarizer.llm_calls if summarizer else 0,
+                "nodes_summarized": summarizer.summary_count if summarizer else 0
+            }
         }
 
     except HTTPException:
@@ -267,6 +331,18 @@ async def initialize_repository(request: InitializeRequest):
         print(f"❌ Initialize error: {str(e)}")
         print(traceback.format_exc())
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/initialize_progress")
+async def get_initialization_progress():
+    global summarizer
+    if summarizer:
+        return {
+            "status": "running" if summarizer.summary_count > 0 else "starting",
+            "nodes_summarized": summarizer.summary_count,
+            "total_tokens": summarizer.total_tokens,
+            "llm_calls": summarizer.llm_calls
+        }
+    return {"status": "inactive"}
 
 
 @app.post("/query", response_model=QueryResponse)
@@ -320,14 +396,15 @@ async def process_query(request: QueryRequest):
                     status="success",
                     response="I couldn't find any relevant code for your query. Try lowering the threshold or rephrasing your question.",
                     matched_functions=[],
-                    functions_count=0
+                    functions_count=0,
+                    tokens_used={"total_tokens": 0}
                 )
 
             # STEP 2: Retrieve code and generate LLM response
             chatbot = chatbots[request.repo_id]
 
             print(f"🤖 Generating LLM response with {len(filtered_functions)} functions...")
-            llm_response = chatbot.generate_response(
+            llm_response, query_tokens = chatbot.generate_response(
                 user_query=request.user_query,
                 filtered_functions=filtered_functions
             )
@@ -339,7 +416,8 @@ async def process_query(request: QueryRequest):
                 status="success",
                 response=llm_response,
                 matched_functions=filtered_functions,
-                functions_count=len(filtered_functions)
+                functions_count=len(filtered_functions),
+                tokens_used=query_tokens
             )
         
         finally:
@@ -478,12 +556,17 @@ async def cleanup_all():
 if __name__ == "__main__":
     import uvicorn
     provider = os.environ.get("LLM_PROVIDER", "ollama")
+    model = os.environ.get("LLM_MODEL", "(auto-detect)" if provider == "lmstudio" else "qwen3:8b")
     print("\n🚀 Starting CodeCompass API Server...")
     print(f"📡 Provider: {provider}")
+    print(f"📡 Model:    {model}")
     if provider == "lmstudio":
         print("   Make sure LM Studio server is running on port 1234")
     else:
         print("   Make sure Ollama is running: ollama serve")
-    print(f"   Switch with: LLM_PROVIDER=lmstudio python -m backend.api")
+    print(f"\n   Usage examples:")
+    print(f"   $env:LLM_PROVIDER='lmstudio'; python -m backend.api")
+    print(f"   $env:LLM_PROVIDER='lmstudio'; $env:LLM_MODEL='qwen2.5-coder-7b'; python -m backend.api")
+    print(f"   $env:LLM_PROVIDER='ollama'; $env:LLM_MODEL='codellama:13b'; python -m backend.api")
     print("="*70 + "\n")
     uvicorn.run(app, host="0.0.0.0", port=8000)

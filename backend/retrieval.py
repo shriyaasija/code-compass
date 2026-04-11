@@ -109,17 +109,17 @@ class ProductionChatbot:
         print(f"📡 Streaming {len(filtered_functions)} functions (full context, provider: {self.llm_provider})...")
         
         if self.llm_provider == "lmstudio":
-            response = self._call_lmstudio_streaming(user_query, context, len(filtered_functions))
+            response, tokens_used = self._call_lmstudio_streaming(user_query, context, len(filtered_functions))
         else:
-            response = self._call_ollama_streaming(user_query, context, len(filtered_functions))
+            response, tokens_used = self._call_ollama_streaming(user_query, context, len(filtered_functions))
         
         if not response or response.startswith("Error") or response.startswith("Cannot"):
             print(f"⚠️ LLM returned: {response}")
-            return response if response else "Failed to generate response."
+            return (response if response else "Failed to generate response."), {"total_tokens": 0}
         
-        return response
+        return response, tokens_used
 
-    def _call_ollama_streaming(self, user_query: str, context: str, num_functions: int) -> str:
+    def _call_ollama_streaming(self, user_query: str, context: str, num_functions: int) -> tuple:
         """
         Streaming with NEEDLE-IN-HAYSTACK prompting for long contexts.
         This is the modern approach for handling massive contexts.
@@ -183,10 +183,11 @@ Provide a detailed, technical answer that directly addresses the question. Refer
             
             if response.status_code != 200:
                 print(f"❌ Ollama returned status {response.status_code}")
-                return f"Ollama API error: {response.status_code}"
+                return f"Ollama API error: {response.status_code}", {"total_tokens": 0}
             
             full_response = ""
             chunk_count = 0
+            token_usage = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
             
             for line in response.iter_lines():
                 if line:
@@ -194,6 +195,12 @@ Provide a detailed, technical answer that directly addresses the question. Refer
                         chunk = json.loads(line)
                         full_response += chunk.get("response", "")
                         chunk_count += 1
+                        
+                        # Ollama sends final token counts when done=true
+                        if chunk.get("done"):
+                            token_usage["prompt_tokens"] = chunk.get("prompt_eval_count", 0)
+                            token_usage["completion_tokens"] = chunk.get("eval_count", 0)
+                            token_usage["total_tokens"] = token_usage["prompt_tokens"] + token_usage["completion_tokens"]
                         
                         if chunk_count % 50 == 0:
                             print(".", end="", flush=True)
@@ -205,19 +212,19 @@ Provide a detailed, technical answer that directly addresses the question. Refer
             
             if not full_response.strip():
                 print("⚠️ Empty response - context might be too large for model")
-                return "The context was too large. Try increasing the threshold to get fewer functions."
+                return "The context was too large. Try increasing the threshold to get fewer functions.", {"total_tokens": 0}
             
-            return full_response.strip()
+            return full_response.strip(), token_usage
             
         except requests.exceptions.ConnectionError:
-            return "Cannot connect to Ollama. Make sure it's running: ollama serve"
+            return "Cannot connect to Ollama. Make sure it's running: ollama serve", {"total_tokens": 0}
         except requests.exceptions.Timeout:
-            return "Generation timed out. The context may be extremely large."
+            return "Generation timed out. The context may be extremely large.", {"total_tokens": 0}
         except Exception as e:
             print(f"❌ Streaming error: {str(e)}")
-            return f"Error calling Ollama: {str(e)}"
+            return f"Error calling Ollama: {str(e)}", {"total_tokens": 0}
 
-    def _call_lmstudio_streaming(self, user_query: str, context: str, num_functions: int) -> str:
+    def _call_lmstudio_streaming(self, user_query: str, context: str, num_functions: int) -> tuple:
         """
         Streaming with LM Studio's OpenAI-compatible API.
         """
@@ -276,10 +283,15 @@ Provide a detailed, technical answer that directly addresses the question. Refer
             
             if response.status_code != 200:
                 print(f"❌ LM Studio returned status {response.status_code}")
-                return f"LM Studio API error: {response.status_code}"
+                return f"LM Studio API error: {response.status_code}", {"total_tokens": 0}
             
             full_response = ""
             chunk_count = 0
+            
+            # Since LM Studio doesn't always reliably include token usage in stream completion, 
+            # we'll approximate based on character counts for prompt and generation
+            prompt_chars = len(system_prompt) + len(user_prompt)
+            prompt_tokens_est = prompt_chars // 4
             
             for line in response.iter_lines():
                 if line:
@@ -304,14 +316,21 @@ Provide a detailed, technical answer that directly addresses the question. Refer
             
             if not full_response.strip():
                 print("⚠️ Empty response - context might be too large for model")
-                return "The context was too large. Try increasing the threshold to get fewer functions."
+                return "The context was too large. Try increasing the threshold to get fewer functions.", {"total_tokens": 0}
             
-            return full_response.strip()
+            completion_tokens_est = len(full_response) // 4
+            token_usage = {
+                "prompt_tokens": prompt_tokens_est,
+                "completion_tokens": completion_tokens_est,
+                "total_tokens": prompt_tokens_est + completion_tokens_est
+            }
+            
+            return full_response.strip(), token_usage
             
         except requests.exceptions.ConnectionError:
-            return "Cannot connect to LM Studio. Make sure the server is running."
+            return "Cannot connect to LM Studio. Make sure the server is running.", {"total_tokens": 0}
         except requests.exceptions.Timeout:
-            return "Generation timed out. The context may be extremely large."
+            return "Generation timed out. The context may be extremely large.", {"total_tokens": 0}
         except Exception as e:
             print(f"❌ Streaming error: {str(e)}")
-            return f"Error calling LM Studio: {str(e)}"
+            return f"Error calling LM Studio: {str(e)}", {"total_tokens": 0}

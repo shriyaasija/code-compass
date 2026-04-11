@@ -12,6 +12,8 @@ class LMStudioLLM:
         self.model = model
         self.base_url = base_url
         self.chat_url = f"{base_url}/v1/chat/completions"
+        self.total_tokens_used = 0
+        self.last_token_usage = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
         
         # Verify connection on init
         self._verify_connection()
@@ -77,12 +79,24 @@ class LMStudioLLM:
             response = requests.post(
                 self.chat_url,
                 json=payload,
-                timeout=600
+                timeout=None  # No timeout — let large repos finish
             )
             response.raise_for_status()
             
             result = response.json()
             choices = result.get("choices", [])
+            
+            # Track token usage (OpenAI-compatible format)
+            usage = result.get("usage", {})
+            prompt_tokens = usage.get("prompt_tokens", 0)
+            completion_tokens = usage.get("completion_tokens", 0)
+            total = usage.get("total_tokens", prompt_tokens + completion_tokens)
+            self.last_token_usage = {
+                "prompt_tokens": prompt_tokens,
+                "completion_tokens": completion_tokens,
+                "total_tokens": total
+            }
+            self.total_tokens_used += total
             
             if not choices:
                 print(f"⚠️ LM Studio returned no choices")

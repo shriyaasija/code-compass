@@ -19,7 +19,9 @@ ENV/
 
 # Temp files
 *.log
-.DS_Storecache/
+.DS_Store
+cache/
+output_view/
 pageindex_tree.json
 output*.pdf
 output*.png

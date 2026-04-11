@@ -1,6 +1,8 @@
 import json
+import numpy as np
 from pathlib import Path
 from typing import List, Dict, Any
+from sentence_transformers import CrossEncoder
 
 class TreeBasedSearch:
     """
@@ -11,6 +13,10 @@ class TreeBasedSearch:
         self.llm = llm_client
         self.threshold = threshold
         self.repositories = {}  # repo_id -> {tree, json_path}
+        # Load cross-encoder once (~80MB model, downloads on first use)
+        print("🔄 Loading cross-encoder model for relevance scoring...")
+        self.scorer = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
+        print("✅ Cross-encoder loaded")
         
     def load_repository_tree(self, repo_id: str, json_tree_path: str):
         """
@@ -166,135 +172,25 @@ class TreeBasedSearch:
     
     def _score_siblings(self, children: List[Dict], query: str, 
                        parent_node: Dict, trajectory: List[str]) -> Dict[str, float]:
-        """Score all sibling nodes using LLM."""
-        context_path = " → ".join(trajectory) if trajectory else "root"
-        current_location = parent_node.get('title', parent_node.get('name', 'root'))
-        
-        prompt = f"""Query: "{query}"
-
-Location: {context_path} → {current_location}
-
-Rate relevance (0.0 to 1.0) for each item:
-- 1.0 = Definitely needed to answer the query
-- 0.7-0.9 = Likely relevant
-- 0.4-0.6 = Possibly relevant
-- 0.0-0.3 = Not relevant
-
-Items:
-"""
-        
-        for i, child in enumerate(children, 1):
+        """Score all sibling nodes using cross-encoder — ~10x faster than LLM, no JSON parsing."""
+        pairs = []
+        titles = []
+        for child in children:
             title = child.get('title', child.get('name', 'unknown'))
-            node_type = child.get('type', child.get('node_type', 'unknown'))
             summary = child.get('summary', '')
-            
-            prompt += f"\n{i}. {title}"
-            
-            if node_type == 'folder':
-                num_items = len(child.get('nodes', child.get('children', [])))
-                prompt += f" (folder, {num_items} items)"
-            elif node_type.startswith('file_'):
-                prompt += f" ({node_type.replace('file_', '.')} file)"
-            elif node_type in ['function', 'method']:
-                start = child.get('start_line', '?')
-                end = child.get('end_line', '?')
-                prompt += f" (function, lines {start}-{end})"
-            elif node_type == 'class':
-                num_methods = len(child.get('nodes', child.get('children', [])))
-                prompt += f" (class, {num_methods} methods)"
-            
-            if summary:
-                short_summary = summary[:100] + "..." if len(summary) > 100 else summary
-                prompt += f"\n   {short_summary}"
-        
-        prompt += f"""
-
-Respond with ONLY a JSON object:
-{{"item_name": score, ...}}
-
-Example: {{"auth.py": 0.9, "utils.py": 0.2}}
-"""
+            node_type = child.get('type', child.get('node_type', ''))
+            doc = f"{title} ({node_type}): {summary}" if summary else f"{title} ({node_type})"
+            pairs.append((query, doc))
+            titles.append(title)
         
         try:
-            messages = [
-                {"role": "system", "content": "You are a code search assistant. Rate the relevance of code elements to answer user queries. Respond ONLY with valid JSON."},
-                {"role": "user", "content": prompt}
-            ]
-            
-            response = self.llm.chat(messages, temperature=0.1, max_tokens=500)
-            
-            # Debug: print what LLM returned
-            if not response or not response.strip():
-                print(f"⚠️ LLM returned empty response")
-                print(f"   Prompt length: {len(prompt)} chars")
-                # Return moderate scores as fallback
-                return {child.get('title', child.get('name', 'unknown')): 0.5 for child in children}
-            
-            return self._parse_scores(response, children)
-            
+            scores = self.scorer.predict(pairs)
+            # ms-marco scores are logits, normalize to 0-1 via sigmoid
+            normalized = 1 / (1 + np.exp(-scores))
+            return {t: float(s) for t, s in zip(titles, normalized)}
         except Exception as e:
-            print(f"⚠️ LLM scoring failed: {e}")
-            print(f"   Response was: {response[:200] if 'response' in locals() else 'No response'}")
-            # Return moderate scores as fallback to continue search
-            return {child.get('title', child.get('name', 'unknown')): 0.5 for child in children}
-    
-    def _parse_scores(self, llm_response: str, children: List[Dict]) -> Dict[str, float]:
-        """Parse LLM response into scores dictionary."""
-        try:
-            response_clean = llm_response.strip()
-            
-            # Check if empty
-            if not response_clean:
-                print(f"⚠️ Empty LLM response")
-                return {child.get('title', child.get('name', 'unknown')): 0.5 for child in children}
-            
-            # Remove markdown code blocks if present
-            if response_clean.startswith("```"):
-                lines = response_clean.split("\n")
-                # Find first and last ``` markers
-                start_idx = 1
-                end_idx = len(lines) - 1
-                for i, line in enumerate(lines):
-                    if i > 0 and line.strip().startswith("```"):
-                        end_idx = i
-                        break
-                response_clean = "\n".join(lines[start_idx:end_idx])
-            
-            # Try to find JSON in response
-            response_clean = response_clean.strip()
-            
-            # Sometimes LLM adds extra text, try to extract JSON
-            if '{' in response_clean and '}' in response_clean:
-                start = response_clean.index('{')
-                end = response_clean.rindex('}') + 1
-                response_clean = response_clean[start:end]
-            
-            # Parse JSON
-            scores_dict = json.loads(response_clean)
-            
-            # Validate and clamp scores
-            validated_scores = {}
-            for child in children:
-                title = child.get('title', child.get('name', 'unknown'))
-                score = scores_dict.get(title, 0.5)  # Default to 0.5 if not found
-                
-                try:
-                    score = float(score)
-                    score = max(0.0, min(1.0, score))
-                except (ValueError, TypeError):
-                    score = 0.5
-                
-                validated_scores[title] = score
-            
-            return validated_scores
-            
-        except json.JSONDecodeError as e:
-            print(f"⚠️ Failed to parse LLM scores as JSON: {e}")
-            print(f"   Response was: {llm_response[:300]}")
-            # Return moderate scores (0.5) as fallback to continue exploring
-            return {child.get('title', child.get('name', 'unknown')): 0.5 for child in children}
-        except Exception as e:
-            print(f"⚠️ Unexpected error parsing scores: {e}")
+            print(f"⚠️ Cross-encoder scoring failed: {e}")
+            # Fallback to moderate scores
             return {child.get('title', child.get('name', 'unknown')): 0.5 for child in children}
     
     def search_and_format_for_chatbot(self,

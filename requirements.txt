@@ -9,6 +9,10 @@ pydantic
 openai
 gitpython
 
+# Cross-encoder scoring
+sentence-transformers
+numpy
+
 # Tree-sitter core library
 tree_sitter
 

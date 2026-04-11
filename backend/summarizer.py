@@ -1,5 +1,7 @@
 import os
 import time
+import json
+import hashlib
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 
@@ -24,6 +26,21 @@ class TreeSummarizer:
         self.verbose = verbose
         self.summary_count = 0
         self.llm_calls = 0
+        self.total_tokens = 0  # Track tokens used for summarization
+        
+        # Initialize Disk Cache Tracker
+        self.cache_file = Path("cache") / "llm_summaries_cache.json"
+        self.cache_file.parent.mkdir(exist_ok=True)
+        self.cache_data = {}
+        if self.cache_file.exists():
+            try:
+                with open(self.cache_file, "r", encoding="utf-8") as f:
+                    self.cache_data = json.load(f)
+                if self.verbose:
+                    print(f"💾 Loaded cached summaries: {len(self.cache_data)} nodes")
+            except Exception as e:
+                if self.verbose:
+                    print(f"⚠️ Could not load LLM cache: {e}")
     
     def summarize_tree(self, tree: Dict, repo_path: str) -> Dict:
         """
@@ -36,6 +53,7 @@ class TreeSummarizer:
         """
         self.summary_count = 0
         self.llm_calls = 0
+        self.total_tokens = 0
         start = time.time()
         
         if self.verbose:
@@ -45,10 +63,18 @@ class TreeSummarizer:
         
         self._summarize_node(tree, repo_path)
         
+        # Save cache cleanly at the end
+        if self.cache_data:
+            try:
+                with open(self.cache_file, "w", encoding="utf-8") as f:
+                    json.dump(self.cache_data, f)
+            except Exception as e:
+                if self.verbose: print(f"⚠️ Failed to save final cache: {e}")
+        
         elapsed = time.time() - start
         if self.verbose:
             print(f"\n✅ Summarized {self.summary_count} nodes in {elapsed:.1f}s "
-                  f"({self.llm_calls} LLM calls)")
+                  f"({self.llm_calls} LLM calls, {self.total_tokens:,} tokens)")
         
         return tree
     
@@ -75,6 +101,8 @@ class TreeSummarizer:
                 })
         
         # Generate summary based on node type
+        tokens_before = self.total_tokens
+        
         if node_type in ('function', 'method'):
             summary = self._summarize_code_node(node, repo_path)
         elif node_type == 'class':
@@ -88,15 +116,35 @@ class TreeSummarizer:
         else:
             # Unknown type — use title as summary
             summary = title
+            
+        tokens_used_for_node = self.total_tokens - tokens_before
         
         # Store summary on node
         node['summary'] = summary
+        node['tokens_used'] = tokens_used_for_node
         self.summary_count += 1
         
         if self.verbose and self.summary_count % 20 == 0:
             print(f"   Summarized {self.summary_count} nodes...")
         
         return summary
+    
+    def _build_parent_context(self, child_summaries: list, max_chars: int = 800) -> str:
+        """Compress child summaries for parent context. Filters noise, truncates if needed."""
+        meaningful = [(cs['title'], cs['summary']) for cs in child_summaries if len(cs.get('summary', '')) > 20]
+        
+        if not meaningful:
+            return "\n".join([cs['title'] for cs in child_summaries[:10]])
+        
+        if len(meaningful) > 10:
+            # Large node — list name + first sentence only
+            lines = [f"{t}: {s.split('.')[0]}" for t, s in meaningful[:12]]
+            if len(meaningful) > 12:
+                lines.append(f"...and {len(meaningful) - 12} more functions")
+        else:
+            lines = [f"{t}: {s}" for t, s in meaningful]
+        
+        return "\n".join(lines)[:max_chars]
     
     def _summarize_code_node(self, node: Dict, repo_path: str) -> str:
         """Summarize a function or method by reading its source code."""
@@ -123,13 +171,13 @@ class TreeSummarizer:
             # Fallback: use title and any existing docstring
             return node.get('summary', f"Function {title}")
         
-        prompt = f"""Summarize this Python function in 1-2 sentences. Focus on WHAT it does, not HOW.
+        prompt = f"""Summarize this function based on its contents:
 
-```python
+```
 {source_code}
 ```
 
-Respond with ONLY the summary, no extra text."""
+Output only the summary sentence(s), nothing else."""
         
         return self._call_llm(prompt, fallback=f"Function {title}")
     
@@ -140,20 +188,14 @@ Respond with ONLY the summary, no extra text."""
         if not child_summaries:
             return f"Class {title}"
         
-        methods_text = "\n".join([
-            f"  - {cs['title']}: {cs['summary']}" 
-            for cs in child_summaries[:15]
-        ])
-        if len(child_summaries) > 15:
-            methods_text += f"\n  ... and {len(child_summaries) - 15} more methods"
+        context = self._build_parent_context(child_summaries)
         
-        prompt = f"""Summarize this class in 1-2 sentences based on its methods.
+        prompt = f"""Summarize this class based on its contents:
 
 Class: {title}
-Methods:
-{methods_text}
+{context}
 
-Respond with ONLY the summary."""
+Output only the summary sentence(s), nothing else."""
         
         return self._call_llm(prompt, fallback=f"Class {title} with {len(child_summaries)} methods")
     
@@ -166,20 +208,14 @@ Respond with ONLY the summary."""
             # For files with no parsed children (non-code files, etc.)
             return f"File {title}"
         
-        children_text = "\n".join([
-            f"  - {cs['title']} ({cs['type']}): {cs['summary']}"
-            for cs in child_summaries[:20]
-        ])
-        if len(child_summaries) > 20:
-            children_text += f"\n  ... and {len(child_summaries) - 20} more items"
+        context = self._build_parent_context(child_summaries)
         
-        prompt = f"""Summarize this source file in 1-2 sentences based on its contents.
+        prompt = f"""Summarize this file based on its contents:
 
 File: {title}
-Contents:
-{children_text}
+{context}
 
-Respond with ONLY the summary."""
+Output only the summary sentence(s), nothing else."""
         
         return self._call_llm(prompt, fallback=f"File {title} with {len(child_summaries)} items")
     
@@ -190,20 +226,14 @@ Respond with ONLY the summary."""
         if not child_summaries:
             return f"Folder {title}"
         
-        children_text = "\n".join([
-            f"  - {cs['title']} ({cs['type']}): {cs['summary']}"
-            for cs in child_summaries[:15]
-        ])
-        if len(child_summaries) > 15:
-            children_text += f"\n  ... and {len(child_summaries) - 15} more items"
+        context = self._build_parent_context(child_summaries)
         
-        prompt = f"""Summarize this folder/module in 1-2 sentences based on its contents.
+        prompt = f"""Summarize this folder based on its contents:
 
 Folder: {title}/
-Contents:
-{children_text}
+{context}
 
-Respond with ONLY the summary."""
+Output only the summary sentence(s), nothing else."""
         
         return self._call_llm(prompt, fallback=f"Module {title} with {len(child_summaries)} items")
     
@@ -214,38 +244,57 @@ Respond with ONLY the summary."""
         if not child_summaries:
             return f"Repository {title}"
         
-        children_text = "\n".join([
-            f"  - {cs['title']} ({cs['type']}): {cs['summary']}"
-            for cs in child_summaries[:20]
-        ])
+        context = self._build_parent_context(child_summaries, max_chars=1200)
         
-        prompt = f"""Summarize this code repository in 2-3 sentences.
+        prompt = f"""Summarize this repository based on its contents:
 
 Repository: {title}
-Top-level contents:
-{children_text}
+{context}
 
-Respond with ONLY the summary."""
+Output only the summary sentence(s), nothing else."""
         
         return self._call_llm(prompt, fallback=f"Repository {title}")
     
     def _call_llm(self, prompt: str, fallback: str = "") -> str:
         """Call the LLM and return the response, with fallback on failure."""
         self.llm_calls += 1
+        
+        # 1. Quick Cache DB hit check
+        prompt_hash = hashlib.md5(prompt.encode('utf-8')).hexdigest()
+        if prompt_hash in self.cache_data:
+            return self.cache_data[prompt_hash]
+            
         try:
             messages = [
-                {"role": "system", "content": "You are a code documentation assistant. "
-                 "Provide concise, factual summaries. No markdown, no bullet points, "
-                 "just plain English sentences."},
+                {"role": "system", "content": "You are a code indexer. Write summaries optimized for semantic search retrieval. "
+                 "Rules: Maximum 1-2 sentences. Include what it does and key functions/concepts. "
+                 "No filler words, no 'this module', no 'the following'. Preserve technical terms exactly."},
                 {"role": "user", "content": prompt}
             ]
             response = self.llm.chat(messages, temperature=0.1, max_tokens=150)
+            
+            # Accumulate token usage from LLM client
+            if hasattr(self.llm, 'last_token_usage'):
+                self.total_tokens += self.llm.last_token_usage.get('total_tokens', 0)
+            
             if response and response.strip():
                 # Clean up: remove quotes, extra whitespace
                 summary = response.strip().strip('"').strip("'").strip()
                 # Limit length
                 if len(summary) > 300:
                     summary = summary[:297] + "..."
+                
+                # Checkpoint cache immediately
+                self.cache_data[prompt_hash] = summary
+                
+                # Checkpoint onto disk iteratively every 20 records exactly
+                if self.llm_calls % 20 == 0:
+                    try:
+                        with open(self.cache_file, "w", encoding="utf-8") as f:
+                            json.dump(self.cache_data, f)
+                    except Exception:
+                        pass
+                
                 return summary
         except Exception as e:
             if self.verbose:

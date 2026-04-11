@@ -9,6 +9,8 @@ class OllamaLLM:
         self.base_url = base_url
         self.api_url = f"{base_url}/api/generate"
         self.chat_url = f"{base_url}/api/chat"
+        self.total_tokens_used = 0
+        self.last_token_usage = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
         
         # Verify connection on init
         self._verify_connection()
@@ -112,12 +114,23 @@ class OllamaLLM:
             response = requests.post(
                 self.chat_url,
                 json=payload,
-                timeout=120
+                timeout=None  # No timeout — let large repos finish
             )
             response.raise_for_status()
             
             result = response.json()
             message = result.get("message", {})
+            
+            # Track token usage (Ollama returns these fields)
+            prompt_tokens = result.get("prompt_eval_count", 0)
+            completion_tokens = result.get("eval_count", 0)
+            total = prompt_tokens + completion_tokens
+            self.last_token_usage = {
+                "prompt_tokens": prompt_tokens,
+                "completion_tokens": completion_tokens,
+                "total_tokens": total
+            }
+            self.total_tokens_used += total
             
             # Get content - this should be the actual response
             message_content = message.get("content", "").strip()

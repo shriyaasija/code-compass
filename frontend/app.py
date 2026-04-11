@@ -49,27 +49,76 @@ st.markdown("""
 
 
 def initialize_repository(repo_path=None, json_tree_path=None, github_url=None):
-    """Initialize repository in backend API"""
-    try:
-        with st.spinner("🔄 Initializing repository (building tree... this takes a moment)..."):
-            payload = {"repo_id": "current_repo"}
-            if github_url:
-                payload["github_url"] = github_url
-            if repo_path:
-                payload["repo_path"] = repo_path
-            if json_tree_path:
-                payload["json_tree_path"] = json_tree_path
+    """Initialize repository in backend API with live polling"""
+    import threading
+    import time
+    
+    payload = {"repo_id": "current_repo"}
+    if github_url:
+        payload["github_url"] = github_url
+    if repo_path:
+        payload["repo_path"] = repo_path
+    if json_tree_path:
+        payload["json_tree_path"] = json_tree_path
 
+    result_container = []
+    
+    def run_request():
+        try:
             response = requests.post(
                 f"{API1_URL}/initialize",
                 json=payload,
-                timeout=300
+                timeout=None
             )
             response.raise_for_status()
-            return response.json()
-    except Exception as e:
-        st.error(f"❌ Initialization failed: {str(e)}")
-        return None
+            result_container.append(response.json())
+        except Exception as e:
+            result_container.append({"error": str(e), "status": "error"})
+            
+    # Start background thread
+    t = threading.Thread(target=run_request)
+    t.start()
+    
+    # UI Placeholders
+    st.info("🚀 Pinging backend and building code AST... (This takes a moment)")
+    progress_ui = st.empty()
+    tokens_ui = st.empty()
+    
+    while t.is_alive():
+        try:
+            prog_res = requests.get(f"{API1_URL}/initialize_progress", timeout=2)
+            if prog_res.status_code == 200:
+                prog = prog_res.json()
+                with progress_ui.container():
+                     status_str = str(prog.get('status', 'unknown')).upper()
+                     st.write(f"🔄 **Backend Status**: {status_str}...")
+                     
+                if prog.get("total_tokens", 0) > 0:
+                    with tokens_ui.container():
+                        st.markdown("**📝 Live Token Usage (Summarizer)**")
+                        c1, c2, c3 = st.columns(3)
+                        c1.metric("Total Tokens", f"{prog.get('total_tokens', 0):,}")
+                        c2.metric("Nodes Summarized", prog.get("nodes_summarized", 0))
+                        c3.metric("LLM Calls", prog.get("llm_calls", 0))
+        except Exception:
+            pass # ignore timeouts on GET
+            
+        time.sleep(2)
+        
+    t.join()
+    
+    # Clear live update placeholders securely before handoff
+    progress_ui.empty()
+    if 'tokens_ui' in locals():
+        tokens_ui.empty()
+    
+    if result_container:
+        if "error" in result_container[0]:
+            st.error(f"❌ Initialization failed: {result_container[0]['error']}")
+            return None
+        return result_container[0]
+        
+    return None
 
 
 def call_api_1(repo_id, user_query, top_k=5):
@@ -82,7 +131,7 @@ def call_api_1(repo_id, user_query, top_k=5):
                     "repo_id": repo_id,
                     "user_query": user_query
                 },
-                timeout=600  # Increased timeout for slow local LLMs
+                timeout=None  # No timeout for slow local LLMs
             )
             response.raise_for_status()
             return response.json()
@@ -96,6 +145,28 @@ def check_api_health(api_url, name):
         return response.status_code == 200
     except:
         return False
+
+def get_backend_info():
+    """Fetch current backend configuration and status"""
+    try:
+        response = requests.get(f"{API1_URL}/health", timeout=5)
+        if response.status_code == 200:
+            return response.json()
+    except:
+        pass
+    return None
+
+def update_backend_config(provider, model=None):
+    """Update backend LLM configuration"""
+    try:
+        payload = {"provider": provider}
+        if model:
+            payload["model"] = model
+        response = requests.post(f"{API1_URL}/config", json=payload, timeout=30)
+        return response.json()
+    except Exception as e:
+        st.error(f"❌ Failed to update config: {e}")
+        return None
 
 def main():    
     # Header
@@ -116,11 +187,33 @@ def main():
         )
 
         # Model selection
-        model = st.selectbox(
-            "AI Model",
-            ["qwen3:8b (Ollama)", "llama-3.1-8b (LM Studio)"],
-            help="Select the AI model and provider to use"
+        st.subheader("🤖 AI Configuration")
+        
+        backend_info = get_backend_info()
+        current_provider = backend_info.get("llm_provider", "ollama") if backend_info else "ollama"
+        current_model = backend_info.get("llm_model", "") if backend_info else ""
+        
+        provider = st.selectbox(
+            "Provider",
+            ["ollama", "lmstudio"],
+            index=0 if current_provider == "ollama" else 1,
+            help="Select the AI service provider"
         )
+        
+        model_name = st.text_input(
+            "Model Name",
+            value=current_model,
+            placeholder="e.g. qwen3:8b or local-model",
+            help="Specific model name. For LM Studio, leave blank to auto-detect."
+        )
+        
+        if st.button("Update AI Model", use_container_width=True):
+            res = update_backend_config(provider, model_name if model_name else None)
+            if res and res.get("status") == "success":
+                st.success(f"Updated to {res.get('model')}")
+                st.rerun()
+            else:
+                st.error("Failed to update model")
 
         st.markdown("---")
 
@@ -201,16 +294,33 @@ def main():
             result = initialize_repository(github_url=repo_url)
             if result and result.get("status") == "success":
                 st.session_state.is_initialized = True
-                st.success("✅ Repository loaded and analyzed successfully!")
+                st.session_state.repo_stats = result
                 st.rerun()
         return
 
     st.success("✅ Repository ready for queries!")
-
+    
+    # Check if we just initialized and have stats to show
+    if "repo_stats" in st.session_state and st.session_state.repo_stats:
+        result = st.session_state.repo_stats
+        with st.expander("📊 Extracted Target Repository Analytics", expanded=True):
+            sum_tokens = result.get('summarization_tokens', {})
+            if sum_tokens.get("total_tokens", 0) > 0:
+                st.markdown("**📝 Final Backend Token Usage (Summarizer)**")
+                t1, t2, t3 = st.columns(3)
+                t1.metric("Total Tokens Processed", f"{sum_tokens.get('total_tokens', 0):,}")
+                t2.metric("Nodes Extracted", sum_tokens.get('nodes_summarized', 0))
+                t3.metric("LLM API Calls", sum_tokens.get('llm_calls', 0))
+            else:
+                st.info("Analytics processed offline.")
+            
     # Display chat history
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
+            if "tokens_used" in message and message["tokens_used"]:
+                tokens = message["tokens_used"]
+                st.caption(f"*(Tokens: Prompt \u2192 {tokens.get('prompt_tokens', 0):,}, Completion \u2192 {tokens.get('completion_tokens', 0):,}, Total \u2192 {tokens.get('total_tokens', 0):,})*")
 
     # Chat input
     if prompt := st.chat_input("Ask a question about the code..."):
@@ -243,6 +353,11 @@ def main():
             response_text = your_result.get("response", "")
             st.markdown(response_text)
             
+            # Extract and display tokens inline
+            tokens_used = your_result.get("tokens_used") or {}
+            if tokens_used:
+                st.caption(f"*(Tokens: Prompt \u2192 {tokens_used.get('prompt_tokens', 0):,}, Completion \u2192 {tokens_used.get('completion_tokens', 0):,}, Total \u2192 {tokens_used.get('total_tokens', 0):,})*")
+            
             # Show stats
             matched_functions = your_result.get("matched_functions", [])
             with st.expander(f"📊 Found {len(matched_functions)} relevant functions"):
@@ -252,7 +367,8 @@ def main():
             # Add assistant response to history
             st.session_state.messages.append({
                 "role": "assistant",
-                "content": response_text
+                "content": response_text,
+                "tokens_used": tokens_used
             })
 
 
@@ -311,6 +427,19 @@ def demo_mode():
                     st.metric("Functions", stats.get('node_types', {}).get('function', 0))
 
                 st.json(stats.get('node_types', {}))
+                
+                # Show Token stats
+                sum_tokens = result.get('summarization_tokens', {})
+                if sum_tokens.get("total_tokens", 0) > 0:
+                    st.divider()
+                    st.markdown("**📝 Summarization Token Usage**")
+                    t1, t2, t3 = st.columns(3)
+                    with t1:
+                        st.metric("Total Tokens", f"{sum_tokens.get('total_tokens', 0):,}")
+                    with t2:
+                        st.metric("Nodes Summarized", sum_tokens.get('nodes_summarized', 0))
+                    with t3:
+                        st.metric("LLM API Calls", sum_tokens.get('llm_calls', 0))
         else:
             st.error("❌ Failed to initialize repository")
             if result:
@@ -423,6 +552,20 @@ def demo_mode():
                     st.markdown(llm_response)
                 else:
                     st.info("💡 LLM response not available. Install Ollama for AI explanations.")
+                
+                # Token tracking display
+                tokens_used = result.get('tokens_used', {})
+                if tokens_used and tokens_used.get('total_tokens', 0) > 0:
+                    st.divider()
+                    st.markdown("**(Token Usage for AI Explanation)**")
+                    tk1, tk2, tk3 = st.columns(3)
+                    with tk1:
+                        st.metric("Prompt Tokens", f"{tokens_used.get('prompt_tokens', 0):,}")
+                    with tk2:
+                        st.metric("Completion Tokens", f"{tokens_used.get('completion_tokens', 0):,}")
+                    with tk3:
+                        st.metric("Total Tokens", f"{tokens_used.get('total_tokens', 0):,}")
+                        
             else:
                 st.warning("⚠️ No matching functions found. Try a different query.")
         else:
