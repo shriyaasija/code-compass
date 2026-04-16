@@ -1,0 +1,98 @@
+{
+  "title": "repo_chatbot_o708i20b",
+  "node_id": "0000",
+  "type": "repository",
+  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b",
+  "nodes": [
+    {
+      "title": "Dockerfile",
+      "node_id": "0001",
+      "type": "file",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/Dockerfile"
+    },
+    {
+      "title": "README.md",
+      "node_id": "0002",
+      "type": "file_md",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/README.md"
+    },
+    {
+      "title": "agents",
+      "node_id": "0003",
+      "type": "folder",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents",
+      "nodes": [
+        {
+          "title": "__init__.py",
+          "node_id": "0004",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/__init__.py"
+        },
+        {
+          "title": "base_agent.py",
+          "node_id": "0005",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/base_agent.py"
+        },
+        {
+          "title": "budget_agent.py",
+          "node_id": "0006",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/budget_agent.py"
+        },
+        {
+          "title": "coordinator_agent.py",
+          "node_id": "0007",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/coordinator_agent.py"
+        },
+        {
+          "title": "destination_agent.py",
+          "node_id": "0008",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/destination_agent.py"
+        }
+      ]
+    },
+    {
+      "title": "app.py",
+      "node_id": "0009",
+      "type": "file_py",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/app.py"
+    },
+    {
+      "title": "requirements.txt",
+      "node_id": "0010",
+      "type": "file_txt",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/requirements.txt"
+    },
+    {
+      "title": "static",
+      "node_id": "0011",
+      "type": "folder",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/static",
+      "nodes": [
+        {
+          "title": "style.css",
+          "node_id": "0012",
+          "type": "file_css",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/static/style.css"
+        }
+      ]
+    },
+    {
+      "title": "templates",
+      "node_id": "0013",
+      "type": "folder",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/templates",
+      "nodes": [
+        {
+          "title": "index.html",
+          "node_id": "0014",
+          "type": "file_html",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/templates/index.html"
+        }
+      ]
+    }
+  ]
+}

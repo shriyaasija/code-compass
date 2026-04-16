@@ -108,10 +108,10 @@ def main(provider='lmstudio', model=None, max_queries=15):
 
         repo_results = {}
 
-        # ── TreeBasedSearch (cross-encoder, your working system) ──────
-        print(f"  Running TreeBasedSearch...")
-        from backend.code_index2 import TreeBasedSearch
-        searcher = TreeBasedSearch(llm_client=llm, threshold=0.3)
+        # MCTSTreeSearch (MCTS-based search)
+        print(f"  Running MCTSTreeSearch...")
+        from backend.code_index2 import MCTSTreeSearch
+        searcher = MCTSTreeSearch(llm_client=llm)
         searcher.load_repository_tree(repo_id, tree_path)
 
         r1, r5, mrr_scores, lats = [], [], [], []
@@ -129,14 +129,14 @@ def main(provider='lmstudio', model=None, max_queries=15):
             mrr_scores.append(mrr(titles, gt))
             lats.append(lat)
 
-        repo_results['tree_search'] = {
+        repo_results['mcts_search'] = {
             'R@1': round(float(np.mean(r1)), 4) if r1 else 0,
             'R@5': round(float(np.mean(r5)), 4) if r5 else 0,
             'MRR': round(float(np.mean(mrr_scores)), 4) if mrr_scores else 0,
             'latency_ms': round(float(np.mean(lats)) * 1000, 1) if lats else 0,
             'n_queries': len(mrr_scores),
         }
-        m = repo_results['tree_search']
+        m = repo_results['mcts_search']
         print(f"    R@1={m['R@1']}  R@5={m['R@5']}  MRR={m['MRR']}  lat={m['latency_ms']}ms")
 
         all_results[repo_id] = repo_results

@@ -1,0 +1,344 @@
+{
+  "title": "repo_chatbot_o708i20b",
+  "node_id": "0000",
+  "type": "repository",
+  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b",
+  "nodes": [
+    {
+      "title": "Dockerfile",
+      "node_id": "0001",
+      "type": "file",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/Dockerfile",
+      "summary": "File Dockerfile",
+      "tokens_used": 0
+    },
+    {
+      "title": "README.md",
+      "node_id": "0002",
+      "type": "file_md",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/README.md",
+      "summary": "File README.md",
+      "tokens_used": 0
+    },
+    {
+      "title": "agents",
+      "node_id": "0003",
+      "type": "folder",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents",
+      "nodes": [
+        {
+          "title": "__init__.py",
+          "node_id": "0004",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/__init__.py",
+          "summary": "File __init__.py",
+          "tokens_used": 0
+        },
+        {
+          "title": "base_agent.py",
+          "node_id": "0005",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/base_agent.py",
+          "nodes": [
+            {
+              "title": "BaseAgent",
+              "node_id": "class_1",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/base_agent.py",
+              "start_line": 5,
+              "end_line": 45,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_2",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/base_agent.py",
+                  "start_line": 8,
+                  "end_line": 20,
+                  "summary": "Initializes a GenAI agent with an API key, configuring a GenerativeModel and setting up logging for message tracking and status updates. \n\nKey functions/concepts: `genai.configure`, `genai.GenerativeModel`, `logging.basicConfig`.",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "think",
+                  "node_id": "method_3",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/base_agent.py",
+                  "start_line": 22,
+                  "end_line": 30,
+                  "summary": "Generates a response to a given prompt using a model, logging its thinking and completion status, and handling potential exceptions. \n\nKey functions/concepts: `generate_content`, exception handling, logging.",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "send_message_to_agent",
+                  "node_id": "method_4",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/base_agent.py",
+                  "start_line": 32,
+                  "end_line": 42,
+                  "summary": "Sends a message to an agent, returning a JSON string representation of the message. Key functions include serializing a dictionary with sender and recipient information.",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "get_agent_description",
+                  "node_id": "method_5",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/base_agent.py",
+                  "start_line": 44,
+                  "end_line": 45,
+                  "summary": "Returns a string describing an AI agent, including its name. \n\nKey functions/concepts: `get_agent_description`, `agent_name`.",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "Initializes a GenAI agent with API key configuration and logging, enabling model-based response generation and message tracking.\nGenerates responses to prompts using a GenerativeModel, logging thinking and completion status while handling exceptions.\nSends messages to agents as JSON strings, seri...",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Initializes a GenAI agent with API key configuration and logging, enabling model-based response generation and message tracking. \n\nGenerates responses to prompts using a GenerativeModel, logging thinking and completion status while handling exceptions.",
+          "tokens_used": 0
+        },
+        {
+          "title": "budget_agent.py",
+          "node_id": "0006",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/budget_agent.py",
+          "nodes": [
+            {
+              "title": "BudgetAgent",
+              "node_id": "class_6",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/budget_agent.py",
+              "start_line": 3,
+              "end_line": 52,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_7",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/budget_agent.py",
+                  "start_line": 4,
+                  "end_line": 5,
+                  "summary": "Initializes a Budget Optimiser instance with an API key, passing it to the parent class constructor. \n\nKey function/concept: `__init__`, `api_key`.",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "analyse_budget",
+                  "node_id": "method_8",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/budget_agent.py",
+                  "start_line": 7,
+                  "end_line": 29,
+                  "summary": "Analyzes travel budget by generating a prompt for a language model to provide estimated cost breakdowns, optimisation tips, and money-saving strategies. \n\nKey functions/concepts: `think` method, budget analysis, language model generation.",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "optimise_costs",
+                  "node_id": "method_9",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/budget_agent.py",
+                  "start_line": 31,
+                  "end_line": 49,
+                  "summary": "Optimises travel costs by providing strategies for booking platforms, accommodations, transportation, activities, and local tips based on destination, budget, and duration. \n\nKey functions: think(), optimisation prompt generation.",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "get_agent_description",
+                  "node_id": "method_10",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/budget_agent.py",
+                  "start_line": 51,
+                  "end_line": 52,
+                  "summary": "Returns a string describing the Budget Optimiser agent, stating its purpose in maximising travel value through cost analysis and deal discovery.",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "The BudgetAgent class is an instance of a Budget Optimiser that analyses and optimises travel costs by generating prompts for language models to provide estimated cost breakdowns and money-saving strategies.\n\nIt uses key functions such as `__init__` to initialise with an API key, `analyse_budget`...",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "BudgetAgent class: Optimizes travel costs by generating prompts for language models to estimate cost breakdowns and provide money-saving strategies. \n\nKey functions include initialisation with an API key in `__init__`, and budget analysis in `analyse_budget`.",
+          "tokens_used": 0
+        },
+        {
+          "title": "coordinator_agent.py",
+          "node_id": "0007",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/coordinator_agent.py",
+          "nodes": [
+            {
+              "title": "TravelCoordinatorAgent",
+              "node_id": "class_11",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/coordinator_agent.py",
+              "start_line": 2,
+              "end_line": 66,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_12",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/coordinator_agent.py",
+                  "start_line": 4,
+                  "end_line": 10,
+                  "summary": "Initializes a Travel Coordinator API client with an API key, setting up available agents for destination and budget information retrieval. \n\nKey functions/concepts: `__init__`, `available_agents` dictionary.",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "register_agent",
+                  "node_id": "method_13",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/coordinator_agent.py",
+                  "start_line": 12,
+                  "end_line": 14,
+                  "summary": "Registers an agent instance by type and stores it in a dictionary for later use. \n\nKey functions/concepts: `register_agent`, `available_agents` dictionary, logging with `logger`.",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "plan_trip",
+                  "node_id": "method_14",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/coordinator_agent.py",
+                  "start_line": 16,
+                  "end_line": 63,
+                  "summary": "Plans a trip based on user input by analyzing and extracting key information, then generating a comprehensive travel plan with specific recommendations and practical advice. \n\nKey functions/concepts: \n- `think`: AI analysis function\n- `available_agents`: Dictionary of available agents for destina...",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "get_agent_description",
+                  "node_id": "method_15",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/coordinator_agent.py",
+                  "start_line": 65,
+                  "end_line": 66,
+                  "summary": "Returns a string describing the agent's role as a Travel Coordinator, managing other agents and creating user travel plans. \n\nKey functions/concepts: Agent description, Travel Coordinator.",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "The TravelCoordinatorAgent class initializes and manages travel planning, registering agents to provide destination and budget information, and plans trips using AI analysis and recommendations.\n\nIt includes key functions such as `__init__`, `register_agent`, `plan_trip`, `think`, and utilizes a ...",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "The TravelCoordinatorAgent class initializes and manages travel planning by registering agents to provide destination and budget information, then plans trips using AI analysis and recommendations. \n\nKey functions include `__init__`, `register_agent`, `plan_trip`, and `think`.",
+          "tokens_used": 0
+        },
+        {
+          "title": "destination_agent.py",
+          "node_id": "0008",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/destination_agent.py",
+          "nodes": [
+            {
+              "title": "DestinationAgent",
+              "node_id": "class_16",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/destination_agent.py",
+              "start_line": 2,
+              "end_line": 50,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_17",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/destination_agent.py",
+                  "start_line": 3,
+                  "end_line": 4,
+                  "summary": "Initializes a DestinationExpert API client with an API key, calling the parent class's constructor to authenticate and set up the API connection. \n\nKey function/concept: `__init__`, `super().__init__`",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "get_destination_info",
+                  "node_id": "method_18",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/destination_agent.py",
+                  "start_line": 6,
+                  "end_line": 28,
+                  "summary": "This function retrieves detailed information about travel destinations worldwide by prompting a language model with a specific travel request and returning its response. \n\nKey functions/concepts: `think` method, destination expert prompt, travel request processing.",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "find_activities",
+                  "node_id": "method_19",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/destination_agent.py",
+                  "start_line": 30,
+                  "end_line": 47,
+                  "summary": "Finds specific activities in a destination based on user interests, providing details such as activity names, locations, costs, time required, and booking requirements. \n\nKey functions/concepts: `think` method, natural language processing.",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "get_agent_description",
+                  "node_id": "method_20",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/agents/destination_agent.py",
+                  "start_line": 49,
+                  "end_line": 50,
+                  "summary": "Returns a string describing an AI agent as a Destination Expert with knowledge of global travel information. \n\nKey functions/concepts: AI agent, Destination Expert, travel information.",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "The DestinationAgent class initializes an API client for travel destination information and provides methods to retrieve detailed destination info, find activities based on user interests, and return agent descriptions.\n\nIt uses key functions such as `__init__`, `super().__init__`, `think` method...",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "The DestinationAgent class initializes an API client for travel destination information and provides methods to retrieve detailed destination info and find activities based on user interests. \n\nKey functions include initialization, a think method, and agent descriptions.",
+          "tokens_used": 0
+        }
+      ],
+      "summary": "The agents folder contains classes for initializing GenAI agents with API key configuration and logging, including a BudgetAgent for optimizing travel costs and a TravelCoordinatorAgent for managing travel planning.\n\n- base_agent.py: Initializes GenAI agent with API key configuration and logging....",
+      "tokens_used": 0
+    },
+    {
+      "title": "app.py",
+      "node_id": "0009",
+      "type": "file_py",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/app.py",
+      "summary": "File app.py",
+      "tokens_used": 0
+    },
+    {
+      "title": "requirements.txt",
+      "node_id": "0010",
+      "type": "file_txt",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/requirements.txt",
+      "summary": "File requirements.txt",
+      "tokens_used": 0
+    },
+    {
+      "title": "static",
+      "node_id": "0011",
+      "type": "folder",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/static",
+      "nodes": [
+        {
+          "title": "style.css",
+          "node_id": "0012",
+          "type": "file_css",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/static/style.css",
+          "summary": "File style.css",
+          "tokens_used": 0
+        }
+      ],
+      "summary": "Contains CSS styles for web application layout and design, utilizing selectors and properties to define visual appearance. \n\nKey concepts: CSS selectors, properties, styles.",
+      "tokens_used": 0
+    },
+    {
+      "title": "templates",
+      "node_id": "0013",
+      "type": "folder",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/templates",
+      "nodes": [
+        {
+          "title": "index.html",
+          "node_id": "0014",
+          "type": "file_html",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/repo_chatbot_o708i20b/templates/index.html",
+          "summary": "File index.html",
+          "tokens_used": 0
+        }
+      ],
+      "summary": "Contains HTML template for web application, specifically index page. \n\nKey functions/concepts: index.html.",
+      "tokens_used": 0
+    }
+  ],
+  "summary": "The repo_chatbot_o708i20b repository contains code for a GenAI chatbot with agents for travel planning and cost optimization, along with CSS styles and HTML templates for web application layout and design.\n\nIt includes key functions and concepts such as initializing GenAI agents, BudgetAgent, Tra...",
+  "tokens_used": 305
+}
