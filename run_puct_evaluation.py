@@ -108,40 +108,63 @@ def main(provider='lmstudio', model=None, max_queries=15):
 
         repo_results = {}
 
-        # MCTSTreeSearch (MCTS-based search)
-        print(f"  Running MCTSTreeSearch...")
+        # Load raw tree for PUCT
+        import json
+        with open(tree_path, 'r') as f:
+            raw_tree = json.load(f)
+
+        def run_search(searcher, search_type, is_puct=False):
+            r1, r5, mrr_scores, lats, llm_calls = [], [], [], [], []
+            for q_info in queries:
+                query = q_info.get('query', q_info.get('docstring', ''))
+                gt    = q_info.get('ground_truth', q_info.get('func_name', ''))
+                if not query or not gt:
+                    continue
+                t0 = time.time()
+                if is_puct:
+                    results = searcher.search(raw_tree, query, top_k=10)
+                else:
+                    results = searcher.search(repo_id, query, top_k=10)
+                lat = time.time() - t0
+                
+                titles = [r.get('name', '') for r in results]
+                r1.append(recall_at_k(titles, gt, 1))
+                r5.append(recall_at_k(titles, gt, 5))
+                mrr_scores.append(mrr(titles, gt))
+                lats.append(lat)
+                
+                if hasattr(searcher, 'llm_call_count'):
+                    llm_calls.append(searcher.llm_call_count)
+                elif hasattr(searcher, 'mcts') and hasattr(searcher.mcts, 'llm_call_count'):
+                    llm_calls.append(searcher.mcts.llm_call_count)
+
+            repo_results[search_type] = {
+                'R@1': round(float(np.mean(r1)), 4) if r1 else 0,
+                'R@5': round(float(np.mean(r5)), 4) if r5 else 0,
+                'MRR': round(float(np.mean(mrr_scores)), 4) if mrr_scores else 0,
+                'latency_ms': round(float(np.mean(lats)) * 1000, 1) if lats else 0,
+                'n_queries': len(mrr_scores),
+                'avg_llm_calls': round(float(np.mean(llm_calls)), 2) if llm_calls else 0,
+            }
+            m = repo_results[search_type]
+            print(f"    [{search_type}] R@1={m['R@1']}  R@5={m['R@5']}  MRR={m['MRR']}  lat={m['latency_ms']}ms  llm_calls={m['avg_llm_calls']}")
+
+        # ── Baseline MCTS ──────
+        print(f"  Running Baseline MCTS...")
         from backend.code_index2 import MCTSTreeSearch
-        searcher = MCTSTreeSearch(llm_client=llm)
-        searcher.load_repository_tree(repo_id, tree_path)
+        base_searcher = MCTSTreeSearch(llm_client=llm)
+        base_searcher.load_repository_tree(repo_id, tree_path)
+        run_search(base_searcher, 'baseline', is_puct=False)
 
-        r1, r5, mrr_scores, lats = [], [], [], []
-        for q_info in queries:
-            query = q_info.get('query', q_info.get('docstring', ''))
-            gt    = q_info.get('ground_truth', q_info.get('func_name', ''))
-            if not query or not gt:
-                continue
-            t0 = time.time()
-            results = searcher.search(repo_id, query, top_k=10)
-            lat = time.time() - t0
-            titles = [r.get('name', '') for r in results]
-            r1.append(recall_at_k(titles, gt, 1))
-            r5.append(recall_at_k(titles, gt, 5))
-            mrr_scores.append(mrr(titles, gt))
-            lats.append(lat)
-
-        repo_results['mcts_search'] = {
-            'R@1': round(float(np.mean(r1)), 4) if r1 else 0,
-            'R@5': round(float(np.mean(r5)), 4) if r5 else 0,
-            'MRR': round(float(np.mean(mrr_scores)), 4) if mrr_scores else 0,
-            'latency_ms': round(float(np.mean(lats)) * 1000, 1) if lats else 0,
-            'n_queries': len(mrr_scores),
-        }
-        m = repo_results['mcts_search']
-        print(f"    R@1={m['R@1']}  R@5={m['R@5']}  MRR={m['MRR']}  lat={m['latency_ms']}ms")
+        # ── PUCT MCTS ──────
+        print(f"  Running PUCT MCTS...")
+        from research.mcts.puct_search import PUCTSearch
+        puct_searcher = PUCTSearch(llm_client=llm, prior_path="research/mcts/prior.pt")
+        run_search(puct_searcher, 'puct', is_puct=True)
 
         all_results[repo_id] = repo_results
         json.dump(all_results,
-                open(os.path.join(RESULTS_DIR, 'tree_eval.json'), 'w'),
+                open(os.path.join(RESULTS_DIR, 'puct_eval.json'), 'w'),
                 indent=2)
 
     # ── Print summary table ────────────────────────────────────────────────────
