@@ -1,0 +1,186 @@
+[
+    {
+        "query": "How does the toolz library implement memoization?",
+        "ground_truth": [
+            "memoize"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The memoize function in toolz.functools provides a decorator that caches function results in a dictionary based on the provided arguments."
+    },
+    {
+        "query": "What is the purpose of the `toolz.functools.compose` function?",
+        "ground_truth": [
+            "compose"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "compose is used to chain multiple functions together, where the output of one function becomes the input of the next, executing from right to left."
+    },
+    {
+        "query": "How can I filter a list using toolz?",
+        "ground_truth": [
+            "filter"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The filter function in toolz.itertoolz allows for lazy filtering of iterables based on a predicate function."
+    },
+    {
+        "query": "What does the `toolz.dicttoolz.valmap` function do?",
+        "ground_truth": [
+            "valmap"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "valmap applies a function to every value within a dictionary while leaving the keys unchanged."
+    },
+    {
+        "query": "How is parallel processing handled in the toolz library?",
+        "ground_truth": [
+            "map",
+            "fold"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "While toolz is primarily sequential, functions like map and fold are designed to be picklable and pure, allowing them to be easily used with multiprocessing or external libraries like Dask."
+    },
+    {
+        "query": "What is the role of the `toolz.itertoolz.count` function?",
+        "ground_truth": [
+            "count"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The count function returns the number of items in an iterable by iterating through it."
+    },
+    {
+        "query": "How to flatten nested iterables with toolz?",
+        "ground_truth": [
+            "concat"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "concat (often used as a flattening agent) chains a sequence of iterables into a single long iterator."
+    },
+    {
+        "query": "What does the `toolz.functools.curry` function achieve?",
+        "ground_truth": [
+            "curry"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "curry transforms a function so that it can be called with fewer arguments than it requires, returning a new function that accepts the remaining arguments."
+    },
+    {
+        "query": "How can I apply a function to each item in an iterable using toolz?",
+        "ground_truth": [
+            "map"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The map function in toolz.itertoolz provides a lazy implementation of applying a function to every element in a sequence."
+    },
+    {
+        "query": "What is the function used for combining dictionaries in toolz?",
+        "ground_truth": [
+            "merge"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "merge in dicttoolz combines multiple dictionaries into a single dictionary, with later dictionaries overwriting values of earlier ones."
+    },
+    {
+        "query": "How does the `toolz.itertoolz.partition` function work?",
+        "ground_truth": [
+            "partition"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "partition splits an iterable into tuples of a specified length 'n'."
+    },
+    {
+        "query": "What is the use of the `toolz.functools.compose_with_kwargs` function?",
+        "ground_truth": [
+            "compose_with_kwargs"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "This function is a variant of compose that specifically allows for the passing of keyword arguments through the function chain."
+    },
+    {
+        "query": "How can I remove items from a dictionary based on keys using toolz?",
+        "ground_truth": [
+            "dissoc",
+            "keyfilter"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "dissoc removes specific keys from a dictionary, while keyfilter can be used to filter out keys based on a predicate."
+    },
+    {
+        "query": "What is the purpose of the `toolz.functools.identity` function?",
+        "ground_truth": [
+            "identity"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "identity is a utility function that simply returns the argument it is given, often used as a default placeholder in functional pipelines."
+    },
+    {
+        "query": "How to extract specific elements from a list using toolz?",
+        "ground_truth": [
+            "get",
+            "nth",
+            "take"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "get retrieves items at specific indices, nth retrieves the item at a single index, and take retrieves the first 'n' items."
+    },
+    {
+        "query": "What does the `toolz.dicttoolz.merge_with` function do?",
+        "ground_truth": [
+            "merge_with"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "merge_with combines dictionaries and applies a specified function (like sum or list) to the collection of values that share the same key."
+    },
+    {
+        "query": "How can I apply a function to each element in an iterable and collect results using toolz?",
+        "ground_truth": [
+            "map"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "map is the standard functional tool in itertoolz for applying a transformation across an entire iterable."
+    },
+    {
+        "query": "What is the role of the `toolz.functools.pipe` function?",
+        "ground_truth": [
+            "pipe"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "pipe passes a value through a sequence of functions, where each function takes the result of the previous one (left-to-right/top-to-bottom flow)."
+    }
+]
