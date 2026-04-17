@@ -1,5 +1,5 @@
 """
-validate_prior.py  —  updated for ImprovedPrior
+validate_prior.py  —  updated for RelevancePrior (no cosine feature)
 
 On the TEST repos, check if the prior ranks the correct path higher
 than all sibling nodes at each tree level.
@@ -7,8 +7,9 @@ than all sibling nodes at each tree level.
 Metric: per-level ranking accuracy
   = fraction of (query, level) pairs where the on-path node scores #1
 
-This is the same metric validate_prior.py always computed, but now
-loads the ImprovedPrior and passes the extra features it needs.
+For multi-target GT queries, a level counts as correct if the on-path
+node for ANY of the ground truth targets ranks #1 at that level. This
+is the right evaluation: at least one valid path should be preferred.
 """
 import json
 import os
@@ -19,17 +20,7 @@ from sentence_transformers import SentenceTransformer
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# ── import the new model class ──
-# It lives in devquery_bench/train_prior.py so we load it from there.
-# If you moved it to research/mcts/relevance_prior.py, adjust accordingly.
-from devquery_bench.train_prior import ImprovedPrior
-
-
-def cosine_sim(a: np.ndarray, b: np.ndarray) -> float:
-    denom = np.linalg.norm(a) * np.linalg.norm(b)
-    if denom < 1e-8:
-        return 0.0
-    return float(np.dot(a, b) / denom)
+from devquery_bench.train_prior import RelevancePrior
 
 
 def find_path(root, target):
@@ -45,13 +36,37 @@ def find_path(root, target):
     return dfs(root, [])
 
 
+def score_siblings(prior, query_emb, siblings):
+    """
+    Score all siblings that have embeddings.
+    Returns list of (title, score) pairs.
+    """
+    q_tensor = torch.tensor(query_emb, dtype=torch.float32).unsqueeze(0)
+    results  = []
+
+    for sib in siblings:
+        emb = sib.get('embedding')
+        if emb is None:
+            continue
+        node_emb  = np.array(emb, dtype=np.float32)
+        n_tensor  = torch.tensor(node_emb, dtype=torch.float32).unsqueeze(0)
+        ep_tensor = torch.tensor(query_emb * node_emb, dtype=torch.float32).unsqueeze(0)
+
+        with torch.no_grad():
+            score = prior(q_tensor, n_tensor, ep_tensor).item()
+
+        results.append((sib.get('title', sib.get('name', '')), score))
+
+    return results
+
+
 def main():
     prior_path = 'devquery_bench/prior.pt'
     if not os.path.exists(prior_path):
         print(f"❌ {prior_path} not found. Run train_prior.py first.")
         return
 
-    prior = ImprovedPrior.load(prior_path)
+    prior = RelevancePrior.load(prior_path)
     prior.eval()
 
     embed_model = SentenceTransformer('all-MiniLM-L6-v2')
@@ -68,7 +83,7 @@ def main():
     total_levels   = 0
     tree_cache     = {}
 
-    for entry in test_entries[:50]:   # up to 50 for speed; raise to len() for full eval
+    for entry in test_entries:
         repo_id = entry['repo_id']
         if repo_id not in tree_cache:
             tp = f"devquery_bench/trees/{repo_id}.json"
@@ -77,56 +92,49 @@ def main():
             with open(tp) as f:
                 tree_cache[repo_id] = json.load(f)
 
-        tree = tree_cache[repo_id]
-        
-        # Embed the query once
-        query_emb   = embed_model.encode(entry['query'], show_progress_bar=False)
-        q_tensor    = torch.tensor(query_emb, dtype=torch.float32)
+        tree      = tree_cache[repo_id]
+        query_emb = embed_model.encode(entry['query'], show_progress_bar=False)
 
-        # Iterate over all ground truth targets
-        for target_title in entry['ground_truth']:
+        gt_list = entry['ground_truth']
+        if isinstance(gt_list, str):
+            gt_list = [gt_list]
+
+        # For each tree level, check if ANY gt target's on-path node ranks #1
+        # Group by (parent_title, level_index) so we don't double-count levels
+        # that multiple GT targets share
+        evaluated_levels = set()
+
+        for target_title in gt_list:
             path = find_path(tree, target_title)
             if not path or len(path) < 2:
                 continue
 
             for i in range(1, len(path)):
-                parent      = path[i - 1]
-                on_path     = path[i]
-                siblings    = parent.get('nodes', parent.get('children', []))
+                parent       = path[i - 1]
+                on_path      = path[i]
+                parent_title = parent.get('title', parent.get('name', ''))
+                level_key    = (parent_title, i)
+
+                if level_key in evaluated_levels:
+                    # Another GT target already evaluated this level
+                    # (they share the same parent at this depth — no double count)
+                    continue
+
+                siblings = parent.get('nodes', parent.get('children', []))
                 if len(siblings) < 2:
                     continue
 
-                on_path_title  = on_path.get('title', '')
-                scores         = []
-                on_path_score  = None
+                scored = score_siblings(prior, query_emb, siblings)
+                if not scored:
+                    continue
 
-                for sib in siblings:
-                    emb = sib.get('embedding')
-                    if emb is None:
-                        continue
+                on_path_title = on_path.get('title', '')
+                best_title    = max(scored, key=lambda x: x[1])[0]
 
-                    node_emb   = np.array(emb, dtype=np.float32)
-                    n_tensor   = torch.tensor(node_emb, dtype=torch.float32)
-                    ep_tensor  = torch.tensor(query_emb * node_emb, dtype=torch.float32)
-                    cos_tensor = torch.tensor([[cosine_sim(query_emb, node_emb)]], dtype=torch.float32)
-
-                    with torch.no_grad():
-                        score = prior(
-                            q_tensor.unsqueeze(0),
-                            n_tensor.unsqueeze(0),
-                            ep_tensor.unsqueeze(0),
-                            cos_tensor,
-                        ).item()
-
-                    scores.append(score)
-                    if sib.get('title', '') == on_path_title:
-                        on_path_score = score
-
-                if on_path_score is not None and scores:
-                    rank = sum(1 for s in scores if s > on_path_score) + 1
-                    if rank == 1:
-                        correct_levels += 1
-                    total_levels += 1
+                evaluated_levels.add(level_key)
+                total_levels += 1
+                if best_title == on_path_title:
+                    correct_levels += 1
 
     if total_levels > 0:
         acc = correct_levels / total_levels * 100
