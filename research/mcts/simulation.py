@@ -291,3 +291,4 @@ Respond with ONLY a JSON object: {{"score": <number>}}
     def clear_cache(self):
         """Clear the score cache."""
         self.cache.clear()
+
