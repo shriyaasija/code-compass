@@ -1,0 +1,189 @@
+[
+    {
+        "query": "How does FastAPI handle request validation?",
+        "ground_truth": [
+            "BaseModel",
+            "Body",
+            "Query",
+            "Path"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "FastAPI uses Pydantic's BaseModel for structured data validation, while Body, Query, and Path parameters define specific validation constraints for request components."
+    },
+    {
+        "query": "What is the role of the 'Depends' function in FastAPI?",
+        "ground_truth": [
+            "Depends"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Depends is the core function for declaring dependencies, enabling the framework's dependency injection system."
+    },
+    {
+        "query": "How can I add authentication to my API in FastAPI?",
+        "ground_truth": [
+            "HTTPBearer",
+            "OAuth2PasswordBearer",
+            "Security"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "FastAPI provides security utilities like HTTPBearer and OAuth2PasswordBearer, which are integrated into routes using the Security dependency."
+    },
+    {
+        "query": "What methods are available for defining HTTP responses in FastAPI?",
+        "ground_truth": [
+            "Response",
+            "JSONResponse",
+            "HTMLResponse",
+            "StreamingResponse"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Response class is the base for all responses, with specialized subclasses like JSONResponse and HTMLResponse handling specific content types."
+    },
+    {
+        "query": "How does FastAPI manage asynchronous operations?",
+        "ground_truth": [
+            "BackgroundTasks"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "While async is native to Python, FastAPI provides the BackgroundTasks class to manage non-blocking operations after a response is sent."
+    },
+    {
+        "query": "What is the significance of the 'FastAPI' class in the framework?",
+        "ground_truth": [
+            "FastAPI"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The FastAPI class is the main entry point for the application, responsible for route registration, exception handling, and app configuration."
+    },
+    {
+        "query": "How can I implement rate limiting in an API using FastAPI?",
+        "ground_truth": [],
+        "skipped": true,
+        "auto": false,
+        "confidence": "high",
+        "reason": "FastAPI does not have a built-in rate-limiting class in its core; this is typically handled via third-party libraries or custom middleware."
+    },
+    {
+        "query": "What is the purpose of the 'HTTPException' class in FastAPI?",
+        "ground_truth": [
+            "HTTPException"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "HTTPException is used to raise errors that FastAPI automatically converts into HTTP responses with specific status codes and details."
+    },
+    {
+        "query": "How to handle file uploads in a FastAPI application?",
+        "ground_truth": [
+            "File",
+            "UploadFile"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The File parameter defines a requirement for a file upload, while UploadFile provides an interface to handle the uploaded file stream and metadata."
+    },
+    {
+        "query": "What is the difference between query parameters and path parameters in FastAPI?",
+        "ground_truth": [
+            "Query",
+            "Path"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Query class defines parameters extracted from the URL query string, while the Path class defines parameters extracted from the URL path itself."
+    },
+    {
+        "query": "How can I customize the behavior of responses when exceptions occur?",
+        "ground_truth": [
+            "add_exception_handler"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The add_exception_handler method on the FastAPI app instance allows developers to map specific exceptions to custom response logic."
+    },
+    {
+        "query": "What does the 'Response' object represent in FastAPI?",
+        "ground_truth": [
+            "Response"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Response object represents the raw HTTP response, allowing direct control over status codes, headers, and cookies."
+    },
+    {
+        "query": "How to create a custom middleware in FastAPI for logging requests?",
+        "ground_truth": [
+            "BaseHTTPMiddleware"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "BaseHTTPMiddleware is the standard base class for creating custom ASGI middleware to intercept and process requests/responses."
+    },
+    {
+        "query": "What is the role of 'SecurityScheme' in defining API security?",
+        "ground_truth": [
+            "SecurityScheme"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "SecurityScheme is used to define OpenAPI-compliant security requirements for the generated documentation."
+    },
+    {
+        "query": "How do I use dependency injection in FastAPI for testing?",
+        "ground_truth": [
+            "dependency_overrides"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The dependency_overrides attribute on the FastAPI application allows replacing dependencies with mocks or test-specific versions."
+    },
+    {
+        "query": "What is the purpose of the 'APIRouter' class in organizing routes?",
+        "ground_truth": [
+            "APIRouter"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "APIRouter allows for modularizing the application by grouping related routes and including them into the main FastAPI application."
+    },
+    {
+        "query": "How can I integrate OAuth2 with FastAPI to authenticate users?",
+        "ground_truth": [
+            "OAuth2PasswordBearer",
+            "OAuth2PasswordRequestForm"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "OAuth2PasswordBearer handles token extraction, while OAuth2PasswordRequestForm provides a structured way to parse login credentials."
+    },
+    {
+        "query": "What are some common pitfalls when working with FastAPI?",
+        "ground_truth": [],
+        "skipped": true,
+        "auto": false,
+        "confidence": "high",
+        "reason": "This query is qualitative and best answered by the 'Tutorial' or 'Best Practices' sections in the documentation rather than a specific code element."
+    }
+]
