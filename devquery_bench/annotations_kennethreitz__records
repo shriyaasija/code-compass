@@ -1,0 +1,191 @@
+[
+    {
+        "query": "How does the library handle database connections?",
+        "ground_truth": [
+            "Database",
+            "get_connection"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Database class handles the connection lifecycle, often delegating to the get_connection method to manage active SQLAlchemy connections."
+    },
+    {
+        "query": "What function is used to execute raw SQL queries?",
+        "ground_truth": [
+            "Database",
+            "query"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The query method on the Database class is the primary entry point for executing raw SQL strings."
+    },
+    {
+        "query": "Where can I find examples of how to use the records library?",
+        "ground_truth": [],
+        "skipped": true,
+        "auto": false,
+        "confidence": "high",
+        "reason": "This query refers to documentation files (README.md) and directories (examples/), not specific classes or functions."
+    },
+    {
+        "query": "How do you validate API keys in the library?",
+        "ground_truth": [],
+        "skipped": true,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The records library is a database utility and does not contain API key validation logic."
+    },
+    {
+        "query": "What method is used to retrieve all table names from a database?",
+        "ground_truth": [
+            "Database",
+            "get_table_names"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "get_table_names is a convenience method in the Database class that returns a list of all tables in the database."
+    },
+    {
+        "query": "How can you convert query results into JSON format?",
+        "ground_truth": [
+            "RecordCollection",
+            "as_dict",
+            "export"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "RecordCollection provides as_dict for dictionary representation and export for direct JSON string generation via Tablib."
+    },
+    {
+        "query": "What function raises an error if more than one result is found?",
+        "ground_truth": [
+            "RecordCollection",
+            "one"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The one() method in RecordCollection returns exactly one row or raises an exception if multiple rows (or none) are found."
+    },
+    {
+        "query": "Where are the tests for the records library located?",
+        "ground_truth": [],
+        "skipped": true,
+        "auto": false,
+        "confidence": "high",
+        "reason": "This query refers to the project file structure (tests/ directory) rather than a code class or function."
+    },
+    {
+        "query": "How does the records library handle exceptions?",
+        "ground_truth": [],
+        "skipped": true,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The library primarily relies on standard SQLAlchemy exceptions and does not define its own custom error-handling classes."
+    },
+    {
+        "query": "What method is used to fetch the first row of a query result?",
+        "ground_truth": [
+            "RecordCollection",
+            "first"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The first() method in RecordCollection safely retrieves the first record or returns None if the collection is empty."
+    },
+    {
+        "query": "How can you export data from the database into CSV format?",
+        "ground_truth": [
+            "RecordCollection",
+            "export"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The export method uses Tablib to convert query results into CSV and other tabular formats."
+    },
+    {
+        "query": "What function is responsible for initializing the database engine?",
+        "ground_truth": [
+            "Database",
+            "__init__"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The constructor of the Database class initializes the SQLAlchemy engine with the provided connection string."
+    },
+    {
+        "query": "How does the records library support filtering and sorting query results?",
+        "ground_truth": [
+            "Database",
+            "query"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Filtering and sorting are handled by passing raw SQL (WHERE and ORDER BY clauses) to the query method."
+    },
+    {
+        "query": "Where are the setup instructions for installing the records library?",
+        "ground_truth": [],
+        "skipped": true,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Installation instructions are provided in the documentation (README.md), not in the source code."
+    },
+    {
+        "query": "How can I contribute to the development of the records library?",
+        "ground_truth": [],
+        "skipped": true,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Contribution guidelines are social/organizational information found in README.md."
+    },
+    {
+        "query": "What method is used to retrieve a single value from a query result?",
+        "ground_truth": [
+            "RecordCollection",
+            "scalar"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The scalar() method returns the first value of the first row, useful for queries returning a single count or ID."
+    },
+    {
+        "query": "How does the records library handle transactions?",
+        "ground_truth": [
+            "Database",
+            "transaction"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The transaction method on the Database class provides a context manager to wrap multiple operations in an atomic transaction."
+    },
+    {
+        "query": "Where can I find the license information for the records library?",
+        "ground_truth": [],
+        "skipped": true,
+        "auto": false,
+        "confidence": "high",
+        "reason": "License information is stored in the LICENSE file."
+    },
+    {
+        "query": "How does the records library support pagination in query results?",
+        "ground_truth": [
+            "Database",
+            "query"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Pagination is achieved by including LIMIT and OFFSET in the raw SQL string executed via the query method."
+    }
+]
