@@ -1,0 +1,20 @@
+[
+  "How does the HTTP client handle redirects?",
+  "What is the default timeout for requests in httpx?",
+  "How do you set custom headers when making a request?",
+  "Where can I find examples of using httpx to make GET and POST requests?",
+  "What methods are available for handling cookies in httpx?",
+  "How does httpx manage SSL certificates?",
+  "What is the purpose of the 'auth' parameter in httpx requests?",
+  "How do you cancel a request in httpx?",
+  "Where can I find information on how to use async functions with httpx?",
+  "How does httpx handle multipart/form-data?",
+  "What is the difference between GET and POST methods in httpx?",
+  "How do you parse JSON responses using httpx?",
+  "What is the role of the 'timeout' parameter in httpx requests?",
+  "How can I add query parameters to a URL when making a request with httpx?",
+  "Where can I find documentation on how to use httpx for sending HTTP requests?",
+  "How does httpx handle different content types in responses?",
+  "What is the purpose of the 'cookies' parameter in httpx requests?",
+  "How do you set basic authentication credentials when making a request with httpx?"
+]

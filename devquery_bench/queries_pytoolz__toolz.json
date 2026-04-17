@@ -1,0 +1,20 @@
+[
+  "How does the toolz library implement memoization?",
+  "What is the purpose of the `toolz.functools.compose` function?",
+  "How can I filter a list using toolz?",
+  "What does the `toolz.dicttoolz.valmap` function do?",
+  "How is parallel processing handled in the toolz library?",
+  "What is the role of the `toolz.itertoolz.count` function?",
+  "How to flatten nested iterables with toolz?",
+  "What does the `toolz.functools.curry` function achieve?",
+  "How can I apply a function to each item in an iterable using toolz?",
+  "What is the function used for combining dictionaries in toolz?",
+  "How does the `toolz.itertoolz.partition` function work?",
+  "What is the use of the `toolz.functools.compose_with_kwargs` function?",
+  "How can I remove items from a dictionary based on keys using toolz?",
+  "What is the purpose of the `toolz.functools.identity` function?",
+  "How to extract specific elements from a list using toolz?",
+  "What does the `toolz.dicttoolz.merge_with` function do?",
+  "How can I apply a function to each element in an iterable and collect results using toolz?",
+  "What is the role of the `toolz.functools.pipe` function?"
+]

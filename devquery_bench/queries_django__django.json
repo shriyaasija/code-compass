@@ -1,0 +1,20 @@
+[
+  "How does Django handle database transactions?",
+  "What is the purpose of middleware in Django?",
+  "How can you customize authentication in Django?",
+  "What is the role of template inheritance in Django?",
+  "How does Django manage sessions?",
+  "What is the process for URL routing in Django?",
+  "How can you create a custom management command in Django?",
+  "What is the significance of context processors in Django templates?",
+  "How does Django handle form validation?",
+  "What is the mechanism behind Django's ORM?",
+  "How does Django manage static files?",
+  "What is the role of middleware for security in Django?",
+  "How can you extend Django with a third-party app?",
+  "What is the process of model serialization and deserialization in Django?",
+  "How does Django handle caching?",
+  "What is the mechanism behind Django's template engine?",
+  "How can you create custom authentication backends in Django?",
+  "What is the role of settings files in Django projects?"
+]

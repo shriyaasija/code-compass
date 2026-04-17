@@ -1,0 +1,21 @@
+[
+  "How does the schema library handle JSON validation?",
+  "What is the purpose of the LICENSE-MIT file in this repository?",
+  "Where can I find information about the release history of this library?",
+  "How does the library manage default values for optional fields?",
+  "What mechanisms are used to ensure API keys are validated before processing requests?",
+  "What strategies does the schema library employ to handle complex nested schemas?",
+  "How does the library handle error reporting and provide user-friendly messages?",
+  "What is the role of the MANIFEST.in file in this project?",
+  "How can I contribute to improving the schema validation library?",
+  "What are some common use cases for this data validation library?",
+  "Where can I find examples of how to use the schema library in real-world applications?",
+  "How does the library support inheritance and optional fields?",
+  "What is the significance of the test_mypy_use_callable_default_ignore_inherited_schema_validate_kwargs function?",
+  "How does the schema library ensure backward compatibility with older versions?",
+  "What tools or frameworks are integrated with this data validation library?",
+  "How can I use regular expressions to validate strings in the schema library?",
+  "What is the impact of using JSON Schema literals with enums on validation?",
+  "How does the schema library handle issues related to key comparison and ordering?",
+  "What role does the test_nice_errors function play in ensuring error messages are user-friendly?"
+]

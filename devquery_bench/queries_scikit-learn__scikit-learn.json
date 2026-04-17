@@ -1,0 +1,20 @@
+[
+  "How does cross-validation work in scikit-learn?",
+  "What is the purpose of the `StandardScaler` class?",
+  "How can I perform a grid search with cross-validation?",
+  "What does it mean for a model to be 'overfitting'?",
+  "Where can I find examples of using PCA for dimensionality reduction?",
+  "How do I save and load models in scikit-learn?",
+  "What is the role of `Pipeline` in creating machine learning workflows?",
+  "How can I handle imbalanced datasets in classification problems?",
+  "What are some common evaluation metrics used in machine learning?",
+  "How does the `RandomForestClassifier` work internally?",
+  "Where can I find more information about feature selection techniques?",
+  "How do I implement custom metrics for model evaluation?",
+  "What is the significance of the `fit_intercept` parameter in linear regression models?",
+  "How does the `SVC` class handle different kernels (linear, polynomial, rbf)?",
+  "Where can I find more detailed documentation about ensemble methods?",
+  "How do I tune hyperparameters for a Support Vector Machine?",
+  "What is the purpose of the `LeaveOneOut` cross-validation method?",
+  "How does the `KMeans` algorithm determine cluster centers?"
+]

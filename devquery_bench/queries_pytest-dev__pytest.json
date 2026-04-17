@@ -1,0 +1,21 @@
+[
+  "How does pytest handle parameterized tests?",
+  "What is the process for adding new plugins to pytest?",
+  "How can I run specific tests using pytest?",
+  "What is the role of conftest.py files in pytest?",
+  "How do you configure pytest to ignore certain directories?",
+  "What happens if a test fails during execution?",
+  "How does pytest manage fixtures across multiple tests?",
+  "What is the purpose of the 'pytest' command-line tool?",
+  "How can I generate a coverage report for my tests?",
+  "What is the default behavior for capturing output in pytest?",
+  "How do you use markers to skip or parametrize tests?",
+  "What steps are involved in adding new features to pytest?",
+  "How does pytest handle exceptions within test functions?",
+  "What is the mechanism for organizing tests into modules and directories?",
+  "How can I customize the reporting of test results?",
+  "What is the process for creating a pull request for pytest?",
+  "How does pytest manage dependencies between tests?",
+  "What are the common hooks in pytest for extending its functionality?",
+  "How do you use pytest to check for memory leaks?"
+]

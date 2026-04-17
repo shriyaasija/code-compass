@@ -1,0 +1,20 @@
+[
+  "How does the library handle data validation?",
+  "What is the purpose of the 'pydantic-core' directory in the repository?",
+  "Can you explain how caching works within the pydantic library?",
+  "What mechanism does pydantic use to ensure type consistency across different parts of the application?",
+  "How can I customize validation rules for specific data types?",
+  "What is the role of the 'release/' directory in this project?",
+  "Can you describe the process of updating the documentation for a new version?",
+  "What steps are involved in generating the project's build artifacts?",
+  "How does the library handle serialization and deserialization of complex data structures?",
+  "What measures does pydantic take to prevent common validation errors?",
+  "Can you explain how the 'pyproject.toml' file is used in this project?",
+  "What functionality does the 'tests/' directory contain?",
+  "How can I contribute my own custom validators to the library?",
+  "What role does the 'update_v1.sh' script play in the release process?",
+  "Can you describe the architecture of pydantic's validation system?",
+  "What is the significance of the 'uv.lock' file in this repository?",
+  "How can I use the library to validate nested data structures?",
+  "What are some common pitfalls when using pydantic for data validation?"
+]

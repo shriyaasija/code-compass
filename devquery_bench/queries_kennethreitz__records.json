@@ -1,0 +1,21 @@
+[
+  "How does the library handle database connections?",
+  "What function is used to execute raw SQL queries?",
+  "Where can I find examples of how to use the records library?",
+  "How do you validate API keys in the library?",
+  "What method is used to retrieve all table names from a database?",
+  "How can you convert query results into JSON format?",
+  "What function raises an error if more than one result is found?",
+  "Where are the tests for the records library located?",
+  "How does the records library handle exceptions?",
+  "What method is used to fetch the first row of a query result?",
+  "How can you export data from the database into CSV format?",
+  "What function is responsible for initializing the database engine?",
+  "How does the records library support filtering and sorting query results?",
+  "Where are the setup instructions for installing the records library?",
+  "How can I contribute to the development of the records library?",
+  "What method is used to retrieve a single value from a query result?",
+  "How does the records library handle transactions?",
+  "Where can I find the license information for the records library?",
+  "How does the records library support pagination in query results?"
+]
