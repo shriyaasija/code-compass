@@ -99,9 +99,9 @@ def ranking_accuracy(preds, labels, query_ids):
 # ─────────────────────────────────────────────
 # Main training loop
 # ─────────────────────────────────────────────
-def train(epochs=50, lr=1e-3, batch_size=256, n_val_repos=2,
-          bce_weight=0.5, rank_weight=0.5, margin=0.4,
-          noise_std=0.02, patience=10):
+def train(epochs=50, lr=1e-3, batch_size=256, n_val_repos=1,
+          bce_weight=0.5, rank_weight=0.5, margin=0.3,
+          noise_std=0.01, patience=15):
 
     print("=" * 60)
     print("TRAINING BOTTLENECK RELEVANCE PRIOR (DevQuery-Bench)")
@@ -137,13 +137,14 @@ def train(epochs=50, lr=1e-3, batch_size=256, n_val_repos=2,
     print(f"  Repos:          {len(repo_names)}")
 
     # ── Repo-based val split ──
-    # Hold out the n_val_repos repos with the MOST data (hardest test)
+    # Hold out n_val_repos MEDIAN-sized repos (not the largest — that starves training)
     unique_repos = repo_ids.unique().tolist()
     repo_counts = {r: (repo_ids == r).sum().item() for r in unique_repos}
-    sorted_repos = sorted(repo_counts.items(), key=lambda x: x[1], reverse=True)
-
+    sorted_repos = sorted(repo_counts.items(), key=lambda x: x[1])  # ascending
+    mid = len(sorted_repos) // 2
+    val_repo_picks = sorted_repos[mid:mid + n_val_repos]
     val_repo_set = set()
-    for repo_int, count in sorted_repos[:n_val_repos]:
+    for repo_int, count in val_repo_picks:
         val_repo_set.add(repo_int)
         rname = repo_names[repo_int] if repo_int < len(repo_names) else f"repo_{repo_int}"
         print(f"  Val repo: {rname} ({count} pairs)")
@@ -175,7 +176,7 @@ def train(epochs=50, lr=1e-3, batch_size=256, n_val_repos=2,
     print(f"\n  Train: {n_train} | Val: {n_val}")
 
     # ── Model ──
-    model = RelevancePrior(embed_dim=embed_dim, proj_dim=32, dropout=0.5)
+    model = RelevancePrior(embed_dim=embed_dim, proj_dim=48, dropout=0.3)
     total_params = sum(p.numel() for p in model.parameters())
     print(f"  Model params: {total_params:,}")
     print(f"  Noise std:    {noise_std}")
@@ -193,7 +194,7 @@ def train(epochs=50, lr=1e-3, batch_size=256, n_val_repos=2,
     model      = model.to(device)
     pos_weight = pos_weight.to(device)
 
-    optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=5e-3)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=1e-3)
 
     def lr_lambda(epoch):
         warmup = 5
@@ -324,10 +325,10 @@ if __name__ == "__main__":
     p.add_argument("--batch-size",  type=int,   default=256)
     p.add_argument("--bce-weight",  type=float, default=0.5)
     p.add_argument("--rank-weight", type=float, default=0.5)
-    p.add_argument("--margin",      type=float, default=0.4)
-    p.add_argument("--noise-std",   type=float, default=0.02)
-    p.add_argument("--patience",    type=int,   default=10)
-    p.add_argument("--n-val-repos", type=int,   default=2)
+    p.add_argument("--margin",      type=float, default=0.3)
+    p.add_argument("--noise-std",   type=float, default=0.01)
+    p.add_argument("--patience",    type=int,   default=15)
+    p.add_argument("--n-val-repos", type=int,   default=1)
     args = p.parse_args()
     train(
         epochs=args.epochs,

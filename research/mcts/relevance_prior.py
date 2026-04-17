@@ -43,7 +43,7 @@ class RelevancePrior(nn.Module):
     Total params: ~31K (vs 312K before)
     """
 
-    def __init__(self, embed_dim: int = 384, proj_dim: int = 32, dropout: float = 0.5):
+    def __init__(self, embed_dim: int = 384, proj_dim: int = 48, dropout: float = 0.3):
         super().__init__()
         self.embed_dim = embed_dim
         self.proj_dim = proj_dim
@@ -55,11 +55,11 @@ class RelevancePrior(nn.Module):
         # Head: proj_query + proj_node + proj_interaction = proj_dim * 3
         head_in = proj_dim * 3
         self.head = nn.Sequential(
-            nn.Linear(head_in, 64),
-            nn.LayerNorm(64),
+            nn.Linear(head_in, 96),
+            nn.LayerNorm(96),
             nn.GELU(),
             nn.Dropout(dropout),
-            nn.Linear(64, 1),
+            nn.Linear(96, 1),
             nn.Sigmoid(),
         )
 
