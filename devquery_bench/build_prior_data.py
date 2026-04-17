@@ -95,39 +95,46 @@ def main():
 
         tree = tree_cache[repo_id]
 
-        # Find path from root to ground truth
-        path = find_path_to_node(tree, ground_truth)
-        if path is None or len(path) < 2:
-            skipped += 1
-            continue
-
-        # Embed the query
+        # Embed the query once
         query_emb = embed_model.encode(query, show_progress_bar=False)
+        found_any = False
 
-        # For each level in the path, create training pairs
-        for i in range(1, len(path)):
-            on_path_node = path[i]
-            parent = path[i - 1]
-            siblings = parent.get('nodes', parent.get('children', []))
-
-            if not siblings:
+        # Iterate over all ground truth targets
+        for target_title in ground_truth:
+            # Find path from root to this specific ground truth
+            path = find_path_to_node(tree, target_title)
+            if path is None or len(path) < 2:
                 continue
+            
+            found_any = True
 
-            on_path_title = on_path_node.get('title', '')
+            # For each level in the path, create training pairs
+            for i in range(1, len(path)):
+                on_path_node = path[i]
+                parent = path[i - 1]
+                siblings = parent.get('nodes', parent.get('children', []))
 
-            for sibling in siblings:
-                node_emb = get_embedding(sibling)
-                if node_emb is None:
+                if not siblings:
                     continue
 
-                sibling_title = sibling.get('title', '')
-                label = 1.0 if sibling_title == on_path_title else 0.0
+                on_path_title = on_path_node.get('title', '')
 
-                all_query_embs.append(query_emb)
-                all_node_embs.append(node_emb)
-                all_labels.append(label)
+                for sibling in siblings:
+                    node_emb = get_embedding(sibling)
+                    if node_emb is None:
+                        continue
 
-        used += 1
+                    sibling_title = sibling.get('title', '')
+                    label = 1.0 if sibling_title == on_path_title else 0.0
+
+                    all_query_embs.append(query_emb)
+                    all_node_embs.append(node_emb)
+                    all_labels.append(label)
+
+        if found_any:
+            used += 1
+        else:
+            skipped += 1
 
     if not all_query_embs:
         print("\n❌ No training pairs generated!")
