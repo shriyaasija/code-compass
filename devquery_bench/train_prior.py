@@ -1,20 +1,16 @@
 """
-Train the relevance prior MLP on DevQuery-Bench training data.
+Train the bottleneck relevance prior on DevQuery-Bench training data.
 
-Changes vs previous version:
-  - Removed cosine similarity feature. Input is now:
-      query_emb || node_emb || elem_prod = 384+384+384 = 1152 dims
-    Cosine similarity is exactly what fails on naturalistic queries (that's
-    the whole point of the alpha score). Teaching the MLP to rely on it
-    just recreates the dense retrieval baseline inside the prior.
-  - Smaller model to reduce overfitting:
-      1152 -> 256 -> LN -> ReLU -> Dropout(0.4)
-            -> 64  -> ReLU -> Dropout(0.2)
-            -> 1   -> Sigmoid
-    The previous 661K-param model was memorising 7-repo training patterns.
-    This model is ~360K params, more appropriate for ~800 training groups.
-  - Higher dropout (0.4 in first layer vs 0.3 before)
-  - Saves best by ranking accuracy on val set (unchanged — this is correct)
+Key improvements over previous version:
+  - Imports RelevancePrior from research/mcts/relevance_prior.py
+    (single source of truth, same model used by PUCT pipeline)
+  - Bottleneck architecture: ~31K params vs 312K (10x reduction)
+  - Repo-based validation split: holds out 2 repos, not random samples.
+    This honestly measures cross-repo generalisation.
+  - Embedding noise augmentation during training (std=0.02)
+  - Stronger regularisation: dropout=0.5, weight_decay=5e-3
+  - No cosine similarity or elem_prods — model computes projected
+    features internally from raw embeddings.
 """
 import argparse
 import os
@@ -26,71 +22,10 @@ import torch.nn as nn
 from torch.utils.data import DataLoader, TensorDataset
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from research.mcts.relevance_prior import RelevancePrior
 
 DATA_PATH  = "devquery_bench/prior_training_data.pt"
 MODEL_PATH = "devquery_bench/prior.pt"
-
-
-# ─────────────────────────────────────────────
-# Model
-# ─────────────────────────────────────────────
-class RelevancePrior(nn.Module):
-    """
-    Input:  concat(query_emb, node_emb, elem_prod)
-            = 384 + 384 + 384 = 1152 dims
-
-    Architecture: 1152 -> 256 -> LN -> ReLU -> Dropout(0.4)
-                              -> 64  -> ReLU -> Dropout(0.2)
-                              -> 1   -> Sigmoid
-
-    Intentionally smaller than the previous ImprovedPrior to prevent
-    overfitting on the ~800 training groups we have.
-    """
-    def __init__(self, embed_dim: int = 384, dropout: float = 0.4):
-        super().__init__()
-        in_dim = embed_dim * 3   # query + node + elem_prod (no cosine)
-
-        self.net = nn.Sequential(
-            nn.Linear(in_dim, 256),
-            nn.LayerNorm(256),
-            nn.ReLU(),
-            nn.Dropout(dropout),
-
-            nn.Linear(256, 64),
-            nn.ReLU(),
-            nn.Dropout(dropout * 0.5),
-
-            nn.Linear(64, 1),
-            nn.Sigmoid(),
-        )
-        self._init_weights()
-
-    def _init_weights(self):
-        for m in self.modules():
-            if isinstance(m, nn.Linear):
-                nn.init.xavier_uniform_(m.weight)
-                if m.bias is not None:
-                    nn.init.zeros_(m.bias)
-
-    def forward(self, query_emb, node_emb, elem_prod):
-        x = torch.cat([query_emb, node_emb, elem_prod], dim=-1)
-        return self.net(x).squeeze(-1)   # (batch,)
-
-    def save(self, path: str):
-        os.makedirs(os.path.dirname(path) if os.path.dirname(path) else '.', exist_ok=True)
-        torch.save({'state_dict': self.state_dict(), 'embed_dim': self._embed_dim}, path)
-
-    @classmethod
-    def load(cls, path: str, device='cpu'):
-        ckpt = torch.load(path, map_location=device, weights_only=True)
-        model = cls(embed_dim=ckpt['embed_dim'])
-        model.load_state_dict(ckpt['state_dict'])
-        return model
-
-    @property
-    def _embed_dim(self):
-        # in_dim = embed_dim * 3
-        return self.net[0].weight.shape[1] // 3
 
 
 # ─────────────────────────────────────────────
@@ -104,11 +39,10 @@ def weighted_bce(preds, targets, pos_weight):
     return loss.mean()
 
 
-def pairwise_ranking_loss(preds, labels, query_ids, margin=0.2):
+def pairwise_ranking_loss(preds, labels, query_ids, margin=0.4):
     """
     For each query group, form all (positive, negative) pairs and apply
     margin ranking loss: max(0, margin - (score_pos - score_neg)).
-    Directly optimises what validate_prior.py measures.
     """
     total_loss = torch.tensor(0.0, device=preds.device, requires_grad=True)
     n_pairs = 0
@@ -141,6 +75,7 @@ def pairwise_ranking_loss(preds, labels, query_ids, margin=0.2):
 # Ranking accuracy (mirrors validate_prior.py)
 # ─────────────────────────────────────────────
 def ranking_accuracy(preds, labels, query_ids):
+    """Per-group: is the positive ranked #1 among all siblings?"""
     correct = 0
     total   = 0
     for qid in query_ids.unique():
@@ -152,8 +87,8 @@ def ranking_accuracy(preds, labels, query_ids):
         if pos_mask.sum() == 0:
             continue
 
-        best_pos   = group_preds[pos_mask].max().item()
-        best_all   = group_preds.max().item()
+        best_pos = group_preds[pos_mask].max().item()
+        best_all = group_preds.max().item()
         if abs(best_pos - best_all) < 1e-6:
             correct += 1
         total += 1
@@ -164,11 +99,12 @@ def ranking_accuracy(preds, labels, query_ids):
 # ─────────────────────────────────────────────
 # Main training loop
 # ─────────────────────────────────────────────
-def train(epochs=30, lr=5e-4, batch_size=512, val_fraction=0.1,
-          bce_weight=0.5, rank_weight=0.5, margin=0.2):
+def train(epochs=50, lr=1e-3, batch_size=256, n_val_repos=2,
+          bce_weight=0.5, rank_weight=0.5, margin=0.4,
+          noise_std=0.02, patience=10):
 
     print("=" * 60)
-    print("TRAINING RELEVANCE PRIOR (DevQuery-Bench)")
+    print("TRAINING BOTTLENECK RELEVANCE PRIOR (DevQuery-Bench)")
     print("=" * 60)
 
     if not os.path.exists(DATA_PATH):
@@ -176,48 +112,58 @@ def train(epochs=30, lr=5e-4, batch_size=512, val_fraction=0.1,
         print("   Run devquery_bench/build_prior_data.py first")
         return
 
-    data = torch.load(DATA_PATH, weights_only=True)
-
-    # Check format — cos_sims should NOT be present in new data
-    if 'cos_sims' in data:
-        print("⚠️  Training data contains cos_sims (old format).")
-        print("   Re-run build_prior_data.py to regenerate without cos_sim.")
-        return
-
-    if 'elem_prods' not in data:
-        print("❌ Training data is missing elem_prods field.")
-        print("   Re-run build_prior_data.py to regenerate.")
-        return
+    data = torch.load(DATA_PATH, weights_only=False)
 
     query_embs  = data['query_embs']   # (N, 384)
     node_embs   = data['node_embs']    # (N, 384)
-    elem_prods  = data['elem_prods']   # (N, 384)
     labels      = data['labels']       # (N,)
     query_ids   = data['query_ids']    # (N,) long
     embed_dim   = int(data['embed_dim'])
     n_groups    = int(data['n_groups'])
+
+    # Repo-based validation split
+    if 'repo_ids' not in data:
+        print("❌ Training data missing repo_ids. Re-run build_prior_data.py.")
+        return
+
+    repo_ids    = data['repo_ids']     # (N,) long
+    repo_names  = data.get('repo_names', [])
 
     print(f"\nData:")
     print(f"  Total pairs:    {len(labels)}")
     print(f"  Positives:      {labels.sum().int()} ({100*labels.mean():.1f}%)")
     print(f"  Embedding dim:  {embed_dim}")
     print(f"  Query groups:   {n_groups}")
-    print(f"  MLP input dim:  {embed_dim * 3}  (no cosine feature)")
+    print(f"  Repos:          {len(repo_names)}")
 
-    n_pos      = labels.sum().item()
-    n_neg      = (1 - labels).sum().item()
+    # ── Repo-based val split ──
+    # Hold out the n_val_repos repos with the MOST data (hardest test)
+    unique_repos = repo_ids.unique().tolist()
+    repo_counts = {r: (repo_ids == r).sum().item() for r in unique_repos}
+    sorted_repos = sorted(repo_counts.items(), key=lambda x: x[1], reverse=True)
+
+    val_repo_set = set()
+    for repo_int, count in sorted_repos[:n_val_repos]:
+        val_repo_set.add(repo_int)
+        rname = repo_names[repo_int] if repo_int < len(repo_names) else f"repo_{repo_int}"
+        print(f"  Val repo: {rname} ({count} pairs)")
+
+    val_mask  = torch.tensor([r.item() in val_repo_set for r in repo_ids])
+    train_mask = ~val_mask
+    train_idx = torch.where(train_mask)[0]
+    val_idx   = torch.where(val_mask)[0]
+    n_train   = len(train_idx)
+    n_val     = len(val_idx)
+
+    # Class imbalance
+    train_labels = labels[train_idx]
+    n_pos      = train_labels.sum().item()
+    n_neg      = (1 - train_labels).sum().item()
     pos_weight = torch.tensor(n_neg / max(n_pos, 1), dtype=torch.float32)
     print(f"  Positive weight: {pos_weight.item():.2f}x")
 
-    N       = len(labels)
-    indices = torch.randperm(N, generator=torch.Generator().manual_seed(42))
-    n_val   = max(1, int(N * val_fraction))
-    n_train = N - n_val
-    train_idx = indices[:n_train]
-    val_idx   = indices[n_train:]
-
     def make_tensors(idx):
-        return (query_embs[idx], node_embs[idx], elem_prods[idx],
+        return (query_embs[idx], node_embs[idx],
                 labels[idx], query_ids[idx])
 
     train_ds = TensorDataset(*make_tensors(train_idx))
@@ -228,9 +174,11 @@ def train(epochs=30, lr=5e-4, batch_size=512, val_fraction=0.1,
 
     print(f"\n  Train: {n_train} | Val: {n_val}")
 
-    model        = RelevancePrior(embed_dim=embed_dim)
+    # ── Model ──
+    model = RelevancePrior(embed_dim=embed_dim, proj_dim=32, dropout=0.5)
     total_params = sum(p.numel() for p in model.parameters())
     print(f"  Model params: {total_params:,}")
+    print(f"  Noise std:    {noise_std}")
 
     if torch.cuda.is_available():
         device = torch.device("cuda")
@@ -245,10 +193,10 @@ def train(epochs=30, lr=5e-4, batch_size=512, val_fraction=0.1,
     model      = model.to(device)
     pos_weight = pos_weight.to(device)
 
-    optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=1e-3)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=5e-3)
 
     def lr_lambda(epoch):
-        warmup = 3
+        warmup = 5
         if epoch < warmup:
             return (epoch + 1) / warmup
         progress = (epoch - warmup) / max(epochs - warmup, 1)
@@ -257,20 +205,28 @@ def train(epochs=30, lr=5e-4, batch_size=512, val_fraction=0.1,
     scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
 
     print(f"\nTraining for {epochs} epochs  "
-          f"(BCE weight={bce_weight}, rank weight={rank_weight}, margin={margin})...")
+          f"(BCE={bce_weight}, rank={rank_weight}, margin={margin}, patience={patience})...")
     print(f"{'Epoch':>6}  {'train_loss':>11}  {'val_loss':>9}  "
           f"{'val_bce_acc':>11}  {'val_rank_acc':>12}  {'lr':>9}")
 
     best_rank_acc = 0.0
     best_val_loss = float('inf')
+    epochs_without_improvement = 0
 
     for epoch in range(1, epochs + 1):
+        # ── Train ──
         model.train()
         train_loss_sum = 0.0
 
         for batch in train_loader:
-            q, n, ep, lbl, qids = [t.to(device) for t in batch]
-            preds = model(q, n, ep)
+            q, n, lbl, qids = [t.to(device) for t in batch]
+
+            # Embedding noise augmentation — prevents memorisation
+            if noise_std > 0:
+                q = q + torch.randn_like(q) * noise_std
+                n = n + torch.randn_like(n) * noise_std
+
+            preds = model(q, n)
 
             loss_bce  = weighted_bce(preds, lbl, pos_weight)
             loss_rank = pairwise_ranking_loss(preds, lbl, qids, margin=margin)
@@ -286,16 +242,17 @@ def train(epochs=30, lr=5e-4, batch_size=512, val_fraction=0.1,
         train_loss = train_loss_sum / n_train
         scheduler.step()
 
+        # ── Validate ──
         model.eval()
-        val_loss_sum  = 0.0
-        all_preds     = []
-        all_labels_v  = []
-        all_qids_v    = []
+        val_loss_sum = 0.0
+        all_preds    = []
+        all_labels_v = []
+        all_qids_v   = []
 
         with torch.no_grad():
             for batch in val_loader:
-                q, n, ep, lbl, qids = [t.to(device) for t in batch]
-                preds = model(q, n, ep)
+                q, n, lbl, qids = [t.to(device) for t in batch]
+                preds = model(q, n)
 
                 loss_bce  = weighted_bce(preds, lbl, pos_weight)
                 loss_rank = pairwise_ranking_loss(preds, lbl, qids, margin=margin)
@@ -306,7 +263,7 @@ def train(epochs=30, lr=5e-4, batch_size=512, val_fraction=0.1,
                 all_labels_v.append(lbl.cpu())
                 all_qids_v.append(qids.cpu())
 
-        val_loss     = val_loss_sum / n_val
+        val_loss     = val_loss_sum / max(n_val, 1)
         all_preds    = torch.cat(all_preds)
         all_labels_v = torch.cat(all_labels_v)
         all_qids_v   = torch.cat(all_qids_v)
@@ -322,14 +279,20 @@ def train(epochs=30, lr=5e-4, batch_size=512, val_fraction=0.1,
               f"{rank_acc:>11.1f}%  "
               f"{cur_lr:>9.6f}")
 
+        # Save best by ranking accuracy
         if rank_acc > best_rank_acc or (rank_acc == best_rank_acc and val_loss < best_val_loss):
             best_rank_acc = rank_acc
             best_val_loss = val_loss
-            model_cpu = model.to('cpu')
-            ckpt = {'state_dict': model_cpu.state_dict(), 'embed_dim': embed_dim}
-            torch.save(ckpt, MODEL_PATH)
-            model = model.to(device)
+            epochs_without_improvement = 0
+            model.save(MODEL_PATH)
             print(f"           ↑ saved (rank_acc={rank_acc:.1f}%)")
+        else:
+            epochs_without_improvement += 1
+
+        # Early stopping
+        if epochs_without_improvement >= patience:
+            print(f"\n  Early stopping at epoch {epoch} (no improvement for {patience} epochs)")
+            break
 
     print(f"\n✅ Best: rank_acc={best_rank_acc:.1f}%, val_loss={best_val_loss:.4f}")
     print(f"   Model saved to: {MODEL_PATH}")
@@ -339,8 +302,8 @@ def train(epochs=30, lr=5e-4, batch_size=512, val_fraction=0.1,
 
     # Sanity check on val set
     print("\nSanity check — top-5 val groups:")
+    model = RelevancePrior.load(MODEL_PATH)
     model.eval()
-    model = model.to('cpu')
     shown = 0
     for qid in all_qids_v.unique()[:5]:
         mask       = (all_qids_v == qid)
@@ -356,12 +319,15 @@ def train(epochs=30, lr=5e-4, batch_size=512, val_fraction=0.1,
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
-    p.add_argument("--epochs",      type=int,   default=30)
-    p.add_argument("--lr",          type=float, default=5e-4)
-    p.add_argument("--batch-size",  type=int,   default=512)
+    p.add_argument("--epochs",      type=int,   default=50)
+    p.add_argument("--lr",          type=float, default=1e-3)
+    p.add_argument("--batch-size",  type=int,   default=256)
     p.add_argument("--bce-weight",  type=float, default=0.5)
     p.add_argument("--rank-weight", type=float, default=0.5)
-    p.add_argument("--margin",      type=float, default=0.2)
+    p.add_argument("--margin",      type=float, default=0.4)
+    p.add_argument("--noise-std",   type=float, default=0.02)
+    p.add_argument("--patience",    type=int,   default=10)
+    p.add_argument("--n-val-repos", type=int,   default=2)
     args = p.parse_args()
     train(
         epochs=args.epochs,
@@ -370,4 +336,7 @@ if __name__ == "__main__":
         bce_weight=args.bce_weight,
         rank_weight=args.rank_weight,
         margin=args.margin,
+        noise_std=args.noise_std,
+        patience=args.patience,
+        n_val_repos=args.n_val_repos,
     )
