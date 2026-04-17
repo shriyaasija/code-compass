@@ -109,7 +109,6 @@ def main(provider='lmstudio', model=None, max_queries=15):
         repo_results = {}
 
         # Load raw tree for PUCT
-        import json
         with open(tree_path, 'r') as f:
             raw_tree = json.load(f)
 
@@ -150,16 +149,20 @@ def main(provider='lmstudio', model=None, max_queries=15):
             print(f"    [{search_type}] R@1={m['R@1']}  R@5={m['R@5']}  MRR={m['MRR']}  lat={m['latency_ms']}ms  llm_calls={m['avg_llm_calls']}")
 
         # ── Baseline MCTS ──────
-        print(f"  Running Baseline MCTS...")
+        print(f"  Running Baseline MCTS (Full iterations)...")
         from backend.code_index2 import MCTSTreeSearch
-        base_searcher = MCTSTreeSearch(llm_client=llm)
+        base_searcher = MCTSTreeSearch(llm_client=llm, max_iterations=150)
+        base_searcher.mcts.convergence_threshold = 1.1
+        base_searcher.mcts.convergence_check_after = base_searcher.mcts.max_iterations + 1
         base_searcher.load_repository_tree(repo_id, tree_path)
         run_search(base_searcher, 'baseline', is_puct=False)
 
         # ── PUCT MCTS ──────
-        print(f"  Running PUCT MCTS...")
+        print(f"  Running PUCT MCTS (Full iterations)...")
         from research.mcts.puct_search import PUCTSearch
-        puct_searcher = PUCTSearch(llm_client=llm, prior_path="research/mcts/prior.pt")
+        puct_searcher = PUCTSearch(llm_client=llm, prior_path="research/mcts/prior.pt", max_iterations=150)
+        puct_searcher.convergence_threshold = 1.1
+        puct_searcher.convergence_check_after = puct_searcher.max_iterations + 1
         run_search(puct_searcher, 'puct', is_puct=True)
 
         all_results[repo_id] = repo_results

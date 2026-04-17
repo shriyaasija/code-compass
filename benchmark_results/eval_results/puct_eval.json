@@ -1,102 +1,92 @@
 {
   "SavinaRoja__OpenAccess_EPUB": {
-    "puct": {
-      "method": "PUCT-MCTS",
-      "n_queries": 15,
-      "R@1": 0.0,
-      "R@5": 0.0,
-      "MRR": 0.0,
-      "latency_ms": 14630.3,
-      "avg_llm_calls": 6.13
-    },
     "baseline": {
-      "method": "Baseline-MCTS",
-      "n_queries": 15,
-      "R@1": 0.0,
-      "R@5": 0.0,
-      "MRR": 0.0,
-      "latency_ms": 33185.8,
-      "avg_llm_calls": 8.4
-    }
-  },
-  "ramses-tech__ramses": {
-    "puct": {
-      "method": "PUCT-MCTS",
-      "n_queries": 15,
-      "R@1": 0.0,
-      "R@5": 0.0667,
-      "MRR": 0.0222,
-      "latency_ms": 18770.5,
-      "avg_llm_calls": 7.87
-    },
-    "baseline": {
-      "method": "Baseline-MCTS",
-      "n_queries": 15,
-      "R@1": 0.1333,
-      "R@5": 0.4667,
-      "MRR": 0.2722,
-      "latency_ms": 37490.1,
-      "avg_llm_calls": 8.33
-    }
-  },
-  "josiah-wolf-oberholtzer__uqbar": {
-    "puct": {
-      "method": "PUCT-MCTS",
-      "n_queries": 15,
       "R@1": 0.0667,
       "R@5": 0.0667,
       "MRR": 0.0667,
-      "latency_ms": 15382.3,
-      "avg_llm_calls": 6.27
-    },
-    "baseline": {
-      "method": "Baseline-MCTS",
+      "latency_ms": 114161.0,
       "n_queries": 15,
-      "R@1": 0.0,
-      "R@5": 0.0,
-      "MRR": 0.0,
-      "latency_ms": 39514.5,
-      "avg_llm_calls": 7.67
+      "avg_llm_calls": 24.47
+    },
+    "puct": {
+      "R@1": 0.1333,
+      "R@5": 0.1333,
+      "MRR": 0.1429,
+      "latency_ms": 89797.2,
+      "n_queries": 15,
+      "avg_llm_calls": 131.07
+    }
+  },
+  "ramses-tech__ramses": {
+    "baseline": {
+      "R@1": 0.2,
+      "R@5": 0.8667,
+      "MRR": 0.4411,
+      "latency_ms": 234332.2,
+      "n_queries": 15,
+      "avg_llm_calls": 20.73
+    },
+    "puct": {
+      "R@1": 0.3333,
+      "R@5": 0.5333,
+      "MRR": 0.4333,
+      "latency_ms": 116020.4,
+      "n_queries": 15,
+      "avg_llm_calls": 143.93
+    }
+  },
+  "josiah-wolf-oberholtzer__uqbar": {
+    "baseline": {
+      "R@1": 0.6,
+      "R@5": 0.7333,
+      "MRR": 0.6667,
+      "latency_ms": 252044.0,
+      "n_queries": 15,
+      "avg_llm_calls": 29.73
+    },
+    "puct": {
+      "R@1": 0.5333,
+      "R@5": 0.5333,
+      "MRR": 0.5333,
+      "latency_ms": 78771.8,
+      "n_queries": 15,
+      "avg_llm_calls": 138.13
     }
   },
   "moralrecordings__mrcrowbar": {
-    "puct": {
-      "method": "PUCT-MCTS",
+    "baseline": {
+      "R@1": 0.0,
+      "R@5": 0.0667,
+      "MRR": 0.0133,
+      "latency_ms": 179336.4,
       "n_queries": 15,
+      "avg_llm_calls": 12.93
+    },
+    "puct": {
       "R@1": 0.0,
       "R@5": 0.0,
       "MRR": 0.0,
-      "latency_ms": 15227.1,
-      "avg_llm_calls": 6.4
-    },
-    "baseline": {
-      "method": "Baseline-MCTS",
+      "latency_ms": 99722.5,
       "n_queries": 15,
-      "R@1": 0.0667,
-      "R@5": 0.1333,
-      "MRR": 0.1,
-      "latency_ms": 17679.2,
-      "avg_llm_calls": 3.4
+      "avg_llm_calls": 131.13
     }
   },
   "tsnaomi__finnsyll": {
-    "puct": {
-      "method": "PUCT-MCTS",
-      "n_queries": 15,
-      "R@1": 0.0,
-      "R@5": 0.0,
-      "MRR": 0.0,
-      "latency_ms": 19490.4,
-      "avg_llm_calls": 8.27
-    },
     "baseline": {
-      "method": "Baseline-MCTS",
-      "n_queries": 15,
       "R@1": 0.0,
-      "R@5": 0.0,
-      "MRR": 0.0,
-      "latency_ms": 30973.6,
-      "avg_llm_calls": 6.6
+      "R@5": 0.0667,
+      "MRR": 0.025,
+      "latency_ms": 167412.3,
+      "n_queries": 15,
+      "avg_llm_calls": 13.4
+    },
+    "puct": {
+      "R@1": 0.0667,
+      "R@5": 0.2,
+      "MRR": 0.0967,
+      "latency_ms": 72246.3,
+      "n_queries": 15,
+      "avg_llm_calls": 140.27
     }
   }
 }

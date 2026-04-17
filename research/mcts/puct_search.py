@@ -30,6 +30,8 @@ class PUCTSearch:
         c_puct: float = 1.5,
         online_update: bool = True,
         online_lr: float = 5e-4,
+        convergence_threshold: float = 0.85,
+        convergence_check_after: int = 10,
         verbose: bool = True,
     ):
         """
@@ -41,6 +43,8 @@ class PUCTSearch:
             c_puct:           Exploration constant. 1.5 works well.
             online_update:    Whether to adapt prior after each query.
             online_lr:        Learning rate for online updates.
+            convergence_threshold: Fraction of visits for early termination.
+            convergence_check_after: Start checking convergence after N iterations.
             verbose:          Print search progress.
         """
         self.llm = llm_client
@@ -48,6 +52,8 @@ class PUCTSearch:
         self.c_puct = c_puct
         self.do_online_update = online_update
         self.online_lr = online_lr
+        self.convergence_threshold = convergence_threshold
+        self.convergence_check_after = convergence_check_after
         self.verbose = verbose
 
         # Load embedding model
@@ -123,9 +129,9 @@ class PUCTSearch:
             all_visited_nodes.append(node)
 
             # Early termination: if root has a clearly dominant child
-            if iteration > 10 and root.children:
+            if iteration >= self.convergence_check_after and root.children:
                 top_child = max(root.children, key=lambda c: c.visit_count)
-                if top_child.visit_count > 0.85 * root.visit_count:
+                if top_child.visit_count >= self.convergence_threshold * root.visit_count:
                     if self.verbose:
                         print(f"  Early termination at iteration {iteration+1}")
                     break
