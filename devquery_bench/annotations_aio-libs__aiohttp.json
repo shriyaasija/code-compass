@@ -1,0 +1,213 @@
+[
+    {
+        "query": "How does the aiohttp library handle HTTP sessions?",
+        "ground_truth": [
+            "ClientSession",
+            "BaseSession",
+            "TCPConnector",
+            "CookieJar"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "ClientSession is the primary class for HTTP sessions, relying on BaseSession for core mechanics, TCPConnector for pooling, and CookieJar for state."
+    },
+    {
+        "query": "What is the purpose of the 'aiohttp.ClientSession' class?",
+        "ground_truth": [
+            "ClientSession",
+            "request"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "ClientSession is the main class used to make requests and maintain connection pools via its request methods."
+    },
+    {
+        "query": "How can I send a POST request using aiohttp?",
+        "ground_truth": [
+            "post",
+            "request",
+            "ClientSession"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The post() method or function is specifically designed for POST requests, internally delegating to the generic request() method on the ClientSession class."
+    },
+    {
+        "query": "Where is the documentation for setting up an aiohttp server?",
+        "ground_truth": [
+            "Application",
+            "run_app",
+            "AppRunner",
+            "TCPSite"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Application is the core server class, AppRunner and TCPSite manage the underlying site hosting, and run_app is the function to start it."
+    },
+    {
+        "query": "What happens if a client tries to access a non-existent route on aiohttp?",
+        "ground_truth": [
+            "HTTPNotFound",
+            "UrlDispatcher",
+            "MatchInfoError"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The UrlDispatcher class handles routing and raises MatchInfoError or HTTPNotFound exception classes when routes are missing."
+    },
+    {
+        "query": "Can you explain how the 'ClientRequest' object works in aiohttp?",
+        "ground_truth": [
+            "ClientRequest",
+            "send"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The ClientRequest class builds the HTTP request, using methods like send() to write it to the network."
+    },
+    {
+        "query": "How does aiohttp manage SSL connections?",
+        "ground_truth": [
+            "TCPConnector",
+            "Fingerprint"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The TCPConnector class handles socket connections and uses the Fingerprint class for specific SSL certificate pinning."
+    },
+    {
+        "query": "What method is used to close an aiohttp session?",
+        "ground_truth": [
+            "close",
+            "detach"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The close() method gracefully shuts down the session, while detach() is used to separate the connector from the session."
+    },
+    {
+        "query": "Where can I find examples of using aiohttp for web scraping?",
+        "ground_truth": [
+            "ClientSession",
+            "get",
+            "read"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "medium",
+        "reason": "Scraping relies on the ClientSession class and its get() method to fetch pages, followed by the read() method to extract content."
+    },
+    {
+        "query": "How does aiohttp handle redirects when making requests?",
+        "ground_truth": [
+            "ClientResponse",
+            "ClientSession",
+            "TooManyRedirects"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The ClientResponse and ClientSession classes handle redirect logic natively, raising the TooManyRedirects exception class if limits are exceeded."
+    },
+    {
+        "query": "Can you explain the role of 'aiohttp.ClientResponse' in handling HTTP responses?",
+        "ground_truth": [
+            "ClientResponse",
+            "read",
+            "release"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The ClientResponse class provides methods like read() to parse the body and release() to return the connection to the pool."
+    },
+    {
+        "query": "What is the purpose of 'aiohttp.FormData' and how do I use it?",
+        "ground_truth": [
+            "FormData",
+            "add_field",
+            "MultipartWriter"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The FormData class constructs multipart payloads via the add_field() method, processed internally by the MultipartWriter class."
+    },
+    {
+        "query": "How can I limit the number of concurrent connections made by aiohttp?",
+        "ground_truth": [
+            "TCPConnector",
+            "BaseConnector"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The TCPConnector class inherits connection limiting parameters from the BaseConnector class to throttle concurrency."
+    },
+    {
+        "query": "Where does the configuration for an aiohttp server reside?",
+        "ground_truth": [
+            "Application",
+            "UrlDispatcher"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Application class functions as the central registry for server configuration, holding instances of classes like UrlDispatcher."
+    },
+    {
+        "query": "Can you explain how to handle custom headers in aiohttp requests?",
+        "ground_truth": [
+            "ClientRequest",
+            "ClientSession"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Custom headers are passed as arguments to the ClientSession class methods, which are then attached to the ClientRequest class."
+    },
+    {
+        "query": "What happens if a request times out while using aiohttp?",
+        "ground_truth": [
+            "ServerTimeoutError",
+            "ClientTimeoutError",
+            "ClientTimeout"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "If constraints defined by the ClientTimeout class are breached, exception classes like ServerTimeoutError or ClientTimeoutError are raised."
+    },
+    {
+        "query": "How does aiohttp manage cookies across multiple requests?",
+        "ground_truth": [
+            "CookieJar",
+            "DummyCookieJar",
+            "update_cookies"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The CookieJar class stores cookies securely, updated via the update_cookies() method, while the DummyCookieJar class can disable this."
+    },
+    {
+        "query": "What is the purpose of 'aiohttp.ClientTimeout' and how can I use it?",
+        "ground_truth": [
+            "ClientTimeout",
+            "ClientSession",
+            "request"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The ClientTimeout class is used to define granular timeout settings passed to the ClientSession class or individual request() methods."
+    }
+]
