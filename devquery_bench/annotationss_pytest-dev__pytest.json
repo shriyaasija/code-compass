@@ -1,0 +1,216 @@
+[
+    {
+        "query": "How does pytest handle parameterized tests?",
+        "ground_truth": [
+            "Metafunc",
+            "parametrize"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The parametrize function (used as a mark decorator) and the Metafunc class are the core mechanisms for generating multiple test variants from a single test definition."
+    },
+    {
+        "query": "What is the process for adding new plugins to pytest?",
+        "ground_truth": [
+            "PytestPluginManager",
+            "register",
+            "import_plugin"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The PytestPluginManager class handles the registration and lifecycle of plugins, utilizing methods like register and import_plugin."
+    },
+    {
+        "query": "How can I run specific tests using pytest?",
+        "ground_truth": [
+            "main",
+            "Config",
+            "pytest_collection_modifyitems"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The main function is the entry point, while Config parses command-line arguments (like -k for filtering) and pytest_collection_modifyitems hooks filter the actual items."
+    },
+    {
+        "query": "What is the role of conftest.py files in pytest?",
+        "ground_truth": [
+            "consider_conftest",
+            "PytestPluginManager"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The consider_conftest function within PytestPluginManager dynamically loads and registers local conftest.py files as per-directory plugins."
+    },
+    {
+        "query": "How do you configure pytest to ignore certain directories?",
+        "ground_truth": [
+            "pytest_ignore_collect",
+            "Config"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Config parses ini settings like 'norecursedirs', and the pytest_ignore_collect hook explicitly decides whether a path should be skipped during collection."
+    },
+    {
+        "query": "What happens if a test fails during execution?",
+        "ground_truth": [
+            "TestReport",
+            "pytest_runtest_makereport"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The pytest_runtest_makereport hook creates a TestReport class instance which stores the failure details and traceback for reporting."
+    },
+    {
+        "query": "How does pytest manage fixtures across multiple tests?",
+        "ground_truth": [
+            "FixtureManager",
+            "FixtureDef",
+            "FixtureRequest"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "FixtureManager caches and tracks FixtureDef instances, while FixtureRequest is used to inject and resolve them dynamically during test execution."
+    },
+    {
+        "query": "What is the purpose of the 'pytest' command-line tool?",
+        "ground_truth": [
+            "console_main",
+            "main"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The console_main function is the registered entry point for the CLI, setting up the environment before calling the core main function."
+    },
+    {
+        "query": "How can I generate a coverage report for my tests?",
+        "ground_truth": [
+            "pytest_terminal_summary",
+            "TerminalReporter"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "medium",
+        "reason": "While coverage is typically handled by plugins like pytest-cov, they hook into pytest_terminal_summary and use TerminalReporter to print the final coverage metrics."
+    },
+    {
+        "query": "What is the default behavior for capturing output in pytest?",
+        "ground_truth": [
+            "CaptureManager",
+            "CaptureFixture"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "CaptureManager intercepts stdout/stderr at the session level, and CaptureFixture exposes this functionality safely to individual test functions via the 'capsys' fixture."
+    },
+    {
+        "query": "How do you use markers to skip or parametrize tests?",
+        "ground_truth": [
+            "Mark",
+            "skip",
+            "parametrize"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Mark class represents the underlying metadata, accessed through built-in decorators like skip and parametrize."
+    },
+    {
+        "query": "What steps are involved in adding new features to pytest?",
+        "ground_truth": [
+            "hookspec",
+            "hookimpl"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Adding new internal features or plugins involves defining hooks with the hookspec decorator and implementing them using the hookimpl decorator."
+    },
+    {
+        "query": "How does pytest handle exceptions within test functions?",
+        "ground_truth": [
+            "raises",
+            "ExceptionInfo"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The raises function acts as a context manager to catch expected exceptions, returning an ExceptionInfo class that wraps the traceback."
+    },
+    {
+        "query": "What is the mechanism for organizing tests into modules and directories?",
+        "ground_truth": [
+            "Session",
+            "Collector",
+            "Module",
+            "Package"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Collector base class drives discovery, creating a tree of Package and Module nodes starting from the root Session."
+    },
+    {
+        "query": "How can I customize the reporting of test results?",
+        "ground_truth": [
+            "TerminalReporter",
+            "pytest_report_teststatus"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "TerminalReporter dictates console output layout, and overriding the pytest_report_teststatus hook allows changing the characters/words printed for test outcomes."
+    },
+    {
+        "query": "What is the process for creating a pull request for pytest?",
+        "ground_truth": [
+            "main"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "low",
+        "reason": "This is a documentation and version control query rather than a codebase mechanism, though developers run 'main' locally to verify changes before submitting."
+    },
+    {
+        "query": "How does pytest manage dependencies between tests?",
+        "ground_truth": [
+            "FixtureRequest",
+            "FixtureManager"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Pytest isolates tests natively; however, state dependency is primarily modeled via directed acyclic graphs managed by FixtureManager and resolved via FixtureRequest."
+    },
+    {
+        "query": "What are the common hooks in pytest for extending its functionality?",
+        "ground_truth": [
+            "hookspec",
+            "PytestPluginManager"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The hookspec definitions inside pytest outline all available extension points, which are resolved and dispatched by PytestPluginManager."
+    },
+    {
+        "query": "How do you use pytest to check for memory leaks?",
+        "ground_truth": [
+            "pytest_runtest_teardown",
+            "pytest_runtest_protocol"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "medium",
+        "reason": "While usually handled by plugins like pytest-leaks, validating memory behavior requires intercepting test lifecycle events via hooks like pytest_runtest_teardown or pytest_runtest_protocol."
+    }
+]
