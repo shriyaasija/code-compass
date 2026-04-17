@@ -29,5 +29,4 @@ output*.png
 devquery_bench/cloned_repos/
 devquery_bench/trees/
 devquery_bench/all_queries.json
-devquery_bench/devquery_bench.json
 devquery_bench/train_test_split.json

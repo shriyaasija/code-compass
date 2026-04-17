@@ -1,0 +1,2278 @@
+[
+  {
+    "query": "How does the aiohttp library handle HTTP sessions?",
+    "ground_truth": [
+      "ClientSession",
+      "BaseSession",
+      "TCPConnector",
+      "CookieJar"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "class: TCPConnector at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\connector.py",
+    "bleu1": 0.1111,
+    "alpha": 0.8889
+  },
+  {
+    "query": "What is the purpose of the 'aiohttp.ClientSession' class?",
+    "ground_truth": [
+      "ClientSession",
+      "request"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "ClientSession",
+    "bleu1": 0.1,
+    "alpha": 0.9
+  },
+  {
+    "query": "How can I send a POST request using aiohttp?",
+    "ground_truth": [
+      "post",
+      "request",
+      "ClientSession"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "method: post at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\test_utils.py",
+    "bleu1": 0.2,
+    "alpha": 0.8
+  },
+  {
+    "query": "Where is the documentation for setting up an aiohttp server?",
+    "ground_truth": [
+      "Application",
+      "run_app",
+      "AppRunner",
+      "TCPSite"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "function: run_app at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\web.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "What happens if a client tries to access a non-existent route on aiohttp?",
+    "ground_truth": [
+      "HTTPNotFound",
+      "UrlDispatcher",
+      "MatchInfoError"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "class: HTTPNotFound at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\web_exceptions.py",
+    "bleu1": 0.0667,
+    "alpha": 0.9333
+  },
+  {
+    "query": "Can you explain how the 'ClientRequest' object works in aiohttp?",
+    "ground_truth": [
+      "ClientRequest",
+      "send"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "class: ClientRequest at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\client_reqrep.py",
+    "bleu1": 0.1818,
+    "alpha": 0.8182
+  },
+  {
+    "query": "How does aiohttp manage SSL connections?",
+    "ground_truth": [
+      "TCPConnector",
+      "Fingerprint"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "class: TCPConnector at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\connector.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "What method is used to close an aiohttp session?",
+    "ground_truth": [
+      "close",
+      "detach"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "method: close at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\_websocket\\writer.py",
+    "bleu1": 0.3,
+    "alpha": 0.7
+  },
+  {
+    "query": "Where can I find examples of using aiohttp for web scraping?",
+    "ground_truth": [
+      "ClientSession",
+      "get",
+      "read"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "method: get at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\payload.py",
+    "bleu1": 0.0833,
+    "alpha": 0.9167
+  },
+  {
+    "query": "How does aiohttp handle redirects when making requests?",
+    "ground_truth": [
+      "ClientResponse",
+      "ClientSession",
+      "TooManyRedirects"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "class: ClientResponse at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\client_reqrep.py",
+    "bleu1": 0.1111,
+    "alpha": 0.8889
+  },
+  {
+    "query": "Can you explain the role of 'aiohttp.ClientResponse' in handling HTTP responses?",
+    "ground_truth": [
+      "ClientResponse",
+      "read",
+      "release"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "class: ClientResponse at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\client_reqrep.py",
+    "bleu1": 0.1538,
+    "alpha": 0.8462
+  },
+  {
+    "query": "What is the purpose of 'aiohttp.FormData' and how do I use it?",
+    "ground_truth": [
+      "FormData",
+      "add_field",
+      "MultipartWriter"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "class: FormData at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\formdata.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "How can I limit the number of concurrent connections made by aiohttp?",
+    "ground_truth": [
+      "TCPConnector",
+      "BaseConnector"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "class: TCPConnector at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\connector.py",
+    "bleu1": 0.0769,
+    "alpha": 0.9231
+  },
+  {
+    "query": "Where does the configuration for an aiohttp server reside?",
+    "ground_truth": [
+      "Application",
+      "UrlDispatcher"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "class: UrlDispatcher at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\web_urldispatcher.py",
+    "bleu1": 0.1,
+    "alpha": 0.9
+  },
+  {
+    "query": "Can you explain how to handle custom headers in aiohttp requests?",
+    "ground_truth": [
+      "ClientRequest",
+      "ClientSession"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "class: ClientRequest at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\client_reqrep.py",
+    "bleu1": 0.0833,
+    "alpha": 0.9167
+  },
+  {
+    "query": "What happens if a request times out while using aiohttp?",
+    "ground_truth": [
+      "ServerTimeoutError",
+      "ClientTimeoutError",
+      "ClientTimeout"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "class: ServerTimeoutError at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\client_exceptions.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How does aiohttp manage cookies across multiple requests?",
+    "ground_truth": [
+      "CookieJar",
+      "DummyCookieJar",
+      "update_cookies"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "class: CookieJar at devquery_bench/cloned_repos\\aio-libs__aiohttp\\aiohttp\\cookiejar.py",
+    "bleu1": 0.1111,
+    "alpha": 0.8889
+  },
+  {
+    "query": "What is the purpose of 'aiohttp.ClientTimeout' and how can I use it?",
+    "ground_truth": [
+      "ClientTimeout",
+      "ClientSession",
+      "request"
+    ],
+    "repo_id": "aio-libs__aiohttp",
+    "target_docstring": "ClientTimeout",
+    "bleu1": 0.0714,
+    "alpha": 0.9286
+  },
+  {
+    "query": "How does Django handle database transactions?",
+    "ground_truth": [
+      "atomic",
+      "Atomic",
+      "BaseDatabaseWrapper"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "function: atomic at devquery_bench/cloned_repos\\django__django\\django\\db\\transaction.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "What is the purpose of middleware in Django?",
+    "ground_truth": [
+      "BaseHandler",
+      "MiddlewareMixin"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: BaseHandler at devquery_bench/cloned_repos\\django__django\\django\\core\\handlers\\base.py",
+    "bleu1": 0.1111,
+    "alpha": 0.8889
+  },
+  {
+    "query": "How can you customize authentication in Django?",
+    "ground_truth": [
+      "AbstractBaseUser",
+      "PermissionsMixin",
+      "BaseUserManager"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: AbstractBaseUser at devquery_bench/cloned_repos\\django__django\\django\\contrib\\auth\\base_user.py",
+    "bleu1": 0.125,
+    "alpha": 0.875
+  },
+  {
+    "query": "What is the role of template inheritance in Django?",
+    "ground_truth": [
+      "ExtendsNode",
+      "BlockNode"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: ExtendsNode at devquery_bench/cloned_repos\\django__django\\django\\template\\loader_tags.py",
+    "bleu1": 0.2,
+    "alpha": 0.8
+  },
+  {
+    "query": "How does Django manage sessions?",
+    "ground_truth": [
+      "SessionMiddleware",
+      "SessionBase",
+      "SessionStore"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: SessionMiddleware at devquery_bench/cloned_repos\\django__django\\django\\contrib\\sessions\\middleware.py",
+    "bleu1": 0.3333,
+    "alpha": 0.6667
+  },
+  {
+    "query": "What is the process for URL routing in Django?",
+    "ground_truth": [
+      "URLResolver",
+      "URLPattern",
+      "_path"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: URLResolver at devquery_bench/cloned_repos\\django__django\\django\\urls\\resolvers.py",
+    "bleu1": 0.1,
+    "alpha": 0.9
+  },
+  {
+    "query": "How can you create a custom management command in Django?",
+    "ground_truth": [
+      "BaseCommand",
+      "CommandParser"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: BaseCommand at devquery_bench/cloned_repos\\django__django\\django\\core\\management\\base.py",
+    "bleu1": 0.1818,
+    "alpha": 0.8182
+  },
+  {
+    "query": "What is the significance of context processors in Django templates?",
+    "ground_truth": [
+      "RequestContext",
+      "auth"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: RequestContext at devquery_bench/cloned_repos\\django__django\\django\\template\\context.py",
+    "bleu1": 0.1818,
+    "alpha": 0.8182
+  },
+  {
+    "query": "How does Django handle form validation?",
+    "ground_truth": [
+      "BaseForm",
+      "ValidationError"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: BaseForm at devquery_bench/cloned_repos\\django__django\\django\\forms\\forms.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "What is the mechanism behind Django's ORM?",
+    "ground_truth": [
+      "QuerySet",
+      "SQLCompiler",
+      "Query"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: QuerySet at devquery_bench/cloned_repos\\django__django\\django\\db\\models\\query.py",
+    "bleu1": 0.1111,
+    "alpha": 0.8889
+  },
+  {
+    "query": "How does Django manage static files?",
+    "ground_truth": [
+      "StaticFilesStorage",
+      "BaseFinder"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: StaticFilesStorage at devquery_bench/cloned_repos\\django__django\\django\\contrib\\staticfiles\\storage.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "What is the role of middleware for security in Django?",
+    "ground_truth": [
+      "SecurityMiddleware",
+      "CsrfViewMiddleware"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: SecurityMiddleware at devquery_bench/cloned_repos\\django__django\\django\\middleware\\security.py",
+    "bleu1": 0.2727,
+    "alpha": 0.7273
+  },
+  {
+    "query": "How can you extend Django with a third-party app?",
+    "ground_truth": [
+      "Apps",
+      "AppConfig"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: Apps at devquery_bench/cloned_repos\\django__django\\django\\apps\\registry.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "What is the process of model serialization and deserialization in Django?",
+    "ground_truth": [
+      "serialize",
+      "Serializer"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "method: serialize at devquery_bench/cloned_repos\\django__django\\django\\contrib\\gis\\forms\\widgets.py",
+    "bleu1": 0.0833,
+    "alpha": 0.9167
+  },
+  {
+    "query": "How does Django handle caching?",
+    "ground_truth": [
+      "BaseCache",
+      "CacheHandler"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: BaseCache at devquery_bench/cloned_repos\\django__django\\django\\core\\cache\\backends\\base.py",
+    "bleu1": 0.1667,
+    "alpha": 0.8333
+  },
+  {
+    "query": "What is the mechanism behind Django's template engine?",
+    "ground_truth": [
+      "Engine",
+      "Parser"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: Engine at devquery_bench/cloned_repos\\django__django\\django\\template\\engine.py",
+    "bleu1": 0.3,
+    "alpha": 0.7
+  },
+  {
+    "query": "How can you create custom authentication backends in Django?",
+    "ground_truth": [
+      "BaseBackend",
+      "ModelBackend"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: BaseBackend at devquery_bench/cloned_repos\\django__django\\django\\contrib\\auth\\backends.py",
+    "bleu1": 0.2,
+    "alpha": 0.8
+  },
+  {
+    "query": "What is the role of settings files in Django projects?",
+    "ground_truth": [
+      "Settings",
+      "LazySettings"
+    ],
+    "repo_id": "django__django",
+    "target_docstring": "class: Settings at devquery_bench/cloned_repos\\django__django\\django\\conf\\__init__.py",
+    "bleu1": 0.1818,
+    "alpha": 0.8182
+  },
+  {
+    "query": "How does docopt handle command line arguments?",
+    "ground_truth": [
+      "docopt",
+      "Pattern",
+      "parse_argv"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "function: docopt at devquery_bench/cloned_repos\\docopt__docopt\\docopt.py",
+    "bleu1": 0.125,
+    "alpha": 0.875
+  },
+  {
+    "query": "What is the purpose of the README.rst file in this repository?",
+    "ground_truth": [
+      "README.rst"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "README.rst",
+    "bleu1": 0.1538,
+    "alpha": 0.8462
+  },
+  {
+    "query": "How can I install the docopt package from source?",
+    "ground_truth": [
+      "setup.py"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "file_py: setup.py at devquery_bench/cloned_repos\\docopt__docopt\\setup.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What are the licensing terms for this project?",
+    "ground_truth": [
+      "LICENSE-MIT"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "LICENSE-MIT",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "Can you explain the usage pattern of docopt?",
+    "ground_truth": [
+      "docopt",
+      "parse_section",
+      "formal_usage"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "function: docopt at devquery_bench/cloned_repos\\docopt__docopt\\docopt.py",
+    "bleu1": 0.1111,
+    "alpha": 0.8889
+  },
+  {
+    "query": "Where can I find examples of how to use docopt?",
+    "ground_truth": [
+      "examples"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "examples",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "What does the setup.py file do in a Python project?",
+    "ground_truth": [
+      "setup.py"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "file_py: setup.py at devquery_bench/cloned_repos\\docopt__docopt\\setup.py",
+    "bleu1": 0.1667,
+    "alpha": 0.8333
+  },
+  {
+    "query": "How does the test_docopt.py file verify the functionality of docopt?",
+    "ground_truth": [
+      "test_docopt.py"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "file_py: test_docopt.py at devquery_bench/cloned_repos\\docopt__docopt\\test_docopt.py",
+    "bleu1": 0.1667,
+    "alpha": 0.8333
+  },
+  {
+    "query": "What is the role of the conftest.py file in this repository?",
+    "ground_truth": [
+      "conftest.py"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "file_py: conftest.py at devquery_bench/cloned_repos\\docopt__docopt\\conftest.py",
+    "bleu1": 0.1538,
+    "alpha": 0.8462
+  },
+  {
+    "query": "How does docopt handle options with short and long forms?",
+    "ground_truth": [
+      "Option",
+      "parse_option"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "class: Option at devquery_bench/cloned_repos\\docopt__docopt\\docopt.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "Can you describe the process of parsing command line arguments with docopt?",
+    "ground_truth": [
+      "docopt",
+      "parse_pattern",
+      "parse_argv"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "function: docopt at devquery_bench/cloned_repos\\docopt__docopt\\docopt.py",
+    "bleu1": 0.0769,
+    "alpha": 0.9231
+  },
+  {
+    "query": "What happens when an invalid option is used with docopt?",
+    "ground_truth": [
+      "DocoptExit"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "class: DocoptExit at devquery_bench/cloned_repos\\docopt__docopt\\docopt.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How does docopt handle Unicode strings in command line arguments?",
+    "ground_truth": [
+      "docopt"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "function: docopt at devquery_bench/cloned_repos\\docopt__docopt\\docopt.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "What is the function of the match() function in docopt?",
+    "ground_truth": [
+      "Pattern"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "class: Pattern at devquery_bench/cloned_repos\\docopt__docopt\\docopt.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How does the formal_usage() function contribute to the documentation of docopt?",
+    "ground_truth": [
+      "formal_usage"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "function: formal_usage at devquery_bench/cloned_repos\\docopt__docopt\\docopt.py",
+    "bleu1": 0.25,
+    "alpha": 0.75
+  },
+  {
+    "query": "Can you explain how the parse_expr() function works?",
+    "ground_truth": [
+      "parse_expr"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "function: parse_expr at devquery_bench/cloned_repos\\docopt__docopt\\docopt.py",
+    "bleu1": 0.2222,
+    "alpha": 0.7778
+  },
+  {
+    "query": "What is the purpose of the test_pattern_fix_repeating_arguments() function?",
+    "ground_truth": [
+      "test_pattern_fix_repeating_arguments"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "function: test_pattern_fix_repeating_arguments at devquery_bench/cloned_repos\\docopt__docopt\\test_docopt.py",
+    "bleu1": 0.2222,
+    "alpha": 0.7778
+  },
+  {
+    "query": "Where can I find information about contributing to this repository?",
+    "ground_truth": [
+      "README.rst"
+    ],
+    "repo_id": "docopt__docopt",
+    "target_docstring": "README.rst",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How does the schema library handle JSON validation?",
+    "ground_truth": [
+      "Schema"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "class: Schema at devquery_bench/cloned_repos\\keleshev__schema\\schema\\__init__.py",
+    "bleu1": 0.1111,
+    "alpha": 0.8889
+  },
+  {
+    "query": "What is the purpose of the LICENSE-MIT file in this repository?",
+    "ground_truth": [
+      "LICENSE-MIT"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "LICENSE-MIT",
+    "bleu1": 0.1538,
+    "alpha": 0.8462
+  },
+  {
+    "query": "Where can I find information about the release history of this library?",
+    "ground_truth": [
+      "README.rst"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "README.rst",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How does the library manage default values for optional fields?",
+    "ground_truth": [
+      "Optional"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "class: Optional at devquery_bench/cloned_repos\\keleshev__schema\\schema\\__init__.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "What mechanisms are used to ensure API keys are validated before processing requests?",
+    "ground_truth": [
+      "Schema",
+      "Regex",
+      "And"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "class: Schema at devquery_bench/cloned_repos\\keleshev__schema\\schema\\__init__.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What strategies does the schema library employ to handle complex nested schemas?",
+    "ground_truth": [
+      "Schema"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "class: Schema at devquery_bench/cloned_repos\\keleshev__schema\\schema\\__init__.py",
+    "bleu1": 0.0769,
+    "alpha": 0.9231
+  },
+  {
+    "query": "How does the library handle error reporting and provide user-friendly messages?",
+    "ground_truth": [
+      "SchemaError",
+      "SchemaWrongKeyError",
+      "SchemaMissingKeyError"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "class: SchemaError at devquery_bench/cloned_repos\\keleshev__schema\\schema\\__init__.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What is the role of the MANIFEST.in file in this project?",
+    "ground_truth": [
+      "MANIFEST.in"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "MANIFEST.in",
+    "bleu1": 0.1538,
+    "alpha": 0.8462
+  },
+  {
+    "query": "How can I contribute to improving the schema validation library?",
+    "ground_truth": [
+      "README.rst"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "README.rst",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What are some common use cases for this data validation library?",
+    "ground_truth": [
+      "README.rst"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "README.rst",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "Where can I find examples of how to use the schema library in real-world applications?",
+    "ground_truth": [
+      "README.rst",
+      "test_schema.py"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "README.rst",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How does the library support inheritance and optional fields?",
+    "ground_truth": [
+      "Optional",
+      "Schema"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "class: Optional at devquery_bench/cloned_repos\\keleshev__schema\\schema\\__init__.py",
+    "bleu1": 0.1,
+    "alpha": 0.9
+  },
+  {
+    "query": "What is the significance of the test_mypy_use_callable_default_ignore_inherited_schema_validate_kwargs function?",
+    "ground_truth": [
+      "test_mypy_use_callable_default_ignore_inherited_schema_validate_kwargs"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "test_mypy_use_callable_default_ignore_inherited_schema_validate_kwargs",
+    "bleu1": 0.1111,
+    "alpha": 0.8889
+  },
+  {
+    "query": "How does the schema library ensure backward compatibility with older versions?",
+    "ground_truth": [
+      "Schema"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "class: Schema at devquery_bench/cloned_repos\\keleshev__schema\\schema\\__init__.py",
+    "bleu1": 0.0833,
+    "alpha": 0.9167
+  },
+  {
+    "query": "What tools or frameworks are integrated with this data validation library?",
+    "ground_truth": [
+      "README.rst"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "README.rst",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How can I use regular expressions to validate strings in the schema library?",
+    "ground_truth": [
+      "Regex"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "class: Regex at devquery_bench/cloned_repos\\keleshev__schema\\schema\\__init__.py",
+    "bleu1": 0.0714,
+    "alpha": 0.9286
+  },
+  {
+    "query": "What is the impact of using JSON Schema literals with enums on validation?",
+    "ground_truth": [
+      "Or",
+      "And",
+      "Const"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "class: Or at devquery_bench/cloned_repos\\keleshev__schema\\schema\\__init__.py",
+    "bleu1": 0.0714,
+    "alpha": 0.9286
+  },
+  {
+    "query": "How does the schema library handle issues related to key comparison and ordering?",
+    "ground_truth": [
+      "Schema"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "class: Schema at devquery_bench/cloned_repos\\keleshev__schema\\schema\\__init__.py",
+    "bleu1": 0.0714,
+    "alpha": 0.9286
+  },
+  {
+    "query": "What role does the test_nice_errors function play in ensuring error messages are user-friendly?",
+    "ground_truth": [
+      "test_nice_errors"
+    ],
+    "repo_id": "keleshev__schema",
+    "target_docstring": "function: test_nice_errors at devquery_bench/cloned_repos\\keleshev__schema\\test_schema.py",
+    "bleu1": 0.1333,
+    "alpha": 0.8667
+  },
+  {
+    "query": "How does the library handle database connections?",
+    "ground_truth": [
+      "Database"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "class: Database at devquery_bench/cloned_repos\\kennethreitz__records\\records.py",
+    "bleu1": 0.125,
+    "alpha": 0.875
+  },
+  {
+    "query": "What function is used to execute raw SQL queries?",
+    "ground_truth": [
+      "Database"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "class: Database at devquery_bench/cloned_repos\\kennethreitz__records\\records.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "Where can I find examples of how to use the records library?",
+    "ground_truth": [
+      "README.rst"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "README.rst",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What method is used to retrieve all table names from a database?",
+    "ground_truth": [
+      "Database"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "class: Database at devquery_bench/cloned_repos\\kennethreitz__records\\records.py",
+    "bleu1": 0.0769,
+    "alpha": 0.9231
+  },
+  {
+    "query": "How can you convert query results into JSON format?",
+    "ground_truth": [
+      "RecordCollection"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "class: RecordCollection at devquery_bench/cloned_repos\\kennethreitz__records\\records.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What function raises an error if more than one result is found?",
+    "ground_truth": [
+      "RecordCollection"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "class: RecordCollection at devquery_bench/cloned_repos\\kennethreitz__records\\records.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "Where are the tests for the records library located?",
+    "ground_truth": [
+      "test_records.py"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "file_py: test_records.py at devquery_bench/cloned_repos\\kennethreitz__records\\tests\\test_records.py",
+    "bleu1": 0.1,
+    "alpha": 0.9
+  },
+  {
+    "query": "How does the records library handle exceptions?",
+    "ground_truth": [
+      "Database",
+      "RecordCollection"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "class: Database at devquery_bench/cloned_repos\\kennethreitz__records\\records.py",
+    "bleu1": 0.125,
+    "alpha": 0.875
+  },
+  {
+    "query": "What method is used to fetch the first row of a query result?",
+    "ground_truth": [
+      "RecordCollection"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "class: RecordCollection at devquery_bench/cloned_repos\\kennethreitz__records\\records.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How can you export data from the database into CSV format?",
+    "ground_truth": [
+      "RecordCollection"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "class: RecordCollection at devquery_bench/cloned_repos\\kennethreitz__records\\records.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What function is responsible for initializing the database engine?",
+    "ground_truth": [
+      "Database"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "class: Database at devquery_bench/cloned_repos\\kennethreitz__records\\records.py",
+    "bleu1": 0.1,
+    "alpha": 0.9
+  },
+  {
+    "query": "How does the records library support filtering and sorting query results?",
+    "ground_truth": [
+      "Database"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "class: Database at devquery_bench/cloned_repos\\kennethreitz__records\\records.py",
+    "bleu1": 0.0833,
+    "alpha": 0.9167
+  },
+  {
+    "query": "Where are the setup instructions for installing the records library?",
+    "ground_truth": [
+      "README.rst"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "README.rst",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How can I contribute to the development of the records library?",
+    "ground_truth": [
+      "README.rst"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "README.rst",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What method is used to retrieve a single value from a query result?",
+    "ground_truth": [
+      "Record",
+      "RecordCollection"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "class: Record at devquery_bench/cloned_repos\\kennethreitz__records\\records.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How does the records library handle transactions?",
+    "ground_truth": [
+      "Database"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "class: Database at devquery_bench/cloned_repos\\kennethreitz__records\\records.py",
+    "bleu1": 0.125,
+    "alpha": 0.875
+  },
+  {
+    "query": "Where can I find the license information for the records library?",
+    "ground_truth": [
+      "LICENSE"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "LICENSE",
+    "bleu1": 0.0833,
+    "alpha": 0.9167
+  },
+  {
+    "query": "How does the records library support pagination in query results?",
+    "ground_truth": [
+      "Database"
+    ],
+    "repo_id": "kennethreitz__records",
+    "target_docstring": "class: Database at devquery_bench/cloned_repos\\kennethreitz__records\\records.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How does Click handle command-line arguments?",
+    "ground_truth": [
+      "Argument",
+      "argument"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "class: Argument at devquery_bench/cloned_repos\\pallets__click\\src\\click\\core.py",
+    "bleu1": 0.125,
+    "alpha": 0.875
+  },
+  {
+    "query": "What is the purpose of 'click.echo' in Click applications?",
+    "ground_truth": [
+      "echo"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "function: echo at devquery_bench/cloned_repos\\pallets__click\\src\\click\\utils.py",
+    "bleu1": 0.1818,
+    "alpha": 0.8182
+  },
+  {
+    "query": "How can I create a custom type in Click?",
+    "ground_truth": [
+      "ParamType"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "class: ParamType at devquery_bench/cloned_repos\\pallets__click\\src\\click\\types.py",
+    "bleu1": 0.1,
+    "alpha": 0.9
+  },
+  {
+    "query": "What mechanisms does Click have for handling user input?",
+    "ground_truth": [
+      "prompt",
+      "confirm",
+      "getchar"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "function: prompt at devquery_bench/cloned_repos\\pallets__click\\src\\click\\termui.py",
+    "bleu1": 0.1,
+    "alpha": 0.9
+  },
+  {
+    "query": "How do you implement command chaining in Click?",
+    "ground_truth": [
+      "Group",
+      "group"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "class: Group at devquery_bench/cloned_repos\\pallets__click\\src\\click\\core.py",
+    "bleu1": 0.1111,
+    "alpha": 0.8889
+  },
+  {
+    "query": "What steps are involved in installing and using Click?",
+    "ground_truth": [
+      "Command",
+      "command"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "class: Command at devquery_bench/cloned_repos\\pallets__click\\src\\click\\core.py",
+    "bleu1": 0.1,
+    "alpha": 0.9
+  },
+  {
+    "query": "How does Click manage output formatting?",
+    "ground_truth": [
+      "HelpFormatter",
+      "echo"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "class: HelpFormatter at devquery_bench/cloned_repos\\pallets__click\\src\\click\\formatting.py",
+    "bleu1": 0.2857,
+    "alpha": 0.7143
+  },
+  {
+    "query": "What is the role of 'click.command' in defining CLI commands?",
+    "ground_truth": [
+      "command",
+      "Command"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "method: command at devquery_bench/cloned_repos\\pallets__click\\src\\click\\core.py",
+    "bleu1": 0.1667,
+    "alpha": 0.8333
+  },
+  {
+    "query": "How can I integrate Click with other Python libraries?",
+    "ground_truth": [
+      "Context",
+      "get_current_context"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "class: Context at devquery_bench/cloned_repos\\pallets__click\\src\\click\\core.py",
+    "bleu1": 0.1,
+    "alpha": 0.9
+  },
+  {
+    "query": "What are some advanced features of Click?",
+    "ground_truth": [
+      "MultiCommand",
+      "Context",
+      "Parameter"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "class: Context at devquery_bench/cloned_repos\\pallets__click\\src\\click\\core.py",
+    "bleu1": 0.125,
+    "alpha": 0.875
+  },
+  {
+    "query": "How do you handle exceptions in Click applications?",
+    "ground_truth": [
+      "ClickException",
+      "UsageError",
+      "Abort"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "class: ClickException at devquery_bench/cloned_repos\\pallets__click\\src\\click\\exceptions.py",
+    "bleu1": 0.2222,
+    "alpha": 0.7778
+  },
+  {
+    "query": "What is the significance of 'click.group' in organizing commands?",
+    "ground_truth": [
+      "group",
+      "Group"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "method: group at devquery_bench/cloned_repos\\pallets__click\\src\\click\\core.py",
+    "bleu1": 0.1818,
+    "alpha": 0.8182
+  },
+  {
+    "query": "How can I create a command that accepts multiple options?",
+    "ground_truth": [
+      "Option",
+      "option"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "class: Option at devquery_bench/cloned_repos\\pallets__click\\src\\click\\core.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What are best practices for writing documentation for Click commands?",
+    "ground_truth": [
+      "HelpFormatter",
+      "Command"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "class: HelpFormatter at devquery_bench/cloned_repos\\pallets__click\\src\\click\\formatting.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How does Click support asynchronous operations?",
+    "ground_truth": [
+      "Command",
+      "Context"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "class: Command at devquery_bench/cloned_repos\\pallets__click\\src\\click\\core.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "What is the purpose of 'click.option' in defining command-line options?",
+    "ground_truth": [
+      "option",
+      "Option"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "function: option at devquery_bench/cloned_repos\\pallets__click\\src\\click\\decorators.py",
+    "bleu1": 0.1538,
+    "alpha": 0.8462
+  },
+  {
+    "query": "How do you test Click applications?",
+    "ground_truth": [
+      "CliRunner"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "class: CliRunner at devquery_bench/cloned_repos\\pallets__click\\src\\click\\testing.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "What are some common pitfalls when using Click?",
+    "ground_truth": [
+      "Context",
+      "Parameter"
+    ],
+    "repo_id": "pallets__click",
+    "target_docstring": "class: Context at devquery_bench/cloned_repos\\pallets__click\\src\\click\\core.py",
+    "bleu1": 0.1111,
+    "alpha": 0.8889
+  },
+  {
+    "query": "How does Flask handle request routing?",
+    "ground_truth": [
+      "Flask",
+      "Blueprint",
+      "url_for"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "class: Flask at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\app.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "What is the purpose of the 'before_request' decorator in Flask?",
+    "ground_truth": [
+      "Scaffold"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "class: Scaffold at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\sansio\\scaffold.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How does Flask manage session data?",
+    "ground_truth": [
+      "SessionInterface",
+      "SecureCookieSessionInterface"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "class: SessionInterface at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\sessions.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "Where can I find the documentation for Flask?",
+    "ground_truth": [
+      "README.rst"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "README.rst",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How does Flask handle template rendering?",
+    "ground_truth": [
+      "render_template",
+      "render_template_string"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "function: render_template at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\templating.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "What is the role of the 'flask.app' module?",
+    "ground_truth": [
+      "Flask"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "class: Flask at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\app.py",
+    "bleu1": 0.2,
+    "alpha": 0.8
+  },
+  {
+    "query": "How does Flask handle error handling?",
+    "ground_truth": [
+      "Scaffold",
+      "Flask"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "class: Scaffold at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\sansio\\scaffold.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "Where are Flask extensions typically installed?",
+    "ground_truth": [
+      "Flask",
+      "README.rst"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "class: Flask at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\app.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "What is the significance of the 'app.config' dictionary in Flask?",
+    "ground_truth": [
+      "Config"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "class: Config at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\config.py",
+    "bleu1": 0.1667,
+    "alpha": 0.8333
+  },
+  {
+    "query": "How does Flask support internationalization and localization?",
+    "ground_truth": [
+      "README.rst"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "README.rst",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "Where can I find examples of Flask applications?",
+    "ground_truth": [
+      "examples"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "examples",
+    "bleu1": 0.1111,
+    "alpha": 0.8889
+  },
+  {
+    "query": "How does Flask manage static files?",
+    "ground_truth": [
+      "Scaffold",
+      "send_from_directory"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "class: Scaffold at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\sansio\\scaffold.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "What is the purpose of the 'flask.cli' module?",
+    "ground_truth": [
+      "FlaskGroup",
+      "AppGroup",
+      "with_appcontext"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "class: FlaskGroup at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\cli.py",
+    "bleu1": 0.2,
+    "alpha": 0.8
+  },
+  {
+    "query": "How does Flask handle request methods like POST and GET?",
+    "ground_truth": [
+      "Request",
+      "Flask"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "class: Request at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\wrappers.py",
+    "bleu1": 0.1818,
+    "alpha": 0.8182
+  },
+  {
+    "query": "What is the role of the 'flask.json' module in Flask?",
+    "ground_truth": [
+      "JSONProvider",
+      "DefaultJSONProvider",
+      "jsonify"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "class: JSONProvider at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\json\\provider.py",
+    "bleu1": 0.1667,
+    "alpha": 0.8333
+  },
+  {
+    "query": "Where can I find information about Flask's security features?",
+    "ground_truth": [
+      "README.rst",
+      "SecureCookieSessionInterface"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "class: SecureCookieSessionInterface at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\sessions.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How does Flask support web forms?",
+    "ground_truth": [
+      "README.rst"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "README.rst",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What is the purpose of the 'flask.testing' module?",
+    "ground_truth": [
+      "FlaskClient",
+      "FlaskCliRunner"
+    ],
+    "repo_id": "pallets__flask",
+    "target_docstring": "class: FlaskClient at devquery_bench/cloned_repos\\pallets__flask\\src\\flask\\testing.py",
+    "bleu1": 0.2,
+    "alpha": 0.8
+  },
+  {
+    "query": "How does the requests library handle HTTP cookies?",
+    "ground_truth": [
+      "RequestsCookieJar",
+      "cookiejar_from_dict"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The `RequestsCookieJar` class provides methods for managing cookies, including getting, setting, iterating over keys, values, and items, listing domains and paths, checking for multiple domains, converting to a dictionary, and handling containment checks.",
+    "bleu1": 0.2222,
+    "alpha": 0.7778
+  },
+  {
+    "query": "What is the purpose of the 'verify' parameter in session requests?",
+    "ground_truth": [
+      "Session",
+      "HTTPAdapter"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The Session class in the requests library provides a context manager for making HTTP requests, handling session-level settings and merging them with environment-specific settings. It includes methods for various HTTP methods like GET, POST, PUT, DELETE, and PATCH, as well as utility methods for p...",
+    "bleu1": 0.4167,
+    "alpha": 0.5833
+  },
+  {
+    "query": "How does the requests library manage connection pooling for efficiency?",
+    "ground_truth": [
+      "HTTPAdapter"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The HTTPAdapter class in the requests library manages HTTP connections and responses, providing methods for initializing connection pools, handling proxies, verifying certificates, building responses, and sending requests. It also includes utility methods for managing TLS contexts, adding headers...",
+    "bleu1": 0.4545,
+    "alpha": 0.5455
+  },
+  {
+    "query": "What methods are used to encode and decode data when sending HTTP requests?",
+    "ground_truth": [
+      "PreparedRequest",
+      "get_encoding_from_headers"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The PreparedRequest class in the requests library is used to encapsulate and prepare HTTP request details, including headers, body, URL, and authentication information. It provides methods for copying, preparing individual components of a request, and generating a string representation of the pre...",
+    "bleu1": 0.4286,
+    "alpha": 0.5714
+  },
+  {
+    "query": "How can I use the requests library to send a POST request with JSON data?",
+    "ground_truth": [
+      "request",
+      "Session"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The Session class in the requests library provides a context manager for making HTTP requests, handling session-level settings and merging them with environment-specific settings. It includes methods for various HTTP methods like GET, POST, PUT, DELETE, and PATCH, as well as utility methods for p...",
+    "bleu1": 0.375,
+    "alpha": 0.625
+  },
+  {
+    "query": "What error handling mechanisms are implemented in the requests library?",
+    "ground_truth": [
+      "RequestException",
+      "HTTPError",
+      "ConnectionError"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The `RequestException` class is a custom exception used in the `requests` library to handle errors that occur during HTTP requests. It provides an initialization method to set up the exception with a message and optionally, a response object from the request.",
+    "bleu1": 0.3636,
+    "alpha": 0.6364
+  },
+  {
+    "query": "How does the requests library handle redirects by default?",
+    "ground_truth": [
+      "SessionRedirectMixin",
+      "Session"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The Session class in the requests library provides a context manager for making HTTP requests, handling session-level settings and merging them with environment-specific settings. It includes methods for various HTTP methods like GET, POST, PUT, DELETE, and PATCH, as well as utility methods for p...",
+    "bleu1": 0.3,
+    "alpha": 0.7
+  },
+  {
+    "query": "What is the role of the 'timeout' parameter in session requests?",
+    "ground_truth": [
+      "Session",
+      "HTTPAdapter"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The Session class in the requests library provides a context manager for making HTTP requests, handling session-level settings and merging them with environment-specific settings. It includes methods for various HTTP methods like GET, POST, PUT, DELETE, and PATCH, as well as utility methods for p...",
+    "bleu1": 0.4167,
+    "alpha": 0.5833
+  },
+  {
+    "query": "How can I customize the headers when sending an HTTP GET request using the requests library?",
+    "ground_truth": [
+      "request",
+      "Session"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The Session class in the requests library provides a context manager for making HTTP requests, handling session-level settings and merging them with environment-specific settings. It includes methods for various HTTP methods like GET, POST, PUT, DELETE, and PATCH, as well as utility methods for p...",
+    "bleu1": 0.3529,
+    "alpha": 0.6471
+  },
+  {
+    "query": "What function is used to check if a response was successful (HTTP status code 200)?",
+    "ground_truth": [
+      "Response"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The Response class in the requests library provides methods for handling HTTP responses, including checking if a response is OK or a redirect, iterating over content, and accessing various properties like status codes and encodings. It also includes special methods for object representation, iter...",
+    "bleu1": 0.375,
+    "alpha": 0.625
+  },
+  {
+    "query": "How does the requests library handle authentication for HTTPS requests?",
+    "ground_truth": [
+      "Session",
+      "HTTPBasicAuth",
+      "HTTPDigestAuth"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The Session class in the requests library provides a context manager for making HTTP requests, handling session-level settings and merging them with environment-specific settings. It includes methods for various HTTP methods like GET, POST, PUT, DELETE, and PATCH, as well as utility methods for p...",
+    "bleu1": 0.4545,
+    "alpha": 0.5455
+  },
+  {
+    "query": "What is the purpose of the 'allow_redirects' parameter in session requests?",
+    "ground_truth": [
+      "Session",
+      "SessionRedirectMixin"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The Session class in the requests library provides a context manager for making HTTP requests, handling session-level settings and merging them with environment-specific settings. It includes methods for various HTTP methods like GET, POST, PUT, DELETE, and PATCH, as well as utility methods for p...",
+    "bleu1": 0.4167,
+    "alpha": 0.5833
+  },
+  {
+    "query": "How can I send an HTTP request with basic authentication using the requests library?",
+    "ground_truth": [
+      "HTTPBasicAuth",
+      "request"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "HTTPBasicAuth class provides methods for HTTP basic authentication, including initialization, equality comparison, inequality comparison, and applying the authentication to a request.",
+    "bleu1": 0.3333,
+    "alpha": 0.6667
+  },
+  {
+    "query": "What function is used to merge hooks from different sources in the requests library?",
+    "ground_truth": [
+      "dispatch_hook"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "function: dispatch_hook at devquery_bench/cloned_repos\\psf__requests\\src\\requests\\hooks.py",
+    "bleu1": 0.2,
+    "alpha": 0.8
+  },
+  {
+    "query": "How does the requests library handle response encoding based on headers?",
+    "ground_truth": [
+      "Response",
+      "get_encoding_from_headers"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The Response class in the requests library provides methods for handling HTTP responses, including checking if a response is OK or a redirect, iterating over content, and accessing various properties like status codes and encodings. It also includes special methods for object representation, iter...",
+    "bleu1": 0.3333,
+    "alpha": 0.6667
+  },
+  {
+    "query": "What is the role of the 'stream' parameter in session requests?",
+    "ground_truth": [
+      "Session",
+      "Response"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The Session class in the requests library provides a context manager for making HTTP requests, handling session-level settings and merging them with environment-specific settings. It includes methods for various HTTP methods like GET, POST, PUT, DELETE, and PATCH, as well as utility methods for p...",
+    "bleu1": 0.4167,
+    "alpha": 0.5833
+  },
+  {
+    "query": "How can I use the requests library to send a multipart/form-data request?",
+    "ground_truth": [
+      "PreparedRequest",
+      "request"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "The PreparedRequest class in the requests library is used to encapsulate and prepare HTTP request details, including headers, body, URL, and authentication information. It provides methods for copying, preparing individual components of a request, and generating a string representation of the pre...",
+    "bleu1": 0.4,
+    "alpha": 0.6
+  },
+  {
+    "query": "What error handling mechanisms are implemented for SSL certificate verification?",
+    "ground_truth": [
+      "SSLError"
+    ],
+    "repo_id": "psf__requests",
+    "target_docstring": "Class SSLError",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How does the library handle data validation?",
+    "ground_truth": [
+      "BaseModel",
+      "TypeAdapter",
+      "SchemaValidator"
+    ],
+    "repo_id": "pydantic__pydantic",
+    "target_docstring": "class: BaseModel at devquery_bench/cloned_repos\\pydantic__pydantic\\pydantic\\main.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What is the purpose of the 'pydantic-core' directory in the repository?",
+    "ground_truth": [
+      "SchemaValidator",
+      "SchemaSerializer"
+    ],
+    "repo_id": "pydantic__pydantic",
+    "target_docstring": "SchemaValidator",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "Can you explain how caching works within the pydantic library?",
+    "ground_truth": [
+      "computed_field"
+    ],
+    "repo_id": "pydantic__pydantic",
+    "target_docstring": "function: computed_field at devquery_bench/cloned_repos\\pydantic__pydantic\\pydantic\\fields.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "What mechanism does pydantic use to ensure type consistency across different parts of the application?",
+    "ground_truth": [
+      "BaseModel",
+      "TypeAdapter",
+      "ValidateCallWrapper"
+    ],
+    "repo_id": "pydantic__pydantic",
+    "target_docstring": "class: BaseModel at devquery_bench/cloned_repos\\pydantic__pydantic\\pydantic\\main.py",
+    "bleu1": 0.0625,
+    "alpha": 0.9375
+  },
+  {
+    "query": "How can I customize validation rules for specific data types?",
+    "ground_truth": [
+      "field_validator",
+      "model_validator",
+      "BeforeValidator",
+      "AfterValidator"
+    ],
+    "repo_id": "pydantic__pydantic",
+    "target_docstring": "function: field_validator at devquery_bench/cloned_repos\\pydantic__pydantic\\pydantic\\functional_validators.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How does the library handle serialization and deserialization of complex data structures?",
+    "ground_truth": [
+      "model_dump",
+      "model_dump_json",
+      "model_validate",
+      "model_validate_json"
+    ],
+    "repo_id": "pydantic__pydantic",
+    "target_docstring": "method: model_dump at devquery_bench/cloned_repos\\pydantic__pydantic\\pydantic\\main.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What measures does pydantic take to prevent common validation errors?",
+    "ground_truth": [
+      "ConfigDict",
+      "Strict",
+      "ValidationError",
+      "Field"
+    ],
+    "repo_id": "pydantic__pydantic",
+    "target_docstring": "class: ConfigDict at devquery_bench/cloned_repos\\pydantic__pydantic\\pydantic\\config.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How can I contribute my own custom validators to the library?",
+    "ground_truth": [
+      "field_validator",
+      "model_validator"
+    ],
+    "repo_id": "pydantic__pydantic",
+    "target_docstring": "function: field_validator at devquery_bench/cloned_repos\\pydantic__pydantic\\pydantic\\functional_validators.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "Can you describe the architecture of pydantic's validation system?",
+    "ground_truth": [
+      "GenerateSchema",
+      "SchemaValidator",
+      "BaseModel"
+    ],
+    "repo_id": "pydantic__pydantic",
+    "target_docstring": "class: GenerateSchema at devquery_bench/cloned_repos\\pydantic__pydantic\\pydantic\\_internal\\_generate_schema.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How can I use the library to validate nested data structures?",
+    "ground_truth": [
+      "BaseModel",
+      "Field"
+    ],
+    "repo_id": "pydantic__pydantic",
+    "target_docstring": "class: BaseModel at devquery_bench/cloned_repos\\pydantic__pydantic\\pydantic\\main.py",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What are some common pitfalls when using pydantic for data validation?",
+    "ground_truth": [
+      "Field",
+      "ConfigDict",
+      "model_validator"
+    ],
+    "repo_id": "pydantic__pydantic",
+    "target_docstring": "function: Field at devquery_bench/cloned_repos\\pydantic__pydantic\\pydantic\\fields.py",
+    "bleu1": 0.0833,
+    "alpha": 0.9167
+  },
+  {
+    "query": "How does the toolz library implement memoization?",
+    "ground_truth": [
+      "memoize"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "memoize",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What is the purpose of the `toolz.functools.compose` function?",
+    "ground_truth": [
+      "compose"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "function: compose at devquery_bench/cloned_repos\\pytoolz__toolz\\toolz\\functoolz.py",
+    "bleu1": 0.2727,
+    "alpha": 0.7273
+  },
+  {
+    "query": "How can I filter a list using toolz?",
+    "ground_truth": [
+      "filter"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "filter",
+    "bleu1": 0.1111,
+    "alpha": 0.8889
+  },
+  {
+    "query": "What does the `toolz.dicttoolz.valmap` function do?",
+    "ground_truth": [
+      "valmap"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "function: valmap at devquery_bench/cloned_repos\\pytoolz__toolz\\toolz\\dicttoolz.py",
+    "bleu1": 0.4444,
+    "alpha": 0.5556
+  },
+  {
+    "query": "How is parallel processing handled in the toolz library?",
+    "ground_truth": [
+      "map",
+      "fold"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "function: fold at devquery_bench/cloned_repos\\pytoolz__toolz\\toolz\\sandbox\\parallel.py",
+    "bleu1": 0.2,
+    "alpha": 0.8
+  },
+  {
+    "query": "What is the role of the `toolz.itertoolz.count` function?",
+    "ground_truth": [
+      "count"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "function: count at devquery_bench/cloned_repos\\pytoolz__toolz\\toolz\\itertoolz.py",
+    "bleu1": 0.3636,
+    "alpha": 0.6364
+  },
+  {
+    "query": "How to flatten nested iterables with toolz?",
+    "ground_truth": [
+      "concat"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "function: concat at devquery_bench/cloned_repos\\pytoolz__toolz\\toolz\\itertoolz.py",
+    "bleu1": 0.125,
+    "alpha": 0.875
+  },
+  {
+    "query": "What does the `toolz.functools.curry` function achieve?",
+    "ground_truth": [
+      "curry"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "class: curry at devquery_bench/cloned_repos\\pytoolz__toolz\\toolz\\functoolz.py",
+    "bleu1": 0.2222,
+    "alpha": 0.7778
+  },
+  {
+    "query": "How can I apply a function to each item in an iterable using toolz?",
+    "ground_truth": [
+      "map"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "map",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What is the function used for combining dictionaries in toolz?",
+    "ground_truth": [
+      "merge"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "function: merge at devquery_bench/cloned_repos\\pytoolz__toolz\\toolz\\dicttoolz.py",
+    "bleu1": 0.1818,
+    "alpha": 0.8182
+  },
+  {
+    "query": "How does the `toolz.itertoolz.partition` function work?",
+    "ground_truth": [
+      "partition"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "function: partition at devquery_bench/cloned_repos\\pytoolz__toolz\\toolz\\itertoolz.py",
+    "bleu1": 0.4444,
+    "alpha": 0.5556
+  },
+  {
+    "query": "What is the use of the `toolz.functools.compose_with_kwargs` function?",
+    "ground_truth": [
+      "compose_with_kwargs"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "compose_with_kwargs",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How can I remove items from a dictionary based on keys using toolz?",
+    "ground_truth": [
+      "dissoc",
+      "keyfilter"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "function: dissoc at devquery_bench/cloned_repos\\pytoolz__toolz\\toolz\\dicttoolz.py",
+    "bleu1": 0.0714,
+    "alpha": 0.9286
+  },
+  {
+    "query": "What is the purpose of the `toolz.functools.identity` function?",
+    "ground_truth": [
+      "identity"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "function: identity at devquery_bench/cloned_repos\\pytoolz__toolz\\toolz\\functoolz.py",
+    "bleu1": 0.2727,
+    "alpha": 0.7273
+  },
+  {
+    "query": "How to extract specific elements from a list using toolz?",
+    "ground_truth": [
+      "get",
+      "nth",
+      "take"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "function: get at devquery_bench/cloned_repos\\pytoolz__toolz\\toolz\\itertoolz.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "What does the `toolz.dicttoolz.merge_with` function do?",
+    "ground_truth": [
+      "merge_with"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "function: merge_with at devquery_bench/cloned_repos\\pytoolz__toolz\\toolz\\dicttoolz.py",
+    "bleu1": 0.4444,
+    "alpha": 0.5556
+  },
+  {
+    "query": "How can I apply a function to each element in an iterable and collect results using toolz?",
+    "ground_truth": [
+      "map"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "map",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What is the role of the `toolz.functools.pipe` function?",
+    "ground_truth": [
+      "pipe"
+    ],
+    "repo_id": "pytoolz__toolz",
+    "target_docstring": "function: pipe at devquery_bench/cloned_repos\\pytoolz__toolz\\toolz\\functoolz.py",
+    "bleu1": 0.2727,
+    "alpha": 0.7273
+  },
+  {
+    "query": "How does SQLAlchemy handle database connections?",
+    "ground_truth": [
+      "Engine",
+      "Connection",
+      "Pool",
+      "Dialect"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "class: Engine at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\engine\\base.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "What is the purpose of the 'create_engine' function in SQLAlchemy?",
+    "ground_truth": [
+      "create_engine",
+      "Engine",
+      "URL"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "create_engine",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How can I use SQLAlchemy to perform a simple SELECT query?",
+    "ground_truth": [
+      "select",
+      "Session",
+      "Connection"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "method: select at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\orm\\writeonly.py",
+    "bleu1": 0.1667,
+    "alpha": 0.8333
+  },
+  {
+    "query": "What are the differences between ORM and Core in SQLAlchemy?",
+    "ground_truth": [
+      "Session",
+      "Connection",
+      "Mapper",
+      "Table"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "class: Session at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\orm\\session.py",
+    "bleu1": 0.1818,
+    "alpha": 0.8182
+  },
+  {
+    "query": "How do you define relationships between tables using SQLAlchemy?",
+    "ground_truth": [
+      "relationship",
+      "ForeignKey",
+      "RelationshipProperty"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "function: relationship at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\orm\\_orm_constructors.py",
+    "bleu1": 0.1,
+    "alpha": 0.9
+  },
+  {
+    "query": "What is the role of the 'sessionmaker' class in SQLAlchemy?",
+    "ground_truth": [
+      "sessionmaker",
+      "Session"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "class: sessionmaker at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\orm\\session.py",
+    "bleu1": 0.2727,
+    "alpha": 0.7273
+  },
+  {
+    "query": "How does SQLAlchemy handle transactions?",
+    "ground_truth": [
+      "Session",
+      "Transaction",
+      "SessionTransaction"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "class: Session at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\orm\\session.py",
+    "bleu1": 0.1667,
+    "alpha": 0.8333
+  },
+  {
+    "query": "What is the purpose of the 'declarative_base' function?",
+    "ground_truth": [
+      "declarative_base",
+      "DeclarativeMeta",
+      "registry"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "function: declarative_base at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\orm\\decl_api.py",
+    "bleu1": 0.2222,
+    "alpha": 0.7778
+  },
+  {
+    "query": "How can I perform a join operation using SQLAlchemy's ORM?",
+    "ground_truth": [
+      "join",
+      "outerjoin",
+      "Select"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "function: join at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\orm\\_orm_constructors.py",
+    "bleu1": 0.25,
+    "alpha": 0.75
+  },
+  {
+    "query": "What are some common exceptions raised by SQLAlchemy?",
+    "ground_truth": [
+      "SQLAlchemyError",
+      "IntegrityError",
+      "OperationalError",
+      "StatementError"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "class: SQLAlchemyError at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\exc.py",
+    "bleu1": 0.1111,
+    "alpha": 0.8889
+  },
+  {
+    "query": "How do you execute raw SQL queries in SQLAlchemy?",
+    "ground_truth": [
+      "text",
+      "execute",
+      "Connection",
+      "Session"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "method: execute at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\connectors\\asyncio.py",
+    "bleu1": 0.2,
+    "alpha": 0.8
+  },
+  {
+    "query": "What is the use of the 'Column' class in defining tables?",
+    "ground_truth": [
+      "Column",
+      "mapped_column",
+      "Table"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "class: Column at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\sql\\schema.py",
+    "bleu1": 0.1667,
+    "alpha": 0.8333
+  },
+  {
+    "query": "How does SQLAlchemy handle date and time types?",
+    "ground_truth": [
+      "DateTime",
+      "Date",
+      "Time",
+      "Interval"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "class: Date at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\sql\\sqltypes.py",
+    "bleu1": 0.2222,
+    "alpha": 0.7778
+  },
+  {
+    "query": "What is the purpose of the 'func' object in SQLAlchemy?",
+    "ground_truth": [
+      "func",
+      "Function",
+      "FunctionElement"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "func",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How can I filter query results using conditions in SQLAlchemy?",
+    "ground_truth": [
+      "where",
+      "filter",
+      "filter_by",
+      "Select"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "method: filter at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\sql\\dml.py",
+    "bleu1": 0.1818,
+    "alpha": 0.8182
+  },
+  {
+    "query": "What are some best practices for optimizing SQLAlchemy queries?",
+    "ground_truth": [
+      "selectinload",
+      "joinedload",
+      "subqueryload",
+      "lazyload"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "method: selectinload at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\orm\\strategy_options.py",
+    "bleu1": 0.1,
+    "alpha": 0.9
+  },
+  {
+    "query": "How do you validate data before inserting it into a database with SQLAlchemy?",
+    "ground_truth": [
+      "validates",
+      "MapperEvents"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "function: validates at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\orm\\mapper.py",
+    "bleu1": 0.0714,
+    "alpha": 0.9286
+  },
+  {
+    "query": "What is the role of the 'event' system in SQLAlchemy?",
+    "ground_truth": [
+      "listen",
+      "listens_for",
+      "ConnectionEvents",
+      "MapperEvents"
+    ],
+    "repo_id": "sqlalchemy__sqlalchemy",
+    "target_docstring": "function: listen at devquery_bench/cloned_repos\\sqlalchemy__sqlalchemy\\lib\\sqlalchemy\\event\\api.py",
+    "bleu1": 0.1818,
+    "alpha": 0.8182
+  },
+  {
+    "query": "How does FastAPI handle request validation?",
+    "ground_truth": [
+      "BaseModel",
+      "Body",
+      "Query",
+      "Path"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "function: Body at devquery_bench/cloned_repos\\tiangolo__fastapi\\fastapi\\param_functions.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "What is the role of the 'Depends' function in FastAPI?",
+    "ground_truth": [
+      "Depends"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "function: Depends at devquery_bench/cloned_repos\\tiangolo__fastapi\\fastapi\\param_functions.py",
+    "bleu1": 0.2727,
+    "alpha": 0.7273
+  },
+  {
+    "query": "How can I add authentication to my API in FastAPI?",
+    "ground_truth": [
+      "HTTPBearer",
+      "OAuth2PasswordBearer",
+      "Security"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "class: HTTPBearer at devquery_bench/cloned_repos\\tiangolo__fastapi\\fastapi\\openapi\\models.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "What methods are available for defining HTTP responses in FastAPI?",
+    "ground_truth": [
+      "Response",
+      "JSONResponse",
+      "HTMLResponse",
+      "StreamingResponse"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "class: Response at devquery_bench/cloned_repos\\tiangolo__fastapi\\fastapi\\openapi\\models.py",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How does FastAPI manage asynchronous operations?",
+    "ground_truth": [
+      "BackgroundTasks"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "class: BackgroundTasks at devquery_bench/cloned_repos\\tiangolo__fastapi\\fastapi\\background.py",
+    "bleu1": 0.1429,
+    "alpha": 0.8571
+  },
+  {
+    "query": "What is the significance of the 'FastAPI' class in the framework?",
+    "ground_truth": [
+      "FastAPI"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "class: FastAPI at devquery_bench/cloned_repos\\tiangolo__fastapi\\fastapi\\applications.py",
+    "bleu1": 0.1667,
+    "alpha": 0.8333
+  },
+  {
+    "query": "What is the purpose of the 'HTTPException' class in FastAPI?",
+    "ground_truth": [
+      "HTTPException"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "class: HTTPException at devquery_bench/cloned_repos\\tiangolo__fastapi\\fastapi\\exceptions.py",
+    "bleu1": 0.2727,
+    "alpha": 0.7273
+  },
+  {
+    "query": "How to handle file uploads in a FastAPI application?",
+    "ground_truth": [
+      "File",
+      "UploadFile"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "function: File at devquery_bench/cloned_repos\\tiangolo__fastapi\\fastapi\\param_functions.py",
+    "bleu1": 0.2,
+    "alpha": 0.8
+  },
+  {
+    "query": "What is the difference between query parameters and path parameters in FastAPI?",
+    "ground_truth": [
+      "Query",
+      "Path"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "function: Query at devquery_bench/cloned_repos\\tiangolo__fastapi\\fastapi\\param_functions.py",
+    "bleu1": 0.1538,
+    "alpha": 0.8462
+  },
+  {
+    "query": "How can I customize the behavior of responses when exceptions occur?",
+    "ground_truth": [
+      "add_exception_handler"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "add_exception_handler",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What does the 'Response' object represent in FastAPI?",
+    "ground_truth": [
+      "Response"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "class: Response at devquery_bench/cloned_repos\\tiangolo__fastapi\\fastapi\\openapi\\models.py",
+    "bleu1": 0.2222,
+    "alpha": 0.7778
+  },
+  {
+    "query": "How to create a custom middleware in FastAPI for logging requests?",
+    "ground_truth": [
+      "BaseHTTPMiddleware"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "BaseHTTPMiddleware",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What is the role of 'SecurityScheme' in defining API security?",
+    "ground_truth": [
+      "SecurityScheme"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "SecurityScheme",
+    "bleu1": 0.0909,
+    "alpha": 0.9091
+  },
+  {
+    "query": "How do I use dependency injection in FastAPI for testing?",
+    "ground_truth": [
+      "dependency_overrides"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "dependency_overrides",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What is the purpose of the 'APIRouter' class in organizing routes?",
+    "ground_truth": [
+      "APIRouter"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "class: APIRouter at devquery_bench/cloned_repos\\tiangolo__fastapi\\fastapi\\routing.py",
+    "bleu1": 0.1667,
+    "alpha": 0.8333
+  },
+  {
+    "query": "How can I integrate OAuth2 with FastAPI to authenticate users?",
+    "ground_truth": [
+      "OAuth2PasswordBearer",
+      "OAuth2PasswordRequestForm"
+    ],
+    "repo_id": "tiangolo__fastapi",
+    "target_docstring": "class: OAuth2PasswordBearer at devquery_bench/cloned_repos\\tiangolo__fastapi\\fastapi\\security\\oauth2.py",
+    "bleu1": 0.1818,
+    "alpha": 0.8182
+  }
+]
