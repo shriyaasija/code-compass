@@ -1,0 +1,20 @@
+[
+  "How does docopt handle command line arguments?",
+  "What is the purpose of the README.rst file in this repository?",
+  "How can I install the docopt package from source?",
+  "What are the licensing terms for this project?",
+  "Can you explain the usage pattern of docopt?",
+  "Where can I find examples of how to use docopt?",
+  "What does the setup.py file do in a Python project?",
+  "How does the test_docopt.py file verify the functionality of docopt?",
+  "What is the role of the conftest.py file in this repository?",
+  "How does docopt handle options with short and long forms?",
+  "Can you describe the process of parsing command line arguments with docopt?",
+  "What happens when an invalid option is used with docopt?",
+  "How does docopt handle Unicode strings in command line arguments?",
+  "What is the function of the match() function in docopt?",
+  "How does the formal_usage() function contribute to the documentation of docopt?",
+  "Can you explain how the parse_expr() function works?",
+  "What is the purpose of the test_pattern_fix_repeating_arguments() function?",
+  "Where can I find information about contributing to this repository?"
+]

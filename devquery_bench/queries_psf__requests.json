@@ -1,0 +1,20 @@
+[
+  "How does the requests library handle HTTP cookies?",
+  "What is the purpose of the 'verify' parameter in session requests?",
+  "How does the requests library manage connection pooling for efficiency?",
+  "What methods are used to encode and decode data when sending HTTP requests?",
+  "How can I use the requests library to send a POST request with JSON data?",
+  "What error handling mechanisms are implemented in the requests library?",
+  "How does the requests library handle redirects by default?",
+  "What is the role of the 'timeout' parameter in session requests?",
+  "How can I customize the headers when sending an HTTP GET request using the requests library?",
+  "What function is used to check if a response was successful (HTTP status code 200)?",
+  "How does the requests library handle authentication for HTTPS requests?",
+  "What is the purpose of the 'allow_redirects' parameter in session requests?",
+  "How can I send an HTTP request with basic authentication using the requests library?",
+  "What function is used to merge hooks from different sources in the requests library?",
+  "How does the requests library handle response encoding based on headers?",
+  "What is the role of the 'stream' parameter in session requests?",
+  "How can I use the requests library to send a multipart/form-data request?",
+  "What error handling mechanisms are implemented for SSL certificate verification?"
+]

@@ -1,0 +1,20 @@
+[
+  "How does SQLAlchemy handle database connections?",
+  "What is the purpose of the 'create_engine' function in SQLAlchemy?",
+  "How can I use SQLAlchemy to perform a simple SELECT query?",
+  "What are the differences between ORM and Core in SQLAlchemy?",
+  "How do you define relationships between tables using SQLAlchemy?",
+  "What is the role of the 'sessionmaker' class in SQLAlchemy?",
+  "How does SQLAlchemy handle transactions?",
+  "What is the purpose of the 'declarative_base' function?",
+  "How can I perform a join operation using SQLAlchemy's ORM?",
+  "What are some common exceptions raised by SQLAlchemy?",
+  "How do you execute raw SQL queries in SQLAlchemy?",
+  "What is the use of the 'Column' class in defining tables?",
+  "How does SQLAlchemy handle date and time types?",
+  "What is the purpose of the 'func' object in SQLAlchemy?",
+  "How can I filter query results using conditions in SQLAlchemy?",
+  "What are some best practices for optimizing SQLAlchemy queries?",
+  "How do you validate data before inserting it into a database with SQLAlchemy?",
+  "What is the role of the 'event' system in SQLAlchemy?"
+]

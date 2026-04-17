@@ -1,0 +1,20 @@
+[
+  "How does Flask handle request routing?",
+  "What is the purpose of the 'before_request' decorator in Flask?",
+  "How does Flask manage session data?",
+  "Where can I find the documentation for Flask?",
+  "How does Flask handle template rendering?",
+  "What is the role of the 'flask.app' module?",
+  "How does Flask handle error handling?",
+  "Where are Flask extensions typically installed?",
+  "What is the significance of the 'app.config' dictionary in Flask?",
+  "How does Flask support internationalization and localization?",
+  "Where can I find examples of Flask applications?",
+  "How does Flask manage static files?",
+  "What is the purpose of the 'flask.cli' module?",
+  "How does Flask handle request methods like POST and GET?",
+  "What is the role of the 'flask.json' module in Flask?",
+  "Where can I find information about Flask's security features?",
+  "How does Flask support web forms?",
+  "What is the purpose of the 'flask.testing' module?"
+]

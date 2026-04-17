@@ -1,0 +1,20 @@
+[
+  "How does FastAPI handle request validation?",
+  "What is the role of the 'Depends' function in FastAPI?",
+  "How can I add authentication to my API in FastAPI?",
+  "What methods are available for defining HTTP responses in FastAPI?",
+  "How does FastAPI manage asynchronous operations?",
+  "What is the significance of the 'FastAPI' class in the framework?",
+  "How can I implement rate limiting in an API using FastAPI?",
+  "What is the purpose of the 'HTTPException' class in FastAPI?",
+  "How to handle file uploads in a FastAPI application?",
+  "What is the difference between query parameters and path parameters in FastAPI?",
+  "How can I customize the behavior of responses when exceptions occur?",
+  "What does the 'Response' object represent in FastAPI?",
+  "How to create a custom middleware in FastAPI for logging requests?",
+  "What is the role of 'SecurityScheme' in defining API security?",
+  "How do I use dependency injection in FastAPI for testing?",
+  "What is the purpose of the 'APIRouter' class in organizing routes?",
+  "How can I integrate OAuth2 with FastAPI to authenticate users?",
+  "What are some common pitfalls when working with FastAPI?"
+]
