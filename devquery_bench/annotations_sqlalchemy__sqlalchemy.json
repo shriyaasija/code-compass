@@ -1,0 +1,224 @@
+[
+    {
+        "query": "How does SQLAlchemy handle database connections?",
+        "ground_truth": [
+            "Engine",
+            "Connection",
+            "Pool",
+            "Dialect"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Engine class acts as the core gateway, managing a Pool of underlying DBAPI connections and delegating execution to the Connection class using a specific Dialect."
+    },
+    {
+        "query": "What is the purpose of the 'create_engine' function in SQLAlchemy?",
+        "ground_truth": [
+            "create_engine",
+            "Engine",
+            "URL"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The create_engine function is the primary factory method used to parse a connection URL and instantiate the core Engine object."
+    },
+    {
+        "query": "How can I use SQLAlchemy to perform a simple SELECT query?",
+        "ground_truth": [
+            "select",
+            "Session",
+            "Connection"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The select() function generates a Select construct, which is then passed to the execute() method of either a Session (ORM) or Connection (Core)."
+    },
+    {
+        "query": "What are the differences between ORM and Core in SQLAlchemy?",
+        "ground_truth": [
+            "Session",
+            "Connection",
+            "Mapper",
+            "Table"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The ORM relies on Mapper and Session to handle object identity and state, whereas Core relies directly on Table metadata and the Connection object for executing SQL constructs."
+    },
+    {
+        "query": "How do you define relationships between tables using SQLAlchemy?",
+        "ground_truth": [
+            "relationship",
+            "ForeignKey",
+            "RelationshipProperty"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The relationship() function creates a RelationshipProperty connecting mapped classes, heavily relying on ForeignKey declarations on the underlying tables to infer join conditions."
+    },
+    {
+        "query": "What is the role of the 'sessionmaker' class in SQLAlchemy?",
+        "ground_truth": [
+            "sessionmaker",
+            "Session"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The sessionmaker class is a factory that generates customized Session classes with pre-configured engines and transaction behaviors."
+    },
+    {
+        "query": "How does SQLAlchemy handle transactions?",
+        "ground_truth": [
+            "Session",
+            "Transaction",
+            "SessionTransaction"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Transactions are handled via the Transaction object in Core and the SessionTransaction object in ORM, normally managed automatically through the Session's begin/commit/rollback methods."
+    },
+    {
+        "query": "What is the purpose of the 'declarative_base' function?",
+        "ground_truth": [
+            "declarative_base",
+            "DeclarativeMeta",
+            "registry"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The declarative_base function generates a base class using the DeclarativeMeta metaclass, which registers subclasses to a central registry mapping Python classes to Table objects."
+    },
+    {
+        "query": "How can I perform a join operation using SQLAlchemy's ORM?",
+        "ground_truth": [
+            "join",
+            "outerjoin",
+            "Select"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Joins are performed by calling the join() or outerjoin() methods on a Select object, referencing mapped classes and their relationship attributes."
+    },
+    {
+        "query": "What are some common exceptions raised by SQLAlchemy?",
+        "ground_truth": [
+            "SQLAlchemyError",
+            "IntegrityError",
+            "OperationalError",
+            "StatementError"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "SQLAlchemyError is the base exception, with specific database driver errors wrapped in subclasses like IntegrityError (constraint violations) and OperationalError (connection drops)."
+    },
+    {
+        "query": "How do you execute raw SQL queries in SQLAlchemy?",
+        "ground_truth": [
+            "text",
+            "execute",
+            "Connection",
+            "Session"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Raw SQL strings must be wrapped in the text() construct before being passed to the execute() method of a Session or Connection to ensure safe parameter binding."
+    },
+    {
+        "query": "What is the use of the 'Column' class in defining tables?",
+        "ground_truth": [
+            "Column",
+            "mapped_column",
+            "Table"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Column class defines individual fields and their SQL types within a Table. In SQLAlchemy 2.0, mapped_column() is commonly used for declarative ORM definitions."
+    },
+    {
+        "query": "How does SQLAlchemy handle date and time types?",
+        "ground_truth": [
+            "DateTime",
+            "Date",
+            "Time",
+            "Interval"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "SQLAlchemy maps Python datetime modules to native database types using column types like DateTime, Date, Time, and Interval, bridging dialect-specific implementations."
+    },
+    {
+        "query": "What is the purpose of the 'func' object in SQLAlchemy?",
+        "ground_truth": [
+            "func",
+            "Function",
+            "FunctionElement"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The func object is a generator for database-specific SQL functions (like count, max, current_timestamp), returning Function/FunctionElement instances for the query AST."
+    },
+    {
+        "query": "How can I filter query results using conditions in SQLAlchemy?",
+        "ground_truth": [
+            "where",
+            "filter",
+            "filter_by",
+            "Select"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Filtering is achieved by appending conditions using the where() or filter() methods on a Select construct, or the legacy filter_by() method for keyword arguments."
+    },
+    {
+        "query": "What are some best practices for optimizing SQLAlchemy queries?",
+        "ground_truth": [
+            "selectinload",
+            "joinedload",
+            "subqueryload",
+            "lazyload"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Optimizing ORM queries usually involves mitigating the N+1 problem by defining explicit eager loading strategies like selectinload or joinedload for related objects."
+    },
+    {
+        "query": "How do you validate data before inserting it into a database with SQLAlchemy?",
+        "ground_truth": [
+            "validates",
+            "MapperEvents"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The @validates decorator intercepts attribute assignment on ORM models, while lower-level MapperEvents can be hooked to validate state before flush/insert."
+    },
+    {
+        "query": "What is the role of the 'event' system in SQLAlchemy?",
+        "ground_truth": [
+            "listen",
+            "listens_for",
+            "ConnectionEvents",
+            "MapperEvents"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The event system uses listen() or @listens_for decorators to attach user-defined callbacks to core hooks like ConnectionEvents (for engine/connection lifecycles) or MapperEvents (for ORM state changes)."
+    }
+]
