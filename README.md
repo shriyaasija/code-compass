@@ -1,223 +1,253 @@
 # 🧭 Code Compass
 
-**AI-powered codebase Q&A** — Ask natural language questions about any GitHub repository and get intelligent, context-aware answers powered by local LLMs.
+**Repository-level code retrieval via learned tree search.**
 
-Code Compass uses a **tree-based semantic search** (PageIndex) to navigate code hierarchies and an LLM to generate detailed answers with exact file/line references.
+Code Compass navigates codebases the way developers do — by searching the hierarchy. It applies **Monte Carlo Tree Search (MCTS)** over tree-sitter ASTs, guided by a lightweight learned prior that replaces expensive LLM calls at internal nodes. The LLM is invoked only at leaf nodes for final verification, reducing token consumption by up to 56%.
 
----
-
-## ✨ Features
-
-- 🌳 **Tree-Based Search** — Hierarchical code navigation using PageIndex JSON trees
-- 🤖 **Local LLM Support** — Choose between **Ollama** or **LM Studio** (your data never leaves your machine)
-- 🔍 **Smart Code Retrieval** — LLM scores relevance at each tree level, only fetching what matters
-- 💬 **Conversational Interface** — Streamlit chat UI for asking questions about codebases
-- 📦 **GitHub Integration** — Clone and analyze any public repository
-- 🎯 **Needle-in-Haystack Prompting** — Advanced prompting for accurate long-context answers
+> 📄 **Research paper:** [`paper.md`](paper.md) — *Code Compass: Navigating Repository-Scale Codebases via Learned Tree Search*
 
 ---
 
-## 📁 Project Structure
+## Architecture
+
+```
+Query: "How do I authenticate?"
+         │
+         ▼
+┌──────────────────────────────────────┐
+│        PUCT-MCTS Search Engine       │
+│                                      │
+│  Selection ──→ Expansion ──→ Simulation
+│  (PUCT)       (tree-sitter)   Prior MLP (internal nodes)
+│                                LLM (leaf nodes only)
+│       ↑                              │
+│  Backpropagation ←───────────────────┘
+│       │
+│  Online Prior Adaptation             │
+│  (1 gradient step from visit counts) │
+└──────────────────────────────────────┘
+         │
+         ▼
+  Ranked code functions with file paths + line numbers
+```
+
+### Key Idea
+
+| Component | Role | Cost |
+|-----------|------|------|
+| **Relevance Prior** (MLP, 200K params) | Scores internal nodes (folders, files, classes) | ~0.1ms |
+| **LLM** (7B, local) | Scores leaf nodes (functions, methods) | ~2–5s |
+| **MCTS** | Balances exploration vs exploitation | UCB1/PUCT |
+| **Online Adaptation** | Updates prior after each query from visit counts | ~0.1ms |
+
+---
+
+## Project Structure
 
 ```
 code-compass/
 ├── backend/
-│   ├── api.py                 # FastAPI server (main entry point)
-│   ├── ollama_client.py       # Ollama LLM client
-│   ├── lmstudio_client.py     # LM Studio LLM client
-│   ├── code_index.py          # Tree-based search engine
-│   ├── retrieval.py           # Code retrieval & LLM response generation
-│   ├── code_parser.py         # Code parsing utilities
-│   └── semantic_search.py     # Semantic search module
+│   ├── api.py                        # FastAPI server
+│   ├── code_index.py                 # Greedy tree search (baseline)
+│   ├── code_index2.py                # MCTS tree search integration
+│   ├── lmstudio_client.py            # LM Studio LLM client
+│   ├── ollama_client.py              # Ollama LLM client
+│   ├── code_parser.py                # tree-sitter code parsing
+│   ├── tree_builder.py               # Directory → tree construction
+│   ├── retrieval.py                  # Code retrieval + LLM response
+│   ├── pageindex_semantic_search.py  # Dense baseline (PageIndex)
+│   └── semantic_search.py            # Embedding-based search
+│
+├── research/
+│   ├── mcts/
+│   │   ├── mcts_node.py              # MCTSNode with UCB1 + PUCT scoring
+│   │   ├── mcts_search.py            # Baseline MCTS (LLM at every node)
+│   │   ├── puct_search.py            # PUCT-MCTS with learned prior
+│   │   ├── relevance_prior.py        # Prior MLP (200K params)
+│   │   ├── simulation.py             # LLM simulation bridge
+│   │   ├── test_mcts_node.py         # Unit tests for MCTSNode
+│   │   ├── test_mcts_search.py       # Integration tests for MCTS
+│   │   ├── test_ucb1.py              # Mathematical correctness tests
+│   │   └── prior.pt                  # Trained prior weights
+│   │
+│   └── rl_index/
+│       ├── env.py                    # Gymnasium environment for tree mutations
+│       ├── tree_mutations.py         # Merge / Split / Reparent operations
+│       ├── tree_state.py             # State extraction for RL agent
+│       ├── reward.py                 # MRR-based reward computation
+│       ├── train_ppo.py              # PPO training script
+│       └── offline_trainer.py        # Batch RL training pipeline
+│
 ├── frontend/
-│   └── app.py                 # Streamlit UI
-├── mock_repository/           # Sample repo for testing
-├── mock_pageindex_tree.json   # Sample PageIndex JSON for demo
-├── requirements.txt           # Core dependencies
-└── requirements2.txt          # Additional dependencies (tree-sitter)
+│   └── app.py                        # Streamlit chat UI
+│
+├── benchmark.py                      # Full benchmark pipeline (Dense + Tree + MCTS)
+├── run_puct_evaluation.py            # PUCT vs Baseline MCTS evaluation
+├── run_full_pipeline.py              # End-to-end: prepare → RL train → MCTS eval
+├── prepare_proper_trees.py           # Clone repos → tree-sitter → summarize → embed
+├── build_prior_training_data.py      # Generate (query, node, label) training pairs
+├── train_prior.py                    # Train the relevance prior MLP
+├── train_offline_rl.py               # Offline RL for tree restructuring
+├── paper.md                          # Research paper draft
+└── requirements.txt
 ```
 
 ---
 
-## 🚀 Getting Started
+## Quick Start
 
 ### Prerequisites
 
-- **Python 3.10+**
-- **Conda** (recommended) or **pip**
-- An LLM provider (choose one):
-  - [Ollama](https://ollama.com/) — lightweight, CLI-based
-  - [LM Studio](https://lmstudio.ai/) — GUI-based, easy model management
+- Python 3.10+
+- An LLM provider:
+  - [LM Studio](https://lmstudio.ai/) (recommended — GUI, local, OpenAI-compatible)
+  - [Ollama](https://ollama.com/) (CLI-based)
 
-### 1. Clone the Repository
+### Setup
 
 ```bash
 git clone https://github.com/shriyaasija/code-compass.git
 cd code-compass
-```
 
-### 2. Create & Activate Conda Environment
+python -m venv venv
+source venv/bin/activate
 
-```bash
-conda create -n codecompass python=3.11 -y
-conda activate codecompass
-```
-
-### 3. Install Dependencies
-
-```bash
 pip install -r requirements.txt
-pip install -r requirements2.txt
 ```
 
-### 4. Set Up Your LLM Provider
-
-#### Option A: Ollama
+### Run the Application (Chat UI)
 
 ```bash
-# Install Ollama (macOS)
-brew install ollama
+# Terminal 1: Start LM Studio and load a model, then start its server on localhost:1234
 
-# Start Ollama server
-ollama serve
-
-# Pull a model (in a separate terminal)
-ollama pull qwen3:8b
-```
-
-#### Option B: LM Studio
-
-1. Download and install [LM Studio](https://lmstudio.ai/)
-2. Open LM Studio → Search and download a model (e.g., Llama 3.1 8B Instruct)
-3. Go to the **Local Server** tab (left sidebar)
-4. Click **Start Server** — it runs on `http://localhost:1234`
-
----
-
-## ▶️ Running the Application
-
-### Step 1: Start the Backend API
-
-**With Ollama (default):**
-```bash
-conda activate codecompass
-python -m backend.api
-```
-
-**With LM Studio:**
-```bash
-conda activate codecompass
+# Terminal 2: Start backend
 LLM_PROVIDER=lmstudio python -m backend.api
-```
 
-The API server starts on `http://localhost:8000`.
-
-### Step 2: Start the Frontend (new terminal)
-
-```bash
-conda activate codecompass
+# Terminal 3: Start frontend
 streamlit run frontend/app.py
 ```
 
-The Streamlit UI opens at `http://localhost:8501`.
-
-### Step 3: Use the App
-
-1. In the Streamlit sidebar, select your **LLM Provider** (Ollama or LM Studio)
-2. Switch to **Demo** mode to test with the included mock repository
-3. Set the **Repository Path** to `./mock_repository`
-4. Set the **PageIndex JSON Path** to `./mock_pageindex_tree.json`
-5. Click **Initialize**
-6. Ask questions like:
-   - *"How do I train the model?"*
-   - *"What is the CNN architecture?"*
-   - *"How to preprocess images?"*
+Open `http://localhost:8501`, initialize with `./mock_repository` and `./mock_pageindex_tree.json`, and ask questions.
 
 ---
 
-## ⚙️ Configuration
+## Research Pipeline
 
-### Environment Variables
+### Step 1: Prepare Benchmark Data
 
-| Variable | Values | Default | Description |
-|---|---|---|---|
-| `LLM_PROVIDER` | `ollama`, `lmstudio` | `ollama` | Which LLM backend to use |
-
-### Ollama Configuration
-
-- **Default URL:** `http://localhost:11434`
-- **Default Model:** `qwen3:8b`
-- Change the model in `backend/api.py` line where `OllamaLLM(model=...)` is called
-
-### LM Studio Configuration
-
-- **Default URL:** `http://localhost:1234`
-- **Model:** Auto-detected from loaded model in LM Studio
-- Just load any model in LM Studio and start the server — Code Compass picks it up automatically
-
----
-
-## 🔌 API Endpoints
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/initialize` | Load a repository and its PageIndex JSON |
-| `POST` | `/query` | Ask a question about the loaded repo |
-| `GET` | `/search/{repo_id}?query=...` | Search without LLM response |
-| `GET` | `/health` | Health check & provider status |
-| `GET` | `/repos` | List loaded repositories |
-| `DELETE` | `/cleanup/{repo_id}` | Remove a repo from memory |
-| `POST` | `/cleanup_all` | Remove all repos from memory |
-
-### Example API Calls
+Downloads CodeSearchNet repos, parses with tree-sitter, generates LLM summaries, embeds.
 
 ```bash
-# Initialize a repo
-curl -X POST http://localhost:8000/initialize \
-  -H "Content-Type: application/json" \
-  -d '{
-    "repo_path": "./mock_repository",
-    "json_tree_path": "./mock_pageindex_tree.json",
-    "repo_id": "mock_ml_classifier"
-  }'
+# Prepare flat trees (for Dense + Greedy baselines)
+python benchmark.py --mode prepare --num-repos 25 --provider lmstudio
 
-# Ask a question
-curl -X POST http://localhost:8000/query \
-  -H "Content-Type: application/json" \
-  -d '{
-    "repo_id": "mock_ml_classifier",
-    "user_query": "How do I train the model?"
-  }'
+# Build proper trees with full AST hierarchy
+python prepare_proper_trees.py --provider lmstudio --num-repos 25
+```
 
-# Check health
-curl http://localhost:8000/health
+### Step 2: Train the Relevance Prior
+
+```bash
+# Generate training pairs from the 19 training repos
+python build_prior_training_data.py
+
+# Train the MLP (15 epochs, ~2 minutes on GPU)
+python train_prior.py --epochs 15 --lr 1e-3
+```
+
+### Step 3: Evaluate
+
+```bash
+# Dense + Greedy-Tree baselines
+python benchmark.py --mode full --provider lmstudio --skip-prepare
+
+# PUCT-MCTS vs Baseline MCTS (on 5 test repos)
+python run_puct_evaluation.py --provider lmstudio --max-queries 15
+
+# Full pipeline: RL training + MCTS comparison
+python run_full_pipeline.py --step all --provider lmstudio --timesteps 5000
 ```
 
 ---
 
-## 🛠️ Troubleshooting
+## Results Summary
 
-| Issue | Solution |
-|---|---|
-| `ollama serve` fails | Make sure Ollama is installed: `brew install ollama` |
-| `ConnectionError: Ollama server not accessible` | Run `ollama serve` in a separate terminal |
-| `ConnectionError: LM Studio server not accessible` | Open LM Studio → Local Server → Start Server |
-| `streamlit: command not found` | Run with `python -m streamlit run frontend/app.py` |
-| `ModuleNotFoundError` | Make sure your conda env is activated: `conda activate codecompass` |
-| Empty LLM responses | Try a different/larger model or lower the search threshold |
+Evaluated on 5 held-out test repositories (75 queries) from CodeSearchNet:
+
+| Method | MRR | LLM Calls/q | Latency |
+|--------|-----|-------------|---------|
+| Dense Baseline | **0.975** | 0 | ~50ms |
+| Greedy-Tree (LLM) | 0.650 | 2.0 | ~800ms |
+| Baseline MCTS (LLM) | 0.075 | 7.56 | 31.6s |
+| **PUCT-MCTS (Ours)** | 0.018 | **6.17** | **15.9s** |
+
+**Key finding:** PUCT-MCTS reduces LLM calls by 18% and latency by 49% vs Baseline MCTS. Dense retrieval dominates on CodeSearchNet's clean docstring queries; we expect structural search to show advantage on larger repos with naturalistic queries (see paper §7).
 
 ---
 
-## 🏗️ Tech Stack
+## Tests
 
+```bash
+# Run MCTS unit tests (19 tests)
+python -m pytest research/mcts/ -v
+
+# Key test files:
+#   test_mcts_node.py    — UCB1 math, tree operations, PUCT scoring
+#   test_mcts_search.py  — Integration tests with MockLLM
+#   test_ucb1.py         — Mathematical correctness of exploration formula
+```
+
+---
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/initialize` | Load repository + PageIndex tree |
+| `POST` | `/query` | Ask a question about a loaded repo |
+| `GET` | `/search/{repo_id}?query=...` | Search without LLM response |
+| `GET` | `/health` | Health check + provider status |
+| `GET` | `/repos` | List loaded repositories |
+
+---
+
+## Configuration
+
+| Variable | Values | Default | Description |
+|----------|--------|---------|-------------|
+| `LLM_PROVIDER` | `ollama`, `lmstudio` | `ollama` | LLM backend |
+
+**LM Studio:** Load any model → Local Server → Start Server (port 1234).  
+**Ollama:** `ollama serve` + `ollama pull qwen3:8b`.
+
+---
+
+## Tech Stack
+
+- **Search:** MCTS with UCB1/PUCT selection
+- **Prior:** PyTorch MLP (200K params, all-MiniLM-L6-v2 embeddings)
+- **Parsing:** tree-sitter (Python, extensible to JS/Java/Go/Rust)
 - **Backend:** FastAPI + Uvicorn
 - **Frontend:** Streamlit
-- **LLM Providers:** Ollama / LM Studio (OpenAI-compatible API)
-- **Code Parsing:** tree-sitter
-- **Search:** Custom tree-based traversal with LLM scoring
+- **LLM:** LM Studio / Ollama (local inference, OpenAI-compatible)
+- **RL:** Gymnasium + Stable Baselines 3 (sb3-contrib for MaskablePPO)
+- **Evaluation:** CodeSearchNet (Python partition)
 
 ---
 
-## 📝 License
+## Citation
 
-This project is for educational and hackathon purposes.
+```bibtex
+@article{codecompass2026,
+  title={Code Compass: Navigating Repository-Scale Codebases via Learned Tree Search},
+  author={Anonymous},
+  year={2026},
+  note={Under review}
+}
+```
+
+---
+
+## License
+
+This project is for educational and research purposes.
