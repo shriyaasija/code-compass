@@ -1,0 +1,102 @@
+[
+    {
+        "repo_id": "psf__requests",
+        "repo_name": "psf/requests",
+        "category": "large",
+        "tree_path": "devquery_bench/trees/psf__requests.json",
+        "repo_path": "devquery_bench/cloned_repos/psf__requests",
+        "num_functions": 614,
+        "tree_depth": 5,
+        "total_nodes": 811
+    },
+    {
+        "repo_id": "encode__httpx",
+        "repo_name": "encode/httpx",
+        "category": "large",
+        "tree_path": "devquery_bench/trees/encode__httpx.json",
+        "repo_path": "devquery_bench/cloned_repos/encode__httpx",
+        "num_functions": 893,
+        "tree_depth": 5,
+        "total_nodes": 1117
+    },
+    {
+        "repo_id": "pallets__flask",
+        "repo_name": "pallets/flask",
+        "category": "large",
+        "tree_path": "devquery_bench/trees/pallets__flask.json",
+        "repo_path": "devquery_bench/cloned_repos/pallets__flask",
+        "num_functions": 787,
+        "tree_depth": 8,
+        "total_nodes": 1123
+    },
+    {
+        "repo_id": "aio-libs__aiohttp",
+        "repo_name": "aio-libs/aiohttp",
+        "category": "medium",
+        "tree_path": "devquery_bench/trees/aio-libs__aiohttp.json",
+        "repo_path": "devquery_bench/cloned_repos/aio-libs__aiohttp",
+        "num_functions": 4369,
+        "tree_depth": 5,
+        "total_nodes": 5184
+    },
+    {
+        "repo_id": "pytest-dev__pytest",
+        "repo_name": "pytest-dev/pytest",
+        "category": "medium",
+        "tree_path": "devquery_bench/trees/pytest-dev__pytest.json",
+        "repo_path": "devquery_bench/cloned_repos/pytest-dev__pytest",
+        "num_functions": 4670,
+        "tree_depth": 8,
+        "total_nodes": 5774
+    },
+    {
+        "repo_id": "pallets__click",
+        "repo_name": "pallets/click",
+        "category": "small",
+        "tree_path": "devquery_bench/trees/pallets__click.json",
+        "repo_path": "devquery_bench/cloned_repos/pallets__click",
+        "num_functions": 815,
+        "tree_depth": 6,
+        "total_nodes": 1062
+    },
+    {
+        "repo_id": "docopt__docopt",
+        "repo_name": "docopt/docopt",
+        "category": "small",
+        "tree_path": "devquery_bench/trees/docopt__docopt.json",
+        "repo_path": "devquery_bench/cloned_repos/docopt__docopt",
+        "num_functions": 99,
+        "tree_depth": 4,
+        "total_nodes": 152
+    },
+    {
+        "repo_id": "keleshev__schema",
+        "repo_name": "keleshev/schema",
+        "category": "small",
+        "tree_path": "devquery_bench/trees/keleshev__schema.json",
+        "repo_path": "devquery_bench/cloned_repos/keleshev__schema",
+        "num_functions": 168,
+        "tree_depth": 4,
+        "total_nodes": 202
+    },
+    {
+        "repo_id": "pytoolz__toolz",
+        "repo_name": "pytoolz/toolz",
+        "category": "small",
+        "tree_path": "devquery_bench/trees/pytoolz__toolz.json",
+        "repo_path": "devquery_bench/cloned_repos/pytoolz__toolz",
+        "num_functions": 360,
+        "tree_depth": 5,
+        "total_nodes": 459
+    },
+    {
+        "repo_id": "kennethreitz__records",
+        "repo_name": "kennethreitz/records",
+        "category": "small",
+        "tree_path": "devquery_bench/trees/kennethreitz__records.json",
+        "repo_path": "devquery_bench/cloned_repos/kennethreitz__records",
+        "num_functions": 82,
+        "tree_depth": 4,
+        "total_nodes": 110
+    }
+]
