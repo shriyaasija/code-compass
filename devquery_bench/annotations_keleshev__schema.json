@@ -1,0 +1,200 @@
+[
+    {
+        "query": "How does the schema library handle JSON validation?",
+        "ground_truth": [
+            "Schema"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Schema class is the primary terminal node for all validation logic, including data structures typically parsed from JSON."
+    },
+    {
+        "query": "What is the purpose of the LICENSE-MIT file in this repository?",
+        "ground_truth": [
+            "LICENSE-MIT"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "LICENSE-MIT is a terminal file node containing the legal permissions and limitations for using the software."
+    },
+    {
+        "query": "Where can I find information about the release history of this library?",
+        "ground_truth": [
+            "README.rst"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "In this repository, release information and version history are typically maintained within the terminal README.rst file."
+    },
+    {
+        "query": "How does the library manage default values for optional fields?",
+        "ground_truth": [
+            "Optional"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Optional class is the terminal node that wraps keys and stores the 'default' value used when a key is missing during validation."
+    },
+    {
+        "query": "What mechanisms are used to ensure API keys are validated before processing requests?",
+        "ground_truth": [
+            "Schema",
+            "Regex",
+            "And"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Validation of specific strings like API keys is achieved by combining the Schema class with Regex patterns or And constraints."
+    },
+    {
+        "query": "What strategies does the schema library employ to handle complex nested schemas?",
+        "ground_truth": [
+            "Schema"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Schema class handles nesting by allowing other Schema instances or complex dictionaries as arguments, processed recursively."
+    },
+    {
+        "query": "How does the library handle error reporting and provide user-friendly messages?",
+        "ground_truth": [
+            "SchemaError",
+            "SchemaWrongKeyError",
+            "SchemaMissingKeyError"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "These exception classes are terminal nodes that capture validation failures and generate descriptive error strings."
+    },
+    {
+        "query": "What is the role of the MANIFEST.in file in this project?",
+        "ground_truth": [
+            "MANIFEST.in"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "MANIFEST.in is a terminal configuration file that specifies which non-code files (like README or LICENSE) are included in the source distribution."
+    },
+    {
+        "query": "How can I contribute to improving the schema validation library?",
+        "ground_truth": [
+            "README.rst"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Contribution guidelines and project contact information are found within the terminal README.rst file."
+    },
+    {
+        "query": "What are some common use cases for this data validation library?",
+        "ground_truth": [
+            "README.rst"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The README.rst file serves as the terminal documentation node detailing typical scenarios like config file or API response validation."
+    },
+    {
+        "query": "Where can I find examples of how to use the schema library in real-world applications?",
+        "ground_truth": [
+            "README.rst",
+            "test_schema.py"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Usage examples are provided in the documentation (README.rst) and through comprehensive test cases in the test_schema.py terminal file."
+    },
+    {
+        "query": "How does the library support inheritance and optional fields?",
+        "ground_truth": [
+            "Optional",
+            "Schema"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Optional handles missing-key logic, while Schema's structure allows for object composition that mimics inheritance patterns."
+    },
+    {
+        "query": "What is the significance of the test_mypy_use_callable_default_ignore_inherited_schema_validate_kwargs function?",
+        "ground_truth": [
+            "test_mypy_use_callable_default_ignore_inherited_schema_validate_kwargs"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "This is a specific standalone terminal test function that verifies Mypy compatibility and the behavior of callable defaults in inherited schemas."
+    },
+    {
+        "query": "How does the schema library ensure backward compatibility with older versions?",
+        "ground_truth": [
+            "Schema"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The library maintains a stable API in the Schema terminal class, ensuring that valid older definitions continue to function across updates."
+    },
+    {
+        "query": "What tools or frameworks are integrated with this data validation library?",
+        "ground_truth": [
+            "README.rst"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Integrations and compatible ecosystem tools are listed in the terminal documentation file, README.rst."
+    },
+    {
+        "query": "How can I use regular expressions to validate strings in the schema library?",
+        "ground_truth": [
+            "Regex"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Regex class is the terminal node specifically designed to match string data against regular expression patterns during validation."
+    },
+    {
+        "query": "What is the impact of using JSON Schema literals with enums on validation?",
+        "ground_truth": [
+            "Or",
+            "And",
+            "Const"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Enum-like validation is handled by terminal classes like Or (for choices), And (for constraints), or Const (for fixed literals)."
+    },
+    {
+        "query": "How does the schema library handle issues related to key comparison and ordering?",
+        "ground_truth": [
+            "Schema"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The core dictionary-traversal logic within the Schema terminal class defines how keys are compared and whether ordering affects the result."
+    },
+    {
+        "query": "What role does the test_nice_errors function play in ensuring error messages are user-friendly?",
+        "ground_truth": [
+            "test_nice_errors"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "This is a standalone terminal test function that specifically validates the clarity and helpfulness of error strings produced by the library."
+    }
+]

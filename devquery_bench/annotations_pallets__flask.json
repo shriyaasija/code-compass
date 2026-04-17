@@ -1,0 +1,196 @@
+[
+    {
+        "query": "How does Flask handle request routing?",
+        "ground_truth": [
+            "Flask",
+            "Blueprint",
+            "url_for"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Flask and Blueprint classes (inheriting from Scaffold) handle the registration of routes via decorators, while url_for is the terminal function for generating URLs based on these routes."
+    },
+    {
+        "query": "What is the purpose of the 'before_request' decorator in Flask?",
+        "ground_truth": [
+            "Scaffold"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Scaffold is the terminal class that defines the before_request decorator logic, which is then utilized by both the Flask application and Blueprints."
+    },
+    {
+        "query": "How does Flask manage session data?",
+        "ground_truth": [
+            "SessionInterface",
+            "SecureCookieSessionInterface"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "SessionInterface is the abstract terminal node for session backends, and SecureCookieSessionInterface is the default implementation that handles signed cookie storage."
+    },
+    {
+        "query": "Where can I find the documentation for Flask?",
+        "ground_truth": [
+            "README.rst"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "README.rst is the terminal file node providing the primary entry point for documentation, installation, and community links."
+    },
+    {
+        "query": "How does Flask handle template rendering?",
+        "ground_truth": [
+            "render_template",
+            "render_template_string"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "These are the two primary standalone terminal functions used to invoke the Jinja2 engine and return rendered HTML responses."
+    },
+    {
+        "query": "What is the role of the 'flask.app' module?",
+        "ground_truth": [
+            "Flask"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The flask.app module contains the Flask class, which is the central terminal node representing the entire WSGI application."
+    },
+    {
+        "query": "How does Flask handle error handling?",
+        "ground_truth": [
+            "Scaffold",
+            "Flask"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Scaffold defines the errorhandler decorator, and the Flask class manages the core dispatching of exceptions to registered handlers."
+    },
+    {
+        "query": "Where are Flask extensions typically installed?",
+        "ground_truth": [
+            "Flask",
+            "README.rst"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Flask class manages the internal extensions registry, while README.rst explains how to discover and install third-party extension packages."
+    },
+    {
+        "query": "What is the significance of the 'app.config' dictionary in Flask?",
+        "ground_truth": [
+            "Config"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Config is the terminal class that handles the loading, storage, and retrieval of application-wide configuration settings."
+    },
+    {
+        "query": "How does Flask support internationalization and localization?",
+        "ground_truth": [
+            "README.rst"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Flask does not have native i18n code; the README.rst terminal node points users to the standard 'Flask-Babel' extension for these features."
+    },
+    {
+        "query": "Where can I find examples of Flask applications?",
+        "ground_truth": [
+            "examples"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The 'examples' directory is a terminal node containing various sample applications showcasing different Flask patterns."
+    },
+    {
+        "query": "How does Flask manage static files?",
+        "ground_truth": [
+            "Scaffold",
+            "send_from_directory"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Scaffold defines the static folder and URL parameters, while send_from_directory is the terminal function used to serve these files securely."
+    },
+    {
+        "query": "What is the purpose of the 'flask.cli' module?",
+        "ground_truth": [
+            "FlaskGroup",
+            "AppGroup",
+            "with_appcontext"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "These classes and functions are terminal nodes that implement the Click-based command-line interface for running and managing Flask apps."
+    },
+    {
+        "query": "How does Flask handle request methods like POST and GET?",
+        "ground_truth": [
+            "Request",
+            "Flask"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Request class exposes the HTTP method, and the Flask class handles the dispatching of requests to view functions based on those methods."
+    },
+    {
+        "query": "What is the role of the 'flask.json' module in Flask?",
+        "ground_truth": [
+            "JSONProvider",
+            "DefaultJSONProvider",
+            "jsonify"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "These terminal nodes define the JSON serialization strategy and provide the helper function for returning JSON responses."
+    },
+    {
+        "query": "Where can I find information about Flask's security features?",
+        "ground_truth": [
+            "README.rst",
+            "SecureCookieSessionInterface"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "README.rst covers general security practices, while SecureCookieSessionInterface is the terminal node implementing session security."
+    },
+    {
+        "query": "How does Flask support web forms?",
+        "ground_truth": [
+            "README.rst"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Flask lacks a native form library; the README.rst terminal node directs users to the 'Flask-WTF' extension for form handling."
+    },
+    {
+        "query": "What is the purpose of the 'flask.testing' module?",
+        "ground_truth": [
+            "FlaskClient",
+            "FlaskCliRunner"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "These are the terminal classes provided to facilitate automated testing of the application and its CLI commands."
+    }
+]

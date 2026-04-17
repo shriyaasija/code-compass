@@ -1,0 +1,198 @@
+[
+    {
+        "query": "How does the requests library handle HTTP cookies?",
+        "ground_truth": [
+            "RequestsCookieJar",
+            "cookiejar_from_dict"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "RequestsCookieJar is the terminal class for cookie storage and logic, while cookiejar_from_dict is a standalone terminal function for initialization."
+    },
+    {
+        "query": "What is the purpose of the 'verify' parameter in session requests?",
+        "ground_truth": [
+            "Session",
+            "HTTPAdapter"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The verify parameter is managed by the Session class and passed down to the HTTPAdapter terminal class for SSL verification logic."
+    },
+    {
+        "query": "How does the requests library manage connection pooling for efficiency?",
+        "ground_truth": [
+            "HTTPAdapter"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "HTTPAdapter is the terminal class that manages the connection pool (via urllib3) for each host."
+    },
+    {
+        "query": "What methods are used to encode and decode data when sending HTTP requests?",
+        "ground_truth": [
+            "PreparedRequest",
+            "get_encoding_from_headers"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "PreparedRequest is the terminal class for request encoding, and get_encoding_from_headers is a standalone terminal function for decoding response content."
+    },
+    {
+        "query": "How can I use the requests library to send a POST request with JSON data?",
+        "ground_truth": [
+            "request",
+            "Session"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "JSON handling is triggered at the entry point of the standalone request() function or within the Session terminal class."
+    },
+    {
+        "query": "What error handling mechanisms are implemented in the requests library?",
+        "ground_truth": [
+            "RequestException",
+            "HTTPError",
+            "ConnectionError"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "These are the primary terminal exception classes that define the library's error hierarchy."
+    },
+    {
+        "query": "How does the requests library handle redirects by default?",
+        "ground_truth": [
+            "SessionRedirectMixin",
+            "Session"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "SessionRedirectMixin is the terminal class containing the redirection logic used by the Session class."
+    },
+    {
+        "query": "What is the role of the 'timeout' parameter in session requests?",
+        "ground_truth": [
+            "Session",
+            "HTTPAdapter"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Timeout values are set in the Session terminal class and applied during the network call in HTTPAdapter."
+    },
+    {
+        "query": "How can I customize the headers when sending an HTTP GET request using the requests library?",
+        "ground_truth": [
+            "request",
+            "Session"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Header customization is handled at the point of entry through the standalone request() function or the Session class."
+    },
+    {
+        "query": "What function is used to check if a response was successful (HTTP status code 200)?",
+        "ground_truth": [
+            "Response"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The status check logic (ok property or raise_for_status) is encapsulated within the Response terminal class."
+    },
+    {
+        "query": "How does the requests library handle authentication for HTTPS requests?",
+        "ground_truth": [
+            "Session",
+            "HTTPBasicAuth",
+            "HTTPDigestAuth"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Authentication is managed by the Session class using specific terminal authentication classes like HTTPBasicAuth."
+    },
+    {
+        "query": "What is the purpose of the 'allow_redirects' parameter in session requests?",
+        "ground_truth": [
+            "Session",
+            "SessionRedirectMixin"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "This parameter controls the flow within the Session class and the SessionRedirectMixin terminal node."
+    },
+    {
+        "query": "How can I send an HTTP request with basic authentication using the requests library?",
+        "ground_truth": [
+            "HTTPBasicAuth",
+            "request"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "HTTPBasicAuth is the terminal class for the credential header, applied via the standalone request() function."
+    },
+    {
+        "query": "What function is used to merge hooks from different sources in the requests library?",
+        "ground_truth": [
+            "dispatch_hook"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "dispatch_hook is the standalone terminal function responsible for executing event hooks."
+    },
+    {
+        "query": "How does the requests library handle response encoding based on headers?",
+        "ground_truth": [
+            "Response",
+            "get_encoding_from_headers"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Response is the terminal class that uses the get_encoding_from_headers standalone function to determine the text charset."
+    },
+    {
+        "query": "What is the role of the 'stream' parameter in session requests?",
+        "ground_truth": [
+            "Session",
+            "Response"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Streaming is initiated in the Session class and affects how the Response terminal node manages content retrieval."
+    },
+    {
+        "query": "How can I use the requests library to send a multipart/form-data request?",
+        "ground_truth": [
+            "PreparedRequest",
+            "request"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The PreparedRequest terminal class handles the multipart body generation when called from the request() entry point."
+    },
+    {
+        "query": "What error handling mechanisms are implemented for SSL certificate verification?",
+        "ground_truth": [
+            "SSLError"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "SSLError is the primary terminal exception class for all SSL-related validation failures."
+    }
+]

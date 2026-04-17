@@ -1,0 +1,192 @@
+[
+    {
+        "query": "How does the library handle database connections?",
+        "ground_truth": [
+            "Database"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Database class is the central terminal node that wraps SQLAlchemy's engine and manages the lifecycle of database connections."
+    },
+    {
+        "query": "What function is used to execute raw SQL queries?",
+        "ground_truth": [
+            "Database"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "While query() is the specific method, under MCTS rules, the Database class is the terminal node that contains the execution logic for raw SQL."
+    },
+    {
+        "query": "Where can I find examples of how to use the records library?",
+        "ground_truth": [
+            "README.rst"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "README.rst is the terminal file node containing the 'Quickstart' and 'Usage' examples for the library."
+    },
+    {
+        "query": "How do you validate API keys in the library?",
+        "ground_truth": [],
+        "skipped": true,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The records library is a SQL utility and does not contain logic for API key validation; this query is out of scope for the repository."
+    },
+    {
+        "query": "What method is used to retrieve all table names from a database?",
+        "ground_truth": [
+            "Database"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The get_table_names logic is encapsulated within the Database terminal class."
+    },
+    {
+        "query": "How can you convert query results into JSON format?",
+        "ground_truth": [
+            "RecordCollection"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "RecordCollection is the terminal class that provides export capabilities (via tablib) to formats like JSON, CSV, and YAML."
+    },
+    {
+        "query": "What function raises an error if more than one result is found?",
+        "ground_truth": [
+            "RecordCollection"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The logic for methods like one(), which ensures a single result, is located within the RecordCollection terminal node."
+    },
+    {
+        "query": "Where are the tests for the records library located?",
+        "ground_truth": [
+            "test_records.py"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "test_records.py is the terminal file node containing the test suite for verifying library functionality."
+    },
+    {
+        "query": "How does the records library handle exceptions?",
+        "ground_truth": [
+            "Database",
+            "RecordCollection"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The library primarily allows SQLAlchemy exceptions to bubble up or wraps them during query execution within these classes."
+    },
+    {
+        "query": "What method is used to fetch the first row of a query result?",
+        "ground_truth": [
+            "RecordCollection"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Fetching operations like first() are implemented within the RecordCollection terminal class."
+    },
+    {
+        "query": "How can you export data from the database into CSV format?",
+        "ground_truth": [
+            "RecordCollection"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The CSV export functionality is part of the RecordCollection class's integration with the tablib library."
+    },
+    {
+        "query": "What function is responsible for initializing the database engine?",
+        "ground_truth": [
+            "Database"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Database class's constructor handles the initialization of the SQLAlchemy engine."
+    },
+    {
+        "query": "How does the records library support filtering and sorting query results?",
+        "ground_truth": [
+            "Database"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Filtering and sorting are achieved through raw SQL strings passed directly to the Database class's query mechanism."
+    },
+    {
+        "query": "Where are the setup instructions for installing the records library?",
+        "ground_truth": [
+            "README.rst"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Installation instructions and basic setup are found in the terminal README.rst file."
+    },
+    {
+        "query": "How can I contribute to the development of the records library?",
+        "ground_truth": [
+            "README.rst"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Contribution information for this specific project is outlined in the terminal documentation node, README.rst."
+    },
+    {
+        "query": "What method is used to retrieve a single value from a query result?",
+        "ground_truth": [
+            "Record",
+            "RecordCollection"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Single values are accessed either via the scalar() method in RecordCollection or through index/key access in the Record terminal class."
+    },
+    {
+        "query": "How does the records library handle transactions?",
+        "ground_truth": [
+            "Database"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Database terminal class provides a transaction() context manager to handle atomic blocks of SQL execution."
+    },
+    {
+        "query": "Where can I find the license information for the records library?",
+        "ground_truth": [
+            "LICENSE"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The LICENSE file is the terminal node containing the legal terms for the project."
+    },
+    {
+        "query": "How does the records library support pagination in query results?",
+        "ground_truth": [
+            "Database"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Pagination is not a library-native feature; it is handled by the user providing SQL with LIMIT and OFFSET to the Database class."
+    }
+]

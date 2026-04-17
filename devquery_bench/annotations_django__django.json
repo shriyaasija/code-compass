@@ -1,0 +1,205 @@
+[
+    {
+        "query": "How does Django handle database transactions?",
+        "ground_truth": [
+            "atomic",
+            "Atomic",
+            "BaseDatabaseWrapper"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "atomic() and Atomic represent the core transaction APIs, while BaseDatabaseWrapper handles the database connection and transaction state."
+    },
+    {
+        "query": "What is the purpose of middleware in Django?",
+        "ground_truth": [
+            "BaseHandler",
+            "MiddlewareMixin"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "BaseHandler is responsible for the overall request/response flow including middleware execution, while MiddlewareMixin is the base class for old-style middleware components."
+    },
+    {
+        "query": "How can you customize authentication in Django?",
+        "ground_truth": [
+            "AbstractBaseUser",
+            "PermissionsMixin",
+            "BaseUserManager"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "AbstractBaseUser and PermissionsMixin are the foundational models for custom user definitions, managed by BaseUserManager."
+    },
+    {
+        "query": "What is the role of template inheritance in Django?",
+        "ground_truth": [
+            "ExtendsNode",
+            "BlockNode"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "ExtendsNode and BlockNode implement the core inheritance and block overriding mechanism in Django's template engine."
+    },
+    {
+        "query": "How does Django manage sessions?",
+        "ground_truth": [
+            "SessionMiddleware",
+            "SessionBase",
+            "SessionStore"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "SessionMiddleware integrates sessions into the request flow, while SessionBase and SessionStore implement the actual session storage logic."
+    },
+    {
+        "query": "What is the process for URL routing in Django?",
+        "ground_truth": [
+            "URLResolver",
+            "URLPattern",
+            "_path"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "URLResolver and URLPattern handle the core URL pattern matching and resolution, tied together by the _path function for definition."
+    },
+    {
+        "query": "How can you create a custom management command in Django?",
+        "ground_truth": [
+            "BaseCommand",
+            "CommandParser"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "BaseCommand provides the foundational class for all management commands, relying on CommandParser for handling CLI arguments."
+    },
+    {
+        "query": "What is the significance of context processors in Django templates?",
+        "ground_truth": [
+            "RequestContext",
+            "auth"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "RequestContext manages the template context data while auth is the primary context processor for user-related variables."
+    },
+    {
+        "query": "How does Django handle form validation?",
+        "ground_truth": [
+            "BaseForm",
+            "ValidationError"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "BaseForm implements the central form validation logic, raising ValidationError when data checks fail."
+    },
+    {
+        "query": "What is the mechanism behind Django's ORM?",
+        "ground_truth": [
+            "QuerySet",
+            "SQLCompiler",
+            "Query"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "QuerySet is the primary API for database queries, which are translated to SQL by the SQLCompiler and Query classes."
+    },
+    {
+        "query": "How does Django manage static files?",
+        "ground_truth": [
+            "StaticFilesStorage",
+            "BaseFinder"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "StaticFilesStorage defines how static files are saved, while BaseFinder handles locating them across the filesystem."
+    },
+    {
+        "query": "What is the role of middleware for security in Django?",
+        "ground_truth": [
+            "SecurityMiddleware",
+            "CsrfViewMiddleware"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "SecurityMiddleware enforces HTTP security headers, and CsrfViewMiddleware implements the CSRF protection mechanism."
+    },
+    {
+        "query": "How can you extend Django with a third-party app?",
+        "ground_truth": [
+            "Apps",
+            "AppConfig"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Apps maintains the registry of installed applications, and AppConfig configures the metadata for individual apps."
+    },
+    {
+        "query": "What is the process of model serialization and deserialization in Django?",
+        "ground_truth": [
+            "serialize",
+            "Serializer"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The serialize function is the main entry point for serialization, delegating to the base Serializer class for implementation."
+    },
+    {
+        "query": "How does Django handle caching?",
+        "ground_truth": [
+            "BaseCache",
+            "CacheHandler"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "BaseCache defines the abstract caching interface, while CacheHandler manages the active cache backends."
+    },
+    {
+        "query": "What is the mechanism behind Django's template engine?",
+        "ground_truth": [
+            "Engine",
+            "Parser"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Engine is the core evaluating context for templates, which are parsed from strings by the Parser class."
+    },
+    {
+        "query": "How can you create custom authentication backends in Django?",
+        "ground_truth": [
+            "BaseBackend",
+            "ModelBackend"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "BaseBackend defines the required interface for custom authentication, with ModelBackend providing the default implementation."
+    },
+    {
+        "query": "What is the role of settings files in Django projects?",
+        "ground_truth": [
+            "Settings",
+            "LazySettings"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Settings handles the configuration loading and attribute access, with LazySettings delaying evaluation until needed."
+    }
+]

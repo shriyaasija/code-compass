@@ -1,0 +1,189 @@
+[
+    {
+        "query": "How does docopt handle command line arguments?",
+        "ground_truth": [
+            "docopt",
+            "Pattern",
+            "parse_argv"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The docopt() function is the main entry point. Pattern is the base terminal class for the internal matching tree, and parse_argv is the standalone function that tokenizes the input."
+    },
+    {
+        "query": "What is the purpose of the README.rst file in this repository?",
+        "ground_truth": [
+            "README.rst"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "README.rst is a terminal file node containing the project overview, usage instructions, and the core philosophy of docopt."
+    },
+    {
+        "query": "How can I install the docopt package from source?",
+        "ground_truth": [
+            "setup.py"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "setup.py is the terminal file node responsible for package installation, dependency management, and distribution metadata."
+    },
+    {
+        "query": "What are the licensing terms for this project?",
+        "ground_truth": [
+            "LICENSE-MIT"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The LICENSE-MIT file is the terminal node containing the legal terms under which the software is provided."
+    },
+    {
+        "query": "Can you explain the usage pattern of docopt?",
+        "ground_truth": [
+            "docopt",
+            "parse_section",
+            "formal_usage"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The usage pattern is extracted via parse_section() and converted into a formal structure by formal_usage() before being processed by the main docopt() function."
+    },
+    {
+        "query": "Where can I find examples of how to use docopt?",
+        "ground_truth": [
+            "examples"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The 'examples' folder is a directory node containing multiple terminal script files demonstrating various CLI patterns."
+    },
+    {
+        "query": "What does the setup.py file do in a Python project?",
+        "ground_truth": [
+            "setup.py"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "setup.py is a terminal node that defines the package build process, versioning, and entry points for the library."
+    },
+    {
+        "query": "How does the test_docopt.py file verify the functionality of docopt?",
+        "ground_truth": [
+            "test_docopt.py"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "test_docopt.py is a terminal file node containing the test suite and standalone test functions for validating parsing logic."
+    },
+    {
+        "query": "What is the role of the conftest.py file in this repository?",
+        "ground_truth": [
+            "conftest.py"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "conftest.py is a terminal configuration file used by pytest to define shared fixtures or hooks for the test suite."
+    },
+    {
+        "query": "How does docopt handle options with short and long forms?",
+        "ground_truth": [
+            "Option",
+            "parse_option"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Option class is the terminal node representing options, while parse_option() is the standalone function that extracts short and long names from the help text."
+    },
+    {
+        "query": "Can you describe the process of parsing command line arguments with docopt?",
+        "ground_truth": [
+            "docopt",
+            "parse_pattern",
+            "parse_argv"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Parsing involves converting the usage string into a Pattern tree via parse_pattern() and matching it against arguments processed by parse_argv()."
+    },
+    {
+        "query": "What happens when an invalid option is used with docopt?",
+        "ground_truth": [
+            "DocoptExit"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "DocoptExit is the terminal class exception raised when command line input does not match the defined usage pattern."
+    },
+    {
+        "query": "How does docopt handle Unicode strings in command line arguments?",
+        "ground_truth": [
+            "docopt"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Unicode handling is managed at the entry point of the docopt() function to ensure compatibility across different Python versions."
+    },
+    {
+        "query": "What is the function of the match() function in docopt?",
+        "ground_truth": [
+            "Pattern"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "While match is logic, it is implemented as a method of the Pattern class. Per MCTS rules, the class Pattern is the terminal node that must be retrieved."
+    },
+    {
+        "query": "How does the formal_usage() function contribute to the documentation of docopt?",
+        "ground_truth": [
+            "formal_usage"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "formal_usage() is a standalone terminal function that simplifies and standardizes the usage string for the internal parser."
+    },
+    {
+        "query": "Can you explain how the parse_expr() function works?",
+        "ground_truth": [
+            "parse_expr"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "parse_expr() is a standalone terminal function used recursively to parse parts of the usage pattern (choices, groups, etc.)."
+    },
+    {
+        "query": "What is the purpose of the test_pattern_fix_repeating_arguments() function?",
+        "ground_truth": [
+            "test_pattern_fix_repeating_arguments"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "This is a standalone terminal test function found within the test suite that verifies logic for repeating arguments in patterns."
+    },
+    {
+        "query": "Where can I find information about contributing to this repository?",
+        "ground_truth": [
+            "README.rst"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "For this repository, contribution guidelines and links are housed within the terminal README.rst file."
+    }
+]

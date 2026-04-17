@@ -1,0 +1,200 @@
+[
+    {
+        "query": "How does Click handle command-line arguments?",
+        "ground_truth": [
+            "Argument",
+            "argument"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Argument class defines positional parameter logic, while the argument() decorator is the terminal function used to attach them to commands."
+    },
+    {
+        "query": "What is the purpose of 'click.echo' in Click applications?",
+        "ground_truth": [
+            "echo"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "echo is a standalone terminal function that provides cross-platform terminal output with support for both text and binary data."
+    },
+    {
+        "query": "How can I create a custom type in Click?",
+        "ground_truth": [
+            "ParamType"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "ParamType is the base class that must be subclassed to implement custom parameter validation and conversion logic."
+    },
+    {
+        "query": "What mechanisms does Click have for handling user input?",
+        "ground_truth": [
+            "prompt",
+            "confirm",
+            "getchar"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "These standalone functions in the termui module handle terminal-based user interaction like prompts, yes/no confirmations, and single character input."
+    },
+    {
+        "query": "How do you implement command chaining in Click?",
+        "ground_truth": [
+            "Group",
+            "group"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Command chaining is a feature of the Group class (via the 'chain' parameter), which is defined using the group() decorator."
+    },
+    {
+        "query": "What steps are involved in installing and using Click?",
+        "ground_truth": [
+            "Command",
+            "command"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Using Click involves defining entry points via the Command class and its corresponding decorator."
+    },
+    {
+        "query": "How does Click manage output formatting?",
+        "ground_truth": [
+            "HelpFormatter",
+            "echo"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "HelpFormatter is the terminal class for structure and wrapping, while echo handles the actual emission of formatted strings to the terminal."
+    },
+    {
+        "query": "What is the role of 'click.command' in defining CLI commands?",
+        "ground_truth": [
+            "command",
+            "Command"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The command() function is the decorator that instantiates the Command class to wrap a Python function as a CLI entry point."
+    },
+    {
+        "query": "How can I integrate Click with other Python libraries?",
+        "ground_truth": [
+            "Context",
+            "get_current_context"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Context holds the execution state which can be accessed via get_current_context() to pass Click-specific data to external libraries."
+    },
+    {
+        "query": "What are some advanced features of Click?",
+        "ground_truth": [
+            "MultiCommand",
+            "Context",
+            "Parameter"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "MultiCommand allows for dynamic command discovery, while Context and Parameter provide the underlying engine for complex CLI behaviors."
+    },
+    {
+        "query": "How do you handle exceptions in Click applications?",
+        "ground_truth": [
+            "ClickException",
+            "UsageError",
+            "Abort"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "ClickException is the terminal base class for all library errors, with UsageError and Abort being the standard way to stop execution gracefully."
+    },
+    {
+        "query": "What is the significance of 'click.group' in organizing commands?",
+        "ground_truth": [
+            "group",
+            "Group"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The group() decorator creates a Group instance, which is the terminal node responsible for nesting multiple commands into a hierarchy."
+    },
+    {
+        "query": "How can I create a command that accepts multiple options?",
+        "ground_truth": [
+            "Option",
+            "option"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The Option class represents the parameter logic, and multiple calls to the option() decorator register these terminal nodes with the command."
+    },
+    {
+        "query": "What are best practices for writing documentation for Click commands?",
+        "ground_truth": [
+            "HelpFormatter",
+            "Command"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Click derives documentation from Command docstrings and formats it using the HelpFormatter terminal class."
+    },
+    {
+        "query": "How does Click support asynchronous operations?",
+        "ground_truth": [
+            "Command",
+            "Context"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Click's core invocation mechanism is synchronous; async support is typically handled by wrapping the Command's invoke method or the decorated function."
+    },
+    {
+        "query": "What is the purpose of 'click.option' in defining command-line options?",
+        "ground_truth": [
+            "option",
+            "Option"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The option() decorator is the terminal function that configures an Option class instance to handle named flags and parameters."
+    },
+    {
+        "query": "How do you test Click applications?",
+        "ground_truth": [
+            "CliRunner"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "CliRunner is the terminal class provided for isolating CLI execution and capturing output for testing purposes."
+    },
+    {
+        "query": "What are some common pitfalls when using Click?",
+        "ground_truth": [
+            "Context",
+            "Parameter"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Most common pitfalls involve misunderstanding the Context lifecycle or the priority of Parameter sourcing (envvars vs defaults)."
+    }
+]
