@@ -1,74 +1,43 @@
-"""
-Bottleneck Relevance Prior for PUCT-guided MCTS.
-
-Architecture: Projects 384-d embeddings to 32-d via learned projections,
-then uses a small head. Total ~31K params (10x smaller than previous 312K).
-
-The bottleneck prevents memorisation of repo-specific embedding patterns,
-forcing the model to learn generalizable relevance features.
-
-No cosine similarity feature — naturalistic queries have intentionally low
-cosine with code summaries (high alpha). The bottleneck learns a task-specific
-projection that captures relevance differently from raw cosine.
-
-Interface:
-    forward(query_emb, node_emb) -> score in [0, 1]
-    score_children(query_emb, children_dicts) -> np.ndarray of scores
-    online_update(query_emb, visited_nodes, visit_counts)
-    save(path) / load(path)
-"""
+import math
 import os
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 import numpy as np
-from typing import List
+from typing import List, Optional, Tuple
 
 
 class RelevancePrior(nn.Module):
     """
-    Bottleneck prior for PUCT-guided MCTS tree search.
-
-    Input:  query_emb (384-d), node_emb (384-d)
-    Output: relevance score in [0, 1]
-
-    Architecture:
-        query_emb (384) -> Linear(384, 32) -> ReLU -> q  (32)
-        node_emb  (384) -> Linear(384, 32) -> ReLU -> n  (32)
-        interaction = q * n                            (32)
-        concat(q, n, interaction) = 96
-        -> Linear(96, 64) -> LayerNorm -> GELU -> Dropout(0.5)
-        -> Linear(64, 1)  -> Sigmoid
-
-    Total params: ~31K (vs 312K before)
+    Lightweight relevance prior for PUCT-guided MCTS.
+   
+    This replaces the LLM for node scoring at internal tree nodes.
+    The LLM is only called at leaf nodes (functions/methods) for final verification.
     """
 
-    def __init__(self, embed_dim: int = 384, proj_dim: int = 48, dropout: float = 0.3):
+    def __init__(self, embed_dim: int = 384):
         super().__init__()
-        self.embed_dim = embed_dim
-        self.proj_dim = proj_dim
+        input_dim = embed_dim * 3  # query + node + elem_prod (1152)
 
-        # Bottleneck projections — force generalisation
-        self.query_proj = nn.Linear(embed_dim, proj_dim)
-        self.node_proj = nn.Linear(embed_dim, proj_dim)
-
-        # Head: proj_query + proj_node + proj_interaction = proj_dim * 3
-        head_in = proj_dim * 3
-        self.head = nn.Sequential(
-            nn.Linear(head_in, 96),
-            nn.LayerNorm(96),
-            nn.GELU(),
-            nn.Dropout(dropout),
-            nn.Linear(96, 1),
+        self.net = nn.Sequential(
+            nn.Linear(input_dim, 256),
+            nn.LayerNorm(256),
+            nn.ReLU(),
+            nn.Dropout(0.4),
+            nn.Linear(256, 64),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(64, 1),
             nn.Sigmoid(),
         )
 
-        # Initialize weights
-        for m in self.modules():
-            if isinstance(m, nn.Linear):
-                nn.init.xavier_uniform_(m.weight)
-                if m.bias is not None:
-                    nn.init.zeros_(m.bias)
+        # Store embed_dim for inference
+        self.embed_dim = embed_dim
+
+        # Initialize weights with Xavier for stable training
+        for module in self.modules():
+            if isinstance(module, nn.Linear):
+                nn.init.xavier_uniform_(module.weight)
+                nn.init.zeros_(module.bias)
 
     def forward(
         self,
@@ -80,7 +49,7 @@ class RelevancePrior(nn.Module):
             query_emb: shape (D,) or (N, D)
             node_emb:  shape (D,) or (N, D)
         Returns:
-            scalar or (N,) tensor of prior probabilities in [0, 1]
+            scalar or (N,) tensor of prior probabilities
         """
         # Handle both single and batch inputs
         if query_emb.dim() == 1:
@@ -92,13 +61,8 @@ class RelevancePrior(nn.Module):
         if query_emb.shape[0] == 1 and node_emb.shape[0] > 1:
             query_emb = query_emb.expand(node_emb.shape[0], -1)
 
-        # Project to bottleneck dimension
-        q = F.relu(self.query_proj(query_emb))
-        n = F.relu(self.node_proj(node_emb))
-        interaction = q * n  # element-wise in projected space
-
-        x = torch.cat([q, n, interaction], dim=-1)
-        out = self.head(x).squeeze(-1)
+        x = torch.cat([query_emb, node_emb, query_emb * node_emb], dim=-1)
+        out = self.net(x).squeeze(-1)
 
         # If original input was 1D, return scalar
         if out.shape[0] == 1:
@@ -141,10 +105,10 @@ class RelevancePrior(nn.Module):
         """
         One gradient step using MCTS visit counts as a soft supervision signal.
         Called after each query completes.
-
+       
         visited_nodes: list of tree node dicts that were visited during search
         visit_counts:  corresponding visit counts
-
+       
         Nodes with high visit counts acted as good intermediaries — treat them
         as positive examples. Nodes with zero visits are negative examples.
         """
@@ -155,6 +119,7 @@ class RelevancePrior(nn.Module):
         visit_array = np.array(visit_counts, dtype=np.float32)
 
         # Normalize visit counts to get soft targets in [0, 1]
+        # Top-visited nodes get target close to 1, unvisited get target 0
         targets = visit_array / (visit_array.max() + 1e-8)
         targets = torch.tensor(targets, dtype=torch.float32)
 
@@ -167,6 +132,7 @@ class RelevancePrior(nn.Module):
                 node_embs.append(emb)
                 valid_mask.append(True)
             else:
+                # Placeholder for nodes without embeddings — will be masked
                 node_embs.append(np.zeros(self.embed_dim, dtype=np.float32))
                 valid_mask.append(False)
 
@@ -176,16 +142,22 @@ class RelevancePrior(nn.Module):
         if not valid_tensor.any():
             return
 
+        # Only update on nodes that have embeddings
         node_embs_tensor = node_embs_tensor[valid_tensor]
         targets = targets[valid_tensor]
         q_expanded = q_tensor.unsqueeze(0).expand(node_embs_tensor.shape[0], -1)
 
+        # Forward pass
         preds = self.forward(q_expanded, node_embs_tensor)
+
+        # BCE loss
         loss = nn.BCELoss()(preds, targets)
 
+        # Single gradient step — we DON'T want to overfit to one query
         optimizer = torch.optim.Adam(self.parameters(), lr=lr)
         optimizer.zero_grad()
         loss.backward()
+        # Clip gradients to prevent large updates from unusual queries
         torch.nn.utils.clip_grad_norm_(self.parameters(), max_norm=1.0)
         optimizer.step()
 
@@ -195,17 +167,14 @@ class RelevancePrior(nn.Module):
         torch.save({
             'state_dict': self.state_dict(),
             'embed_dim': self.embed_dim,
-            'proj_dim': self.proj_dim,
         }, path)
+        print(f"Prior saved: {path}")
 
     @classmethod
-    def load(cls, path: str, device='cpu') -> 'RelevancePrior':
+    def load(cls, path: str) -> 'RelevancePrior':
         """Load model from saved checkpoint."""
-        checkpoint = torch.load(path, map_location=device, weights_only=True)
-        model = cls(
-            embed_dim=checkpoint['embed_dim'],
-            proj_dim=checkpoint.get('proj_dim', 32),
-        )
+        checkpoint = torch.load(path, map_location='cpu', weights_only=True)
+        model = cls(embed_dim=checkpoint['embed_dim'])
         model.load_state_dict(checkpoint['state_dict'])
         model.eval()
         return model

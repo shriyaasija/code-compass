@@ -2274,5 +2274,209 @@
     "target_docstring": "class: OAuth2PasswordBearer at devquery_bench/cloned_repos\\tiangolo__fastapi\\fastapi\\security\\oauth2.py",
     "bleu1": 0.1818,
     "alpha": 0.8182
+  },
+  {
+    "query": "How does cross-validation work in scikit-learn?",
+    "ground_truth": [
+      "cross_val_score",
+      "cross_validate",
+      "KFold",
+      "StratifiedKFold"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What is the purpose of the `StandardScaler` class?",
+    "ground_truth": [
+      "StandardScaler"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How can I perform a grid search with cross-validation?",
+    "ground_truth": [
+      "GridSearchCV",
+      "ParameterGrid"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What does it mean for a model to be 'overfitting'?",
+    "ground_truth": [
+      "learning_curve",
+      "validation_curve"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "Where can I find examples of using PCA for dimensionality reduction?",
+    "ground_truth": [
+      "PCA"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How do I save and load models in scikit-learn?",
+    "ground_truth": [
+      "BaseEstimator"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What is the role of `Pipeline` in creating machine learning workflows?",
+    "ground_truth": [
+      "Pipeline",
+      "FeatureUnion",
+      "make_pipeline"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How can I handle imbalanced datasets in classification problems?",
+    "ground_truth": [
+      "resample"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What are some common evaluation metrics used in machine learning?",
+    "ground_truth": [
+      "accuracy_score",
+      "f1_score",
+      "roc_auc_score",
+      "confusion_matrix"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How does the `RandomForestClassifier` work internally?",
+    "ground_truth": [
+      "RandomForestClassifier",
+      "ForestClassifier",
+      "BaseForest"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "Where can I find more information about feature selection techniques?",
+    "ground_truth": [
+      "SelectKBest",
+      "RFE",
+      "SelectFromModel",
+      "VarianceThreshold"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How do I implement custom metrics for model evaluation?",
+    "ground_truth": [
+      "make_scorer"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What is the significance of the `fit_intercept` parameter in linear regression models?",
+    "ground_truth": [
+      "LinearRegression",
+      "Ridge",
+      "Lasso"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How does the `SVC` class handle different kernels (linear, polynomial, rbf)?",
+    "ground_truth": [
+      "SVC",
+      "BaseLibSVM"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "Where can I find more detailed documentation about ensemble methods?",
+    "ground_truth": [
+      "VotingClassifier",
+      "StackingClassifier",
+      "BaggingClassifier",
+      "AdaBoostClassifier"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How do I tune hyperparameters for a Support Vector Machine?",
+    "ground_truth": [
+      "GridSearchCV",
+      "RandomizedSearchCV",
+      "HalvingGridSearchCV"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "What is the purpose of the `LeaveOneOut` cross-validation method?",
+    "ground_truth": [
+      "LeaveOneOut"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
+  },
+  {
+    "query": "How does the `KMeans` algorithm determine cluster centers?",
+    "ground_truth": [
+      "KMeans",
+      "MiniBatchKMeans"
+    ],
+    "repo_id": "scikit-learn__scikit-learn",
+    "target_docstring": "",
+    "bleu1": 0.0,
+    "alpha": 1.0
   }
 ]

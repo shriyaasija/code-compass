@@ -1,0 +1,30 @@
+{
+  "summary": [],
+  "per_method": {
+    "dense": {
+      "per_query": [],
+      "per_repo": {}
+    },
+    "bm25": {
+      "per_query": [],
+      "per_repo": {}
+    },
+    "hybrid": {
+      "per_query": [],
+      "per_repo": {}
+    },
+    "greedy_tree": {
+      "per_query": [],
+      "per_repo": {}
+    },
+    "puct_mcts": {
+      "per_query": [],
+      "per_repo": {}
+    },
+    "puct_adapted": {
+      "per_query": [],
+      "per_repo": {}
+    }
+  },
+  "timestamp": "2026-04-17 22:53:26"
+}

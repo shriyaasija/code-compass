@@ -1,5 +1,5 @@
 """
-validate_prior.py — test the bottleneck RelevancePrior on held-out repos.
+validate_prior.py  —  updated for RelevancePrior (no cosine feature)
 
 On the TEST repos, check if the prior ranks the correct path higher
 than all sibling nodes at each tree level.
@@ -8,7 +8,8 @@ Metric: per-level ranking accuracy
   = fraction of (query, level) pairs where the on-path node scores #1
 
 For multi-target GT queries, a level counts as correct if the on-path
-node for ANY of the ground truth targets ranks #1 at that level.
+node for ANY of the ground truth targets ranks #1 at that level. This
+is the right evaluation: at least one valid path should be preferred.
 """
 import json
 import os
@@ -18,7 +19,8 @@ import torch
 from sentence_transformers import SentenceTransformer
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from research.mcts.relevance_prior import RelevancePrior
+
+from devquery_bench.train_prior import RelevancePrior
 
 
 def find_path(root, target):
@@ -39,17 +41,19 @@ def score_siblings(prior, query_emb, siblings):
     Score all siblings that have embeddings.
     Returns list of (title, score) pairs.
     """
-    q_tensor = torch.tensor(query_emb, dtype=torch.float32)
+    q_tensor = torch.tensor(query_emb, dtype=torch.float32).unsqueeze(0)
     results  = []
 
     for sib in siblings:
         emb = sib.get('embedding')
         if emb is None:
             continue
-        n_tensor = torch.tensor(np.array(emb, dtype=np.float32), dtype=torch.float32)
+        node_emb  = np.array(emb, dtype=np.float32)
+        n_tensor  = torch.tensor(node_emb, dtype=torch.float32).unsqueeze(0)
+        ep_tensor = torch.tensor(query_emb * node_emb, dtype=torch.float32).unsqueeze(0)
 
         with torch.no_grad():
-            score = prior(q_tensor, n_tensor).item()
+            score = prior(q_tensor, n_tensor, ep_tensor).item()
 
         results.append((sib.get('title', sib.get('name', '')), score))
 
@@ -64,8 +68,6 @@ def main():
 
     prior = RelevancePrior.load(prior_path)
     prior.eval()
-    total_params = sum(p.numel() for p in prior.parameters())
-    print(f"Loaded prior: {total_params:,} params, proj_dim={prior.proj_dim}")
 
     embed_model = SentenceTransformer('all-MiniLM-L6-v2')
 
@@ -98,7 +100,8 @@ def main():
             gt_list = [gt_list]
 
         # For each tree level, check if ANY gt target's on-path node ranks #1
-        # Group by (parent_title, level_index) so we don't double-count
+        # Group by (parent_title, level_index) so we don't double-count levels
+        # that multiple GT targets share
         evaluated_levels = set()
 
         for target_title in gt_list:
@@ -113,6 +116,8 @@ def main():
                 level_key    = (parent_title, i)
 
                 if level_key in evaluated_levels:
+                    # Another GT target already evaluated this level
+                    # (they share the same parent at this depth — no double count)
                     continue
 
                 siblings = parent.get('nodes', parent.get('children', []))

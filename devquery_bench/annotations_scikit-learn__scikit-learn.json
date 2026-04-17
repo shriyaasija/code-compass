@@ -1,0 +1,206 @@
+[
+  {
+    "query": "How does cross-validation work in scikit-learn?",
+    "ground_truth": [
+      "cross_val_score",
+      "cross_validate",
+      "KFold",
+      "StratifiedKFold"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "cross_val_score and cross_validate are the primary functional terminals for running CV, while KFold classes define the splitting strategy."
+  },
+  {
+    "query": "What is the purpose of the `StandardScaler` class?",
+    "ground_truth": [
+      "StandardScaler"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "StandardScaler is the terminal class responsible for features scaling by removing the mean and scaling to unit variance."
+  },
+  {
+    "query": "How can I perform a grid search with cross-validation?",
+    "ground_truth": [
+      "GridSearchCV",
+      "ParameterGrid"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "GridSearchCV is the main terminal node that combines exhaustive parameter search with cross-validation."
+  },
+  {
+    "query": "What does it mean for a model to be 'overfitting'?",
+    "ground_truth": [
+      "learning_curve",
+      "validation_curve"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "While overfitting is a concept, these terminal functions are the tools scikit-learn provides to diagnose it by plotting training vs. validation scores."
+  },
+  {
+    "query": "Where can I find examples of using PCA for dimensionality reduction?",
+    "ground_truth": [
+      "PCA"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "The PCA class is the terminal node for the algorithm; in the repo structure, examples are typically in the 'examples/' directory file nodes."
+  },
+  {
+    "query": "How do I save and load models in scikit-learn?",
+    "ground_truth": [
+      "BaseEstimator"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "Scikit-learn relies on external libraries like joblib/pickle, but BaseEstimator is the terminal class that defines the __getstate__ and __setstate__ logic for serialization."
+  },
+  {
+    "query": "What is the role of `Pipeline` in creating machine learning workflows?",
+    "ground_truth": [
+      "Pipeline",
+      "FeatureUnion",
+      "make_pipeline"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "Pipeline and FeatureUnion are the terminal classes for assembling transformers and estimators into a single object."
+  },
+  {
+    "query": "How can I handle imbalanced datasets in classification problems?",
+    "ground_truth": [
+      "resample"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "The resample function is the primary terminal utility in sklearn for oversampling/undersampling; otherwise, it is handled via class_weight parameters in estimators."
+  },
+  {
+    "query": "What are some common evaluation metrics used in machine learning?",
+    "ground_truth": [
+      "accuracy_score",
+      "f1_score",
+      "roc_auc_score",
+      "confusion_matrix"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "These standalone terminal functions in the metrics module provide the implementation for standard ML performance evaluation."
+  },
+  {
+    "query": "How does the `RandomForestClassifier` work internally?",
+    "ground_truth": [
+      "RandomForestClassifier",
+      "ForestClassifier",
+      "BaseForest"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "RandomForestClassifier is the entry point, but it inherits core logic from the ForestClassifier and BaseForest terminal classes."
+  },
+  {
+    "query": "Where can I find more information about feature selection techniques?",
+    "ground_truth": [
+      "SelectKBest",
+      "RFE",
+      "SelectFromModel",
+      "VarianceThreshold"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "These classes represent the terminal nodes for filter, wrapper, and embedded feature selection methods in the library."
+  },
+  {
+    "query": "How do I implement custom metrics for model evaluation?",
+    "ground_truth": [
+      "make_scorer"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "make_scorer is the standalone terminal function used to wrap custom functions into the scikit-learn scoring API."
+  },
+  {
+    "query": "What is the significance of the `fit_intercept` parameter in linear regression models?",
+    "ground_truth": [
+      "LinearRegression",
+      "Ridge",
+      "Lasso"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "This parameter logic is handled at the initialization of the linear model terminal classes to determine if a bias term is calculated."
+  },
+  {
+    "query": "How does the `SVC` class handle different kernels (linear, polynomial, rbf)?",
+    "ground_truth": [
+      "SVC",
+      "BaseLibSVM"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "The SVC terminal class interfaces with the BaseLibSVM wrapper to pass kernel parameters to the underlying C++ implementation."
+  },
+  {
+    "query": "Where can I find more detailed documentation about ensemble methods?",
+    "ground_truth": [
+      "VotingClassifier",
+      "StackingClassifier",
+      "BaggingClassifier",
+      "AdaBoostClassifier"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "These terminal classes represent the variety of ensemble techniques implemented in scikit-learn beyond standard forests."
+  },
+  {
+    "query": "How do I tune hyperparameters for a Support Vector Machine?",
+    "ground_truth": [
+      "GridSearchCV",
+      "RandomizedSearchCV",
+      "HalvingGridSearchCV"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "Tuning is performed by wrapping the SVM terminal class inside these search terminal nodes."
+  },
+  {
+    "query": "What is the purpose of the `LeaveOneOut` cross-validation method?",
+    "ground_truth": [
+      "LeaveOneOut"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "LeaveOneOut is a terminal class representing the specific cross-validation case where each sample is used as a test set exactly once."
+  },
+  {
+    "query": "How does the `KMeans` algorithm determine cluster centers?",
+    "ground_truth": [
+      "KMeans",
+      "MiniBatchKMeans"
+    ],
+    "skipped": false,
+    "auto": false,
+    "confidence": "high",
+    "reason": "These terminal classes contain the initialization (k-means++) and iteration logic for establishing centroid coordinates."
+  }
+]
