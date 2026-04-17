@@ -1,0 +1,188 @@
+[
+    {
+        "query": "How does the library handle data validation?",
+        "ground_truth": [
+            "BaseModel",
+            "TypeAdapter",
+            "SchemaValidator"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "BaseModel is the primary class for defining data schemas, which delegates the actual high-performance validation to pydantic-core's SchemaValidator."
+    },
+    {
+        "query": "What is the purpose of the 'pydantic-core' directory in the repository?",
+        "ground_truth": [
+            "SchemaValidator",
+            "SchemaSerializer"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "While querying a directory, pydantic-core's purpose is encapsulated by classes like SchemaValidator and SchemaSerializer, which provide the underlying Rust-based execution engine."
+    },
+    {
+        "query": "Can you explain how caching works within the pydantic library?",
+        "ground_truth": [
+            "computed_field"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The @computed_field decorator is used to cache derived properties on a model, often wrapping standard python caching mechanisms like @cached_property."
+    },
+    {
+        "query": "What mechanism does pydantic use to ensure type consistency across different parts of the application?",
+        "ground_truth": [
+            "BaseModel",
+            "TypeAdapter",
+            "ValidateCallWrapper"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Type consistency is enforced by typing definitions in BaseModel for objects, TypeAdapter for standalone variables, and the @validate_call decorator (ValidateCallWrapper) for function arguments."
+    },
+    {
+        "query": "How can I customize validation rules for specific data types?",
+        "ground_truth": [
+            "field_validator",
+            "model_validator",
+            "BeforeValidator",
+            "AfterValidator"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Custom validation logic is added using the @field_validator and @model_validator decorators, or through Annotated types using BeforeValidator and AfterValidator."
+    },
+    {
+        "query": "What is the role of the 'release/' directory in this project?",
+        "ground_truth": [],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "This directory contains CI/CD scripts and deployment configurations for package releases, rather than Python classes or functions belonging to the library."
+    },
+    {
+        "query": "Can you describe the process of updating the documentation for a new version?",
+        "ground_truth": [],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Documentation processes are managed via MkDocs and repository maintenance scripts, not through source code classes or functions."
+    },
+    {
+        "query": "What steps are involved in generating the project's build artifacts?",
+        "ground_truth": [],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Build artifacts (wheels, sdists) are generated using build backends like hatchling or maturin defined in pyproject.toml, independent of the library's internal codebase."
+    },
+    {
+        "query": "How does the library handle serialization and deserialization of complex data structures?",
+        "ground_truth": [
+            "model_dump",
+            "model_dump_json",
+            "model_validate",
+            "model_validate_json"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "BaseModel exposes methods like model_dump() and model_dump_json() for serialization, and model_validate() and model_validate_json() for deserialization."
+    },
+    {
+        "query": "What measures does pydantic take to prevent common validation errors?",
+        "ground_truth": [
+            "ConfigDict",
+            "Strict",
+            "ValidationError",
+            "Field"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Pydantic prevents errors by enforcing strict mode (via Strict types or ConfigDict), allowing users to forbid extra fields, and throwing explicit ValidationError exceptions. Field prevents mutable default issues."
+    },
+    {
+        "query": "Can you explain how the 'pyproject.toml' file is used in this project?",
+        "ground_truth": [],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The pyproject.toml is a configuration file defining dependencies, build systems, and linting rules (like ruff), not a class or function."
+    },
+    {
+        "query": "What functionality does the 'tests/' directory contain?",
+        "ground_truth": [],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The tests/ directory contains pytest test suites to ensure code correctness and prevent regressions, not the core library functions."
+    },
+    {
+        "query": "How can I contribute my own custom validators to the library?",
+        "ground_truth": [
+            "field_validator",
+            "model_validator"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "medium",
+        "reason": "While contributing involves GitHub PRs, the code mechanism to write validators relies on defining functions wrapped in @field_validator or @model_validator."
+    },
+    {
+        "query": "What role does the 'update_v1.sh' script play in the release process?",
+        "ground_truth": [],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "This is a bash script used for repository branch or documentation maintenance, mapping to no specific Python classes or functions."
+    },
+    {
+        "query": "Can you describe the architecture of pydantic's validation system?",
+        "ground_truth": [
+            "GenerateSchema",
+            "SchemaValidator",
+            "BaseModel"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "The architecture operates by Python's GenerateSchema building a definition tree from a BaseModel, which is compiled into a high-performance Rust SchemaValidator."
+    },
+    {
+        "query": "What is the significance of the 'uv.lock' file in this repository?",
+        "ground_truth": [],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "uv.lock is a lockfile generated by the Astral 'uv' package manager to ensure reproducible python environments; it contains no source code."
+    },
+    {
+        "query": "How can I use the library to validate nested data structures?",
+        "ground_truth": [
+            "BaseModel",
+            "Field"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Nested validation is natively supported by declaring a BaseModel subclass as the type hint for an attribute or Field inside another BaseModel."
+    },
+    {
+        "query": "What are some common pitfalls when using pydantic for data validation?",
+        "ground_truth": [
+            "Field",
+            "ConfigDict",
+            "model_validator"
+        ],
+        "skipped": false,
+        "auto": false,
+        "confidence": "high",
+        "reason": "Pitfalls like mutable defaults are solved by Field(default_factory=...), implicit coercion is fixed via ConfigDict(strict=True), and global state validation relies on @model_validator."
+    }
+]
