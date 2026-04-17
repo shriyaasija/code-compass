@@ -1,13 +1,17 @@
 """
 Build prior training data from DevQuery-Bench annotations.
 
-For each (query, ground_truth_function) pair in the TRAINING repos:
-1. Find the path from tree root to the ground-truth function
-2. At each level of the path, create:
-   - Positive pair: (query_emb, on_path_node_emb, label=1)
-   - Negative pairs: (query_emb, each_sibling_emb, label=0)
+Changes vs original:
+  - Saves cosine similarity between query and node embeddings as an extra feature
+  - Saves element-wise product (query * node) as an interaction feature
+  - Groups pairs by query so train_prior.py can use pairwise ranking loss
+  - Stores query_ids so we can form (positive, negative) pairs per query
 
-This teaches the prior to navigate the tree correctly.
+For each (query, ground_truth_function) pair in TRAINING repos:
+  1. Find path from tree root to ground-truth function
+  2. At each level of the path, create:
+     - Positive pair: (query_emb, on_path_node_emb, label=1)
+     - Negative pairs: (query_emb, each_sibling_emb, label=0)
 """
 import json
 import os
@@ -45,6 +49,14 @@ def get_embedding(node: Dict) -> Optional[np.ndarray]:
     return arr
 
 
+def cosine_sim(a: np.ndarray, b: np.ndarray) -> float:
+    """Cosine similarity between two vectors."""
+    denom = (np.linalg.norm(a) * np.linalg.norm(b))
+    if denom < 1e-8:
+        return 0.0
+    return float(np.dot(a, b) / denom)
+
+
 def main():
     print("=" * 60)
     print("BUILDING PRIOR TRAINING DATA (DevQuery-Bench)")
@@ -69,19 +81,23 @@ def main():
     embed_dim = embed_model.get_sentence_embedding_dimension()
     print(f"Embedding dim: {embed_dim}")
 
-    all_query_embs = []
-    all_node_embs = []
-    all_labels = []
+    all_query_embs   = []
+    all_node_embs    = []
+    all_cos_sims     = []   # NEW: scalar cosine similarity
+    all_elem_prods   = []   # NEW: element-wise product (embed_dim,)
+    all_labels       = []
+    all_query_ids    = []   # NEW: which query this pair belongs to (for pairwise loss)
 
-    used = 0
+    used    = 0
     skipped = 0
+    query_id = 0
 
     # Cache loaded trees
     tree_cache = {}
 
     for entry in train_entries:
-        repo_id = entry['repo_id']
-        query = entry['query']
+        repo_id      = entry['repo_id']
+        query        = entry['query']
         ground_truth = entry['ground_truth']
 
         # Load tree (cached)
@@ -95,9 +111,11 @@ def main():
 
         tree = tree_cache[repo_id]
 
+        tree = tree_cache[repo_id]
+
         # Embed the query once
         query_emb = embed_model.encode(query, show_progress_bar=False)
-        found_any = False
+        found_any_path = False
 
         # Iterate over all ground truth targets
         for target_title in ground_truth:
@@ -106,18 +124,22 @@ def main():
             if path is None or len(path) < 2:
                 continue
             
-            found_any = True
+            found_any_path = True
 
             # For each level in the path, create training pairs
             for i in range(1, len(path)):
                 on_path_node = path[i]
-                parent = path[i - 1]
-                siblings = parent.get('nodes', parent.get('children', []))
+                parent       = path[i - 1]
+                siblings     = parent.get('nodes', parent.get('children', []))
 
                 if not siblings:
                     continue
 
                 on_path_title = on_path_node.get('title', '')
+
+                # Only emit a group if there's at least one positive and one negative
+                level_pairs = []
+                has_positive = False
 
                 for sibling in siblings:
                     node_emb = get_embedding(sibling)
@@ -126,12 +148,29 @@ def main():
 
                     sibling_title = sibling.get('title', '')
                     label = 1.0 if sibling_title == on_path_title else 0.0
+                    if label == 1.0:
+                        has_positive = True
 
-                    all_query_embs.append(query_emb)
-                    all_node_embs.append(node_emb)
+                    cos = cosine_sim(query_emb, node_emb)
+                    elem_prod = query_emb * node_emb   # element-wise, shape (384,)
+
+                    level_pairs.append((query_emb, node_emb, cos, elem_prod, label))
+
+                if not has_positive or len(level_pairs) < 2:
+                    # Skip levels with no valid positive or no competition
+                    continue
+
+                for qe, ne, cos, ep, label in level_pairs:
+                    all_query_embs.append(qe)
+                    all_node_embs.append(ne)
+                    all_cos_sims.append([cos])        # shape (1,) for easy concat
+                    all_elem_prods.append(ep)
                     all_labels.append(label)
+                    all_query_ids.append(query_id)    # same id for all pairs at this level
 
-        if found_any:
+                query_id += 1   # new group for each (query, target, level) combo
+
+        if found_any_path:
             used += 1
         else:
             skipped += 1
@@ -149,19 +188,25 @@ def main():
     print(f"  Negatives:       {sum(1 for l in all_labels if l == 0.0)}")
     pos_rate = sum(1 for l in all_labels if l == 1.0) / len(all_labels) * 100
     print(f"  Positive rate:   {pos_rate:.1f}%")
+    print(f"  Query groups:    {query_id}  (used for pairwise ranking loss)")
 
     # Save as tensors
     data = {
-        'query_embs': torch.tensor(np.array(all_query_embs), dtype=torch.float32),
-        'node_embs': torch.tensor(np.array(all_node_embs), dtype=torch.float32),
-        'labels': torch.tensor(all_labels, dtype=torch.float32),
-        'embed_dim': embed_dim,
+        'query_embs':  torch.tensor(np.array(all_query_embs),  dtype=torch.float32),
+        'node_embs':   torch.tensor(np.array(all_node_embs),   dtype=torch.float32),
+        'cos_sims':    torch.tensor(np.array(all_cos_sims),    dtype=torch.float32),
+        'elem_prods':  torch.tensor(np.array(all_elem_prods),  dtype=torch.float32),
+        'labels':      torch.tensor(all_labels,                dtype=torch.float32),
+        'query_ids':   torch.tensor(all_query_ids,             dtype=torch.long),
+        'embed_dim':   embed_dim,
+        'n_groups':    query_id,
     }
 
     output_path = 'devquery_bench/prior_training_data.pt'
     torch.save(data, output_path)
     size_mb = os.path.getsize(output_path) / (1024 * 1024)
     print(f"\n✅ Saved to: {output_path} ({size_mb:.1f} MB)")
+    print(f"   Input dim to MLP will be: {embed_dim} + {embed_dim} + {embed_dim} + 1 = {embed_dim*3 + 1}")
 
 
 if __name__ == '__main__':
