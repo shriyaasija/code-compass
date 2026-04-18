@@ -1,0 +1,1506 @@
+{
+  "title": "docopt_docopt",
+  "node_id": "0000",
+  "type": "repository",
+  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt",
+  "nodes": [
+    {
+      "title": ".travis.yml",
+      "node_id": "0001",
+      "type": "file_yml",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/.travis.yml",
+      "summary": "File .travis.yml",
+      "tokens_used": 0
+    },
+    {
+      "title": "LICENSE-MIT",
+      "node_id": "0002",
+      "type": "file",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/LICENSE-MIT",
+      "summary": "File LICENSE-MIT",
+      "tokens_used": 0
+    },
+    {
+      "title": "MANIFEST.in",
+      "node_id": "0003",
+      "type": "file_in",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/MANIFEST.in",
+      "summary": "File MANIFEST.in",
+      "tokens_used": 0
+    },
+    {
+      "title": "README.rst",
+      "node_id": "0004",
+      "type": "file_rst",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/README.rst",
+      "summary": "File README.rst",
+      "tokens_used": 0
+    },
+    {
+      "title": "conftest.py",
+      "node_id": "0005",
+      "type": "file_py",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/conftest.py",
+      "nodes": [
+        {
+          "title": "pytest_collect_file",
+          "node_id": "func_1",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/conftest.py",
+          "start_line": 11,
+          "end_line": 13,
+          "summary": "Function pytest_collect_file",
+          "tokens_used": 0
+        },
+        {
+          "title": "parse_test",
+          "node_id": "func_2",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/conftest.py",
+          "start_line": 16,
+          "end_line": 31,
+          "summary": "Function parse_test",
+          "tokens_used": 0
+        },
+        {
+          "title": "DocoptTestFile",
+          "node_id": "class_3",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/conftest.py",
+          "start_line": 34,
+          "end_line": 44,
+          "nodes": [
+            {
+              "title": "collect",
+              "node_id": "method_4",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/conftest.py",
+              "start_line": 36,
+              "end_line": 44,
+              "summary": "Function collect",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class DocoptTestFile with 1 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "DocoptTestItem",
+          "node_id": "class_5",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/conftest.py",
+          "start_line": 47,
+          "end_line": 75,
+          "nodes": [
+            {
+              "title": "__init__",
+              "node_id": "method_6",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/conftest.py",
+              "start_line": 49,
+              "end_line": 52,
+              "summary": "Function __init__",
+              "tokens_used": 0
+            },
+            {
+              "title": "runtest",
+              "node_id": "method_7",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/conftest.py",
+              "start_line": 54,
+              "end_line": 61,
+              "summary": "Function runtest",
+              "tokens_used": 0
+            },
+            {
+              "title": "repr_failure",
+              "node_id": "method_8",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/conftest.py",
+              "start_line": 63,
+              "end_line": 72,
+              "summary": "Function repr_failure",
+              "tokens_used": 0
+            },
+            {
+              "title": "reportinfo",
+              "node_id": "method_9",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/conftest.py",
+              "start_line": 74,
+              "end_line": 75,
+              "summary": "Function reportinfo",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class DocoptTestItem with 4 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "DocoptTestException",
+          "node_id": "class_10",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/conftest.py",
+          "start_line": 78,
+          "end_line": 79,
+          "summary": "Class DocoptTestException",
+          "tokens_used": 0
+        }
+      ],
+      "summary": "File conftest.py with 5 items",
+      "tokens_used": 0
+    },
+    {
+      "title": "docopt.py",
+      "node_id": "0006",
+      "type": "file_py",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+      "nodes": [
+        {
+          "title": "DocoptLanguageError",
+          "node_id": "class_11",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 16,
+          "end_line": 18,
+          "summary": "Class DocoptLanguageError",
+          "tokens_used": 0
+        },
+        {
+          "title": "DocoptExit",
+          "node_id": "class_12",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 21,
+          "end_line": 28,
+          "nodes": [
+            {
+              "title": "__init__",
+              "node_id": "method_13",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 27,
+              "end_line": 28,
+              "summary": "Function __init__",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class DocoptExit with 1 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "Pattern",
+          "node_id": "class_14",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 31,
+          "end_line": 68,
+          "nodes": [
+            {
+              "title": "__eq__",
+              "node_id": "method_15",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 33,
+              "end_line": 34,
+              "summary": "Function __eq__",
+              "tokens_used": 0
+            },
+            {
+              "title": "__hash__",
+              "node_id": "method_16",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 36,
+              "end_line": 37,
+              "summary": "Function __hash__",
+              "tokens_used": 0
+            },
+            {
+              "title": "fix",
+              "node_id": "method_17",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 39,
+              "end_line": 42,
+              "summary": "Function fix",
+              "tokens_used": 0
+            },
+            {
+              "title": "fix_identities",
+              "node_id": "method_18",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 44,
+              "end_line": 54,
+              "summary": "Function fix_identities",
+              "tokens_used": 0
+            },
+            {
+              "title": "fix_repeating_arguments",
+              "node_id": "method_19",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 56,
+              "end_line": 68,
+              "summary": "Function fix_repeating_arguments",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class Pattern with 5 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "transform",
+          "node_id": "func_20",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 71,
+          "end_line": 95,
+          "summary": "Function transform",
+          "tokens_used": 0
+        },
+        {
+          "title": "LeafPattern",
+          "node_id": "class_21",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 98,
+          "end_line": 129,
+          "nodes": [
+            {
+              "title": "__init__",
+              "node_id": "method_22",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 102,
+              "end_line": 103,
+              "summary": "Function __init__",
+              "tokens_used": 0
+            },
+            {
+              "title": "__repr__",
+              "node_id": "method_23",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 105,
+              "end_line": 106,
+              "summary": "Function __repr__",
+              "tokens_used": 0
+            },
+            {
+              "title": "flat",
+              "node_id": "method_24",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 108,
+              "end_line": 109,
+              "summary": "Function flat",
+              "tokens_used": 0
+            },
+            {
+              "title": "match",
+              "node_id": "method_25",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 111,
+              "end_line": 129,
+              "summary": "Function match",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class LeafPattern with 4 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "BranchPattern",
+          "node_id": "class_26",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 132,
+          "end_line": 146,
+          "nodes": [
+            {
+              "title": "__init__",
+              "node_id": "method_27",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 136,
+              "end_line": 137,
+              "summary": "Function __init__",
+              "tokens_used": 0
+            },
+            {
+              "title": "__repr__",
+              "node_id": "method_28",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 139,
+              "end_line": 141,
+              "summary": "Function __repr__",
+              "tokens_used": 0
+            },
+            {
+              "title": "flat",
+              "node_id": "method_29",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 143,
+              "end_line": 146,
+              "summary": "Function flat",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class BranchPattern with 3 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "Argument",
+          "node_id": "class_30",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 149,
+          "end_line": 161,
+          "nodes": [
+            {
+              "title": "single_match",
+              "node_id": "method_31",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 151,
+              "end_line": 155,
+              "summary": "Function single_match",
+              "tokens_used": 0
+            },
+            {
+              "title": "parse",
+              "node_id": "method_32",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 158,
+              "end_line": 161,
+              "summary": "Function parse",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class Argument with 2 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "Command",
+          "node_id": "class_33",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 164,
+          "end_line": 176,
+          "nodes": [
+            {
+              "title": "__init__",
+              "node_id": "method_34",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 166,
+              "end_line": 167,
+              "summary": "Function __init__",
+              "tokens_used": 0
+            },
+            {
+              "title": "single_match",
+              "node_id": "method_35",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 169,
+              "end_line": 176,
+              "summary": "Function single_match",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class Command with 2 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "Option",
+          "node_id": "class_36",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 179,
+          "end_line": 215,
+          "nodes": [
+            {
+              "title": "__init__",
+              "node_id": "method_37",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 181,
+              "end_line": 184,
+              "summary": "Function __init__",
+              "tokens_used": 0
+            },
+            {
+              "title": "parse",
+              "node_id": "method_38",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 187,
+              "end_line": 201,
+              "summary": "Function parse",
+              "tokens_used": 0
+            },
+            {
+              "title": "single_match",
+              "node_id": "method_39",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 203,
+              "end_line": 207,
+              "summary": "Function single_match",
+              "tokens_used": 0
+            },
+            {
+              "title": "name",
+              "node_id": "method_40",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 210,
+              "end_line": 211,
+              "summary": "Function name",
+              "tokens_used": 0
+            },
+            {
+              "title": "__repr__",
+              "node_id": "method_41",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 213,
+              "end_line": 215,
+              "summary": "Function __repr__",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class Option with 5 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "Required",
+          "node_id": "class_42",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 218,
+          "end_line": 228,
+          "nodes": [
+            {
+              "title": "match",
+              "node_id": "method_43",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 220,
+              "end_line": 228,
+              "summary": "Function match",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class Required with 1 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "Optional",
+          "node_id": "class_44",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 231,
+          "end_line": 237,
+          "nodes": [
+            {
+              "title": "match",
+              "node_id": "method_45",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 233,
+              "end_line": 237,
+              "summary": "Function match",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class Optional with 1 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "OptionsShortcut",
+          "node_id": "class_46",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 240,
+          "end_line": 242,
+          "summary": "Class OptionsShortcut",
+          "tokens_used": 0
+        },
+        {
+          "title": "OneOrMore",
+          "node_id": "class_47",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 245,
+          "end_line": 264,
+          "nodes": [
+            {
+              "title": "match",
+              "node_id": "method_48",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 247,
+              "end_line": 264,
+              "summary": "Function match",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class OneOrMore with 1 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "Either",
+          "node_id": "class_49",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 267,
+          "end_line": 278,
+          "nodes": [
+            {
+              "title": "match",
+              "node_id": "method_50",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 269,
+              "end_line": 278,
+              "summary": "Function match",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class Either with 1 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "Tokens",
+          "node_id": "class_51",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 281,
+          "end_line": 297,
+          "nodes": [
+            {
+              "title": "__init__",
+              "node_id": "method_52",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 283,
+              "end_line": 285,
+              "summary": "Function __init__",
+              "tokens_used": 0
+            },
+            {
+              "title": "from_pattern",
+              "node_id": "method_53",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 288,
+              "end_line": 291,
+              "summary": "Function from_pattern",
+              "tokens_used": 0
+            },
+            {
+              "title": "move",
+              "node_id": "method_54",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 293,
+              "end_line": 294,
+              "summary": "Function move",
+              "tokens_used": 0
+            },
+            {
+              "title": "current",
+              "node_id": "method_55",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 296,
+              "end_line": 297,
+              "summary": "Function current",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class Tokens with 4 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "parse_long",
+          "node_id": "func_56",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 300,
+          "end_line": 330,
+          "summary": "Function parse_long",
+          "tokens_used": 0
+        },
+        {
+          "title": "parse_shorts",
+          "node_id": "func_57",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 333,
+          "end_line": 365,
+          "summary": "Function parse_shorts",
+          "tokens_used": 0
+        },
+        {
+          "title": "parse_pattern",
+          "node_id": "func_58",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 368,
+          "end_line": 373,
+          "summary": "Function parse_pattern",
+          "tokens_used": 0
+        },
+        {
+          "title": "parse_expr",
+          "node_id": "func_59",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 376,
+          "end_line": 386,
+          "summary": "Function parse_expr",
+          "tokens_used": 0
+        },
+        {
+          "title": "parse_seq",
+          "node_id": "func_60",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 389,
+          "end_line": 398,
+          "summary": "Function parse_seq",
+          "tokens_used": 0
+        },
+        {
+          "title": "parse_atom",
+          "node_id": "func_61",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 401,
+          "end_line": 424,
+          "summary": "Function parse_atom",
+          "tokens_used": 0
+        },
+        {
+          "title": "parse_argv",
+          "node_id": "func_62",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 427,
+          "end_line": 448,
+          "summary": "Function parse_argv",
+          "tokens_used": 0
+        },
+        {
+          "title": "parse_defaults",
+          "node_id": "func_63",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 451,
+          "end_line": 460,
+          "summary": "Function parse_defaults",
+          "tokens_used": 0
+        },
+        {
+          "title": "parse_section",
+          "node_id": "func_64",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 463,
+          "end_line": 466,
+          "summary": "Function parse_section",
+          "tokens_used": 0
+        },
+        {
+          "title": "formal_usage",
+          "node_id": "func_65",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 469,
+          "end_line": 472,
+          "summary": "Function formal_usage",
+          "tokens_used": 0
+        },
+        {
+          "title": "extras",
+          "node_id": "func_66",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 475,
+          "end_line": 481,
+          "summary": "Function extras",
+          "tokens_used": 0
+        },
+        {
+          "title": "Dict",
+          "node_id": "class_67",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 484,
+          "end_line": 486,
+          "nodes": [
+            {
+              "title": "__repr__",
+              "node_id": "method_68",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+              "start_line": 485,
+              "end_line": 486,
+              "summary": "Function __repr__",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class Dict with 1 methods",
+          "tokens_used": 0
+        },
+        {
+          "title": "docopt",
+          "node_id": "func_69",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/docopt.py",
+          "start_line": 489,
+          "end_line": 580,
+          "summary": "Function docopt",
+          "tokens_used": 0
+        }
+      ],
+      "summary": "File docopt.py with 28 items",
+      "tokens_used": 0
+    },
+    {
+      "title": "examples",
+      "node_id": "0007",
+      "type": "folder",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples",
+      "nodes": [
+        {
+          "title": "arguments_example.py",
+          "node_id": "0008",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/arguments_example.py",
+          "summary": "File arguments_example.py",
+          "tokens_used": 0
+        },
+        {
+          "title": "calculator_example.py",
+          "node_id": "0009",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/calculator_example.py",
+          "summary": "File calculator_example.py",
+          "tokens_used": 0
+        },
+        {
+          "title": "config_file_example.py",
+          "node_id": "0010",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/config_file_example.py",
+          "nodes": [
+            {
+              "title": "load_json_config",
+              "node_id": "func_70",
+              "type": "function",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/config_file_example.py",
+              "start_line": 9,
+              "end_line": 17,
+              "summary": "Function load_json_config",
+              "tokens_used": 0
+            },
+            {
+              "title": "load_ini_config",
+              "node_id": "func_71",
+              "type": "function",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/config_file_example.py",
+              "start_line": 20,
+              "end_line": 49,
+              "summary": "Function load_ini_config",
+              "tokens_used": 0
+            },
+            {
+              "title": "merge",
+              "node_id": "func_72",
+              "type": "function",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/config_file_example.py",
+              "start_line": 52,
+              "end_line": 60,
+              "summary": "Function merge",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "File config_file_example.py with 3 items",
+          "tokens_used": 0
+        },
+        {
+          "title": "counted_example.py",
+          "node_id": "0011",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/counted_example.py",
+          "summary": "File counted_example.py",
+          "tokens_used": 0
+        },
+        {
+          "title": "git",
+          "node_id": "0012",
+          "type": "folder",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/git",
+          "nodes": [
+            {
+              "title": "git.py",
+              "node_id": "0013",
+              "type": "file_py",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/git/git.py",
+              "summary": "File git.py",
+              "tokens_used": 0
+            },
+            {
+              "title": "git_add.py",
+              "node_id": "0014",
+              "type": "file_py",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/git/git_add.py",
+              "summary": "File git_add.py",
+              "tokens_used": 0
+            },
+            {
+              "title": "git_branch.py",
+              "node_id": "0015",
+              "type": "file_py",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/git/git_branch.py",
+              "summary": "File git_branch.py",
+              "tokens_used": 0
+            },
+            {
+              "title": "git_checkout.py",
+              "node_id": "0016",
+              "type": "file_py",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/git/git_checkout.py",
+              "summary": "File git_checkout.py",
+              "tokens_used": 0
+            },
+            {
+              "title": "git_clone.py",
+              "node_id": "0017",
+              "type": "file_py",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/git/git_clone.py",
+              "summary": "File git_clone.py",
+              "tokens_used": 0
+            },
+            {
+              "title": "git_commit.py",
+              "node_id": "0018",
+              "type": "file_py",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/git/git_commit.py",
+              "summary": "File git_commit.py",
+              "tokens_used": 0
+            },
+            {
+              "title": "git_push.py",
+              "node_id": "0019",
+              "type": "file_py",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/git/git_push.py",
+              "summary": "File git_push.py",
+              "tokens_used": 0
+            },
+            {
+              "title": "git_remote.py",
+              "node_id": "0020",
+              "type": "file_py",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/git/git_remote.py",
+              "summary": "File git_remote.py",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Module git with 8 items",
+          "tokens_used": 0
+        },
+        {
+          "title": "interactive_example.py",
+          "node_id": "0021",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/interactive_example.py",
+          "nodes": [
+            {
+              "title": "docopt_cmd",
+              "node_id": "func_73",
+              "type": "function",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/interactive_example.py",
+              "start_line": 22,
+              "end_line": 50,
+              "summary": "Function docopt_cmd",
+              "tokens_used": 0
+            },
+            {
+              "title": "MyInteractive",
+              "node_id": "class_74",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/interactive_example.py",
+              "start_line": 53,
+              "end_line": 79,
+              "nodes": [
+                {
+                  "title": "do_tcp",
+                  "node_id": "method_75",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/interactive_example.py",
+                  "start_line": 60,
+                  "end_line": 63,
+                  "summary": "Function do_tcp",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "do_serial",
+                  "node_id": "method_76",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/interactive_example.py",
+                  "start_line": 66,
+                  "end_line": 73,
+                  "summary": "Function do_serial",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "do_quit",
+                  "node_id": "method_77",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/interactive_example.py",
+                  "start_line": 75,
+                  "end_line": 79,
+                  "summary": "Function do_quit",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "Class MyInteractive with 3 methods",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "File interactive_example.py with 2 items",
+          "tokens_used": 0
+        },
+        {
+          "title": "naval_fate.py",
+          "node_id": "0022",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/naval_fate.py",
+          "summary": "File naval_fate.py",
+          "tokens_used": 0
+        },
+        {
+          "title": "odd_even_example.py",
+          "node_id": "0023",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/odd_even_example.py",
+          "summary": "File odd_even_example.py",
+          "tokens_used": 0
+        },
+        {
+          "title": "options_example.py",
+          "node_id": "0024",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/options_example.py",
+          "summary": "File options_example.py",
+          "tokens_used": 0
+        },
+        {
+          "title": "options_shortcut_example.py",
+          "node_id": "0025",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/options_shortcut_example.py",
+          "summary": "File options_shortcut_example.py",
+          "tokens_used": 0
+        },
+        {
+          "title": "quick_example.py",
+          "node_id": "0026",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/quick_example.py",
+          "summary": "File quick_example.py",
+          "tokens_used": 0
+        },
+        {
+          "title": "validation_example.py",
+          "node_id": "0027",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/examples/validation_example.py",
+          "summary": "File validation_example.py",
+          "tokens_used": 0
+        }
+      ],
+      "summary": "Module examples with 12 items",
+      "tokens_used": 0
+    },
+    {
+      "title": "setup.cfg",
+      "node_id": "0028",
+      "type": "file_cfg",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/setup.cfg",
+      "summary": "File setup.cfg",
+      "tokens_used": 0
+    },
+    {
+      "title": "setup.py",
+      "node_id": "0029",
+      "type": "file_py",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/setup.py",
+      "nodes": [
+        {
+          "title": "PyTestCommand",
+          "node_id": "class_78",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/setup.py",
+          "start_line": 7,
+          "end_line": 18,
+          "nodes": [
+            {
+              "title": "finalize_options",
+              "node_id": "method_79",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/setup.py",
+              "start_line": 10,
+              "end_line": 13,
+              "summary": "Function finalize_options",
+              "tokens_used": 0
+            },
+            {
+              "title": "run",
+              "node_id": "method_80",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/setup.py",
+              "start_line": 15,
+              "end_line": 18,
+              "summary": "Function run",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "Class PyTestCommand with 2 methods",
+          "tokens_used": 0
+        }
+      ],
+      "summary": "File setup.py with 1 items",
+      "tokens_used": 0
+    },
+    {
+      "title": "test_docopt.py",
+      "node_id": "0030",
+      "type": "file_py",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+      "nodes": [
+        {
+          "title": "test_pattern_flat",
+          "node_id": "func_81",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 10,
+          "end_line": 16,
+          "summary": "Function test_pattern_flat",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_option",
+          "node_id": "func_82",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 19,
+          "end_line": 46,
+          "summary": "Function test_option",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_option_name",
+          "node_id": "func_83",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 49,
+          "end_line": 52,
+          "summary": "Function test_option_name",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_commands",
+          "node_id": "func_84",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 55,
+          "end_line": 63,
+          "summary": "Function test_commands",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_formal_usage",
+          "node_id": "func_85",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 66,
+          "end_line": 74,
+          "summary": "Function test_formal_usage",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_parse_argv",
+          "node_id": "func_86",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 77,
+          "end_line": 99,
+          "summary": "Function test_parse_argv",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_parse_pattern",
+          "node_id": "func_87",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 102,
+          "end_line": 141,
+          "summary": "Function test_parse_pattern",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_option_match",
+          "node_id": "func_88",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 144,
+          "end_line": 152,
+          "summary": "Function test_option_match",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_argument_match",
+          "node_id": "func_89",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 155,
+          "end_line": 164,
+          "summary": "Function test_argument_match",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_command_match",
+          "node_id": "func_90",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 167,
+          "end_line": 176,
+          "summary": "Function test_command_match",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_optional_match",
+          "node_id": "func_91",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 179,
+          "end_line": 195,
+          "summary": "Function test_optional_match",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_required_match",
+          "node_id": "func_92",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 198,
+          "end_line": 205,
+          "summary": "Function test_required_match",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_either_match",
+          "node_id": "func_93",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 208,
+          "end_line": 222,
+          "summary": "Function test_either_match",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_one_or_more_match",
+          "node_id": "func_94",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 225,
+          "end_line": 249,
+          "summary": "Function test_one_or_more_match",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_list_argument_match",
+          "node_id": "func_95",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 252,
+          "end_line": 264,
+          "summary": "Function test_list_argument_match",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_basic_pattern_matching",
+          "node_id": "func_96",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 267,
+          "end_line": 283,
+          "summary": "Function test_basic_pattern_matching",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_pattern_either",
+          "node_id": "func_97",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 286,
+          "end_line": 304,
+          "summary": "Function test_pattern_either",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_pattern_fix_repeating_arguments",
+          "node_id": "func_98",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 307,
+          "end_line": 315,
+          "summary": "Function test_pattern_fix_repeating_arguments",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_set",
+          "node_id": "func_99",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 318,
+          "end_line": 320,
+          "summary": "Function test_set",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_pattern_fix_identities_1",
+          "node_id": "func_100",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 323,
+          "end_line": 328,
+          "summary": "Function test_pattern_fix_identities_1",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_pattern_fix_identities_2",
+          "node_id": "func_101",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 331,
+          "end_line": 336,
+          "summary": "Function test_pattern_fix_identities_2",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_long_options_error_handling",
+          "node_id": "func_102",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 339,
+          "end_line": 356,
+          "summary": "Function test_long_options_error_handling",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_short_options_error_handling",
+          "node_id": "func_103",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 359,
+          "end_line": 371,
+          "summary": "Function test_short_options_error_handling",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_matching_paren",
+          "node_id": "func_104",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 374,
+          "end_line": 378,
+          "summary": "Function test_matching_paren",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_allow_double_dash",
+          "node_id": "func_105",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 381,
+          "end_line": 387,
+          "summary": "Function test_allow_double_dash",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_docopt",
+          "node_id": "func_106",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 390,
+          "end_line": 426,
+          "summary": "Function test_docopt",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_language_errors",
+          "node_id": "func_107",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 429,
+          "end_line": 433,
+          "summary": "Function test_language_errors",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_issue_40",
+          "node_id": "func_108",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 436,
+          "end_line": 440,
+          "summary": "Function test_issue_40",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_issue34_unicode_strings",
+          "node_id": "func_109",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 443,
+          "end_line": 448,
+          "summary": "Function test_issue34_unicode_strings",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_count_multiple_flags",
+          "node_id": "func_110",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 451,
+          "end_line": 460,
+          "summary": "Function test_count_multiple_flags",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_any_options_parameter",
+          "node_id": "func_111",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 463,
+          "end_line": 478,
+          "summary": "Function test_any_options_parameter",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_default_value_for_positional_arguments",
+          "node_id": "func_112",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 491,
+          "end_line": 506,
+          "summary": "Function test_default_value_for_positional_arguments",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_issue_59",
+          "node_id": "func_113",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 531,
+          "end_line": 534,
+          "summary": "Function test_issue_59",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_options_first",
+          "node_id": "func_114",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 537,
+          "end_line": 547,
+          "summary": "Function test_options_first",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_issue_68_options_shortcut_does_not_include_options_in_usage_pattern",
+          "node_id": "func_115",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 550,
+          "end_line": 558,
+          "summary": "Function test_issue_68_options_shortcut_does_not_include_options_in_usage_pattern",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_issue_65_evaluate_argv_when_called_not_when_imported",
+          "node_id": "func_116",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 561,
+          "end_line": 566,
+          "summary": "Function test_issue_65_evaluate_argv_when_called_not_when_imported",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_issue_71_double_dash_is_not_a_valid_option_argument",
+          "node_id": "func_117",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 569,
+          "end_line": 574,
+          "summary": "Function test_issue_71_double_dash_is_not_a_valid_option_argument",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_parse_section",
+          "node_id": "func_118",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 596,
+          "end_line": 610,
+          "summary": "Function test_parse_section",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_issue_126_defaults_not_parsed_correctly_when_tabs",
+          "node_id": "func_119",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/test_docopt.py",
+          "start_line": 613,
+          "end_line": 615,
+          "summary": "Function test_issue_126_defaults_not_parsed_correctly_when_tabs",
+          "tokens_used": 0
+        }
+      ],
+      "summary": "File test_docopt.py with 39 items",
+      "tokens_used": 0
+    },
+    {
+      "title": "testcases.docopt",
+      "node_id": "0031",
+      "type": "file_docopt",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/testcases.docopt",
+      "summary": "File testcases.docopt",
+      "tokens_used": 0
+    },
+    {
+      "title": "tox.ini",
+      "node_id": "0032",
+      "type": "file_ini",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpsqrh1opa/docopt_docopt/tox.ini",
+      "summary": "File tox.ini",
+      "tokens_used": 0
+    }
+  ],
+  "summary": "Repository docopt_docopt",
+  "tokens_used": 0
+}

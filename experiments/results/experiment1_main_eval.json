@@ -1,30 +1,1962 @@
 {
-  "summary": [],
+  "summary": [
+    {
+      "method": "dense",
+      "R@1": 0.0556,
+      "R@5": 0.0556,
+      "MRR": 0.0556,
+      "MRR_CI_lower": 0.0,
+      "MRR_CI_upper": 0.1667,
+      "avg_llm_calls": 0.0,
+      "avg_latency_ms": 221.2,
+      "n_queries": 18
+    },
+    {
+      "method": "bm25",
+      "R@1": 0.0,
+      "R@5": 0.0,
+      "MRR": 0.0,
+      "MRR_CI_lower": 0.0,
+      "MRR_CI_upper": 0.0,
+      "avg_llm_calls": 0.0,
+      "avg_latency_ms": 20.6,
+      "n_queries": 18
+    },
+    {
+      "method": "hybrid",
+      "R@1": 0.0556,
+      "R@5": 0.0556,
+      "MRR": 0.0556,
+      "MRR_CI_lower": 0.0,
+      "MRR_CI_upper": 0.1667,
+      "avg_llm_calls": 0.0,
+      "avg_latency_ms": 218.4,
+      "n_queries": 18
+    },
+    {
+      "method": "puct_mcts",
+      "R@1": 0.0,
+      "R@5": 0.0,
+      "MRR": 0.0,
+      "MRR_CI_lower": 0.0,
+      "MRR_CI_upper": 0.0,
+      "avg_llm_calls": 39.06,
+      "avg_latency_ms": 438.1,
+      "n_queries": 18
+    },
+    {
+      "method": "puct_adapted",
+      "R@1": 0.0,
+      "R@5": 0.0,
+      "MRR": 0.0,
+      "MRR_CI_lower": 0.0,
+      "MRR_CI_upper": 0.0,
+      "avg_llm_calls": 56.28,
+      "avg_latency_ms": 514.2,
+      "n_queries": 18
+    }
+  ],
   "per_method": {
     "dense": {
-      "per_query": [],
-      "per_repo": {}
+      "per_query": [
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does cross-validation work in scikit-learn?",
+          "ground_truth": [
+            "cross_val_score",
+            "cross_validate",
+            "KFold",
+            "StratifiedKFold"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 478.3,
+          "llm_calls": 0,
+          "ranked": [
+            "test_cross_validate_invalid_scoring_param",
+            "test_cross_val_predict_method_checking",
+            "test_cross_validator_with_default_params",
+            "test_precomputed_cross_validation",
+            "check_cross_val_predict_with_method_multiclass"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the purpose of the `StandardScaler` class?",
+          "ground_truth": [
+            "StandardScaler"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 213.5,
+          "llm_calls": 0,
+          "ranked": [
+            "_check_standard_scaled",
+            "test_standard_scaler_1d",
+            "test_confusion_matrix_normalize_single_class",
+            "test_average_precision_constant_values",
+            "test_robust_scaler_unit_variance"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How can I perform a grid search with cross-validation?",
+          "ground_truth": [
+            "GridSearchCV",
+            "ParameterGrid"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 195.4,
+          "llm_calls": 0,
+          "ranked": [
+            "test_gridsearchcv_cross_val_predict_with_method",
+            "test_grid_search",
+            "test_gridsearch",
+            "test_grid_search_when_param_grid_includes_range",
+            "test_gridsearch"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What does it mean for a model to be 'overfitting'?",
+          "ground_truth": [
+            "learning_curve",
+            "validation_curve"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 212.0,
+          "llm_calls": 0,
+          "ranked": [
+            "true_fun",
+            "test_huber_overfit",
+            "test_underflow_or_overlow",
+            "test_dict_learning_overcomplete",
+            "_warn_or_raise_about_fit_failures"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find examples of using PCA for dimensionality reduction?",
+          "ground_truth": [
+            "PCA"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 210.6,
+          "llm_calls": 0,
+          "ranked": [
+            "_infer_dimension",
+            "_assess_dimension",
+            "fit",
+            "__init__",
+            "fit"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I save and load models in scikit-learn?",
+          "ground_truth": [
+            "BaseEstimator"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 199.7,
+          "llm_calls": 0,
+          "ranked": [
+            "_store",
+            "__init__",
+            "__init__",
+            "rmatvec",
+            "rmatvec"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the role of `Pipeline` in creating machine learning workflows?",
+          "ground_truth": [
+            "Pipeline",
+            "FeatureUnion",
+            "make_pipeline"
+          ],
+          "r1": 1.0,
+          "r5": 1.0,
+          "mrr": 1.0,
+          "latency_ms": 206.0,
+          "llm_calls": 0,
+          "ranked": [
+            "make_pipeline",
+            "test_pipeline_named_steps",
+            "test_make_pipeline",
+            "test_set_pipeline_steps",
+            "test_n_features_in_pipeline"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How can I handle imbalanced datasets in classification problems?",
+          "ground_truth": [
+            "resample"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 185.8,
+          "llm_calls": 0,
+          "ranked": [
+            "test_make_moons_unbalanced",
+            "test_classification_report_multiclass_balanced",
+            "test_make_circles_unbalanced",
+            "test_cross_val_predict_unbalanced",
+            "classes_"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What are some common evaluation metrics used in machine learning?",
+          "ground_truth": [
+            "accuracy_score",
+            "f1_score",
+            "roc_auc_score",
+            "confusion_matrix"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 192.1,
+          "llm_calls": 0,
+          "ranked": [
+            "check_scoring_validator_for_single_metric_usecases",
+            "business_metric",
+            "_check_algorithm_metric",
+            "metric",
+            "check_array_api_multiclass_classification_metric"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `RandomForestClassifier` work internally?",
+          "ground_truth": [
+            "RandomForestClassifier",
+            "ForestClassifier",
+            "BaseForest"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 336.6,
+          "llm_calls": 0,
+          "ranked": [
+            "test_random_hasher",
+            "_compute_proba_from_decision",
+            "_set_random_states",
+            "staged_decision_function",
+            "staged_decision_function"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find more information about feature selection techniques?",
+          "ground_truth": [
+            "SelectKBest",
+            "RFE",
+            "SelectFromModel",
+            "VarianceThreshold"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 202.7,
+          "llm_calls": 0,
+          "ranked": [
+            "decision_function",
+            "__init__",
+            "__init__",
+            "__init__",
+            "__init__"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I implement custom metrics for model evaluation?",
+          "ground_truth": [
+            "make_scorer"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 187.5,
+          "llm_calls": 0,
+          "ranked": [
+            "test_pairwise_dist_custom_metric_for_bool",
+            "business_metric",
+            "check_scoring_validator_for_single_metric_usecases",
+            "metric",
+            "check_array_api_metric"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the significance of the `fit_intercept` parameter in linear regression models?",
+          "ground_truth": [
+            "LinearRegression",
+            "Ridge",
+            "Lasso"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 201.0,
+          "llm_calls": 0,
+          "ranked": [
+            "test_fit_intercept",
+            "_set_intercept",
+            "weight_intercept",
+            "test_ridge_intercept",
+            "weight_intercept_raw"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `SVC` class handle different kernels (linear, polynomial, rbf)?",
+          "ground_truth": [
+            "SVC",
+            "BaseLibSVM"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 201.8,
+          "llm_calls": 0,
+          "ranked": [
+            "_compute_kernel",
+            "test_svc_clone_with_callable_kernel",
+            "fun",
+            "fun",
+            "fun"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find more detailed documentation about ensemble methods?",
+          "ground_truth": [
+            "VotingClassifier",
+            "StackingClassifier",
+            "BaggingClassifier",
+            "AdaBoostClassifier"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 187.8,
+          "llm_calls": 0,
+          "ranked": [
+            "_method_name",
+            "__iter__",
+            "__init__",
+            "__init__",
+            "__init__"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I tune hyperparameters for a Support Vector Machine?",
+          "ground_truth": [
+            "GridSearchCV",
+            "RandomizedSearchCV",
+            "HalvingGridSearchCV"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 193.1,
+          "llm_calls": 0,
+          "ranked": [
+            "hyperparameters",
+            "hyperparameters",
+            "hyperparameters",
+            "hyperparameter_alpha",
+            "set_parameter"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the purpose of the `LeaveOneOut` cross-validation method?",
+          "ground_truth": [
+            "LeaveOneOut"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 189.7,
+          "llm_calls": 0,
+          "ranked": [
+            "test_cross_validator_with_default_params",
+            "test_leave_one_p_group_out",
+            "test_callable_multimetric_confusion_matrix_cross_validate",
+            "_deprecated_method",
+            "test_leave_group_out_changing_groups"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `KMeans` algorithm determine cluster centers?",
+          "ground_truth": [
+            "KMeans",
+            "MiniBatchKMeans"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 188.4,
+          "llm_calls": 0,
+          "ranked": [
+            "_init_centroids",
+            "_validate_center_shape",
+            "_kmeans_plusplus",
+            "bench_k_means",
+            "__init__"
+          ]
+        }
+      ],
+      "per_repo": {
+        "scikit-learn__scikit-learn": {
+          "R@1": 0.0556,
+          "R@5": 0.0556,
+          "MRR": 0.0556,
+          "n_queries": 18,
+          "avg_llm_calls": 0.0,
+          "avg_latency_ms": 221.2
+        }
+      }
     },
     "bm25": {
-      "per_query": [],
-      "per_repo": {}
+      "per_query": [
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does cross-validation work in scikit-learn?",
+          "ground_truth": [
+            "cross_val_score",
+            "cross_validate",
+            "KFold",
+            "StratifiedKFold"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 15.8,
+          "llm_calls": 0,
+          "ranked": [
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers",
+            "setup_cache"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the purpose of the `StandardScaler` class?",
+          "ground_truth": [
+            "StandardScaler"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 14.5,
+          "llm_calls": 0,
+          "ranked": [
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers",
+            "setup_cache"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How can I perform a grid search with cross-validation?",
+          "ground_truth": [
+            "GridSearchCV",
+            "ParameterGrid"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 14.7,
+          "llm_calls": 0,
+          "ranked": [
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers",
+            "setup_cache"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What does it mean for a model to be 'overfitting'?",
+          "ground_truth": [
+            "learning_curve",
+            "validation_curve"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 15.0,
+          "llm_calls": 0,
+          "ranked": [
+            "mean",
+            "mean",
+            "setup_cache",
+            "make_data",
+            "make_estimator"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find examples of using PCA for dimensionality reduction?",
+          "ground_truth": [
+            "PCA"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 15.2,
+          "llm_calls": 0,
+          "ranked": [
+            "where",
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I save and load models in scikit-learn?",
+          "ground_truth": [
+            "BaseEstimator"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 15.5,
+          "llm_calls": 0,
+          "ranked": [
+            "load",
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the role of `Pipeline` in creating machine learning workflows?",
+          "ground_truth": [
+            "Pipeline",
+            "FeatureUnion",
+            "make_pipeline"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 17.5,
+          "llm_calls": 0,
+          "ranked": [
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers",
+            "setup_cache"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How can I handle imbalanced datasets in classification problems?",
+          "ground_truth": [
+            "resample"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 17.1,
+          "llm_calls": 0,
+          "ranked": [
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers",
+            "setup_cache"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What are some common evaluation metrics used in machine learning?",
+          "ground_truth": [
+            "accuracy_score",
+            "f1_score",
+            "roc_auc_score",
+            "confusion_matrix"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 17.0,
+          "llm_calls": 0,
+          "ranked": [
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers",
+            "setup_cache"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `RandomForestClassifier` work internally?",
+          "ground_truth": [
+            "RandomForestClassifier",
+            "ForestClassifier",
+            "BaseForest"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 15.0,
+          "llm_calls": 0,
+          "ranked": [
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers",
+            "setup_cache"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find more information about feature selection techniques?",
+          "ground_truth": [
+            "SelectKBest",
+            "RFE",
+            "SelectFromModel",
+            "VarianceThreshold"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 16.3,
+          "llm_calls": 0,
+          "ranked": [
+            "where",
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I implement custom metrics for model evaluation?",
+          "ground_truth": [
+            "make_scorer"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 108.1,
+          "llm_calls": 0,
+          "ranked": [
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers",
+            "setup_cache"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the significance of the `fit_intercept` parameter in linear regression models?",
+          "ground_truth": [
+            "LinearRegression",
+            "Ridge",
+            "Lasso"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 15.7,
+          "llm_calls": 0,
+          "ranked": [
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers",
+            "setup_cache"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `SVC` class handle different kernels (linear, polynomial, rbf)?",
+          "ground_truth": [
+            "SVC",
+            "BaseLibSVM"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 15.0,
+          "llm_calls": 0,
+          "ranked": [
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers",
+            "setup_cache"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find more detailed documentation about ensemble methods?",
+          "ground_truth": [
+            "VotingClassifier",
+            "StackingClassifier",
+            "BaggingClassifier",
+            "AdaBoostClassifier"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 14.9,
+          "llm_calls": 0,
+          "ranked": [
+            "where",
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I tune hyperparameters for a Support Vector Machine?",
+          "ground_truth": [
+            "GridSearchCV",
+            "RandomizedSearchCV",
+            "HalvingGridSearchCV"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 15.0,
+          "llm_calls": 0,
+          "ranked": [
+            "hyperparameters",
+            "hyperparameters",
+            "hyperparameters",
+            "setup_cache",
+            "make_data"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the purpose of the `LeaveOneOut` cross-validation method?",
+          "ground_truth": [
+            "LeaveOneOut"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 14.5,
+          "llm_calls": 0,
+          "ranked": [
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers",
+            "setup_cache"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `KMeans` algorithm determine cluster centers?",
+          "ground_truth": [
+            "KMeans",
+            "MiniBatchKMeans"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 14.2,
+          "llm_calls": 0,
+          "ranked": [
+            "setup_cache",
+            "make_data",
+            "make_estimator",
+            "make_scorers",
+            "setup_cache"
+          ]
+        }
+      ],
+      "per_repo": {
+        "scikit-learn__scikit-learn": {
+          "R@1": 0.0,
+          "R@5": 0.0,
+          "MRR": 0.0,
+          "n_queries": 18,
+          "avg_llm_calls": 0.0,
+          "avg_latency_ms": 20.6
+        }
+      }
     },
     "hybrid": {
-      "per_query": [],
-      "per_repo": {}
-    },
-    "greedy_tree": {
-      "per_query": [],
-      "per_repo": {}
+      "per_query": [
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does cross-validation work in scikit-learn?",
+          "ground_truth": [
+            "cross_val_score",
+            "cross_validate",
+            "KFold",
+            "StratifiedKFold"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 206.1,
+          "llm_calls": 0,
+          "ranked": [
+            "test_cross_validate_invalid_scoring_param",
+            "test_cross_val_predict_method_checking",
+            "test_cross_validator_with_default_params",
+            "test_precomputed_cross_validation",
+            "check_cross_val_predict_with_method_multiclass"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the purpose of the `StandardScaler` class?",
+          "ground_truth": [
+            "StandardScaler"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 204.1,
+          "llm_calls": 0,
+          "ranked": [
+            "_check_standard_scaled",
+            "test_standard_scaler_1d",
+            "test_confusion_matrix_normalize_single_class",
+            "test_average_precision_constant_values",
+            "test_robust_scaler_unit_variance"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How can I perform a grid search with cross-validation?",
+          "ground_truth": [
+            "GridSearchCV",
+            "ParameterGrid"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 208.2,
+          "llm_calls": 0,
+          "ranked": [
+            "test_gridsearchcv_cross_val_predict_with_method",
+            "test_grid_search",
+            "test_gridsearch",
+            "test_grid_search_when_param_grid_includes_range",
+            "test_gridsearch"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What does it mean for a model to be 'overfitting'?",
+          "ground_truth": [
+            "learning_curve",
+            "validation_curve"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 205.1,
+          "llm_calls": 0,
+          "ranked": [
+            "mean",
+            "mean",
+            "true_fun",
+            "test_huber_overfit",
+            "test_underflow_or_overlow"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find examples of using PCA for dimensionality reduction?",
+          "ground_truth": [
+            "PCA"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 215.2,
+          "llm_calls": 0,
+          "ranked": [
+            "where",
+            "_infer_dimension",
+            "_assess_dimension",
+            "fit",
+            "__init__"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I save and load models in scikit-learn?",
+          "ground_truth": [
+            "BaseEstimator"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 209.7,
+          "llm_calls": 0,
+          "ranked": [
+            "load",
+            "_store",
+            "__init__",
+            "__init__",
+            "rmatvec"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the role of `Pipeline` in creating machine learning workflows?",
+          "ground_truth": [
+            "Pipeline",
+            "FeatureUnion",
+            "make_pipeline"
+          ],
+          "r1": 1.0,
+          "r5": 1.0,
+          "mrr": 1.0,
+          "latency_ms": 215.7,
+          "llm_calls": 0,
+          "ranked": [
+            "make_pipeline",
+            "test_pipeline_named_steps",
+            "test_make_pipeline",
+            "test_set_pipeline_steps",
+            "test_n_features_in_pipeline"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How can I handle imbalanced datasets in classification problems?",
+          "ground_truth": [
+            "resample"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 203.5,
+          "llm_calls": 0,
+          "ranked": [
+            "test_make_moons_unbalanced",
+            "test_classification_report_multiclass_balanced",
+            "test_make_circles_unbalanced",
+            "test_cross_val_predict_unbalanced",
+            "classes_"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What are some common evaluation metrics used in machine learning?",
+          "ground_truth": [
+            "accuracy_score",
+            "f1_score",
+            "roc_auc_score",
+            "confusion_matrix"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 418.1,
+          "llm_calls": 0,
+          "ranked": [
+            "check_scoring_validator_for_single_metric_usecases",
+            "business_metric",
+            "_check_algorithm_metric",
+            "metric",
+            "check_array_api_multiclass_classification_metric"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `RandomForestClassifier` work internally?",
+          "ground_truth": [
+            "RandomForestClassifier",
+            "ForestClassifier",
+            "BaseForest"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 210.1,
+          "llm_calls": 0,
+          "ranked": [
+            "test_random_hasher",
+            "_compute_proba_from_decision",
+            "_set_random_states",
+            "staged_decision_function",
+            "staged_decision_function"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find more information about feature selection techniques?",
+          "ground_truth": [
+            "SelectKBest",
+            "RFE",
+            "SelectFromModel",
+            "VarianceThreshold"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 204.5,
+          "llm_calls": 0,
+          "ranked": [
+            "where",
+            "decision_function",
+            "__init__",
+            "__init__",
+            "__init__"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I implement custom metrics for model evaluation?",
+          "ground_truth": [
+            "make_scorer"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 201.6,
+          "llm_calls": 0,
+          "ranked": [
+            "test_pairwise_dist_custom_metric_for_bool",
+            "business_metric",
+            "check_scoring_validator_for_single_metric_usecases",
+            "metric",
+            "check_array_api_metric"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the significance of the `fit_intercept` parameter in linear regression models?",
+          "ground_truth": [
+            "LinearRegression",
+            "Ridge",
+            "Lasso"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 212.1,
+          "llm_calls": 0,
+          "ranked": [
+            "test_fit_intercept",
+            "_set_intercept",
+            "weight_intercept",
+            "test_ridge_intercept",
+            "weight_intercept_raw"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `SVC` class handle different kernels (linear, polynomial, rbf)?",
+          "ground_truth": [
+            "SVC",
+            "BaseLibSVM"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 203.8,
+          "llm_calls": 0,
+          "ranked": [
+            "_compute_kernel",
+            "test_svc_clone_with_callable_kernel",
+            "fun",
+            "fun",
+            "fun"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find more detailed documentation about ensemble methods?",
+          "ground_truth": [
+            "VotingClassifier",
+            "StackingClassifier",
+            "BaggingClassifier",
+            "AdaBoostClassifier"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 204.0,
+          "llm_calls": 0,
+          "ranked": [
+            "where",
+            "_method_name",
+            "__iter__",
+            "__init__",
+            "__init__"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I tune hyperparameters for a Support Vector Machine?",
+          "ground_truth": [
+            "GridSearchCV",
+            "RandomizedSearchCV",
+            "HalvingGridSearchCV"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 203.1,
+          "llm_calls": 0,
+          "ranked": [
+            "hyperparameters",
+            "hyperparameters",
+            "hyperparameters",
+            "hyperparameter_alpha",
+            "set_parameter"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the purpose of the `LeaveOneOut` cross-validation method?",
+          "ground_truth": [
+            "LeaveOneOut"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 201.3,
+          "llm_calls": 0,
+          "ranked": [
+            "test_cross_validator_with_default_params",
+            "test_leave_one_p_group_out",
+            "test_callable_multimetric_confusion_matrix_cross_validate",
+            "_deprecated_method",
+            "test_leave_group_out_changing_groups"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `KMeans` algorithm determine cluster centers?",
+          "ground_truth": [
+            "KMeans",
+            "MiniBatchKMeans"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 204.1,
+          "llm_calls": 0,
+          "ranked": [
+            "_init_centroids",
+            "_validate_center_shape",
+            "_kmeans_plusplus",
+            "bench_k_means",
+            "__init__"
+          ]
+        }
+      ],
+      "per_repo": {
+        "scikit-learn__scikit-learn": {
+          "R@1": 0.0556,
+          "R@5": 0.0556,
+          "MRR": 0.0556,
+          "n_queries": 18,
+          "avg_llm_calls": 0.0,
+          "avg_latency_ms": 218.3
+        }
+      }
     },
     "puct_mcts": {
-      "per_query": [],
-      "per_repo": {}
+      "per_query": [
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does cross-validation work in scikit-learn?",
+          "ground_truth": [
+            "cross_val_score",
+            "cross_validate",
+            "KFold",
+            "StratifiedKFold"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 593.8,
+          "llm_calls": 36,
+          "ranked": [
+            "compute_bench",
+            "check_xfailed_checks.py",
+            "bench_scikit_tree_classifier",
+            "postBuild",
+            "bicluster_ncut"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the purpose of the `StandardScaler` class?",
+          "ground_truth": [
+            "StandardScaler"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 516.4,
+          "llm_calls": 39,
+          "ranked": [
+            "SpectralCoclustering",
+            "MiniBatchKMeansBenchmark",
+            "bicluster_ncut",
+            "devcontainer.json",
+            "CITATION.cff"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How can I perform a grid search with cross-validation?",
+          "ground_truth": [
+            "GridSearchCV",
+            "ParameterGrid"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 351.7,
+          "llm_calls": 33,
+          "ranked": [
+            ".mailmap",
+            "cmds.py",
+            "postBuild",
+            "README.rst",
+            "bicluster_ncut"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What does it mean for a model to be 'overfitting'?",
+          "ground_truth": [
+            "learning_curve",
+            "validation_curve"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 667.7,
+          "llm_calls": 38,
+          "ranked": [
+            "config.yml",
+            "CITATION.cff",
+            "SpectralCoclustering",
+            "bench_plot_polynomial_kernel_approximation.py",
+            "devcontainer.json"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find examples of using PCA for dimensionality reduction?",
+          "ground_truth": [
+            "PCA"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 399.0,
+          "llm_calls": 36,
+          "ranked": [
+            "PCABenchmark",
+            "get_min_version_pure_python_or_example_dependency",
+            "bicluster_ncut",
+            "cmds.py",
+            "config.yml"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I save and load models in scikit-learn?",
+          "ground_truth": [
+            "BaseEstimator"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 421.0,
+          "llm_calls": 40,
+          "ranked": [
+            "config.yml",
+            "COPYING",
+            "module.rst.template",
+            "postBuild",
+            ".mailmap"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the role of `Pipeline` in creating machine learning workflows?",
+          "ground_truth": [
+            "Pipeline",
+            "FeatureUnion",
+            "make_pipeline"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 487.2,
+          "llm_calls": 43,
+          "ranked": [
+            "compute_bench",
+            "cmds.py",
+            ".mailmap",
+            "module.rst.template",
+            "postBuild"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How can I handle imbalanced datasets in classification problems?",
+          "ground_truth": [
+            "resample"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 357.0,
+          "llm_calls": 35,
+          "ranked": [
+            "datasets.py",
+            "bench_scikit_tree_classifier",
+            "cmds.py",
+            ".mailmap",
+            "postBuild"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What are some common evaluation metrics used in machine learning?",
+          "ground_truth": [
+            "accuracy_score",
+            "f1_score",
+            "roc_auc_score",
+            "confusion_matrix"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 371.8,
+          "llm_calls": 37,
+          "ranked": [
+            "PairwiseDistancesBenchmark",
+            "KMeansBenchmark",
+            "compute_bench",
+            "autolabel_time",
+            "datasets.py"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `RandomForestClassifier` work internally?",
+          "ground_truth": [
+            "RandomForestClassifier",
+            "ForestClassifier",
+            "BaseForest"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 368.0,
+          "llm_calls": 38,
+          "ranked": [
+            "SpectralCoclustering",
+            "_DOTTreeExporter",
+            "KMeansBenchmark",
+            "bicluster_ncut",
+            "module.rst.template"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find more information about feature selection techniques?",
+          "ground_truth": [
+            "SelectKBest",
+            "RFE",
+            "SelectFromModel",
+            "VarianceThreshold"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 420.6,
+          "llm_calls": 39,
+          "ranked": [
+            "datasets.py",
+            "biclustering.rst",
+            "SpectralCoclustering",
+            "bicluster_ncut",
+            "devcontainer.json"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I implement custom metrics for model evaluation?",
+          "ground_truth": [
+            "make_scorer"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 419.1,
+          "llm_calls": 44,
+          "ranked": [
+            "PairwiseDistancesBenchmark",
+            "cmds.py",
+            "fit",
+            "__init__.py",
+            ".mailmap"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the significance of the `fit_intercept` parameter in linear regression models?",
+          "ground_truth": [
+            "LinearRegression",
+            "Ridge",
+            "Lasso"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 438.7,
+          "llm_calls": 40,
+          "ranked": [
+            "CITATION.cff",
+            "cmds.py",
+            "SpectralCoclustering",
+            "compute_bench",
+            "KMeansBenchmark"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `SVC` class handle different kernels (linear, polynomial, rbf)?",
+          "ground_truth": [
+            "SVC",
+            "BaseLibSVM"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 440.7,
+          "llm_calls": 42,
+          "ranked": [
+            "bench_plot_polynomial_kernel_approximation.py",
+            "SpectralCoclustering",
+            "CITATION.cff",
+            "KMeansBenchmark",
+            "biclustering.rst"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find more detailed documentation about ensemble methods?",
+          "ground_truth": [
+            "VotingClassifier",
+            "StackingClassifier",
+            "BaggingClassifier",
+            "AdaBoostClassifier"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 407.8,
+          "llm_calls": 42,
+          "ranked": [
+            "biclustering.rst",
+            "SpectralCoclustering",
+            "bicluster_ncut",
+            "CITATION.cff",
+            "cmds.py"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I tune hyperparameters for a Support Vector Machine?",
+          "ground_truth": [
+            "GridSearchCV",
+            "RandomizedSearchCV",
+            "HalvingGridSearchCV"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 376.7,
+          "llm_calls": 37,
+          "ranked": [
+            "cmds.py",
+            ".mailmap",
+            "bicluster_ncut",
+            "setup.sh",
+            "CITATION.cff"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the purpose of the `LeaveOneOut` cross-validation method?",
+          "ground_truth": [
+            "LeaveOneOut"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 453.6,
+          "llm_calls": 45,
+          "ranked": [
+            "SpectralCoclustering",
+            "compute_bench",
+            "CITATION.cff",
+            "__init__.py",
+            "postBuild"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `KMeans` algorithm determine cluster centers?",
+          "ground_truth": [
+            "KMeans",
+            "MiniBatchKMeans"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 395.6,
+          "llm_calls": 39,
+          "ranked": [
+            "plot_mini_batch_kmeans.py",
+            "KMeansBenchmark",
+            "MiniBatchKMeansBenchmark",
+            "compute_bench",
+            "SpectralCoclustering"
+          ]
+        }
+      ],
+      "per_repo": {
+        "scikit-learn__scikit-learn": {
+          "R@1": 0.0,
+          "R@5": 0.0,
+          "MRR": 0.0,
+          "n_queries": 18,
+          "avg_llm_calls": 39.06,
+          "avg_latency_ms": 438.1
+        }
+      }
     },
     "puct_adapted": {
-      "per_query": [],
-      "per_repo": {}
+      "per_query": [
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does cross-validation work in scikit-learn?",
+          "ground_truth": [
+            "cross_val_score",
+            "cross_validate",
+            "KFold",
+            "StratifiedKFold"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 416.3,
+          "llm_calls": 36,
+          "ranked": [
+            "compute_bench",
+            "check_xfailed_checks.py",
+            "bench_scikit_tree_classifier",
+            "postBuild",
+            "bicluster_ncut"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the purpose of the `StandardScaler` class?",
+          "ground_truth": [
+            "StandardScaler"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 412.3,
+          "llm_calls": 43,
+          "ranked": [
+            "SpectralCoclustering",
+            "MiniBatchKMeansBenchmark",
+            "bicluster_ncut",
+            "devcontainer.json",
+            "CITATION.cff"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How can I perform a grid search with cross-validation?",
+          "ground_truth": [
+            "GridSearchCV",
+            "ParameterGrid"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 411.5,
+          "llm_calls": 41,
+          "ranked": [
+            "__init__.py",
+            ".mailmap",
+            "cmds.py",
+            "postBuild",
+            "README.rst"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What does it mean for a model to be 'overfitting'?",
+          "ground_truth": [
+            "learning_curve",
+            "validation_curve"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 411.1,
+          "llm_calls": 43,
+          "ranked": [
+            "config.yml",
+            "CITATION.cff",
+            "bench_plot_polynomial_kernel_approximation.py",
+            "devcontainer.json",
+            "module.rst.template"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find examples of using PCA for dimensionality reduction?",
+          "ground_truth": [
+            "PCA"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 436.4,
+          "llm_calls": 45,
+          "ranked": [
+            "get_min_version_pure_python_or_example_dependency",
+            "config.yml",
+            "__init__.py",
+            "CITATION.cff",
+            "MiniBatchKMeansBenchmark"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I save and load models in scikit-learn?",
+          "ground_truth": [
+            "BaseEstimator"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 528.1,
+          "llm_calls": 60,
+          "ranked": [
+            "config.yml",
+            "COPYING",
+            "postBuild",
+            ".mailmap",
+            "autolabel_time"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the role of `Pipeline` in creating machine learning workflows?",
+          "ground_truth": [
+            "Pipeline",
+            "FeatureUnion",
+            "make_pipeline"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 489.8,
+          "llm_calls": 53,
+          "ranked": [
+            "cmds.py",
+            ".mailmap",
+            "postBuild",
+            "CITATION.cff",
+            "COPYING"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How can I handle imbalanced datasets in classification problems?",
+          "ground_truth": [
+            "resample"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 435.2,
+          "llm_calls": 45,
+          "ranked": [
+            "datasets.py",
+            "linnerud_physiological.csv",
+            "bench_scikit_tree_classifier",
+            ".mailmap",
+            "postBuild"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What are some common evaluation metrics used in machine learning?",
+          "ground_truth": [
+            "accuracy_score",
+            "f1_score",
+            "roc_auc_score",
+            "confusion_matrix"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 529.4,
+          "llm_calls": 58,
+          "ranked": [
+            "compute_bench",
+            "KMeansBenchmark",
+            "autolabel_time",
+            "datasets.py",
+            "bench_plot_polynomial_kernel_approximation.py"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `RandomForestClassifier` work internally?",
+          "ground_truth": [
+            "RandomForestClassifier",
+            "ForestClassifier",
+            "BaseForest"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 508.3,
+          "llm_calls": 56,
+          "ranked": [
+            "KMeansBenchmark",
+            "vendor_array_api_extra.sh",
+            "config.yml",
+            "postBuild",
+            "vendor_array_api_compat.sh"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find more information about feature selection techniques?",
+          "ground_truth": [
+            "SelectKBest",
+            "RFE",
+            "SelectFromModel",
+            "VarianceThreshold"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 544.4,
+          "llm_calls": 59,
+          "ranked": [
+            "datasets.py",
+            "devcontainer.json",
+            "__init__.py",
+            "__init__.py",
+            "vendor_array_api_compat.sh"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I implement custom metrics for model evaluation?",
+          "ground_truth": [
+            "make_scorer"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 496.9,
+          "llm_calls": 55,
+          "ranked": [
+            ".mailmap",
+            "autolabel_time",
+            "config.yml",
+            "postBuild",
+            "COPYING"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the significance of the `fit_intercept` parameter in linear regression models?",
+          "ground_truth": [
+            "LinearRegression",
+            "Ridge",
+            "Lasso"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 599.7,
+          "llm_calls": 71,
+          "ranked": [
+            "CITATION.cff",
+            "bench_plot_polynomial_kernel_approximation.py",
+            ".mailmap",
+            "config.yml",
+            "postBuild"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `SVC` class handle different kernels (linear, polynomial, rbf)?",
+          "ground_truth": [
+            "SVC",
+            "BaseLibSVM"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 694.1,
+          "llm_calls": 73,
+          "ranked": [
+            "bench_plot_polynomial_kernel_approximation.py",
+            "CITATION.cff",
+            ".mailmap",
+            "postBuild",
+            "config.yml"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "Where can I find more detailed documentation about ensemble methods?",
+          "ground_truth": [
+            "VotingClassifier",
+            "StackingClassifier",
+            "BaggingClassifier",
+            "AdaBoostClassifier"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 521.0,
+          "llm_calls": 59,
+          "ranked": [
+            "CITATION.cff",
+            "__init__.py",
+            "devcontainer.json",
+            "config.yml",
+            "config.json"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How do I tune hyperparameters for a Support Vector Machine?",
+          "ground_truth": [
+            "GridSearchCV",
+            "RandomizedSearchCV",
+            "HalvingGridSearchCV"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 607.0,
+          "llm_calls": 71,
+          "ranked": [
+            ".mailmap",
+            "CITATION.cff",
+            "config.yml",
+            "postBuild",
+            "vendor_array_api_compat.sh"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "What is the purpose of the `LeaveOneOut` cross-validation method?",
+          "ground_truth": [
+            "LeaveOneOut"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 623.0,
+          "llm_calls": 75,
+          "ranked": [
+            "postBuild",
+            "bench_plot_polynomial_kernel_approximation.py",
+            ".mailmap",
+            "config.yml",
+            "vendor_array_api_compat.sh"
+          ]
+        },
+        {
+          "repo_id": "scikit-learn__scikit-learn",
+          "query": "How does the `KMeans` algorithm determine cluster centers?",
+          "ground_truth": [
+            "KMeans",
+            "MiniBatchKMeans"
+          ],
+          "r1": 0.0,
+          "r5": 0.0,
+          "mrr": 0.0,
+          "latency_ms": 591.2,
+          "llm_calls": 70,
+          "ranked": [
+            "bench_plot_polynomial_kernel_approximation.py",
+            ".mailmap",
+            "config.yml",
+            "postBuild",
+            "vendor_array_api_compat.sh"
+          ]
+        }
+      ],
+      "per_repo": {
+        "scikit-learn__scikit-learn": {
+          "R@1": 0.0,
+          "R@5": 0.0,
+          "MRR": 0.0,
+          "n_queries": 18,
+          "avg_llm_calls": 56.28,
+          "avg_latency_ms": 514.2
+        }
+      }
     }
   },
-  "timestamp": "2026-04-17 22:53:26"
+  "timestamp": "2026-04-18 08:58:03"
 }

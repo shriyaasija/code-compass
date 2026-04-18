@@ -1,0 +1,2016 @@
+{
+  "title": "keleshev_schema",
+  "node_id": "0000",
+  "type": "repository",
+  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema",
+  "nodes": [
+    {
+      "title": ".editorconfig",
+      "node_id": "0001",
+      "type": "file",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/.editorconfig",
+      "summary": "File .editorconfig",
+      "tokens_used": 0
+    },
+    {
+      "title": ".pre-commit-config.yaml",
+      "node_id": "0002",
+      "type": "file_yaml",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/.pre-commit-config.yaml",
+      "summary": "File .pre-commit-config.yaml",
+      "tokens_used": 0
+    },
+    {
+      "title": ".travis.yml",
+      "node_id": "0003",
+      "type": "file_yml",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/.travis.yml",
+      "summary": "File .travis.yml",
+      "tokens_used": 0
+    },
+    {
+      "title": "CHANGELOG.md",
+      "node_id": "0004",
+      "type": "file_md",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/CHANGELOG.md",
+      "summary": "File CHANGELOG.md",
+      "tokens_used": 0
+    },
+    {
+      "title": "LICENSE-MIT",
+      "node_id": "0005",
+      "type": "file",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/LICENSE-MIT",
+      "summary": "File LICENSE-MIT",
+      "tokens_used": 0
+    },
+    {
+      "title": "MANIFEST.in",
+      "node_id": "0006",
+      "type": "file_in",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/MANIFEST.in",
+      "summary": "File MANIFEST.in",
+      "tokens_used": 0
+    },
+    {
+      "title": "README.rst",
+      "node_id": "0007",
+      "type": "file_rst",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/README.rst",
+      "summary": "File README.rst",
+      "tokens_used": 0
+    },
+    {
+      "title": "pyproject.toml",
+      "node_id": "0008",
+      "type": "file_toml",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/pyproject.toml",
+      "summary": "File pyproject.toml",
+      "tokens_used": 0
+    },
+    {
+      "title": "requirements.txt",
+      "node_id": "0009",
+      "type": "file_txt",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/requirements.txt",
+      "summary": "File requirements.txt",
+      "tokens_used": 0
+    },
+    {
+      "title": "schema",
+      "node_id": "0010",
+      "type": "folder",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema",
+      "nodes": [
+        {
+          "title": "__init__.py",
+          "node_id": "0011",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+          "nodes": [
+            {
+              "title": "SchemaError",
+              "node_id": "class_1",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 56,
+              "end_line": 85,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_2",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 59,
+                  "end_line": 66,
+                  "summary": "Function __init__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "code",
+                  "node_id": "method_3",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 69,
+                  "end_line": 85,
+                  "summary": "Function code",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "uniq",
+                  "node_id": "method_4",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 72,
+                  "end_line": 80,
+                  "summary": "Function uniq",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "Class SchemaError with 3 methods",
+              "tokens_used": 0
+            },
+            {
+              "title": "SchemaWrongKeyError",
+              "node_id": "class_5",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 88,
+              "end_line": 92,
+              "summary": "Class SchemaWrongKeyError",
+              "tokens_used": 0
+            },
+            {
+              "title": "SchemaMissingKeyError",
+              "node_id": "class_6",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 95,
+              "end_line": 99,
+              "summary": "Class SchemaMissingKeyError",
+              "tokens_used": 0
+            },
+            {
+              "title": "SchemaOnlyOneAllowedError",
+              "node_id": "class_7",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 102,
+              "end_line": 105,
+              "summary": "Class SchemaOnlyOneAllowedError",
+              "tokens_used": 0
+            },
+            {
+              "title": "SchemaForbiddenKeyError",
+              "node_id": "class_8",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 108,
+              "end_line": 112,
+              "summary": "Class SchemaForbiddenKeyError",
+              "tokens_used": 0
+            },
+            {
+              "title": "SchemaUnexpectedTypeError",
+              "node_id": "class_9",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 115,
+              "end_line": 119,
+              "summary": "Class SchemaUnexpectedTypeError",
+              "tokens_used": 0
+            },
+            {
+              "title": "And",
+              "node_id": "class_10",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 126,
+              "end_line": 170,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_11",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 131,
+                  "end_line": 141,
+                  "summary": "Function __init__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "__repr__",
+                  "node_id": "method_12",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 143,
+                  "end_line": 144,
+                  "summary": "Function __repr__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "args",
+                  "node_id": "method_13",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 147,
+                  "end_line": 149,
+                  "summary": "Function args",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "validate",
+                  "node_id": "method_14",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 151,
+                  "end_line": 161,
+                  "summary": "Function validate",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_build_schemas",
+                  "node_id": "method_15",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 163,
+                  "end_line": 164,
+                  "summary": "Function _build_schemas",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_build_schema",
+                  "node_id": "method_16",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 166,
+                  "end_line": 170,
+                  "summary": "Function _build_schema",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "Class And with 6 methods",
+              "tokens_used": 0
+            },
+            {
+              "title": "Or",
+              "node_id": "class_17",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 173,
+              "end_line": 222,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_18",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 182,
+                  "end_line": 190,
+                  "summary": "Function __init__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "reset",
+                  "node_id": "method_19",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 192,
+                  "end_line": 198,
+                  "summary": "Function reset",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "validate",
+                  "node_id": "method_20",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 200,
+                  "end_line": 222,
+                  "summary": "Function validate",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "Class Or with 3 methods",
+              "tokens_used": 0
+            },
+            {
+              "title": "Regex",
+              "node_id": "class_21",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 225,
+              "end_line": 285,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_22",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 243,
+                  "end_line": 253,
+                  "summary": "Function __init__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "__repr__",
+                  "node_id": "method_23",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 255,
+                  "end_line": 256,
+                  "summary": "Function __repr__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "pattern_str",
+                  "node_id": "method_24",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 259,
+                  "end_line": 261,
+                  "summary": "Function pattern_str",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "validate",
+                  "node_id": "method_25",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 263,
+                  "end_line": 285,
+                  "summary": "Function validate",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "Class Regex with 4 methods",
+              "tokens_used": 0
+            },
+            {
+              "title": "Use",
+              "node_id": "class_26",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 288,
+              "end_line": 327,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_27",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 294,
+                  "end_line": 300,
+                  "summary": "Function __init__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "__repr__",
+                  "node_id": "method_28",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 302,
+                  "end_line": 303,
+                  "summary": "Function __repr__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "__call__",
+                  "node_id": "method_29",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 305,
+                  "end_line": 312,
+                  "summary": "Function __call__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "validate",
+                  "node_id": "method_30",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 314,
+                  "end_line": 327,
+                  "summary": "Function validate",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "Class Use with 4 methods",
+              "tokens_used": 0
+            },
+            {
+              "title": "_priority",
+              "node_id": "func_31",
+              "type": "function",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 333,
+              "end_line": 348,
+              "summary": "Function _priority",
+              "tokens_used": 0
+            },
+            {
+              "title": "_invoke_with_optional_kwargs",
+              "node_id": "func_32",
+              "type": "function",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 351,
+              "end_line": 355,
+              "summary": "Function _invoke_with_optional_kwargs",
+              "tokens_used": 0
+            },
+            {
+              "title": "Schema",
+              "node_id": "class_33",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 358,
+              "end_line": 870,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_34",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 364,
+                  "end_line": 381,
+                  "summary": "Function __init__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "__repr__",
+                  "node_id": "method_35",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 383,
+                  "end_line": 384,
+                  "summary": "Function __repr__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "schema",
+                  "node_id": "method_36",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 387,
+                  "end_line": 388,
+                  "summary": "Function schema",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "description",
+                  "node_id": "method_37",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 391,
+                  "end_line": 392,
+                  "summary": "Function description",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "name",
+                  "node_id": "method_38",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 395,
+                  "end_line": 396,
+                  "summary": "Function name",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "ignore_extra_keys",
+                  "node_id": "method_39",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 399,
+                  "end_line": 400,
+                  "summary": "Function ignore_extra_keys",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_dict_key_priority",
+                  "node_id": "method_40",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 403,
+                  "end_line": 409,
+                  "summary": "Function _dict_key_priority",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_is_optional_type",
+                  "node_id": "method_41",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 412,
+                  "end_line": 414,
+                  "summary": "Function _is_optional_type",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "is_valid",
+                  "node_id": "method_42",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 416,
+                  "end_line": 425,
+                  "summary": "Function is_valid",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_prepend_schema_name",
+                  "node_id": "method_43",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 427,
+                  "end_line": 434,
+                  "summary": "Function _prepend_schema_name",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "validate",
+                  "node_id": "method_44",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 436,
+                  "end_line": 581,
+                  "summary": "Function validate",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "json_schema",
+                  "node_id": "method_45",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 583,
+                  "end_line": 870,
+                  "summary": "Function json_schema",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_json_schema",
+                  "node_id": "method_46",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 598,
+                  "end_line": 868,
+                  "summary": "Function _json_schema",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_create_or_use_ref",
+                  "node_id": "method_47",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 605,
+                  "end_line": 620,
+                  "summary": "Function _create_or_use_ref",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_get_type_name",
+                  "node_id": "method_48",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 622,
+                  "end_line": 636,
+                  "summary": "Function _get_type_name",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_to_json_type",
+                  "node_id": "method_49",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 638,
+                  "end_line": 649,
+                  "summary": "Function _to_json_type",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_to_schema",
+                  "node_id": "method_50",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 651,
+                  "end_line": 655,
+                  "summary": "Function _to_schema",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_key_allows_additional_properties",
+                  "node_id": "method_51",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 774,
+                  "end_line": 779,
+                  "summary": "Function _key_allows_additional_properties",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_get_key_title",
+                  "node_id": "method_52",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 781,
+                  "end_line": 789,
+                  "summary": "Function _get_key_title",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_get_key_description",
+                  "node_id": "method_53",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 791,
+                  "end_line": 799,
+                  "summary": "Function _get_key_description",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_get_key_name",
+                  "node_id": "method_54",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 801,
+                  "end_line": 809,
+                  "summary": "Function _get_key_name",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "Class Schema with 21 methods",
+              "tokens_used": 0
+            },
+            {
+              "title": "Optional",
+              "node_id": "class_55",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 873,
+              "end_line": 904,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_56",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 878,
+                  "end_line": 889,
+                  "summary": "Function __init__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "__hash__",
+                  "node_id": "method_57",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 891,
+                  "end_line": 892,
+                  "summary": "Function __hash__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "__eq__",
+                  "node_id": "method_58",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 894,
+                  "end_line": 900,
+                  "summary": "Function __eq__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "reset",
+                  "node_id": "method_59",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 902,
+                  "end_line": 904,
+                  "summary": "Function reset",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "Class Optional with 4 methods",
+              "tokens_used": 0
+            },
+            {
+              "title": "Hook",
+              "node_id": "class_60",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 907,
+              "end_line": 911,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_61",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 908,
+                  "end_line": 911,
+                  "summary": "Function __init__",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "Class Hook with 1 methods",
+              "tokens_used": 0
+            },
+            {
+              "title": "Forbidden",
+              "node_id": "class_62",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 914,
+              "end_line": 923,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_63",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 915,
+                  "end_line": 917,
+                  "summary": "Function __init__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "_default_function",
+                  "node_id": "method_64",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 920,
+                  "end_line": 923,
+                  "summary": "Function _default_function",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "Class Forbidden with 2 methods",
+              "tokens_used": 0
+            },
+            {
+              "title": "Literal",
+              "node_id": "class_65",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 926,
+              "end_line": 953,
+              "nodes": [
+                {
+                  "title": "__init__",
+                  "node_id": "method_66",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 927,
+                  "end_line": 935,
+                  "summary": "Function __init__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "__str__",
+                  "node_id": "method_67",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 937,
+                  "end_line": 938,
+                  "summary": "Function __str__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "__repr__",
+                  "node_id": "method_68",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 940,
+                  "end_line": 941,
+                  "summary": "Function __repr__",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "description",
+                  "node_id": "method_69",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 944,
+                  "end_line": 945,
+                  "summary": "Function description",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "title",
+                  "node_id": "method_70",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 948,
+                  "end_line": 949,
+                  "summary": "Function title",
+                  "tokens_used": 0
+                },
+                {
+                  "title": "schema",
+                  "node_id": "method_71",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 952,
+                  "end_line": 953,
+                  "summary": "Function schema",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "Class Literal with 6 methods",
+              "tokens_used": 0
+            },
+            {
+              "title": "Const",
+              "node_id": "class_72",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 956,
+              "end_line": 959,
+              "nodes": [
+                {
+                  "title": "validate",
+                  "node_id": "method_73",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+                  "start_line": 957,
+                  "end_line": 959,
+                  "summary": "Function validate",
+                  "tokens_used": 0
+                }
+              ],
+              "summary": "Class Const with 1 methods",
+              "tokens_used": 0
+            },
+            {
+              "title": "_callable_str",
+              "node_id": "func_74",
+              "type": "function",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 962,
+              "end_line": 965,
+              "summary": "Function _callable_str",
+              "tokens_used": 0
+            },
+            {
+              "title": "_plural_s",
+              "node_id": "func_75",
+              "type": "function",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/__init__.py",
+              "start_line": 968,
+              "end_line": 969,
+              "summary": "Function _plural_s",
+              "tokens_used": 0
+            }
+          ],
+          "summary": "File __init__.py with 20 items",
+          "tokens_used": 0
+        },
+        {
+          "title": "py.typed",
+          "node_id": "0012",
+          "type": "file_typed",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/schema/py.typed",
+          "summary": "File py.typed",
+          "tokens_used": 0
+        }
+      ],
+      "summary": "Module schema with 2 items",
+      "tokens_used": 0
+    },
+    {
+      "title": "setup.cfg",
+      "node_id": "0013",
+      "type": "file_cfg",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/setup.cfg",
+      "summary": "File setup.cfg",
+      "tokens_used": 0
+    },
+    {
+      "title": "setup.py",
+      "node_id": "0014",
+      "type": "file_py",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/setup.py",
+      "summary": "File setup.py",
+      "tokens_used": 0
+    },
+    {
+      "title": "test_mypy_use_callable.py",
+      "node_id": "0015",
+      "type": "file_py",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_mypy_use_callable.py",
+      "nodes": [
+        {
+          "title": "is_mypy_available",
+          "node_id": "func_76",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_mypy_use_callable.py",
+          "start_line": 16,
+          "end_line": 18,
+          "summary": "Function is_mypy_available",
+          "tokens_used": 0
+        },
+        {
+          "title": "_can_import_mypy",
+          "node_id": "func_77",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_mypy_use_callable.py",
+          "start_line": 21,
+          "end_line": 27,
+          "summary": "Function _can_import_mypy",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_mypy_use_with_and_no_error",
+          "node_id": "func_78",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_mypy_use_callable.py",
+          "start_line": 36,
+          "end_line": 71,
+          "summary": "Function test_mypy_use_with_and_no_error",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_mypy_use_with_or_no_error",
+          "node_id": "func_79",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_mypy_use_callable.py",
+          "start_line": 74,
+          "end_line": 104,
+          "summary": "Function test_mypy_use_with_or_no_error",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_mypy_use_with_and_complex_no_error",
+          "node_id": "func_80",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_mypy_use_callable.py",
+          "start_line": 107,
+          "end_line": 143,
+          "summary": "Function test_mypy_use_with_and_complex_no_error",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_mypy_use_callable_recognized",
+          "node_id": "func_81",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_mypy_use_callable.py",
+          "start_line": 146,
+          "end_line": 179,
+          "summary": "Function test_mypy_use_callable_recognized",
+          "tokens_used": 0
+        }
+      ],
+      "summary": "File test_mypy_use_callable.py with 6 items",
+      "tokens_used": 0
+    },
+    {
+      "title": "test_schema.py",
+      "node_id": "0016",
+      "type": "file_py",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+      "nodes": [
+        {
+          "title": "ve",
+          "node_id": "func_82",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 44,
+          "end_line": 45,
+          "summary": "Function ve",
+          "tokens_used": 0
+        },
+        {
+          "title": "se",
+          "node_id": "func_83",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 48,
+          "end_line": 49,
+          "summary": "Function se",
+          "tokens_used": 0
+        },
+        {
+          "title": "sorted_dict",
+          "node_id": "func_84",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 52,
+          "end_line": 64,
+          "summary": "Function sorted_dict",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_schema",
+          "node_id": "func_85",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 67,
+          "end_line": 95,
+          "summary": "Function test_schema",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_validate_file",
+          "node_id": "func_86",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 98,
+          "end_line": 107,
+          "summary": "Function test_validate_file",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_and",
+          "node_id": "func_87",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 110,
+          "end_line": 116,
+          "summary": "Function test_and",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_or",
+          "node_id": "func_88",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 119,
+          "end_line": 126,
+          "summary": "Function test_or",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_or_only_one",
+          "node_id": "func_89",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 129,
+          "end_line": 150,
+          "summary": "Function test_or_only_one",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_test",
+          "node_id": "func_90",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 153,
+          "end_line": 166,
+          "summary": "Function test_test",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_regex",
+          "node_id": "func_91",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 169,
+          "end_line": 214,
+          "summary": "Function test_regex",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_validate_list",
+          "node_id": "func_92",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 217,
+          "end_line": 226,
+          "summary": "Function test_validate_list",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_list_tuple_set_frozenset",
+          "node_id": "func_93",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 229,
+          "end_line": 240,
+          "summary": "Function test_list_tuple_set_frozenset",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_strictly",
+          "node_id": "func_94",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 243,
+          "end_line": 246,
+          "summary": "Function test_strictly",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_dict",
+          "node_id": "func_95",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 249,
+          "end_line": 315,
+          "summary": "Function test_dict",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_dict_keys",
+          "node_id": "func_96",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 318,
+          "end_line": 325,
+          "summary": "Function test_dict_keys",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_ignore_extra_keys",
+          "node_id": "func_97",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 328,
+          "end_line": 340,
+          "summary": "Function test_ignore_extra_keys",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_ignore_extra_keys_validation_and_return_keys",
+          "node_id": "func_98",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 343,
+          "end_line": 355,
+          "summary": "Function test_ignore_extra_keys_validation_and_return_keys",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_dict_forbidden_keys",
+          "node_id": "func_99",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 358,
+          "end_line": 367,
+          "summary": "Function test_dict_forbidden_keys",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_dict_hook",
+          "node_id": "func_100",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 370,
+          "end_line": 385,
+          "summary": "Function test_dict_hook",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_dict_optional_keys",
+          "node_id": "func_101",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 388,
+          "end_line": 402,
+          "summary": "Function test_dict_optional_keys",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_dict_optional_defaults",
+          "node_id": "func_102",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 405,
+          "end_line": 418,
+          "summary": "Function test_dict_optional_defaults",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_dict_subtypes",
+          "node_id": "func_103",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 421,
+          "end_line": 427,
+          "summary": "Function test_dict_subtypes",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_dict_key_error",
+          "node_id": "func_104",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 430,
+          "end_line": 445,
+          "summary": "Function test_dict_key_error",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_complex",
+          "node_id": "func_105",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 448,
+          "end_line": 460,
+          "summary": "Function test_complex",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_nice_errors",
+          "node_id": "func_106",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 463,
+          "end_line": 477,
+          "summary": "Function test_nice_errors",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_use_error_handling",
+          "node_id": "func_107",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 480,
+          "end_line": 500,
+          "summary": "Function test_use_error_handling",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_or_error_handling",
+          "node_id": "func_108",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 503,
+          "end_line": 529,
+          "summary": "Function test_or_error_handling",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_and_error_handling",
+          "node_id": "func_109",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 532,
+          "end_line": 552,
+          "summary": "Function test_and_error_handling",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_schema_error_handling",
+          "node_id": "func_110",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 555,
+          "end_line": 575,
+          "summary": "Function test_schema_error_handling",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_use_json",
+          "node_id": "func_111",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 578,
+          "end_line": 596,
+          "summary": "Function test_use_json",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_error_reporting",
+          "node_id": "func_112",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 599,
+          "end_line": 625,
+          "summary": "Function test_error_reporting",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_schema_repr",
+          "node_id": "func_113",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 628,
+          "end_line": 632,
+          "summary": "Function test_schema_repr",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_validate_object",
+          "node_id": "func_114",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 635,
+          "end_line": 639,
+          "summary": "Function test_validate_object",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_issue_9_prioritized_key_comparison",
+          "node_id": "func_115",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 642,
+          "end_line": 644,
+          "summary": "Function test_issue_9_prioritized_key_comparison",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_issue_9_prioritized_key_comparison_in_dicts",
+          "node_id": "func_116",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 647,
+          "end_line": 659,
+          "summary": "Function test_issue_9_prioritized_key_comparison_in_dicts",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_missing_keys_exception_with_non_str_dict_keys",
+          "node_id": "func_117",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 662,
+          "end_line": 671,
+          "summary": "Function test_missing_keys_exception_with_non_str_dict_keys",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_exception_handling_with_bad_validators",
+          "node_id": "func_118",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 687,
+          "end_line": 695,
+          "summary": "Function test_exception_handling_with_bad_validators",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_issue_83_iterable_validation_return_type",
+          "node_id": "func_119",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 698,
+          "end_line": 702,
+          "summary": "Function test_issue_83_iterable_validation_return_type",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_optional_key_convert_failed_randomly_while_with_another_optional_object",
+          "node_id": "func_120",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 705,
+          "end_line": 738,
+          "summary": "Function test_optional_key_convert_failed_randomly_while_with_another_optional_object",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_copy",
+          "node_id": "func_121",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 741,
+          "end_line": 745,
+          "summary": "Function test_copy",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_inheritance",
+          "node_id": "func_122",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 748,
+          "end_line": 761,
+          "summary": "Function test_inheritance",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_inheritance_validate_kwargs",
+          "node_id": "func_123",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 764,
+          "end_line": 781,
+          "summary": "Function test_inheritance_validate_kwargs",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_inheritance_validate_kwargs_passed_to_nested_schema",
+          "node_id": "func_124",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 784,
+          "end_line": 803,
+          "summary": "Function test_inheritance_validate_kwargs_passed_to_nested_schema",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_optional_callable_default_get_inherited_schema_validate_kwargs",
+          "node_id": "func_125",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 806,
+          "end_line": 823,
+          "summary": "Function test_optional_callable_default_get_inherited_schema_validate_kwargs",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_optional_callable_default_ignore_inherited_schema_validate_kwargs",
+          "node_id": "func_126",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 826,
+          "end_line": 837,
+          "summary": "Function test_optional_callable_default_ignore_inherited_schema_validate_kwargs",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_inheritance_optional",
+          "node_id": "func_127",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 840,
+          "end_line": 869,
+          "summary": "Function test_inheritance_optional",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_literal_repr",
+          "node_id": "func_128",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 872,
+          "end_line": 877,
+          "summary": "Function test_literal_repr",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema",
+          "node_id": "func_129",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 880,
+          "end_line": 889,
+          "summary": "Function test_json_schema",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_with_title",
+          "node_id": "func_130",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 892,
+          "end_line": 902,
+          "summary": "Function test_json_schema_with_title",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_types",
+          "node_id": "func_131",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 905,
+          "end_line": 926,
+          "summary": "Function test_json_schema_types",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_other_types",
+          "node_id": "func_132",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 929,
+          "end_line": 939,
+          "summary": "Function test_json_schema_other_types",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_nested",
+          "node_id": "func_133",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 942,
+          "end_line": 958,
+          "summary": "Function test_json_schema_nested",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_nested_schema",
+          "node_id": "func_134",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 961,
+          "end_line": 977,
+          "summary": "Function test_json_schema_nested_schema",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_optional_key",
+          "node_id": "func_135",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 980,
+          "end_line": 989,
+          "summary": "Function test_json_schema_optional_key",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_optional_key_nested",
+          "node_id": "func_136",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 992,
+          "end_line": 1008,
+          "summary": "Function test_json_schema_optional_key_nested",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_or_key",
+          "node_id": "func_137",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1011,
+          "end_line": 1020,
+          "summary": "Function test_json_schema_or_key",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_or_values",
+          "node_id": "func_138",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1023,
+          "end_line": 1032,
+          "summary": "Function test_json_schema_or_values",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_or_values_nested",
+          "node_id": "func_139",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1035,
+          "end_line": 1051,
+          "summary": "Function test_json_schema_or_values_nested",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_or_values_with_optional",
+          "node_id": "func_140",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1054,
+          "end_line": 1063,
+          "summary": "Function test_json_schema_or_values_with_optional",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_regex",
+          "node_id": "func_141",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1066,
+          "end_line": 1077,
+          "summary": "Function test_json_schema_regex",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_ecma_compliant_regex",
+          "node_id": "func_142",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1080,
+          "end_line": 1091,
+          "summary": "Function test_json_schema_ecma_compliant_regex",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_or_types",
+          "node_id": "func_143",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1094,
+          "end_line": 1103,
+          "summary": "Function test_json_schema_or_types",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_or_only_one",
+          "node_id": "func_144",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1106,
+          "end_line": 1115,
+          "summary": "Function test_json_schema_or_only_one",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_and_types",
+          "node_id": "func_145",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1118,
+          "end_line": 1128,
+          "summary": "Function test_json_schema_and_types",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_or_one_value",
+          "node_id": "func_146",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1131,
+          "end_line": 1140,
+          "summary": "Function test_json_schema_or_one_value",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_const_is_none",
+          "node_id": "func_147",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1143,
+          "end_line": 1152,
+          "summary": "Function test_json_schema_const_is_none",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_const_is_callable",
+          "node_id": "func_148",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1155,
+          "end_line": 1167,
+          "summary": "Function test_json_schema_const_is_callable",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_const_is_custom_type",
+          "node_id": "func_149",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1170,
+          "end_line": 1183,
+          "summary": "Function test_json_schema_const_is_custom_type",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_default_is_custom_type",
+          "node_id": "func_150",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1186,
+          "end_line": 1199,
+          "summary": "Function test_json_schema_default_is_custom_type",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_default_is_callable",
+          "node_id": "func_151",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1202,
+          "end_line": 1214,
+          "summary": "Function test_json_schema_default_is_callable",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_default_is_callable_with_args_passed_from_json_schema",
+          "node_id": "func_152",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1217,
+          "end_line": 1229,
+          "summary": "Function test_json_schema_default_is_callable_with_args_passed_from_json_schema",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_object_or_array_of_object",
+          "node_id": "func_153",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1232,
+          "end_line": 1269,
+          "summary": "Function test_json_schema_object_or_array_of_object",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_and_simple",
+          "node_id": "func_154",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1272,
+          "end_line": 1281,
+          "summary": "Function test_json_schema_and_simple",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_and_list",
+          "node_id": "func_155",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1284,
+          "end_line": 1300,
+          "summary": "Function test_json_schema_and_list",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_forbidden_key_ignored",
+          "node_id": "func_156",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1303,
+          "end_line": 1312,
+          "summary": "Function test_json_schema_forbidden_key_ignored",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_additional_properties_multiple",
+          "node_id": "func_157",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1339,
+          "end_line": 1348,
+          "summary": "Function test_json_schema_additional_properties_multiple",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_regex_root",
+          "node_id": "func_158",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1391,
+          "end_line": 1399,
+          "summary": "Function test_json_schema_regex_root",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_dict_type",
+          "node_id": "func_159",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1402,
+          "end_line": 1412,
+          "summary": "Function test_json_schema_dict_type",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_title_and_description",
+          "node_id": "func_160",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1415,
+          "end_line": 1442,
+          "summary": "Function test_json_schema_title_and_description",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_title_in_or",
+          "node_id": "func_161",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1445,
+          "end_line": 1482,
+          "summary": "Function test_json_schema_title_in_or",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_description_nested",
+          "node_id": "func_162",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1485,
+          "end_line": 1509,
+          "summary": "Function test_json_schema_description_nested",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_description_or_nested",
+          "node_id": "func_163",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1512,
+          "end_line": 1545,
+          "summary": "Function test_json_schema_description_or_nested",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_literal_with_enum",
+          "node_id": "func_164",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1548,
+          "end_line": 1566,
+          "summary": "Function test_json_schema_literal_with_enum",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_description_and_nested",
+          "node_id": "func_165",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1569,
+          "end_line": 1602,
+          "summary": "Function test_json_schema_description_and_nested",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_description",
+          "node_id": "func_166",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1605,
+          "end_line": 1609,
+          "summary": "Function test_description",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_description_with_default",
+          "node_id": "func_167",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1612,
+          "end_line": 1616,
+          "summary": "Function test_description_with_default",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_ref_in_list",
+          "node_id": "func_168",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1619,
+          "end_line": 1647,
+          "summary": "Function test_json_schema_ref_in_list",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_refs",
+          "node_id": "func_169",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1650,
+          "end_line": 1674,
+          "summary": "Function test_json_schema_refs",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_refs_is_smaller",
+          "node_id": "func_170",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1677,
+          "end_line": 1727,
+          "summary": "Function test_json_schema_refs_is_smaller",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_refs_no_missing",
+          "node_id": "func_171",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1730,
+          "end_line": 1804,
+          "summary": "Function test_json_schema_refs_no_missing",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_definitions",
+          "node_id": "func_172",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1807,
+          "end_line": 1831,
+          "summary": "Function test_json_schema_definitions",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_definitions_and_literals",
+          "node_id": "func_173",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1834,
+          "end_line": 1879,
+          "summary": "Function test_json_schema_definitions_and_literals",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_definitions_nested",
+          "node_id": "func_174",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1882,
+          "end_line": 1923,
+          "summary": "Function test_json_schema_definitions_nested",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_definitions_recursive",
+          "node_id": "func_175",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1926,
+          "end_line": 1960,
+          "summary": "Function test_json_schema_definitions_recursive",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_definitions_invalid",
+          "node_id": "func_176",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1963,
+          "end_line": 1965,
+          "summary": "Function test_json_schema_definitions_invalid",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_default_value",
+          "node_id": "func_177",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1968,
+          "end_line": 1977,
+          "summary": "Function test_json_schema_default_value",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_default_value_with_literal",
+          "node_id": "func_178",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1980,
+          "end_line": 1989,
+          "summary": "Function test_json_schema_default_value_with_literal",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_default_is_none",
+          "node_id": "func_179",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 1992,
+          "end_line": 2001,
+          "summary": "Function test_json_schema_default_is_none",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_default_is_tuple",
+          "node_id": "func_180",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 2004,
+          "end_line": 2013,
+          "summary": "Function test_json_schema_default_is_tuple",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_json_schema_default_is_literal",
+          "node_id": "func_181",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 2016,
+          "end_line": 2025,
+          "summary": "Function test_json_schema_default_is_literal",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_prepend_schema_name",
+          "node_id": "func_182",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 2028,
+          "end_line": 2045,
+          "summary": "Function test_prepend_schema_name",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_dict_literal_error_string",
+          "node_id": "func_183",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 2048,
+          "end_line": 2050,
+          "summary": "Function test_dict_literal_error_string",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_callable_error",
+          "node_id": "func_184",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/test_schema.py",
+          "start_line": 2053,
+          "end_line": 2060,
+          "summary": "Function test_callable_error",
+          "tokens_used": 0
+        }
+      ],
+      "summary": "File test_schema.py with 103 items",
+      "tokens_used": 0
+    },
+    {
+      "title": "tox.ini",
+      "node_id": "0017",
+      "type": "file_ini",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmpdl0m379h/keleshev_schema/tox.ini",
+      "summary": "File tox.ini",
+      "tokens_used": 0
+    }
+  ],
+  "summary": "Repository keleshev_schema",
+  "tokens_used": 0
+}

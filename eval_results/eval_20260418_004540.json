@@ -1,0 +1,140 @@
+[
+  {
+    "repo_url": "https://github.com/kennethreitz/records",
+    "repo_id": "kennethreitz_records",
+    "error": null,
+    "summarizer": {
+      "tokens": 0,
+      "llm_calls": 0,
+      "nodes": 0,
+      "time_s": 0.0
+    },
+    "queries": [
+      {
+        "query": "How does the records library handle transactions?",
+        "claude_tokens": 120000,
+        "our_tokens": 1453,
+        "savings": 118547,
+        "ratio": 0.0121,
+        "latency_s": 54.7,
+        "error": null
+      },
+      {
+        "query": "Where can I find the license information for the records library?",
+        "claude_tokens": 127500,
+        "our_tokens": 1090,
+        "savings": 126410,
+        "ratio": 0.0085,
+        "latency_s": 116.93,
+        "error": null
+      },
+      {
+        "query": "How does the records library handle exceptions?",
+        "claude_tokens": 137500,
+        "our_tokens": 1454,
+        "savings": 136046,
+        "ratio": 0.0106,
+        "latency_s": 139.08,
+        "error": null
+      }
+    ],
+    "totals": {
+      "our_tokens": 3997,
+      "claude_tokens": 385000,
+      "savings": 381003,
+      "ratio": 0.0104
+    }
+  },
+  {
+    "repo_url": "https://github.com/keleshev/schema",
+    "repo_id": "keleshev_schema",
+    "error": null,
+    "summarizer": {
+      "tokens": 0,
+      "llm_calls": 0,
+      "nodes": 0,
+      "time_s": 0.0
+    },
+    "queries": [
+      {
+        "query": "What strategies does the schema library employ to handle complex nested schemas?",
+        "claude_tokens": 160000,
+        "our_tokens": 1431,
+        "savings": 158569,
+        "ratio": 0.0089,
+        "latency_s": 246.29,
+        "error": null
+      },
+      {
+        "query": "What mechanisms are used to ensure API keys are validated before processing requests?",
+        "claude_tokens": 167500,
+        "our_tokens": 1321,
+        "savings": 166179,
+        "ratio": 0.0079,
+        "latency_s": 273.13,
+        "error": null
+      },
+      {
+        "query": "How does the library support inheritance and optional fields?",
+        "claude_tokens": 183500,
+        "our_tokens": 1310,
+        "savings": 182190,
+        "ratio": 0.0071,
+        "latency_s": 309.6,
+        "error": null
+      }
+    ],
+    "totals": {
+      "our_tokens": 4062,
+      "claude_tokens": 511000,
+      "savings": 506938,
+      "ratio": 0.0079
+    }
+  },
+  {
+    "repo_url": "https://github.com/docopt/docopt",
+    "repo_id": "docopt_docopt",
+    "error": null,
+    "summarizer": {
+      "tokens": 0,
+      "llm_calls": 0,
+      "nodes": 0,
+      "time_s": 0.0
+    },
+    "queries": [
+      {
+        "query": "How does docopt handle Unicode strings in command line arguments?",
+        "claude_tokens": 110000,
+        "our_tokens": 1193,
+        "savings": 108807,
+        "ratio": 0.0108,
+        "latency_s": 228.01,
+        "error": null
+      },
+      {
+        "query": "How does the formal_usage() function contribute to the documentation of docopt?",
+        "claude_tokens": 132500,
+        "our_tokens": 1332,
+        "savings": 131168,
+        "ratio": 0.0101,
+        "latency_s": 287.18,
+        "error": null
+      },
+      {
+        "query": "Where can I find examples of how to use docopt?",
+        "claude_tokens": 142500,
+        "our_tokens": 1033,
+        "savings": 141467,
+        "ratio": 0.0072,
+        "latency_s": 269.13,
+        "error": null
+      }
+    ],
+    "totals": {
+      "our_tokens": 3558,
+      "claude_tokens": 385000,
+      "savings": 381442,
+      "ratio": 0.0092
+    }
+  }
+]

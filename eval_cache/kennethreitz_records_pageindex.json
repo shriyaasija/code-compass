@@ -1,0 +1,1086 @@
+{
+  "title": "kennethreitz_records",
+  "node_id": "0000",
+  "type": "repository",
+  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records",
+  "nodes": [
+    {
+      "title": ".travis.yml",
+      "node_id": "0001",
+      "type": "file_yml",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/.travis.yml",
+      "summary": "File .travis.yml",
+      "tokens_used": 0
+    },
+    {
+      "title": "HISTORY.rst",
+      "node_id": "0002",
+      "type": "file_rst",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/HISTORY.rst",
+      "summary": "File HISTORY.rst",
+      "tokens_used": 0
+    },
+    {
+      "title": "LICENSE",
+      "node_id": "0003",
+      "type": "file",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/LICENSE",
+      "summary": "File LICENSE",
+      "tokens_used": 0
+    },
+    {
+      "title": "MANIFEST.in",
+      "node_id": "0004",
+      "type": "file_in",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/MANIFEST.in",
+      "summary": "File MANIFEST.in",
+      "tokens_used": 0
+    },
+    {
+      "title": "Makefile",
+      "node_id": "0005",
+      "type": "file",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/Makefile",
+      "summary": "File Makefile",
+      "tokens_used": 0
+    },
+    {
+      "title": "README.md",
+      "node_id": "0006",
+      "type": "file_md",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/README.md",
+      "summary": "File README.md",
+      "tokens_used": 0
+    },
+    {
+      "title": "README.rst",
+      "node_id": "0007",
+      "type": "file_rst",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/README.rst",
+      "summary": "File README.rst",
+      "tokens_used": 0
+    },
+    {
+      "title": "examples",
+      "node_id": "0008",
+      "type": "folder",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/examples",
+      "nodes": [
+        {
+          "title": "randomuser-sqlite.py",
+          "node_id": "0009",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/examples/randomuser-sqlite.py",
+          "summary": "File randomuser-sqlite.py",
+          "tokens_used": 0
+        }
+      ],
+      "summary": "Contains a Python script named `randomuser-sqlite.py` that integrates with the Random User API to fetch user data and stores it in an SQLite database. Key functions include fetching user details, creating tables, inserting data, and querying the database.",
+      "tokens_used": 155
+    },
+    {
+      "title": "records.py",
+      "node_id": "0010",
+      "type": "file_py",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+      "nodes": [
+        {
+          "title": "isexception",
+          "node_id": "func_1",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+          "start_line": 13,
+          "end_line": 21,
+          "summary": "Determines if an object is an instance or subclass of Python's `Exception` class. Returns a boolean value.",
+          "tokens_used": 178
+        },
+        {
+          "title": "Record",
+          "node_id": "class_2",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+          "start_line": 24,
+          "end_line": 103,
+          "nodes": [
+            {
+              "title": "__init__",
+              "node_id": "method_3",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 29,
+              "end_line": 34,
+              "summary": "Initializes a dictionary-like object with separate lists of keys and values, ensuring they have matching lengths.",
+              "tokens_used": 156
+            },
+            {
+              "title": "keys",
+              "node_id": "method_4",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 36,
+              "end_line": 38,
+              "summary": "Returns a list of column names from the query.",
+              "tokens_used": 123
+            },
+            {
+              "title": "values",
+              "node_id": "method_5",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 40,
+              "end_line": 42,
+              "summary": "Returns a list of values from the query.",
+              "tokens_used": 121
+            },
+            {
+              "title": "__repr__",
+              "node_id": "method_6",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 44,
+              "end_line": 45,
+              "summary": "Returns a string representation of a record, formatted as JSON without quotes.",
+              "tokens_used": 127
+            },
+            {
+              "title": "__getitem__",
+              "node_id": "method_7",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 47,
+              "end_line": 64,
+              "summary": "Supports index-based and string-based lookup for record values, raising `KeyError` if key not found or ambiguous.",
+              "tokens_used": 262
+            },
+            {
+              "title": "__getattr__",
+              "node_id": "method_8",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 66,
+              "end_line": 70,
+              "summary": "This function retrieves an attribute by key, attempting to access it from a dictionary-like object. If the key is not found, it raises an `AttributeError` with the original `KeyError`.",
+              "tokens_used": 157
+            },
+            {
+              "title": "__dir__",
+              "node_id": "method_9",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 72,
+              "end_line": 75,
+              "summary": "Returns a sorted list of attributes from both the parent class and the object's keys, combining them into one list.",
+              "tokens_used": 160
+            },
+            {
+              "title": "get",
+              "node_id": "method_10",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 77,
+              "end_line": 82,
+              "summary": "Retrieves the value associated with a specified key; returns a default value if the key is not found.",
+              "tokens_used": 151
+            },
+            {
+              "title": "as_dict",
+              "node_id": "method_11",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 84,
+              "end_line": 88,
+              "summary": "Converts row data to a dictionary, optionally preserving order.",
+              "tokens_used": 144
+            },
+            {
+              "title": "dataset",
+              "node_id": "method_12",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 91,
+              "end_line": 99,
+              "summary": "Returns a Tablib Dataset with headers and values from the object, reducing datetimes in the process.",
+              "tokens_used": 158
+            },
+            {
+              "title": "export",
+              "node_id": "method_13",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 101,
+              "end_line": 103,
+              "summary": "Exports a row to a specified format using dataset's export method.",
+              "tokens_used": 133
+            }
+          ],
+          "summary": "The `Record` class initializes a dictionary-like object using separate lists for keys and values, ensuring they match in length. It provides methods to retrieve keys, values, and convert the record to a dictionary format. The class supports index-based and string-based lookups, raises `KeyError` ...",
+          "tokens_used": 331
+        },
+        {
+          "title": "RecordCollection",
+          "node_id": "class_14",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+          "start_line": 106,
+          "end_line": 254,
+          "nodes": [
+            {
+              "title": "__init__",
+              "node_id": "method_15",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 109,
+              "end_line": 112,
+              "summary": "Initializes a new instance with `rows`, sets `_all_rows` to an empty list, and marks `pending` as `True`.",
+              "tokens_used": 147
+            },
+            {
+              "title": "__repr__",
+              "node_id": "method_16",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 114,
+              "end_line": 115,
+              "summary": "Returns a string representation of a RecordCollection object, showing its size and number of pending records.",
+              "tokens_used": 134
+            },
+            {
+              "title": "__iter__",
+              "node_id": "method_17",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 117,
+              "end_line": 133,
+              "summary": "Iterates over rows using a generator, caching results for efficient iteration and preventing `StopIteration` from bubbling up.",
+              "tokens_used": 242
+            },
+            {
+              "title": "next",
+              "node_id": "method_18",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 135,
+              "end_line": 136,
+              "summary": "Delegates to `__next__()` method for retrieving the next item in an iteration.",
+              "tokens_used": 119
+            },
+            {
+              "title": "__next__",
+              "node_id": "method_19",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 138,
+              "end_line": 145,
+              "summary": "Returns the next row from an iterator, appending it to a list of all rows; raises `StopIteration` if no more rows are available.",
+              "tokens_used": 175
+            },
+            {
+              "title": "__getitem__",
+              "node_id": "method_20",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 147,
+              "end_line": 164,
+              "summary": "Retrieves records from a collection using integer or slice keys, handling iteration until sufficient data is available. Returns individual records or another `RecordCollection` based on input type.",
+              "tokens_used": 229
+            },
+            {
+              "title": "__len__",
+              "node_id": "method_21",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 166,
+              "end_line": 167,
+              "summary": "Returns the number of rows in the `_all_rows` attribute.",
+              "tokens_used": 118
+            },
+            {
+              "title": "export",
+              "node_id": "method_22",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 169,
+              "end_line": 171,
+              "summary": "Exports a `RecordCollection` to a specified format using Tablib's export method.",
+              "tokens_used": 145
+            },
+            {
+              "title": "dataset",
+              "node_id": "method_23",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 174,
+              "end_line": 192,
+              "summary": "Converts a RecordCollection to a Tablib Dataset, handling empty collections and reducing datetime objects.",
+              "tokens_used": 236
+            },
+            {
+              "title": "all",
+              "node_id": "method_24",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 194,
+              "end_line": 206,
+              "summary": "Returns a list of all rows from a RecordCollection, caching results if not already fetched; optionally converts rows to dictionaries or ordered dictionaries.",
+              "tokens_used": 223
+            },
+            {
+              "title": "as_dict",
+              "node_id": "method_25",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 208,
+              "end_line": 209,
+              "summary": "Converts object to dictionary format, optionally preserving order.",
+              "tokens_used": 127
+            },
+            {
+              "title": "first",
+              "node_id": "method_26",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 211,
+              "end_line": 230,
+              "summary": "Returns a single record from a RecordCollection, or a specified default value; raises an exception if default is an instance of Exception. Supports casting to dict or OrderedDict.",
+              "tokens_used": 260
+            },
+            {
+              "title": "one",
+              "node_id": "method_27",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 232,
+              "end_line": 249,
+              "summary": "Returns a single record from a RecordCollection, ensuring it's unique; raises an error if multiple records exist or returns a default value if specified.",
+              "tokens_used": 270
+            },
+            {
+              "title": "scalar",
+              "node_id": "method_28",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 251,
+              "end_line": 254,
+              "summary": "Retrieves the first element from the first row of a dataset; returns `default` if no data is available.",
+              "tokens_used": 155
+            }
+          ],
+          "summary": "A `RecordCollection` class manages a collection of records with methods for initialization, iteration, retrieval, and exporting. It caches all retrieved rows for efficient access and handles iteration to prevent `StopIteration`.",
+          "tokens_used": 304
+        },
+        {
+          "title": "Database",
+          "node_id": "class_29",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+          "start_line": 257,
+          "end_line": 346,
+          "nodes": [
+            {
+              "title": "__init__",
+              "node_id": "method_30",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 262,
+              "end_line": 271,
+              "summary": "Initializes a database connection using a provided URL or environment variable, raising an error if none is given; creates an engine and sets `open` to True.",
+              "tokens_used": 210
+            },
+            {
+              "title": "get_engine",
+              "node_id": "method_31",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 273,
+              "end_line": 277,
+              "summary": "Returns the database engine if it is open, otherwise raises a ResourceClosedError.",
+              "tokens_used": 142
+            },
+            {
+              "title": "close",
+              "node_id": "method_32",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 279,
+              "end_line": 282,
+              "summary": "Closes the database by disposing of the engine and setting `open` to `False`.",
+              "tokens_used": 132
+            },
+            {
+              "title": "__enter__",
+              "node_id": "method_33",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 284,
+              "end_line": 285,
+              "summary": "Returns the instance itself when entering a context manager.",
+              "tokens_used": 111
+            },
+            {
+              "title": "__exit__",
+              "node_id": "method_34",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 287,
+              "end_line": 288,
+              "summary": "Closes the resource when exiting a context manager.",
+              "tokens_used": 117
+            },
+            {
+              "title": "__repr__",
+              "node_id": "method_35",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 290,
+              "end_line": 291,
+              "summary": "Returns a string representation of a database object, indicating whether it is open or not.",
+              "tokens_used": 126
+            },
+            {
+              "title": "get_table_names",
+              "node_id": "method_36",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 293,
+              "end_line": 297,
+              "summary": "Retrieves a list of table names from the connected database using SQLAlchemy's `inspect` function.",
+              "tokens_used": 157
+            },
+            {
+              "title": "get_connection",
+              "node_id": "method_37",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 299,
+              "end_line": 306,
+              "summary": "Retrieves a connection to the database from a pool, raising an error if the database is closed. Returns a `Connection` object with optional automatic closure on result retrieval.",
+              "tokens_used": 188
+            },
+            {
+              "title": "query",
+              "node_id": "method_38",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 308,
+              "end_line": 314,
+              "summary": "Executes SQL queries against a database, optionally fetching all results, and returns a RecordCollection of query results.",
+              "tokens_used": 191
+            },
+            {
+              "title": "bulk_query",
+              "node_id": "method_39",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 316,
+              "end_line": 320,
+              "summary": "Executes a bulk insert or update operation using provided SQL query and parameters through a database connection.",
+              "tokens_used": 149
+            },
+            {
+              "title": "query_file",
+              "node_id": "method_40",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 322,
+              "end_line": 326,
+              "summary": "Executes a database query from a specified file path, optionally fetching all results and allowing additional parameters.",
+              "tokens_used": 164
+            },
+            {
+              "title": "bulk_query_file",
+              "node_id": "method_41",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 328,
+              "end_line": 332,
+              "summary": "This function allows executing a bulk query using a SQL file specified by `path`, optionally passing additional parameters through `*multiparams`. It leverages an internal connection to perform the operation.",
+              "tokens_used": 180
+            },
+            {
+              "title": "transaction",
+              "node_id": "method_42",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 335,
+              "end_line": 346,
+              "summary": "A context manager for executing a transaction on a database, handling connection and transaction commit/rollback logic.",
+              "tokens_used": 166
+            }
+          ],
+          "summary": "Manages a database connection, providing methods to open and close connections, retrieve table names, and manage context using `with`.",
+          "tokens_used": 278
+        },
+        {
+          "title": "Connection",
+          "node_id": "class_43",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+          "start_line": 349,
+          "end_line": 445,
+          "nodes": [
+            {
+              "title": "__init__",
+              "node_id": "method_44",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 352,
+              "end_line": 355,
+              "summary": "Initializes a new instance with a database connection, tracks if it's open, and determines whether to close the connection when retrieving results.",
+              "tokens_used": 157
+            },
+            {
+              "title": "close",
+              "node_id": "method_45",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 357,
+              "end_line": 362,
+              "summary": "Closes database connection unless it's used for a single result, then sets `open` to False.",
+              "tokens_used": 169
+            },
+            {
+              "title": "__enter__",
+              "node_id": "method_46",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 364,
+              "end_line": 365,
+              "summary": "Returns the instance itself when entering a context manager.",
+              "tokens_used": 0
+            },
+            {
+              "title": "__exit__",
+              "node_id": "method_47",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 367,
+              "end_line": 368,
+              "summary": "Closes the resource when exiting a context manager.",
+              "tokens_used": 0
+            },
+            {
+              "title": "__repr__",
+              "node_id": "method_48",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 370,
+              "end_line": 371,
+              "summary": "Returns a string representation of a connection object, indicating whether it is open or closed.",
+              "tokens_used": 126
+            },
+            {
+              "title": "query",
+              "node_id": "method_49",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 373,
+              "end_line": 397,
+              "summary": "Executes a SQL query against a connected database, optionally with parameters, and returns a `RecordCollection` of result rows as dictionaries.",
+              "tokens_used": 289
+            },
+            {
+              "title": "bulk_query",
+              "node_id": "method_50",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 399,
+              "end_line": 402,
+              "summary": "Executes a SQL query with multiple parameters for bulk insert or update operations.",
+              "tokens_used": 138
+            },
+            {
+              "title": "query_file",
+              "node_id": "method_51",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 404,
+              "end_line": 420,
+              "summary": "This function loads a SQL query from a file and executes it using the `query` method of the same class. It checks if the provided path is a valid file and reads its contents before passing them to the `query` method with optional parameters.",
+              "tokens_used": 278
+            },
+            {
+              "title": "bulk_query_file",
+              "node_id": "method_52",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 422,
+              "end_line": 439,
+              "summary": "This function reads an SQL query from a specified file and executes it using `Connection.bulk_query`. It validates that the provided path is a file, not a directory, and raises an error if the file does not exist.",
+              "tokens_used": 264
+            },
+            {
+              "title": "transaction",
+              "node_id": "method_53",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+              "start_line": 441,
+              "end_line": 445,
+              "summary": "Returns a transaction object, allowing for committing or rolling back changes through its methods.",
+              "tokens_used": 141
+            }
+          ],
+          "summary": "Manages database connections, providing methods to execute queries and manage connection states within context managers.",
+          "tokens_used": 264
+        },
+        {
+          "title": "_reduce_datetimes",
+          "node_id": "func_54",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+          "start_line": 448,
+          "end_line": 456,
+          "summary": "Converts datetime objects in a row to strings using `isoformat`.",
+          "tokens_used": 163
+        },
+        {
+          "title": "cli",
+          "node_id": "func_55",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+          "start_line": 459,
+          "end_line": 549,
+          "summary": "The `cli` function defines a command-line interface for executing SQL queries and exporting results in various formats, supporting options like database URL and query parameters. It parses user input using `docopt`, validates formats, and processes parameters before passing them to further proces...",
+          "tokens_used": 628
+        },
+        {
+          "title": "print_bytes",
+          "node_id": "func_56",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/records.py",
+          "start_line": 552,
+          "end_line": 556,
+          "summary": "Writes bytes to standard output, handling both buffered and unbuffered streams.",
+          "tokens_used": 128
+        }
+      ],
+      "summary": "`records.py` contains classes for handling records and collections of records, including checking if an object is an exception, managing key-value pairs with `Record`, and iterating over a collection of `RecordCollection`. The `Database` class manages database connections and operations.",
+      "tokens_used": 296
+    },
+    {
+      "title": "requirements.txt",
+      "node_id": "0011",
+      "type": "file_txt",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/requirements.txt",
+      "summary": "File requirements.txt",
+      "tokens_used": 0
+    },
+    {
+      "title": "setup.py",
+      "node_id": "0012",
+      "type": "file_py",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/setup.py",
+      "nodes": [
+        {
+          "title": "PublishCommand",
+          "node_id": "class_57",
+          "type": "class",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/setup.py",
+          "start_line": 15,
+          "end_line": 45,
+          "nodes": [
+            {
+              "title": "status",
+              "node_id": "method_58",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/setup.py",
+              "start_line": 22,
+              "end_line": 24,
+              "summary": "Function `status` takes a string `s` and prints it in bold using ANSI escape codes.",
+              "tokens_used": 143
+            },
+            {
+              "title": "initialize_options",
+              "node_id": "method_59",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/setup.py",
+              "start_line": 26,
+              "end_line": 27,
+              "summary": "Initializes options for an object, currently does nothing.",
+              "tokens_used": 110
+            },
+            {
+              "title": "finalize_options",
+              "node_id": "method_60",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/setup.py",
+              "start_line": 29,
+              "end_line": 30,
+              "summary": "This function does nothing and is a placeholder for finalizing options in a setup script.",
+              "tokens_used": 116
+            },
+            {
+              "title": "run",
+              "node_id": "method_61",
+              "type": "method",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/setup.py",
+              "start_line": 32,
+              "end_line": 45,
+              "summary": "This function automates the process of building and uploading a Python package to PyPI. It first removes any existing build artifacts, then builds the source and wheel distributions, and finally uploads them using Twine.",
+              "tokens_used": 227
+            }
+          ],
+          "summary": "`PublishCommand` class includes methods for printing status messages in bold, initializing options (which does nothing), finalizing options (also a placeholder), and running the main process of building and uploading a Python package to PyPI.",
+          "tokens_used": 234
+        },
+        {
+          "title": "read",
+          "node_id": "func_62",
+          "type": "function",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/setup.py",
+          "start_line": 57,
+          "end_line": 58,
+          "summary": "Reads a file and returns its content as a string using UTF-8 encoding.",
+          "tokens_used": 124
+        }
+      ],
+      "summary": "`setup.py` contains the `PublishCommand` class for managing package publishing, including methods for printing messages in bold and handling options. It also includes a `read` function to read file contents with UTF-8 encoding.",
+      "tokens_used": 202
+    },
+    {
+      "title": "tests",
+      "node_id": "0013",
+      "type": "folder",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests",
+      "nodes": [
+        {
+          "title": "__init__.py",
+          "node_id": "0014",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/__init__.py",
+          "summary": "File __init__.py",
+          "tokens_used": 0
+        },
+        {
+          "title": "conftest.py",
+          "node_id": "0015",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/conftest.py",
+          "summary": "File conftest.py",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_105.py",
+          "node_id": "0016",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_105.py",
+          "summary": "File test_105.py",
+          "tokens_used": 0
+        },
+        {
+          "title": "test_69.py",
+          "node_id": "0017",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_69.py",
+          "nodes": [
+            {
+              "title": "test_issue69",
+              "node_id": "func_63",
+              "type": "function",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_69.py",
+              "start_line": 0,
+              "end_line": 2,
+              "summary": "This function tests database operations by creating a \"users\" table and querying it for a specific user. Key functions include `db.query` for executing SQL commands.",
+              "tokens_used": 164
+            }
+          ],
+          "summary": "This file contains a test function named `test_issue69` that verifies database operations by creating a \"users\" table and querying it for a specific user, utilizing the `db.query` function to execute SQL commands.",
+          "tokens_used": 175
+        },
+        {
+          "title": "test_records.py",
+          "node_id": "0018",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+          "nodes": [
+            {
+              "title": "check_id",
+              "node_id": "func_64",
+              "type": "function",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+              "start_line": 10,
+              "end_line": 11,
+              "summary": "Verifies that the `id` attribute of a given `row` matches the expected value `i`. Uses an assertion to ensure correctness.",
+              "tokens_used": 132
+            },
+            {
+              "title": "TestRecordCollection",
+              "node_id": "class_65",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+              "start_line": 14,
+              "end_line": 128,
+              "nodes": [
+                {
+                  "title": "test_iter",
+                  "node_id": "method_66",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 15,
+                  "end_line": 18,
+                  "summary": "Tests iteration over a RecordCollection, checking each row's ID against an expected value.",
+                  "tokens_used": 147
+                },
+                {
+                  "title": "test_next",
+                  "node_id": "method_67",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 20,
+                  "end_line": 23,
+                  "summary": "Tests iteration over a RecordCollection to ensure correct ID retrieval. Uses `next()` to sequentially access and validate each record's ID.",
+                  "tokens_used": 157
+                },
+                {
+                  "title": "test_iter_and_next",
+                  "node_id": "method_68",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 25,
+                  "end_line": 30,
+                  "summary": "Tests iteration and caching of records in a RecordCollection using enumerate and next functions.",
+                  "tokens_used": 177
+                },
+                {
+                  "title": "test_multiple_iter",
+                  "node_id": "method_69",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 32,
+                  "end_line": 42,
+                  "summary": "Tests iterating over a `RecordCollection` using `enumerate`, caching and re-reading rows to verify correct behavior. Uses `check_id` function to validate row identities.",
+                  "tokens_used": 219
+                },
+                {
+                  "title": "test_slice_iter",
+                  "node_id": "method_70",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 44,
+                  "end_line": 50,
+                  "summary": "Tests iteration and slicing of a RecordCollection, verifying IDs and ensuring length is correct.",
+                  "tokens_used": 176
+                },
+                {
+                  "title": "test_all_returns_a_list_of_records",
+                  "node_id": "method_71",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 55,
+                  "end_line": 57,
+                  "summary": "Tests that `records.RecordCollection`'s `all()` method returns a list of records, specifically `[IdRecord(0), IdRecord(1), IdRecord(2)]`.",
+                  "tokens_used": 177
+                },
+                {
+                  "title": "test_first_returns_a_single_record",
+                  "node_id": "method_72",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 62,
+                  "end_line": 64,
+                  "summary": "Tests that `first()` method returns a single record from a collection.",
+                  "tokens_used": 142
+                },
+                {
+                  "title": "test_first_defaults_to_None",
+                  "node_id": "method_73",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 66,
+                  "end_line": 68,
+                  "summary": "Tests that calling `first()` on an empty `RecordCollection` returns `None`.",
+                  "tokens_used": 133
+                },
+                {
+                  "title": "test_first_default_is_overridable",
+                  "node_id": "method_74",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 70,
+                  "end_line": 72,
+                  "summary": "Tests that the first default value is overridable in a RecordCollection.",
+                  "tokens_used": 138
+                },
+                {
+                  "title": "test_first_raises_default_if_its_an_exception_subclass",
+                  "node_id": "method_75",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 74,
+                  "end_line": 77,
+                  "summary": "Tests that `rows.first` raises a default exception if its argument is an exception subclass. Uses `raises` to verify this behavior with a custom `Cheese` exception.",
+                  "tokens_used": 167
+                },
+                {
+                  "title": "test_first_raises_default_if_its_an_exception_instance",
+                  "node_id": "method_76",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 79,
+                  "end_line": 82,
+                  "summary": "Tests that `rows.first` raises a default exception if its argument is an exception instance. Uses `raises` to verify exception handling.",
+                  "tokens_used": 161
+                },
+                {
+                  "title": "test_one_returns_a_single_record",
+                  "node_id": "method_77",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 86,
+                  "end_line": 88,
+                  "summary": "Tests that calling `one()` on a `RecordCollection` with one record returns that single record.",
+                  "tokens_used": 148
+                },
+                {
+                  "title": "test_one_defaults_to_None",
+                  "node_id": "method_78",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 90,
+                  "end_line": 92,
+                  "summary": "Tests that calling `one()` on an empty `RecordCollection` returns `None`.",
+                  "tokens_used": 133
+                },
+                {
+                  "title": "test_one_default_is_overridable",
+                  "node_id": "method_79",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 94,
+                  "end_line": 96,
+                  "summary": "Tests that a default value can be overridden in a RecordCollection's one method.",
+                  "tokens_used": 139
+                },
+                {
+                  "title": "test_one_raises_when_more_than_one",
+                  "node_id": "method_80",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 98,
+                  "end_line": 100,
+                  "summary": "Tests that calling `one` method on a `RecordCollection` with more than one record raises a `ValueError`.",
+                  "tokens_used": 149
+                },
+                {
+                  "title": "test_one_raises_default_if_its_an_exception_subclass",
+                  "node_id": "method_81",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 102,
+                  "end_line": 105,
+                  "summary": "Tests that calling `one` on an empty `RecordCollection` with a custom exception subclass raises that subclass by default.",
+                  "tokens_used": 156
+                },
+                {
+                  "title": "test_one_raises_default_if_its_an_exception_instance",
+                  "node_id": "method_82",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 107,
+                  "end_line": 110,
+                  "summary": "Tests that calling `one` on an empty `RecordCollection` with a specific exception instance raises that exception by default.",
+                  "tokens_used": 158
+                },
+                {
+                  "title": "test_scalar_returns_a_single_record",
+                  "node_id": "method_83",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 114,
+                  "end_line": 116,
+                  "summary": "Tests that `scalar()` returns a single record's value, expecting 0 for a collection with one record.",
+                  "tokens_used": 148
+                },
+                {
+                  "title": "test_scalar_defaults_to_None",
+                  "node_id": "method_84",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 118,
+                  "end_line": 120,
+                  "summary": "Tests that calling `scalar()` on an empty `RecordCollection` returns `None`.",
+                  "tokens_used": 133
+                },
+                {
+                  "title": "test_scalar_default_is_overridable",
+                  "node_id": "method_85",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 122,
+                  "end_line": 124,
+                  "summary": "Tests that scalar default value can be overridden. Uses `RecordCollection` to verify scalar retrieval.",
+                  "tokens_used": 142
+                },
+                {
+                  "title": "test_scalar_raises_when_more_than_one",
+                  "node_id": "method_86",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 126,
+                  "end_line": 128,
+                  "summary": "Tests that calling `scalar` on a `RecordCollection` with more than one record raises a `ValueError`.",
+                  "tokens_used": 148
+                }
+              ],
+              "summary": "Tests iteration, caching, and slicing of RecordCollections, verifying row IDs and ensuring correct behavior with methods like `enumerate`, `next`, and `first()`.",
+              "tokens_used": 283
+            },
+            {
+              "title": "TestRecord",
+              "node_id": "class_87",
+              "type": "class",
+              "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+              "start_line": 131,
+              "end_line": 146,
+              "nodes": [
+                {
+                  "title": "test_record_dir",
+                  "node_id": "method_88",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 133,
+                  "end_line": 140,
+                  "summary": "Tests if a `records.Record` object has expected attributes and methods, including those inherited from `object`.",
+                  "tokens_used": 181
+                },
+                {
+                  "title": "test_record_duplicate_column",
+                  "node_id": "method_89",
+                  "type": "method",
+                  "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_records.py",
+                  "start_line": 142,
+                  "end_line": 146,
+                  "summary": "Tests that attempting to access a duplicate column key in a `records.Record` object raises a `KeyError`.",
+                  "tokens_used": 164
+                }
+              ],
+              "summary": "TestRecord class tests `records.Record` objects for expected attributes and methods, ensuring no duplicate column keys cause errors.",
+              "tokens_used": 166
+            }
+          ],
+          "summary": "Verifies record ID correctness using assertions in `check_id`. Tests RecordCollections for iteration, caching, slicing, and method functionality in `TestRecordCollection`. Ensures `records.Record` objects have expected attributes and methods without duplicate column keys in `TestRecord`.",
+          "tokens_used": 237
+        },
+        {
+          "title": "test_transactions.py",
+          "node_id": "0019",
+          "type": "file_py",
+          "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tests/test_transactions.py",
+          "summary": "File test_transactions.py",
+          "tokens_used": 0
+        }
+      ],
+      "summary": "tests/ contains unit tests for database operations, record ID correctness, and transaction handling. Key functions include `test_issue69` for verifying SQL queries, `check_id` for asserting record IDs, and methods for testing RecordCollections and records' attributes.",
+      "tokens_used": 256
+    },
+    {
+      "title": "tox.ini",
+      "node_id": "0020",
+      "type": "file_ini",
+      "path": "/var/folders/8m/yzby2c4n3575xtjw96mftvx80000gn/T/tmp5zqrglqy/kennethreitz_records/tox.ini",
+      "summary": "File tox.ini",
+      "tokens_used": 0
+    }
+  ],
+  "summary": "The repository `kennethreitz_records` includes a script to fetch user data from the Random User API and store it in an SQLite database, along with classes for handling records and collections, and scripts for package setup and testing database operations.",
+  "tokens_used": 358
+}
