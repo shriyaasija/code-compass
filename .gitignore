@@ -25,3 +25,6 @@ output_view/
 pageindex_tree.json
 output*.pdf
 output*.png
+devquery_bench
+eval_cache/
+eval_results/

@@ -29,13 +29,17 @@ class LLMSimulator:
     def __init__(self, llm_client, cache_size: int = 2000):
         """
         Args:
-            llm_client: An OllamaLLM or LMStudioLLM instance with .chat() method.
+            llm_client: An OllamaLLM or LMStudioLLM instance (ignored now, kept for signature).
             cache_size: Maximum number of cached score results.
         """
         self.llm = llm_client
         self.cache: Dict[str, Dict[str, float]] = {}
         self.cache_size = cache_size
         self.total_llm_calls: int = 0
+        from sentence_transformers import CrossEncoder
+        print("🔄 Loading cross-encoder model for MCTS simulation...")
+        self.scorer = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
+        print("✅ Cross-encoder loaded")
 
     def batch_score_children(
         self,
@@ -75,75 +79,38 @@ class LLMSimulator:
             'title', parent_node.tree_node.get('name', 'root')
         )
 
-        # Build scoring prompt (same format as code_index.py _score_siblings)
-        prompt = f"""Query: "{query}"
-
-Location: {context_path} → {current_location}
-
-Rate relevance (0.0 to 1.0) for each item:
-- 1.0 = Definitely needed to answer the query
-- 0.7-0.9 = Likely relevant
-- 0.4-0.6 = Possibly relevant
-- 0.0-0.3 = Not relevant
-
-Items:
-"""
-
-        for i, child in enumerate(children, 1):
+        # Build pairs for cross-encoder mapping (query, item_text)
+        pairs = []
+        titles = []
+        for child in children:
             node = child.tree_node
             title = node.get('title', node.get('name', 'unknown'))
             node_type = node.get('type', node.get('node_type', 'unknown'))
             summary = node.get('summary', '')
-
-            prompt += f"\n{i}. {title}"
-
+            
+            doc = f"{title} ({node_type})"
             if node_type == 'folder':
                 num_items = len(node.get('nodes', node.get('children', [])))
-                prompt += f" (folder, {num_items} items)"
+                doc += f" with {num_items} items"
             elif node_type.startswith('file_'):
-                prompt += f" ({node_type.replace('file_', '.')} file)"
-            elif node_type in ('function', 'method'):
-                start = node.get('start_line', '?')
-                end = node.get('end_line', '?')
-                prompt += f" (function, lines {start}-{end})"
-            elif node_type == 'class':
-                num_methods = len(node.get('nodes', node.get('children', [])))
-                prompt += f" (class, {num_methods} methods)"
-
+                doc += f" (file)"
+                
             if summary:
-                short_summary = summary[:100] + "..." if len(summary) > 100 else summary
-                prompt += f"\n   {short_summary}"
-
-        prompt += """
-
-Respond with ONLY a JSON object:
-{"item_name": score, ...}
-
-Example: {"auth.py": 0.9, "utils.py": 0.2}
-"""
+                doc += f": {summary}"
+                
+            pairs.append((query, doc))
+            titles.append(title)
 
         try:
-            messages = [
-                {
-                    "role": "system",
-                    "content": (
-                        "You are a code search assistant. Rate the relevance of "
-                        "code elements to answer user queries. Respond ONLY with valid JSON."
-                    ),
-                },
-                {"role": "user", "content": prompt},
-            ]
-
-            response = self.llm.chat(messages, temperature=0.1, max_tokens=500)
-            self.total_llm_calls += 1
-
-            if not response or not response.strip():
-                scores = self._default_scores(children)
-            else:
-                scores = self._parse_scores(response, children)
-
+            import numpy as np
+            raw_scores = self.scorer.predict(pairs)
+            # ms-marco scores are logits, normalize to 0-1 via sigmoid
+            normalized = 1 / (1 + np.exp(-raw_scores))
+            
+            scores = {t: float(s) for t, s in zip(titles, normalized)}
+            self.total_llm_calls += 1  # Track as a scoring hit
         except Exception as e:
-            print(f"⚠️ LLM scoring failed: {e}")
+            print(f"⚠️ Cross-encoder scoring failed: {e}")
             scores = self._default_scores(children)
 
         # Cache result
@@ -170,41 +137,19 @@ Example: {"auth.py": 0.9, "utils.py": 0.2}
         """
         summary = node.tree_node.get('summary', '')
         name = node.tree_node.get('title', node.tree_node.get('name', ''))
+        node_type = node.tree_node.get('type', node.tree_node.get('node_type', ''))
+        
+        doc = f"{name} ({node_type}): {summary}" if summary else f"{name} ({node_type})"
 
         if not summary and not name:
             return 0.5
 
-        # For terminal nodes, we can use a simpler prompt
-        prompt = f"""Query: "{query}"
-
-Code element: {name}
-Summary: {summary}
-
-Rate the relevance of this code element to the query on a scale of 0.0 to 1.0.
-Respond with ONLY a JSON object: {{"score": <number>}}
-"""
+        import numpy as np
         try:
-            messages = [
-                {
-                    "role": "system",
-                    "content": "You are a code search assistant. Respond ONLY with valid JSON.",
-                },
-                {"role": "user", "content": prompt},
-            ]
-
-            response = self.llm.chat(messages, temperature=0.1, max_tokens=100)
+            score = self.scorer.predict([(query, doc)])[0]
+            normalized = float(1 / (1 + np.exp(-score)))
             self.total_llm_calls += 1
-
-            if not response or not response.strip():
-                return 0.5
-
-            parsed = self._extract_json(response)
-            if isinstance(parsed, dict) and 'score' in parsed:
-                score = float(parsed['score'])
-                return max(0.0, min(1.0, score))
-
-            return 0.5
-
+            return normalized
         except Exception:
             return 0.5
 
